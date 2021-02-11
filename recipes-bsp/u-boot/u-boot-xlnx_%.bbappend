@@ -1,4 +1,4 @@
-SRC_URI += " \
+SRC_URI_append_k26 = " \
 	file://vars \
 	file://som_bootmenu.cfg \
 	"
