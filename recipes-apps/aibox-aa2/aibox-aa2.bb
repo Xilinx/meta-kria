@@ -30,5 +30,4 @@ S = "${WORKDIR}/git"
 
 FILES_${PN} += " \
 	/opt/xilinx \
-	/usr \
 	"
