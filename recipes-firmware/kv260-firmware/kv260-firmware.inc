@@ -4,12 +4,19 @@ SRCREV = "23ad59b2eae40b6adfdf68170dc2332338585fbd"
 
 VAI_DIR = "/opt/xilinx/share/vitis_ai_library"
 
+inherit update-alternatives
+
 do_install_append() {
 	if [ -d ${S}/models ]; then
 		install -d ${D}/${VAI_DIR}
 		cp -r ${S}/models ${D}/${VAI_DIR}
 	fi
+
+	install -d ${D}${sysconfdir}/dfx-mgrd
+	echo "${PN}" > ${D}${sysconfdir}/dfx-mgrd/${PN}
 }
+
+FILES_${PN} += "${sysconfdir}/dfx-mgrd/${PN}"
 
 FILES_${PN}-models += "${VAI_DIR}"
 PACKAGES += "${PN}-models"
@@ -17,3 +24,7 @@ PACKAGES += "${PN}-models"
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE_k26-kv = "${MACHINE}"
 PACKAGE_ARCH = "${BOARDVARIANT_ARCH}"
+
+ALTERNATIVE_${PN} = "default_firmware"
+ALTERNATIVE_TARGET[default_firmware] = "${sysconfdir}/dfx-mgrd/${PN}"
+ALTERNATIVE_LINK_NAME[default_firmware] = "${sysconfdir}/dfx-mgrd/default_firmware"
