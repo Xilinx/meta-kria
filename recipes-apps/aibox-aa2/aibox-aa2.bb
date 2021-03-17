@@ -21,6 +21,7 @@ RDEPENDS_${PN} = " \
 	gstreamer1.0-plugins-good-udp \
 	gstreamer1.0-python \
 	ivas-accel-libs \
+	libdrm-tests \
 	"
 
 SOMAPP_INSTALL_PATH = "/"
