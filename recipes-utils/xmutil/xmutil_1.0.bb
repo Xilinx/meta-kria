@@ -2,7 +2,7 @@ DESCRIPTION = "xmutil"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-RDEPENDS_${PN} = "python3-core fru-print dfx-mgr"
+RDEPENDS_${PN} = "python3-core fru-print dfx-mgr platformstats axi-qos ddr-qos"
 inherit python3-dir
 
 S = "${WORKDIR}/git"
