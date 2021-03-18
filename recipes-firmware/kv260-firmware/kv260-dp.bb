@@ -13,3 +13,6 @@ FW_DIR = "dp"
 # be used as the default firmware to be loaded by dfx-mgrd during init.
 COMPATIBLE_MACHINE_k26 = "${MACHINE}"
 PACKAGE_ARCH = "${BOARD_ARCH}"
+
+#Setting priority as 100, which is the highest of the different providers of default_firmware
+ALTERNATIVE_PRIORITY[default_firmware] = "100"
