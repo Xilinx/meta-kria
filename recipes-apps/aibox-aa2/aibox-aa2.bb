@@ -16,6 +16,7 @@ RDEPENDS_${PN} = " \
 	gstreamer1.0-plugins-bad-kms \
 	gstreamer1.0-plugins-bad-videoparsersbad \
 	gstreamer1.0-plugins-good-multifile \
+	gstreamer1.0-plugins-good-rtp \
 	gstreamer1.0-plugins-good-rtpmanager \
 	gstreamer1.0-plugins-good-rtsp \
 	gstreamer1.0-plugins-good-udp \
