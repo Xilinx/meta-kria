@@ -23,6 +23,7 @@ RDEPENDS_${PN} = " \
 	gstreamer1.0-python \
 	gstreamer1.0-rtsp-server \
 	ivas-accel-libs \
+	libdrm-tests \
 	v4l-utils \
 	"
 
