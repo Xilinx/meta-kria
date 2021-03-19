@@ -7,6 +7,7 @@ AIBOX_AA2_PACKAGES = " \
 	libdrm-tests \
 	kv260-aibox-aa2 \
 	kv260-aibox-aa2-models \
+	kv260-smartcamera-aa1-models \
 	"
 
 RDEPENDS_${PN} = "${AIBOX_AA2_PACKAGES}"
