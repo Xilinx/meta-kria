@@ -1,4 +1,4 @@
-SUMMARY = "SOM DEFECTDETECTION AA4"
+SUMMARY = "Defect detection application"
 DESCRIPTION = "This application and Kernel library is used to detect the defect of Mango"
 
 LICENSE = "Apache-2.0"
@@ -24,7 +24,7 @@ RDEPENDS_${PN} = " \
 S = "${WORKDIR}/git"
 
 SRC_URI += " \
-    git://github.com/Xilinx/defectdetection_aa4.git;branch=${BRANCH};protocol=https \
+    git://github.com/Xilinx/defect-detect.git;branch=${BRANCH};protocol=https \
     "
 SRCREV ?= "bb1ca9164e01cf0a539648753b0a3c344176d19f"
 
