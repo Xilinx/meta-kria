@@ -7,7 +7,6 @@ AIBOX_REID_PACKAGES = " \
 	libdrm-tests \
 	kv260-aibox-reid \
 	kv260-aibox-reid-models \
-	kv260-smartcam-models \
 	"
 
 RDEPENDS_${PN} = "${AIBOX_REID_PACKAGES}"
