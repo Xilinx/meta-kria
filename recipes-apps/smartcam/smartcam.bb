@@ -1,10 +1,10 @@
-SUMMARY = "Smartcamera AA1 application"
+SUMMARY = "Smartcam application"
 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
 BRANCH = "master"
-SRC_URI = "git://github.com/Xilinx/smartcam-aa1.git;protocol=https;branch=${BRANCH}"
+SRC_URI = "git://github.com/Xilinx/smartcam.git;protocol=https;branch=${BRANCH}"
 SRCREV = "bb03fd466d9500074d215b37993a8f7d64b262c1"
 
 inherit cmake
