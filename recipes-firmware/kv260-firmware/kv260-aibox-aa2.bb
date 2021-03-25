@@ -6,7 +6,3 @@ inherit fpgamanager_custom
 include kv260-firmware.inc
 
 FW_DIR = "aibox-aa2"
-
-#putting different priority to not see "multiple providers with the same priority" warning
-#but highest priority of default_firmware providers is kv260-dp which is set at 100
-ALTERNATIVE_PRIORITY[default_firmware] = "20"
