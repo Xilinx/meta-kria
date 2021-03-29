@@ -19,6 +19,7 @@ RDEPENDS_${PN} = " \
     gstreamer1.0-python \
     ivas-accel-libs \
     v4l-utils \
+    libdrm-tests \
     "
 
 S = "${WORKDIR}/git"
@@ -26,7 +27,7 @@ S = "${WORKDIR}/git"
 SRC_URI += " \
     git://github.com/Xilinx/defect-detect.git;branch=${BRANCH};protocol=https \
     "
-SRCREV ?= "bb1ca9164e01cf0a539648753b0a3c344176d19f"
+SRCREV ?= "17b602ee3860cb603ae0d1b0ce1cf2d584538039"
 
 SOMAPP_INSTALL_PATH = "/"
 
