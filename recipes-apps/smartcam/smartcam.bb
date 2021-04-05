@@ -9,7 +9,7 @@ SRCREV = "bb03fd466d9500074d215b37993a8f7d64b262c1"
 
 inherit cmake
 
-DEPENDS = "ivas-accel-libs glog gstreamer1.0-rtsp-server"
+DEPENDS = "ivas-accel-libs glog gstreamer1.0-rtsp-server opencv"
 RDEPENDS_${PN} = " \
 	gst-perf \
 	gstreamer1.0-omx \
@@ -25,6 +25,7 @@ RDEPENDS_${PN} = " \
 	ivas-accel-libs \
 	libdrm-tests \
 	v4l-utils \
+	alsa-utils \
 	"
 
 SOMAPP_INSTALL_PATH = "/"
