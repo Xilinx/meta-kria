@@ -13,6 +13,9 @@ DEPENDS = "ivas-accel-libs glog gstreamer1.0-rtsp-server opencv"
 RDEPENDS_${PN} = " \
 	gst-perf \
 	gstreamer1.0-omx \
+	gstreamer1.0-plugins-bad-faac \
+	gstreamer1.0-plugins-bad-mpegtsmux \
+	gstreamer1.0-plugins-good-rtp \
 	gstreamer1.0-plugins-bad-kms \
 	gstreamer1.0-plugins-bad-mediasrcbin \
 	gstreamer1.0-plugins-bad-videoparsersbad \
