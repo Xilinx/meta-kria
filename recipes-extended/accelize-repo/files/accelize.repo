@@ -1,0 +1,6 @@
+[accelize]
+name=Accelize RPM repository
+baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/k26/
+enabled=0
+gpgkey=https://tech.accelize.com/gpg
+gpgcheck=1
