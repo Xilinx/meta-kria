@@ -10,7 +10,7 @@ S = "${WORKDIR}/git"
 SRC_URI += " \
     git://github.com/Xilinx/xmutil.git;branch=master;protocol=https \
     "
-SRCREV = "0a181b79543645534d751c768eda2f83a6b9bc77"
+SRCREV = "532ab4b1e8285d0b6c43b47b0c62e66792f0a065"
 
 do_install() {
     install -d ${D}${bindir}/

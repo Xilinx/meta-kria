@@ -1,6 +1,6 @@
 BRANCH ?= "2020.2.2"
 SRC_URI ?= "git://github.com/Xilinx/ap1302-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "b8aa5f339025107c355c4d5845956a5595ad4d40"
+SRCREV ?= "2bdc5614dff9aeaf1e4cbeae7b75a081d42ca04a"
 
 S = "${WORKDIR}/git"
 
