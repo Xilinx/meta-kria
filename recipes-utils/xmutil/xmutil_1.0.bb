@@ -7,8 +7,9 @@ inherit python3-dir
 
 S = "${WORKDIR}/git"
 
+BRANCH = "release-2020.2.2_k26"
 SRC_URI += " \
-    git://github.com/Xilinx/xmutil.git;branch=master;protocol=https \
+    git://github.com/Xilinx/xmutil.git;branch=${BRANCH};protocol=https \
     "
 SRCREV="532ab4b1e8285d0b6c43b47b0c62e66792f0a065"
 

@@ -6,9 +6,9 @@ SUMMARY = "Application for setting the qos values for DDR slots"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
-BRANCH = "master"
+BRANCH = "release-2020.2.2_k26"
 SRC_URI = "git://github.com/Xilinx/axi-qos.git;protocol=https;branch=${BRANCH}"
-SRCREV = "e8a47881ef3e4aa56a5e740c0b2fae569370935e"
+SRCREV = "2fd1b627c83778d03b1a91c99990d3714d261bbd"
 
 inherit cmake
 

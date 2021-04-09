@@ -1,4 +1,4 @@
-BRANCH ?= "2020.2.2"
+BRANCH ?= "release-2020.2.2_k26"
 SRC_URI ?= "git://github.com/Xilinx/ap1302-firmware.git;protocol=https;branch=${BRANCH}"
 SRCREV ?= "2bdc5614dff9aeaf1e4cbeae7b75a081d42ca04a"
 

@@ -1,6 +1,6 @@
-BRANCH = "2020.2.2"
+BRANCH = "release-2020.2.2_k26"
 SRC_URI = "git://github.com/Xilinx/kv260-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV = "0196281a6ea71875853016cd67cc67f5f1f199d4"
+SRCREV = "1ac91422dc5780ce6a8e6a784e656e64c5cd2772"
 
 VAI_DIR = "/opt/xilinx/share/vitis_ai_library/models"
 
