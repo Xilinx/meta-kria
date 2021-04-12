@@ -27,7 +27,7 @@ S = "${WORKDIR}/git"
 SRC_URI += " \
     git://github.com/Xilinx/defect-detect.git;branch=${BRANCH};protocol=https \
     "
-SRCREV ?= "a9847e6c415cba60fd7278af10e5bb61fb9aaecd"
+SRCREV ?= "a8ac573c3bcfdbbd400a3b0c08f1f2b17f4c167d"
 
 SOMAPP_INSTALL_PATH = "/"
 
