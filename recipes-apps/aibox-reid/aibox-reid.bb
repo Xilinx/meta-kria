@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
 BRANCH = "release-2020.2.2_k26"
 SRC_URI = "git://github.com/Xilinx/aibox-reid.git;protocol=https;branch=${BRANCH}"
-SRCREV = "2754ee99f61dd30b9c083bb72c0f0b27cf7a6d80"
+SRCREV = "c9062804493e7bbee30b1e39cc8515abb8e98efc"
 
 inherit cmake
 
