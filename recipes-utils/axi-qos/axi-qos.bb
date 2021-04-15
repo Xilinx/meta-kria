@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
 BRANCH = "master"
 SRC_URI = "git://github.com/Xilinx/axi-qos.git;protocol=https;branch=${BRANCH}"
-SRCREV = "26f0b19c934a4c5ef07776c1a872b11094ca30cd"
+SRCREV = "2fd1b627c83778d03b1a91c99990d3714d261bbd"
 
 inherit cmake
 
