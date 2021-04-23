@@ -1,4 +1,4 @@
-SUMMARY = "nlp-smartvision application"
+SUMMARY = "nlp smartvision application"
 
 LICENSE = "Apache-2.0 & GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755 \
@@ -7,9 +7,9 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755 \
 		    file://src/COPYING;md5=59530bdf33659b29e73d4adb9f9f6552 \
 		    "
 
-BRANCH = "master"
+BRANCH = "release-2020.2.2_k26"
 SRC_URI = "git://github.com/Xilinx/nlp-smartvision.git;protocol=https;branch=${BRANCH}"
-SRCREV = "b2e0fe8f45ad7bd5ef180e83fc5df3349f3db197"
+SRCREV = "4a1ae0978d67962005faba62543d1589645fb4c9"
 
 inherit cmake
 
@@ -21,7 +21,12 @@ RDEPENDS_${PN} = " \
 	gstreamer1.0-plugins-bad-mediasrcbin \
 	gstreamer1.0-plugins-bad-videoparsersbad \
 	gstreamer1.0-plugins-good-video4linux2 \
+	gstreamer1.0-python \
+	libdrm-tests \
 	v4l-utils \
+	alsa-utils \
+	${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', 'pulseaudio-server pulseaudio-client-conf-sato pulseaudio-misc', '', d)} \
+	libasound \
 	"
 
 SOMAPP_INSTALL_PATH = "/"
