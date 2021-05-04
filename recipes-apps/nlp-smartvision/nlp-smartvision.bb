@@ -7,10 +7,9 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755 \
 		    file://src/COPYING;md5=59530bdf33659b29e73d4adb9f9f6552 \
 		    "
 
-BRANCH = "release-2020.2.2_k26"
+BRANCH = "master"
 SRC_URI = "git://github.com/Xilinx/nlp-smartvision.git;protocol=https;branch=${BRANCH}"
-SRCREV = "f9a087104d18acaf6a431e3407911948705d2d50"
-
+SRCREV = "652cc03973e3dc7555a857e3a741839033e105b1"
 inherit cmake
 
 DEPENDS = "glog opencv vitis-ai-library vart"
