@@ -37,6 +37,5 @@ gpgcheck=1
 [accelize-2020_2_2-zynqmp_generic]
 name=accelize 2020_2_2 zynqmp_generic
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/zynqmp_generic
->>>>>>> bcfe5d2 (accelize.repo: Updating accelize repo)
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=1
