@@ -3,39 +3,46 @@ name=accelize 2020_2_2 noarch
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/noarch
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
 
 [accelize-2020_2_2-aarch64]
 name=accelize 2020_2_2 aarch64
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/aarch64
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
 
 [accelize-2020_2_2-zynqmp]
 name=accelize 2020_2_2 zynqmp
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/zynqmp
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
 
 [accelize-2020_2_2-zynqmp_ev]
 name=accelize 2020_2_2 zynqmp_ev
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/zynqmp_ev
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
 
 [accelize-2020_2_2-k26]
 name=accelize 2020_2_2 k26
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/k26
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
 
 [accelize-2020_2_2-k26_kv]
 name=accelize 2020_2_2 k26_kv
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/k26_kv
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
 
 [accelize-2020_2_2-zynqmp_generic]
 name=accelize 2020_2_2 zynqmp_generic
 baseurl=https://tech.accelize.com/rpm/stable/2020_2_2/zynqmp_generic
 gpgkey=https://tech.accelize.com/gpg
 gpgcheck=0
+enabled=0
