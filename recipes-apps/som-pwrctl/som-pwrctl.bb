@@ -4,13 +4,12 @@ LIC_FILES_CHKSUM = "file://${S}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 RDEPENDS_${PN} = "python3-core i2c-tools"
 inherit python3-dir
+require recipes-utils/xmutil/xmutil.inc
 
 S = "${WORKDIR}/git"
 
-SRC_URI += " \
-    git://github.com/Xilinx/xmutil.git;branch=master;protocol=https \
-    "
-SRCREV = "0a181b79543645534d751c768eda2f83a6b9bc77"
+BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH', True) != '']}"
+SRC_URI="${REPO};${BRANCHARG}"
 
 do_install() {
     install -d ${D}${bindir}/
