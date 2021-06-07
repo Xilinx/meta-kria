@@ -3,9 +3,9 @@ SUMMARY = "Aibox ReID application"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
-BRANCH = "master"
+BRANCH = "release-2020.2.2_k26"
 SRC_URI = "git://github.com/Xilinx/aibox-reid.git;protocol=https;branch=${BRANCH}"
-SRCREV = "3c41f2c4550c4d9962a41777145a1c9f4e4206e8"
+SRCREV = "cd56216402cad4928a4057fa62ebf816d7205a77"
 
 inherit cmake
 
