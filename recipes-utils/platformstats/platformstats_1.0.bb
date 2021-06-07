@@ -2,9 +2,9 @@ SUMMARY = "Xilinx platformstats library"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
-BRANCH = "master"
-SRC_URI = "git://gitenterprise.xilinx.com/SOM/platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV = "0093af01b83e80e0e34c17fe50e197f85dfa990b"
+BRANCH ?= "release-2020.2.2_k26"
+SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
+SRCREV ?= "63ac7f8cc411095d8fe3cbc1daee51ceee1f932a"
 
 PARALLEL_MAKE = "-j 1"
 
