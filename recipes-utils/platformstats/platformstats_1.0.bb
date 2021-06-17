@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
 BRANCH ?= "release-2020.2.2_k26"
 SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "63ac7f8cc411095d8fe3cbc1daee51ceee1f932a"
+SRCREV ?= "8f0d4abc924954bd76f933ba3addb73e0803250f"
 
 PARALLEL_MAKE = "-j 1"
 
