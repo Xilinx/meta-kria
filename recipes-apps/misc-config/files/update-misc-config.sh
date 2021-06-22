@@ -1,16 +1,36 @@
-#!/bin/sh
+#!/bin/sh                                                                       
+                                                                                
+function Get_MAC_ID(){                                                     
+         local output=""                                                        
+         output="$(fru-print.py -b som -f multirecord MAC_Addr MAC_ID_0)" 
+         echo $output                 
+}                                     
+                                      
+function Get_Active_Ethernet(){           
+                                      
+	local output=""                       
+	output=$(ls /sys/class/net | grep eth)
+                                 
+	if [ -z "$output" ]              
+	then                                     
+        	echo "No Ethernet Port Found"
+		exit 1	
+	else                                     
+        	line=${output:0:4}                    
+        	echo "$line"                          
+	fi                                                         
+} 
 
-function get_MAC_address(){
-	local __output=$1
-        eval $__output="'$(fru-print.py -b som -f multirecord MAC_Addr MAC_ID_0 | sed 's/../\:&/2g' | sed 's/://')'"
+
+function Update_MAC_Address(){
+
+        local MAC_ID=$(Get_MAC_ID)
+        local eth=$(Get_Active_Ethernet)
+        /sbin/ifconfig $eth down
+        /sbin/ifconfig $eth hw ether $MAC_ID
+        /sbin/ifconfig $eth up
+	local MAC_addr=$(cat /sys/class/net/$eth/address)
+        echo "MAC address for $eth is updated to $MAC_addr"
 }
 
-function update_MAC_address(){
-
-        get_MAC_address MAC_addr
-        ifconfig eth0 down
-        ifconfig eth0 hw ether $MAC_addr
-	ifconfig eth0 up
-        echo "MAC address for eth0 is updated to $MAC_addr"
-}
-update_MAC_address
+Update_MAC_Address
