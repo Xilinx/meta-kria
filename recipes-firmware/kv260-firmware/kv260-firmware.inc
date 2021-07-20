@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = " \
 
 BRANCH = "2021.1"
 SRC_URI = "git://github.com/Xilinx/kv260-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV = "abfbda81b9eaba70861130e02e466468d670d7f6"
+SRCREV = "4239a2700944bd2f627c37d500a0468b0829c63a"
 
 VAI_DIR = "/opt/xilinx/share/vitis_ai_library/models"
 
