@@ -6,6 +6,6 @@ inherit module
 
 BRANCH = "master"
 SRC_URI = "git://github.com/Xilinx/xilinx-sw-converter-module.git;protocol=https;branch=${BRANCH}"
-SRCREV = "e29476d35d94747ab49f6d875acab546a2ffbee5"
+SRCREV = "845c55801464a8bdcdd93618b54c11136a2d5ce4"
 
 S = "${WORKDIR}/git"
