@@ -9,4 +9,8 @@ do_install() {
 	install -m 0755 ${WORKDIR}/accelize.repo ${D}${sysconfdir}/yum.repos.d/
 }
 
+pkg_postinst_ontarget_${PN}() {
+	sed -i ${sysconfdir}/yum.repos.d/accelize.repo -e 's,enabled=0,enabled=1,g'
+}
+
 FILES_${PN} = "${sysconfdir}/yum.repos.d/accelize.repo"
