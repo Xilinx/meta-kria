@@ -7,9 +7,9 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755 \
 		    file://src/COPYING;md5=59530bdf33659b29e73d4adb9f9f6552 \
 		    "
 
-BRANCH = "release-2020.2.2_k26"
+BRANCH = "2021.1"
 SRC_URI = "git://github.com/Xilinx/nlp-smartvision.git;protocol=https;branch=${BRANCH}"
-SRCREV = "63ccccd9f5978796bcd653ee95177eea2bb195d9"
+SRCREV = "9f3ab05b8f45608085b959cc37075e74b1464d65"
 
 inherit cmake
 
@@ -22,6 +22,8 @@ RDEPENDS_${PN} = " \
 	gstreamer1.0-plugins-bad-mediasrcbin \
 	gstreamer1.0-plugins-bad-videoparsersbad \
 	gstreamer1.0-plugins-good-video4linux2 \
+	gstreamer1.0-python \
+	python3-core \
 	libdrm-tests \
 	v4l-utils \
 	alsa-utils \
