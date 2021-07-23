@@ -3,9 +3,9 @@ SUMMARY = "Smartcam application"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
-BRANCH = "release-2020.2.2_k26"
+BRANCH = "2021.1"
 SRC_URI = "git://github.com/Xilinx/smartcam.git;protocol=https;branch=${BRANCH}"
-SRCREV = "afca2c3022e1360a76641fea2eccfdd1749403a7"
+SRCREV = "c0da26f1763590598afcc01ed896f3278a5bbcfd"
 
 inherit cmake
 
@@ -29,6 +29,7 @@ RDEPENDS_${PN} = " \
 	libdrm-tests \
 	v4l-utils \
 	alsa-utils \
+	python3-core \
 	"
 
 SOMAPP_INSTALL_PATH = "/"

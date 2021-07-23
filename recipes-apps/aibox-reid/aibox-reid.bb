@@ -3,9 +3,9 @@ SUMMARY = "Aibox ReID application"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
-BRANCH = "release-2020.2.2_k26"
+BRANCH = "2021.1"
 SRC_URI = "git://github.com/Xilinx/aibox-reid.git;protocol=https;branch=${BRANCH}"
-SRCREV = "cd56216402cad4928a4057fa62ebf816d7205a77"
+SRCREV = "4f7f4814b9491ed8f6171a6f26a07c162ef34b62"
 
 inherit cmake
 
@@ -23,6 +23,7 @@ RDEPENDS_${PN} = " \
 	gstreamer1.0-python \
 	ivas-accel-libs \
 	libdrm-tests \
+	python3-core \
 	"
 
 SOMAPP_INSTALL_PATH = "/"
