@@ -3,7 +3,7 @@ SUMMARY = "Smartcam application"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
-BRANCH = "2021.1"
+BRANCH = "2021.2"
 SRC_URI = "git://github.com/Xilinx/smartcam.git;protocol=https;branch=${BRANCH}"
 SRCREV = "c0da26f1763590598afcc01ed896f3278a5bbcfd"
 
