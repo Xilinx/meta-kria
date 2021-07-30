@@ -1,9 +1,9 @@
 LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=9c13aad1aab42f76326f1beceafc40c4"
 
-BRANCH ?= "release-2020.2.2_k26"
+BRANCH ?= "2021.1"
 SRC_URI = "git://github.com/Xilinx/ap1302-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "e009807caaeb316ab83d63e440ee94b1367bd419"
+SRCREV ?= "b74be5ee4cdb8d844ecfae09d587831d9c54ce34"
 
 S = "${WORKDIR}/git"
 
