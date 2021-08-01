@@ -20,6 +20,7 @@ RDEPENDS_${PN} = " \
     ivas-accel-libs \
     v4l-utils \
     libdrm-tests \
+    python3-core \
     "
 
 S = "${WORKDIR}/git"
@@ -27,7 +28,7 @@ S = "${WORKDIR}/git"
 SRC_URI += " \
     git://github.com/Xilinx/defect-detect.git;branch=${BRANCH};protocol=https \
     "
-SRCREV ?= "fd44d11ac22e87d0b4c6909640bb73e155102e69"
+SRCREV ?= "a5efd36493d503191963d6f51960d82af9105c2c"
 
 SOMAPP_INSTALL_PATH = "/"
 
