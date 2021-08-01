@@ -4,7 +4,7 @@ DESCRIPTION = "This application and Kernel library is used to detect the defect 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=c6446fe04523e7cc1f7446f936bc879b"
 
-BRANCH ?= "release-2020.2.2_k26"
+BRANCH ?= "master"
 
 inherit cmake
 
@@ -20,6 +20,7 @@ RDEPENDS_${PN} = " \
     ivas-accel-libs \
     v4l-utils \
     libdrm-tests \
+    python3-core \
     "
 
 S = "${WORKDIR}/git"
@@ -27,7 +28,7 @@ S = "${WORKDIR}/git"
 SRC_URI += " \
     git://github.com/Xilinx/defect-detect.git;branch=${BRANCH};protocol=https \
     "
-SRCREV ?= "663e9eb306bc2b8d89072274f8847000f9168d1f"
+SRCREV ?= "a5efd36493d503191963d6f51960d82af9105c2c"
 
 SOMAPP_INSTALL_PATH = "/"
 
