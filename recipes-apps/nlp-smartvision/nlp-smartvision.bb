@@ -9,7 +9,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755 \
 
 BRANCH = "2021.1"
 SRC_URI = "git://github.com/Xilinx/nlp-smartvision.git;protocol=https;branch=${BRANCH}"
-SRCREV = "9f3ab05b8f45608085b959cc37075e74b1464d65"
+SRCREV = "2bde105a38beecd155420144c417ec86100377c3"
 
 inherit cmake
 
