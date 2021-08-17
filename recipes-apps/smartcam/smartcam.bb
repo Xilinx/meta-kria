@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 
 BRANCH = "2021.2"
 SRC_URI = "git://github.com/Xilinx/smartcam.git;protocol=https;branch=${BRANCH}"
-SRCREV = "2ebc3dc39d7ac82eb1d25f9ae12025c6448f2096"
+SRCREV = "323e8704949f1aa0a7d07d3cc1682f51c22fd2f9"
 
 inherit cmake
 
