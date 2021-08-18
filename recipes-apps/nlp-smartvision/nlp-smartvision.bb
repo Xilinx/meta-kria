@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755 \
 		    file://src/COPYING;md5=59530bdf33659b29e73d4adb9f9f6552 \
 		    "
 
-BRANCH = "2021.1"
+BRANCH = "release-2021.1"
 SRC_URI = "git://github.com/Xilinx/nlp-smartvision.git;protocol=https;branch=${BRANCH}"
 SRCREV = "e028b93b5fa964510dce1ddb9ae3dc28a15628d4"
 
