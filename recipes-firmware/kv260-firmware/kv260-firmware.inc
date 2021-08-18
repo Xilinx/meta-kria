@@ -4,9 +4,9 @@ LIC_FILES_CHKSUM = " \
 	file://${WORKDIR}/git/LICENSE-GPLv2;md5=9afdcd1be3f71bd3791fa5961075d776 \
 	"
 
-BRANCH = "2021.1"
+BRANCH = "release-2021.1"
 SRC_URI = "git://github.com/Xilinx/kv260-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV = "ce582b569c4e9b803e6f1349053f7fa043144dc0"
+SRCREV = "0db413e2ff3ebaec6b81fc13bb7b606a113c5873"
 
 VAI_DIR = "/opt/xilinx/share/vitis_ai_library/models"
 
