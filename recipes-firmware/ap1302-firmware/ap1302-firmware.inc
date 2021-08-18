@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=9c13aad1aab42f76326f1beceafc40c4"
 
 BRANCH ?= "2021.1"
 SRC_URI = "git://github.com/Xilinx/ap1302-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "b74be5ee4cdb8d844ecfae09d587831d9c54ce34"
+SRCREV ?= "b8ed4768b728215e9ae0ed0d12e9ba86d79ba87e"
 
 S = "${WORKDIR}/git"
 
