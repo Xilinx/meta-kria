@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = " \
 	file://${WORKDIR}/git/LICENSE-GPLv2;md5=9afdcd1be3f71bd3791fa5961075d776 \
 	"
 
-BRANCH = "release-2021.1"
+BRANCH = "xlnx_rel_v2021.2"
 SRC_URI = "git://github.com/Xilinx/kv260-firmware.git;protocol=https;branch=${BRANCH}"
 SRCREV = "0db413e2ff3ebaec6b81fc13bb7b606a113c5873"
 
