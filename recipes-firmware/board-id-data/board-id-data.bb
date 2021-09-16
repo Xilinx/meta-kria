@@ -39,12 +39,10 @@ do_deploy() {
 	else
 		bbwarn "No SOM eeprom found."
 	fi
-	if [ -e ${S}/${PATH_EEPROM}/${CC_EEPROM} ]; then
-		install -Dm 0644 ${S}/${PATH_EEPROM}/${CC_EEPROM} ${DEPLOYDIR}/cc-eeprom-${DEPLOY_SUFFIX}.bin
-		ln -sf cc-eeprom-${DEPLOY_SUFFIX}.bin ${DEPLOYDIR}/cc-eeprom.bin
-	else
-		bbwarn "No CC eeprom found."
-	fi
+	for eeprom in ${CC_EEPROM}; do
+		install -Dm 0644 ${S}/${PATH_EEPROM}/${eeprom} ${DEPLOYDIR}/${eeprom%%.bin}-${DEPLOY_SUFFIX}.bin
+		ln -sf ${eeprom%%.bin}-${DEPLOY_SUFFIX}.bin ${DEPLOYDIR}/${eeprom}
+	done
 }
 
 addtask deploy before do_build after do_install
