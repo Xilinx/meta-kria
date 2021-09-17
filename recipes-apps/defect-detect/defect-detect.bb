@@ -4,7 +4,7 @@ DESCRIPTION = "This application and Kernel library is used to detect the defect 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=c6446fe04523e7cc1f7446f936bc879b"
 
-BRANCH ?= "release-2021.1"
+BRANCH ?= "xlnx_rel_v2021.2"
 
 inherit cmake
 
