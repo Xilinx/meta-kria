@@ -2,7 +2,7 @@ SUMMARY = "som-dashboard including dashboard and daemon"
 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
-BRANCH ?= "2021.2"
+BRANCH ?= "xlnx_rel_v2021.2"
 SRC_URI = "git://github.com/Xilinx/SOM-Dashboard.git;protocol=https;branch=${BRANCH}"
 SRCREV ?= "a24ad313772407bb50c3e81a4bd9686b81202a0b"
 
