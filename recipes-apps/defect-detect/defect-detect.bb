@@ -9,7 +9,7 @@ BRANCH ?= "xlnx_rel_v2021.2"
 inherit cmake
 
 DEPENDS = "ivas-accel-libs glog"
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     gst-perf \
     gstreamer1.0-plugins-bad-kms \
     gstreamer1.0-plugins-bad-mediasrcbin \
@@ -34,6 +34,6 @@ SOMAPP_INSTALL_PATH = "/"
 
 EXTRA_OECMAKE += "-DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSROOT=${STAGING_DIR_HOST} -DCMAKE_INSTALL_PREFIX=${SOMAPP_INSTALL_PATH} "
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     /opt/xilinx \
     "

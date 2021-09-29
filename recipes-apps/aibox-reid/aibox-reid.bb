@@ -10,7 +10,7 @@ SRCREV = "625fb6a285c1d1bdfdd64d70f686590e3996f6ed"
 inherit cmake
 
 DEPENDS = "ivas-accel-libs glog gstreamer1.0-rtsp-server"
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	gst-perf \
 	gstreamer1.0-omx \
 	gstreamer1.0-plugins-bad-kms \
@@ -31,6 +31,6 @@ EXTRA_OECMAKE += "-DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSROOT=${STAGING_DIR_HOST}
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	/opt/xilinx \
 	"

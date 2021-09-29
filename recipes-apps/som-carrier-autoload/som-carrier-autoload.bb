@@ -11,9 +11,9 @@ SRC_URI = "file://som-carrier-autoload.sh"
 
 inherit update-rc.d
 
-RDEPENDS_${PN} += "fru-print python3"
+RDEPENDS:${PN} += "fru-print python3"
 
-INSANE_SKIP_${PN} += "installed-vs-shipped"
+INSANE_SKIP:${PN} += "installed-vs-shipped"
 
 INITSCRIPT_NAME = "som-carrier-autoload.sh"
 INITSCRIPT_PARAMS = "start 99 S ."
@@ -31,4 +31,4 @@ do_install () {
     fi
 }
 
-FILES_${PN} = "${sysconfdir}/init.d/som-carrier-autoload.sh /exec.d/som-carrier-autoload.sh"
+FILES:${PN} = "${sysconfdir}/init.d/som-carrier-autoload.sh /exec.d/som-carrier-autoload.sh"

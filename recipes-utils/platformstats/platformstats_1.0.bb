@@ -20,7 +20,7 @@ do_compile(){
 	oe_runmake
 }
 
-INSANE_SKIP_${PN} += "ldflags dev-so"
+INSANE_SKIP:${PN} += "ldflags dev-so"
 
 do_install(){
 	install -d ${D}/usr/lib/platformstats
@@ -30,7 +30,7 @@ do_install(){
 	cp -r ${S}/app/platformstats ${D}/usr/bin/platformstats
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	/usr/bin \
 	/usr/lib \
 "

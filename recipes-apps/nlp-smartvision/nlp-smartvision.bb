@@ -14,7 +14,7 @@ SRCREV = "e028b93b5fa964510dce1ddb9ae3dc28a15628d4"
 inherit cmake
 
 DEPENDS = "glog opencv vitis-ai-library vart"
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	gst-perf \
 	gstreamer1.0-omx \
 	gstreamer1.0-plugins-base \
@@ -36,6 +36,6 @@ EXTRA_OECMAKE += "-DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSROOT=${STAGING_DIR_HOST}
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	/opt/xilinx \
 	"

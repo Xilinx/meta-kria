@@ -9,7 +9,7 @@ SRCREV ?= "a24ad313772407bb50c3e81a4bd9686b81202a0b"
 S = "${WORKDIR}/git"
 
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
 	python3-bokeh \
 	python3 \
 	"
@@ -34,7 +34,7 @@ do_install() {
 
 }
 
-FILES_${PN} += "\
+FILES:${PN} += "\
 		${sysconfdir}/*\
 		${PYTHON_SITEPACKAGES_DIR}\
 		"

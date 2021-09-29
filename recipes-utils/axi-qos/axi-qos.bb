@@ -17,10 +17,10 @@ EXTRA_OECMAKE += "-DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSROOT=${STAGING_DIR_HOST}
 
 S = "${WORKDIR}/git"
 
-do_install_append() {
+do_install:append() {
     chmod u+rxs ${D}${bindir}/axi-qos
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	/usr/bin \
 	"
