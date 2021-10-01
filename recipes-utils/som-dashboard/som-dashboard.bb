@@ -28,6 +28,8 @@ do_install() {
 	install -d ${D}${PYTHON_SITEPACKAGES_DIR}
 	install -d ${D}${PYTHON_SITEPACKAGES_DIR}/${PN}
 	cp -r ${S}/*.py ${D}${PYTHON_SITEPACKAGES_DIR}/${PN}/
+	cp -r ${S}/templates ${D}${PYTHON_SITEPACKAGES_DIR}/${PN}/
+
 
 	install -d ${D}${sysconfdir}/init.d
 	install -m 0755 ${S}/som-dashboard-init ${D}${sysconfdir}/init.d/som-dashboard-init
