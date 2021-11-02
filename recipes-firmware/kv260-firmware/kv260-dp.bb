@@ -16,7 +16,7 @@ FILES:${PN} += "${sysconfdir}/dfx-mgrd/${PN}"
 # is k26-kv. In order to add this package into the starter rootfs, the arch
 # is changed to k26 instead. Do this only for this package as kv260-dp will
 # be used as the default firmware to be loaded by dfx-mgrd during init.
-COMPATIBLE_MACHINE_k26 = "${MACHINE}"
+COMPATIBLE_MACHINE:k26 = "${MACHINE}"
 PACKAGE_ARCH = "${BOARD_ARCH}"
 
 ALTERNATIVE:${PN} = "default_firmware"

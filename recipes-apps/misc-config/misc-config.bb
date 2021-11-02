@@ -19,7 +19,7 @@ INITSCRIPT_NAME = "update-misc-config.sh"
 INITSCRIPT_PARAMS = "start 99 S ."
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE_k26 = "${MACHINE}"
+COMPATIBLE_MACHINE:k26 = "${MACHINE}"
 
 do_install () {
     install -d ${D}${sysconfdir}/init.d/
