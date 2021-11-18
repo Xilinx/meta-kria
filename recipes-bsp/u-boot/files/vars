@@ -12,6 +12,7 @@ bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; 
 bootcmd_jtag=echo JTAG: Trying to boot script at ${scriptaddr} && source ${scriptaddr}; echo JTAG: SCRIPT FAILED: continuing...;
 bootcmd_mmc0=devnum=0; run mmc_boot
 bootcmd_mmc1=devnum=1; run mmc_boot
+bootcmd_nand0= nand info && nand read $scriptaddr $script_offset_f $script_size_f && echo NAND: Trying to boot script at ${scriptaddr} && source ${scriptaddr}; echo NAND: SCRIPT FAILED: continuing...;
 bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
 bootcmd_qspi0=sf probe 0 0 0 && sf read $scriptaddr $script_offset_f $script_size_f && echo QSPI: Trying to boot script at ${scriptaddr} && source ${scriptaddr}; echo QSPI: SCRIPT FAILED: continuing...;
 bootcmd_scsi0=devnum=0; run scsi_boot
@@ -48,23 +49,80 @@ thor_ram=run dfu_ram_info && thordown 0 ram 0
 usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot_part; fi
 
 # Remove boot_targets completely and cleanup all temporary variables
-preboot=setenv boot_targets; setenv modeboot; run cc; setenv cc; setenv mmc1_pins; setenv preboot
+tpm_start=tpm init && tpm startup TPM2_SU_CLEAR && echo "TPM done"
+eth_phy_reset=gpio toggle 38 && gpio toggle 38
+preboot=setenv boot_targets; setenv modeboot; run tpm_start; cls; run usb_init;
+#run usb_init
+#&& setenv preboot
 
 # CC specific boot methods
-mmc1_pins=mw 0xFF18009C 0x10 && mw 0xFF1800A0 0x10 && mw 0xFF1800A4 0x10 && mw 0xFF1800A8 0x10 && mw 0xFF1800AC 0x10 && mw 0xFF1800B8 0x10 && mw 0xFF1800BC 0x10 && mw 0xFF1800C0 0x10 && mw 0xFF1800C4 0x10 && mw 0xFF1800C8 0x10 && mw 0xFF1800CC 0x10
+#mmc1_pins=mw 0xFF18009C 0x10 0xb
+mmc1_pins=mw 0xFF18009C 0x10 && mw 0xFF1800B4 0x10 7 
 cc=if test ${card1_manufacturer} = "XILINX" ; then run mmc1_pins; fi
+
 
 # Boot menu
 bootmenu_delay=5
-bootmenu_0=Auto-Select - 1.CC boot 2.SOM boot=run cc_boot || run som_boot
-bootmenu_1=Carrier Card (CC) boot device=run cc_boot
-bootmenu_2=System on Module (SOM) boot device=run som_boot
+bootmenu_0=Auto-Select - 1. CC boot 2. SOM boot=run som_cc_boot || run som_mmc_boot
+bootmenu_1=Carrier Card (CC) boot device=run som_cc_boot
+bootmenu_2=System on Module (SOM) boot device=run som_mmc_boot
 bootmenu_default=0
 
 # SOM specific boot methods
-som_boot=setenv boot_targets mmc0 && run distro_bootcmd
-cc_boot=setenv boot_targets mmc1 && run distro_bootcmd
+som_cc_boot=setenv boot_targets mmc1 && run distro_bootcmd
+som_mmc_boot=setenv boot_targets mmc0 && run distro_bootcmd
 starter=SMK-K26-XCL2G-ED
-som=if test ${board_name} = ${starter} ; then run cc_boot; else bootmenu; fi
+som=if test ${board_name} = ${starter} ; then run som_cc_boot; else bootmenu; fi
 
 bootcmd=run som
+
+qspi=sf probe && load mmc 1 100000 boot.bin && sf erase 0 +${filesize} && sf write 100000 0 ${filesize}
+qspi0=sf probe && load mmc 1 100000 boot.bin && sf erase 200000 +${filesize} && sf write 100000 200000 ${filesize}
+qspi1=sf probe && load mmc 1 100000 boot.bin && sf erase f80000 +${filesize} && sf write 100000 f80000 ${filesize}
+
+som_eeprom_unlock=i2c dev 1; i2c mw 68 25 00
+som_eeprom_lock=i2c dev 1; i2c mw 68 25 3f
+
+# ULPI reset is not handled here but it should via modepin driver, waiting is required for usb hub to get to stable state
+usb_hub_reset=gpio clear gpio@ff0a000044 && gpio set gpio@ff0a000044
+usb_hub_init=i2c dev 1 && mw 1000 0056 && sleep 1 && i2c write 1000 2d aa 2 -s
+
+
+usb_init=run usb-kv260; run usb-kr260;
+ #&& usb start
+usb-kv260=if test ${card1_name}-rev${card1_rev} = SCK-KV-G-revB; then run usb_init_kv260_revb; run kv260_gem3; fi
+usb-kr260=if test ${card1_name}-rev${card1_rev} = SCK-KR-G-revA; then run usb_init_kr260; run kr260_gem1; run kr260_gem0; fi
+
+# MIO 52 - 63
+usb0_pins=mw 0xff1800d0 0x4 0xc && mw 0xFF180208 2020
+# MIO 64 - 75
+usb1_pins=mw 0xFF180100 0x4 0xc
+usb_init_kv260_revb=run usb_hub_reset; run usb_hub_init && run usb0_pins
+usb_init_kr260=mw 1000 0056; i2c dev 2 && gpio clear resetchip4 && gpio set resetchip4 && sleep 0.1 && i2c write 1000 2d aa 2 -s && run usb1_pins; i2c dev 3 && gpio clear resetchip3 && gpio set resetchip3 && sleep 0.1 && i2c write 1000 2d aa 2 -s && run usb0_pins
+
+#run usb0_pins; 
+
+# MIO 38-52
+eth_pins=mw 0xFF180098 0x2 0xe
+
+#i2c dev 1
+#i2c mw 68 25 00
+#i2c mw 50 44 42
+#i2c mw 50 67 87
+
+#i2c read 50 0 100 1000000
+#fru capture 1000000
+#fru display
+
+#point timer output to MIO7
+pwm7=mw 0xFF18001C 0xa0
+
+#point timer output to MIO23
+pwm23=mw 0xFF18005C 0xa0
+
+som_pwm=load mmc 1 100000 fpga.bit && fpga loadb 0 100000 $filesize && pwm config 0 0 10000 1200 && pwm enable 0 0 && pwm config 0 0 10000 1400 && pwm config 0 0 10000 1600
+
+
+kr260_gem0=gpio clear resetchip5 && gpio set resetchip5 && setenv ethact ethernet@ff0b0000 && dhcp
+kr260_gem1=mw 0xFF180098 2 c && mw 0xFF1800c8 0x80 2 && mw 0xFF180208 0x00B3F020 && mw 0xFF180164 0x03FFF57F && gpio clear resetchip6 && gpio set resetchip6 && setenv ethact ethernet@ff0c0000 && dhcp
+kv260_gem3=mw 0xFF180100 2 c && mw 0xFF180130 0xc0 2 && mw 0xFF18020C 0xFC0 && mw 0xFF180180 0x0357FFFFU && run eth_phy_reset
