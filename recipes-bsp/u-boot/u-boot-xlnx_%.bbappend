@@ -1,10 +1,10 @@
-SRC_URI_append_k26 = " \
+SRC_URI:append:k26 = " \
 	file://vars \
 	file://som_bootmenu.cfg \
 	"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-do_configure_append_k26 () {
+do_configure:append:k26 () {
 	install ${WORKDIR}/vars ${S}/.
 }

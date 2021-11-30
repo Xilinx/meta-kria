@@ -10,7 +10,7 @@ SRCREV = "f76f59951f36bc89cb35f081accdd5c380a4ca9b"
 inherit cmake
 
 DEPENDS = "ivas-accel-libs glog gstreamer1.0-rtsp-server opencv"
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
 	gst-perf \
 	gstreamer1.0-omx \
 	gstreamer1.0-plugins-bad-faac \
@@ -37,6 +37,6 @@ EXTRA_OECMAKE += "-DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSROOT=${STAGING_DIR_HOST}
 
 S = "${WORKDIR}/git"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
 	/opt/xilinx \
 	"

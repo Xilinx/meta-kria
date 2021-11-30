@@ -17,4 +17,4 @@ do_install() {
 	install -m 0644 ${FW_NAME} ${D}/lib/firmware/${FW_NAME}
 }
 
-FILES_${PN} = "/lib/firmware/${FW_NAME}"
+FILES:${PN} = "/lib/firmware/${FW_NAME}"

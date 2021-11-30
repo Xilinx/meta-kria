@@ -4,12 +4,12 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
 BRANCH ?= "xlnx_rel_v2021.2"
 SRC_URI = "git://github.com/Xilinx/SOM-Dashboard.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "7620e9d4ac9e22bdb96fd130aca7a5004ff05a66"
+SRCREV ?= "a24ad313772407bb50c3e81a4bd9686b81202a0b"
 
 S = "${WORKDIR}/git"
 
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
 	python3-bokeh \
 	python3 \
 	"
@@ -36,7 +36,7 @@ do_install() {
 
 }
 
-FILES_${PN} += "\
+FILES:${PN} += "\
 		${sysconfdir}/*\
 		${PYTHON_SITEPACKAGES_DIR}\
 		"
