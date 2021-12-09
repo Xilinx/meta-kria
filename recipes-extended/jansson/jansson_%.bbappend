@@ -1,5 +1,5 @@
-SRCREV = "ca80d5127e56dd2ee056fdf3f4204017b78b89e0"
-PV = "2.13.1+git${SRCPV}"
+SRCREV = "684e18c927e89615c2d501737e90018f4930d6c5"
+PV = "2.14.0+git${SRCPV}"
 
 SRC_URI = "git://github.com/akheron/jansson.git;branch=master;protocol=http"
 
