@@ -1,0 +1,8 @@
+[Unit]
+Description=som-carrier-autoload
+
+[Service]
+ExecStart=/usr/bin/som-carrier-autoload.sh
+
+[Install]
+WantedBy=multi-user.target
