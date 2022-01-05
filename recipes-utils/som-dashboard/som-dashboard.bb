@@ -8,13 +8,14 @@ SRCREV ?= "a24ad313772407bb50c3e81a4bd9686b81202a0b"
 
 S = "${WORKDIR}/git"
 
+SRC_URI:append = " file://som-dashboard.service"
 
 RDEPENDS:${PN} += " \
 	python3-bokeh \
 	python3 \
 	"
 inherit python3-dir
-inherit update-rc.d
+inherit update-rc.d systemd
 
 do_configure[noexec]="1"
 do_compile[noexec]="1"
@@ -22,7 +23,9 @@ do_compile[noexec]="1"
 INITSCRIPT_NAME = "som-dashboard-init"
 INITSCRIPT_PARAMS = "start 98 3 5 . stop 20 0 1 2 6 ."
 
-
+SYSTEMD_PACKAGES="${PN}"
+SYSTEMD_SERVICE_${PN}="som-dashboard.service"
+SYSTEMD_AUTO_ENABLE_${PN}="enable"
 
 do_install() {
 	install -d ${D}${PYTHON_SITEPACKAGES_DIR}
@@ -30,13 +33,19 @@ do_install() {
 	cp -r ${S}/*.py ${D}${PYTHON_SITEPACKAGES_DIR}/${PN}/
 	cp -r ${S}/templates ${D}${PYTHON_SITEPACKAGES_DIR}/${PN}/
 
+        if ${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
+	      install -d ${D}${sysconfdir}/init.d
+	      install -m 0755 ${S}/som-dashboard-init ${D}${sysconfdir}/init.d/som-dashboard-init
+	fi
 
-	install -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${S}/som-dashboard-init ${D}${sysconfdir}/init.d/som-dashboard-init
+     install -d ${D}${bindir}
+     install -m 0755 ${S}/som-dashboard-init ${D}${bindir}/
+     install -d ${D}${systemd_system_unitdir} 
+     install -m 0644 ${WORKDIR}/som-dashboard.service ${D}${systemd_system_unitdir}
 
 }
 
 FILES:${PN} += "\
-		${sysconfdir}/*\
+		${systemd_system_unitdir}\
 		${PYTHON_SITEPACKAGES_DIR}\
 		"

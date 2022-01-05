@@ -1,0 +1,8 @@
+[Unit]
+Description=som-dashboard-init
+
+[Service]
+ExecStart=/usr/bin/som-dashboard-init
+
+[Install]
+WantedBy=multi-user.target
