@@ -7,9 +7,12 @@ SUMMARY = "Init script to update MAC address by getting \
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRC_URI = "file://update-misc-config.sh"
+SRC_URI = " \
+	file://update-misc-config.sh \
+	file://update-misc-config.service \
+"
 
-inherit update-rc.d
+inherit update-rc.d systemd
 
 RDEPENDS:${PN} += "fru-print python3"
 
@@ -18,12 +21,25 @@ INSANE_SKIP:${PN} += "installed-vs-shipped"
 INITSCRIPT_NAME = "update-misc-config.sh"
 INITSCRIPT_PARAMS = "start 99 S ."
 
+SYSTEMD_PACKAGES="${PN}"
+SYSTEMD_SERVICE:${PN}="update-misc-config.service"
+SYSTEMD_AUTO_ENABLE:${PN}="enable"
+
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26 = "${MACHINE}"
 
 do_install () {
-    install -d ${D}${sysconfdir}/init.d/
-    install -m 0755 ${WORKDIR}/update-misc-config.sh ${D}${sysconfdir}/init.d/
+
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
+                install -d ${D}${sysconfdir}/init.d/
+    	        install -m 0755 ${WORKDIR}/update-misc-config.sh ${D}${sysconfdir}/init.d/
+    fi
+
+    install -d ${D}${bindir}
+    install -m 0755 ${WORKDIR}/update-misc-config.sh ${D}${bindir}/
+    install -d ${D}${systemd_system_unitdir}
+    install -m 0644 ${WORKDIR}/update-misc-config.service ${D}${systemd_system_unitdir}
+
 
     if [ "${INITRAMFS_IMAGE}" = "petalinux-initramfs-image" ]; then
 	install -d ${D}/exec.d/
@@ -31,4 +47,4 @@ do_install () {
     fi
 }
 
-FILES:${PN} = "${sysconfdir}/init.d/update-misc-config.sh /exec.d/update-misc-config.sh"
+FILES:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','sysvinit','${sysconfdir}/init.d/update-misc-config.sh', '', d)} /exec.d/update-misc-config.sh"
