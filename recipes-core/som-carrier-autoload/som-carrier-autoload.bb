@@ -47,4 +47,4 @@ do_install () {
     fi
 }
 
-FILES:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','sysvinit','${sysconfdir}/init.d/board-fpga-autoload.sh', '', d)} /exec.d/som-carrier-autoload.sh"
+FILES:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','sysvinit','${sysconfdir}/init.d/som-carrier-autoload.sh', '', d)} /exec.d/som-carrier-autoload.sh"
