@@ -22,8 +22,8 @@ INITSCRIPT_NAME = "som-carrier-autoload.sh"
 INITSCRIPT_PARAMS = "start 99 S ."
 
 SYSTEMD_PACKAGES="${PN}"
-SYSTEMD_SERVICE_${PN}="som-carrier-autoload.service"
-SYSTEMD_AUTO_ENABLE_${PN}="enable"
+SYSTEMD_SERVICE:${PN}="som-carrier-autoload.service"
+SYSTEMD_AUTO_ENABLE:${PN}="enable"
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26 = "${MACHINE}"
