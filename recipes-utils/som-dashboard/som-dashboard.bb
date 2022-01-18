@@ -24,8 +24,8 @@ INITSCRIPT_NAME = "som-dashboard-init"
 INITSCRIPT_PARAMS = "start 98 3 5 . stop 20 0 1 2 6 ."
 
 SYSTEMD_PACKAGES="${PN}"
-SYSTEMD_SERVICE_${PN}="som-dashboard.service"
-SYSTEMD_AUTO_ENABLE_${PN}="enable"
+SYSTEMD_SERVICE:${PN}="som-dashboard.service"
+SYSTEMD_AUTO_ENABLE:${PN}="enable"
 
 do_install() {
 	install -d ${D}${PYTHON_SITEPACKAGES_DIR}
