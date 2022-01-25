@@ -51,15 +51,9 @@ usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boo
 # Remove boot_targets completely and cleanup all temporary variables
 tpm_start=tpm init && tpm startup TPM2_SU_CLEAR && echo "TPM done"
 eth_phy_reset=gpio toggle 38 && gpio toggle 38
-preboot=setenv boot_targets; setenv modeboot; run tpm_start; cls; run usb_init;
+preboot=setenv boot_targets; setenv modeboot; run tpm_start; cls; run usb_init; run ethsom;
 #run usb_init
 #&& setenv preboot
-
-# CC specific boot methods
-#mmc1_pins=mw 0xFF18009C 0x10 0xb
-mmc1_pins=mw 0xFF18009C 0x10 && mw 0xFF1800B4 0x10 7 
-cc=if test ${card1_manufacturer} = "XILINX" ; then run mmc1_pins; fi
-
 
 # Boot menu
 bootmenu_delay=5
@@ -91,7 +85,7 @@ usb_hub_init=i2c dev 1 && mw 1000 0056 && sleep 1 && i2c write 1000 2d aa 2 -s
 usb_init=run usb-kv260; run usb-kr260;
  #&& usb start
 usb-kv260=if test ${card1_name}-rev${card1_rev} = SCK-KV-G-revB; then run usb_init_kv260_revb; run kv260_gem3; fi
-usb-kr260=if test ${card1_name}-rev${card1_rev} = SCK-KR-G-revA; then run usb_init_kr260; run kr260_gem1; run kr260_gem0; fi
+usb-kr260=if test ${card1_name}-rev${card1_rev} = SCK-KR-G-revA; then run eth0mac; run eth1mac; run usb_init_kr260; run kr260_gem1; run kr260_gem0; fi
 
 # MIO 52 - 63
 usb0_pins=mw 0xff1800d0 0x4 0xc && mw 0xFF180208 2020
@@ -125,4 +119,34 @@ som_pwm=load mmc 1 100000 fpga.bit && fpga loadb 0 100000 $filesize && pwm confi
 
 kr260_gem0=gpio clear resetchip5 && gpio set resetchip5 && setenv ethact ethernet@ff0b0000 && dhcp
 kr260_gem1=mw 0xFF180098 2 c && mw 0xFF1800c8 0x80 2 && mw 0xFF180208 0x00B3F020 && mw 0xFF180164 0x03FFF57F && gpio clear resetchip6 && gpio set resetchip6 && setenv ethact ethernet@ff0c0000 && dhcp
-kv260_gem3=mw 0xFF180100 2 c && mw 0xFF180130 0xc0 2 && mw 0xFF18020C 0xFC0 && mw 0xFF180180 0x0357FFFFU && run eth_phy_reset
+kv260_gem3=mw 0xFF18020C 0xFC0 && run eth_phy_reset
+
+ethsom=echo "Reading MAC from som" && i2c dev 1 && setenv loadaddr 1000 && i2c read 50 83 6 $loadaddr && run buildmac0
+eth0mac=echo "Reading MAC addr0" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 83 6 $loadaddr && run buildmac1
+eth1mac=echo "Reading MAC addr1" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 89 6 $loadaddr && run buildmac2
+
+buildmac= e=" "; sep=" " ; for i in 0 1 2 3 4 5 ; do setexpr x $loadaddr + $i ; setexpr.b b *$x; e="$e$sep$b"; sep=":"; done
+buildmac0= run buildmac && setenv -f ethaddr $e
+buildmac1= run buildmac && setenv -f eth1addr $e
+buildmac2= run buildmac && setenv -f eth2addr $e
+
+
+#run ethsom;
+#fdt addr $fdtcontroladdr
+#fdt get addr po /axi/ethernet@ff0c0000 local-mac-address
+#fdt print /axi/ethernet@ff0c0000
+#echo $po
+#cp.b $loadaddr $po 6
+#fdt print /axi/ethernet@ff0c0000
+
+#run ethsom
+#cp $fdtcontroladdr 10000 5000
+#fdt addr 10000
+#fdt resize
+#fdt print /axi/ethernet@ff0c0000
+#fdt set /axi/ethernet@ff0c0000/ local-mac-address 12345
+#fdt get addr po /axi/ethernet@ff0c0000 local-mac-address
+#fdt print /axi/ethernet@ff0c0000
+#echo $po
+#cp.b $loadaddr $po 6
+#fdt print /axi/ethernet@ff0c0000
