@@ -6,6 +6,9 @@ RDEPENDS:${PN} = "python3-core fru-print dfx-mgr platformstats axi-qos ddr-qos i
 inherit python3-dir
 require xmutil.inc
 
+COMPATIBLE_MACHINE = "^$"
+COMPATIBLE_MACHINE:zynqmp = "zynqmp"
+COMPATIBLE_MACHINE:versal = "versal"
 
 BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH', True) != '']}"
 S = "${WORKDIR}/git"
