@@ -2,9 +2,9 @@ SUMMARY = "Xilinx EEPROM blobs"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=e02145ed27d5ba38507cf0f17e27adf0"
 
-BRANCH ?= "xlnx_rel_v2021.2"
+BRANCH ?= "xlnx_rel_v2022.1"
 SRC_URI = "git://github.com/Xilinx/xlnx-board-id-data.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "960fa76a8f682f7d66e811aaa76eff2e006e873d"
+SRCREV ?= "3a09053b35026588c5c592f03d95268203275ff0"
 
 S = "${WORKDIR}/git"
 
