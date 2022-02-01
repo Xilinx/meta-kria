@@ -51,7 +51,7 @@ usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boo
 # Remove boot_targets completely and cleanup all temporary variables
 tpm_start=tpm init && tpm startup TPM2_SU_CLEAR && echo "TPM done"
 eth_phy_reset=gpio toggle 38 && gpio toggle 38
-preboot=setenv boot_targets; setenv modeboot; run tpm_start; cls; run usb_init; run ethsom;
+preboot=setenv boot_targets; setenv modeboot; run tpm_start; cls; run usb_init; run ethsom; usb start;
 #run usb_init
 #&& setenv preboot
 
