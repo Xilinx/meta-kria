@@ -62,8 +62,13 @@ bootmenu_1=Carrier Card (CC) boot device=run som_cc_boot
 bootmenu_2=System on Module (SOM) boot device=run som_mmc_boot
 bootmenu_default=0
 
+# Set boot_targets based on card
+set_boot_targets=if test ${card1_name} = SCK-KV-G; then setenv boot_targets mmc1 usb0 pxe dhcp && run distro_bootcmd; fi
+set_boot_targets=if test ${card1_name} = SCK-KR-G; then setenv boot_targets usb0 usb1 pxe dhcp && run distro_bootcmd; fi
+
+
 # SOM specific boot methods
-som_cc_boot=setenv boot_targets mmc1 usb0 usb1 && run distro_bootcmd
+som_cc_boot= run set_boot_targets
 som_mmc_boot=setenv boot_targets mmc0 && run distro_bootcmd
 starter=SMK-K26-XCL2G-ED
 som=if test ${board_name} = ${starter} ; then run som_cc_boot; else bootmenu; fi
@@ -85,7 +90,7 @@ usb_hub_init=i2c dev 1 && mw 1000 0056 && sleep 1 && i2c write 1000 2d aa 2 -s
 usb_init=run usb-kv260; run usb-kr260;
  #&& usb start
 usb-kv260=if test ${card1_name}-rev${card1_rev} = SCK-KV-G-revB; then run usb_init_kv260_revb; run kv260_gem3; fi
-usb-kr260=if test ${card1_name}-rev${card1_rev} = SCK-KR-G-revA; then run eth0mac; run eth1mac; run usb_init_kr260; run kr260_gem1; run kr260_gem0; fi
+usb-kr260=if test ${card1_name} = SCK-KR-G; then run eth0mac; run eth1mac; run usb_init_kr260; run kr260_gem1; run kr260_gem0; fi
 
 # MIO 52 - 63
 usb0_pins=mw 0xff1800d0 0x4 0xc && mw 0xFF180208 2020
