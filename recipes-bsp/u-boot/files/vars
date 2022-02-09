@@ -12,18 +12,15 @@ bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; 
 bootcmd_jtag=echo JTAG: Trying to boot script at ${scriptaddr} && source ${scriptaddr}; echo JTAG: SCRIPT FAILED: continuing...;
 bootcmd_mmc0=devnum=0; run mmc_boot
 bootcmd_mmc1=devnum=1; run mmc_boot
-bootcmd_nand0= nand info && nand read $scriptaddr $script_offset_f $script_size_f && echo NAND: Trying to boot script at ${scriptaddr} && source ${scriptaddr}; echo NAND: SCRIPT FAILED: continuing...;
 bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
-bootcmd_qspi0=sf probe 0 0 0 && sf read $scriptaddr $script_offset_f $script_size_f && echo QSPI: Trying to boot script at ${scriptaddr} && source ${scriptaddr}; echo QSPI: SCRIPT FAILED: continuing...;
-bootcmd_scsi0=devnum=0; run scsi_boot
 bootcmd_usb0=devnum=0; run usb_boot
 bootcmd_usb1=devnum=1; run usb_boot
+bootcmd_usb2=devnum=2; run usb_boot
+bootcmd_usb3=devnum=3; run usb_boot
 bootdelay=2
 bootfstype=fat
 bootm_low=0
 bootm_size=80000000
-dfu_ram=run dfu_ram_info && dfu 0 ram 0
-dfu_ram_info=setenv dfu_alt_info Image ram $kernel_addr $kernel_size\\;system.dtb ram $fdt_addr $fdt_size
 distro_bootcmd=scsi_need_init=; for target in ${boot_targets}; do run bootcmd_${target}; done
 efi_dtb_prefixes=/ /dtb/ /dtb/current/
 fdt_addr_r=0x40000000
@@ -43,17 +40,8 @@ scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${d
 script_offset_f=3e80000
 script_size_f=0x80000
 scriptaddr=0x20000000
-scsi_boot=run scsi_init; if scsi dev ${devnum}; then devtype=scsi; run scan_dev_for_boot_part; fi
-scsi_init=if ${scsi_need_init}; then scsi_need_init=false; scsi scan; fi
-thor_ram=run dfu_ram_info && thordown 0 ram 0
 usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot_part; fi
-
-# Remove boot_targets completely and cleanup all temporary variables
-tpm_start=tpm init && tpm startup TPM2_SU_CLEAR && echo "TPM done"
-eth_phy_reset=gpio toggle 38 && gpio toggle 38
-preboot=setenv boot_targets; setenv modeboot; run tpm_start; cls; run usb_init; run ethsom; usb start;
-#run usb_init
-#&& setenv preboot
+preboot=setenv boot_targets; setenv modeboot; cls; run usb_init; run eth_init; usb start
 
 # Boot menu
 bootmenu_delay=5
@@ -62,96 +50,36 @@ bootmenu_1=Carrier Card (CC) boot device=run som_cc_boot
 bootmenu_2=System on Module (SOM) boot device=run som_mmc_boot
 bootmenu_default=0
 
-# Set boot_targets based on card
-set_boot_targets=if test ${card1_name} = SCK-KV-G; then setenv boot_targets mmc1 usb0 pxe dhcp && run distro_bootcmd; fi
-set_boot_targets=if test ${card1_name} = SCK-KR-G; then setenv boot_targets usb0 usb1 pxe dhcp && run distro_bootcmd; fi
-
-
 # SOM specific boot methods
-som_cc_boot= run set_boot_targets
+som_cc_boot=if test ${card1_name} = SCK-KV-G; then setenv boot_targets mmc1 usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; fi; if test ${card1_name} = SCK-KR-G; then setenv boot_targets usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; fi;
 som_mmc_boot=setenv boot_targets mmc0 && run distro_bootcmd
-starter=SMK-K26-XCL2G-ED
-som=if test ${board_name} = ${starter} ; then run som_cc_boot; else bootmenu; fi
 
-bootcmd=run som
+starter=SMK-K26-XCL2G
+bootcmd=setenv model $board_name && if setexpr model gsub .*$starter* $starter; then run som_cc_boot; else bootmenu; fi
 
-qspi=sf probe && load mmc 1 100000 boot.bin && sf erase 0 +${filesize} && sf write 100000 0 ${filesize}
-qspi0=sf probe && load mmc 1 100000 boot.bin && sf erase 200000 +${filesize} && sf write 100000 200000 ${filesize}
-qspi1=sf probe && load mmc 1 100000 boot.bin && sf erase f80000 +${filesize} && sf write 100000 f80000 ${filesize}
+usb_init=mw 0xFF180208 2020
 
-som_eeprom_unlock=i2c dev 1; i2c mw 68 25 00
-som_eeprom_lock=i2c dev 1; i2c mw 68 25 3f
+eth_init=run ethsom; run eth-kv260; run eth-kr260;
 
-# ULPI reset is not handled here but it should via modepin driver, waiting is required for usb hub to get to stable state
-usb_hub_reset=gpio clear gpio@ff0a000044 && gpio set gpio@ff0a000044
-usb_hub_init=i2c dev 1 && mw 1000 0056 && sleep 1 && i2c write 1000 2d aa 2 -s
-
-
-usb_init=run usb-kv260; run usb-kr260;
- #&& usb start
-usb-kv260=if test ${card1_name}-rev${card1_rev} = SCK-KV-G-revB; then run usb_init_kv260_revb; run kv260_gem3; fi
-usb-kr260=if test ${card1_name} = SCK-KR-G; then run eth0mac; run eth1mac; run usb_init_kr260; run kr260_gem1; run kr260_gem0; fi
-
-# MIO 52 - 63
-usb0_pins=mw 0xff1800d0 0x4 0xc && mw 0xFF180208 2020
-# MIO 64 - 75
-usb1_pins=mw 0xFF180100 0x4 0xc
-usb_init_kv260_revb=run usb_hub_reset; run usb_hub_init && run usb0_pins
-usb_init_kr260=mw 1000 0056; i2c dev 2 && gpio clear resetchip4 && gpio set resetchip4 && sleep 0.1 && i2c write 1000 2d aa 2 -s && run usb1_pins; i2c dev 3 && gpio clear resetchip3 && gpio set resetchip3 && sleep 0.1 && i2c write 1000 2d aa 2 -s && run usb0_pins
-
-#run usb0_pins; 
+eth-kv260=if test ${card1_name} = SCK-KV-G; then run kv260_gem3; fi
+eth-kr260=if test ${card1_name} = SCK-KR-G; then run eth0mac && run eth1mac && run eth2mac; run kr260_gem1; run kr260_gem0; run
 
 # MIO 38-52
 eth_pins=mw 0xFF180098 0x2 0xe
 
-#i2c dev 1
-#i2c mw 68 25 00
-#i2c mw 50 44 42
-#i2c mw 50 67 87
-
-#i2c read 50 0 100 1000000
-#fru capture 1000000
-#fru display
-
-#point timer output to MIO7
-pwm7=mw 0xFF18001C 0xa0
-
-#point timer output to MIO23
-pwm23=mw 0xFF18005C 0xa0
-
-som_pwm=load mmc 1 100000 fpga.bit && fpga loadb 0 100000 $filesize && pwm config 0 0 10000 1200 && pwm enable 0 0 && pwm config 0 0 10000 1400 && pwm config 0 0 10000 1600
-
-
-kr260_gem0=gpio clear resetchip5 && gpio set resetchip5 && setenv ethact ethernet@ff0b0000 && dhcp
-kr260_gem1=mw 0xFF180098 2 c && mw 0xFF1800c8 0x80 2 && mw 0xFF180208 0x00B3F020 && mw 0xFF180164 0x03FFF57F && gpio clear resetchip6 && gpio set resetchip6 && setenv ethact ethernet@ff0c0000 && dhcp
-kv260_gem3=mw 0xFF18020C 0xFC0 && run eth_phy_reset
+kr260_gem0=setenv ethact ethernet@ff0b0000 && dhcp
+kr260_gem1=setenv ethact ethernet@ff0c0000 && dhcp
+kv260_gem3=mw 0xFF18020C 0xFC0
 
 ethsom=echo "Reading MAC from som" && i2c dev 1 && setenv loadaddr 1000 && i2c read 50 83 6 $loadaddr && run buildmac0
 eth0mac=echo "Reading MAC addr0" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 83 6 $loadaddr && run buildmac1
 eth1mac=echo "Reading MAC addr1" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 89 6 $loadaddr && run buildmac2
+eth2mac=echo "Reading MAC addr2" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 8f 6 $loadaddr && run buildmac3
 
 buildmac= e=" "; sep=" " ; for i in 0 1 2 3 4 5 ; do setexpr x $loadaddr + $i ; setexpr.b b *$x; e="$e$sep$b"; sep=":"; done
 buildmac0= run buildmac && setenv -f ethaddr $e
 buildmac1= run buildmac && setenv -f eth1addr $e
 buildmac2= run buildmac && setenv -f eth2addr $e
+buildmac3= run buildmac && setenv -f eth3addr $e
 
 
-#run ethsom;
-#fdt addr $fdtcontroladdr
-#fdt get addr po /axi/ethernet@ff0c0000 local-mac-address
-#fdt print /axi/ethernet@ff0c0000
-#echo $po
-#cp.b $loadaddr $po 6
-#fdt print /axi/ethernet@ff0c0000
-
-#run ethsom
-#cp $fdtcontroladdr 10000 5000
-#fdt addr 10000
-#fdt resize
-#fdt print /axi/ethernet@ff0c0000
-#fdt set /axi/ethernet@ff0c0000/ local-mac-address 12345
-#fdt get addr po /axi/ethernet@ff0c0000 local-mac-address
-#fdt print /axi/ethernet@ff0c0000
-#echo $po
-#cp.b $loadaddr $po 6
-#fdt print /axi/ethernet@ff0c0000
