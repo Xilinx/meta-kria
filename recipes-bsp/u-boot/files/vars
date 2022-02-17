@@ -59,27 +59,5 @@ bootcmd=setenv model $board_name && if setexpr model gsub .*$starter* $starter; 
 
 usb_init=mw 0xFF180208 2020
 
-eth_init=run ethsom; run eth-kv260; run eth-kr260;
-
-eth-kv260=if test ${card1_name} = SCK-KV-G; then run kv260_gem3; fi
-eth-kr260=if test ${card1_name} = SCK-KR-G; then run eth0mac && run eth1mac && run eth2mac; run kr260_gem1; run kr260_gem0; run
-
-# MIO 38-52
-eth_pins=mw 0xFF180098 0x2 0xe
-
-kr260_gem0=setenv ethact ethernet@ff0b0000 && dhcp
-kr260_gem1=setenv ethact ethernet@ff0c0000 && dhcp
-kv260_gem3=mw 0xFF18020C 0xFC0
-
-ethsom=echo "Reading MAC from som" && i2c dev 1 && setenv loadaddr 1000 && i2c read 50 83 6 $loadaddr && run buildmac0
-eth0mac=echo "Reading MAC addr0" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 83 6 $loadaddr && run buildmac1
-eth1mac=echo "Reading MAC addr1" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 89 6 $loadaddr && run buildmac2
-eth2mac=echo "Reading MAC addr2" && i2c dev 1 && setenv loadaddr 1000 && i2c read 51 8f 6 $loadaddr && run buildmac3
-
-buildmac= e=" "; sep=" " ; for i in 0 1 2 3 4 5 ; do setexpr x $loadaddr + $i ; setexpr.b b *$x; e="$e$sep$b"; sep=":"; done
-buildmac0= run buildmac && setenv -f ethaddr $e
-buildmac1= run buildmac && setenv -f eth1addr $e
-buildmac2= run buildmac && setenv -f eth2addr $e
-buildmac3= run buildmac && setenv -f eth3addr $e
-
+eth_init=mw 0xFF18020C 0xFC0
 
