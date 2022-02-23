@@ -5,7 +5,7 @@ After=network-online.target
 Wants=dfx-mgr.service
 
 [Service]
-ExecStart=/usr/bin/som-dashboard-init
+ExecStart=/sbin/som-dashboard.sh
 
 [Install]
 WantedBy=multi-user.target

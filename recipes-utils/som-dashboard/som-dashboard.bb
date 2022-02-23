@@ -8,9 +8,13 @@ SRCREV ?= "a24ad313772407bb50c3e81a4bd9686b81202a0b"
 
 S = "${WORKDIR}/git"
 
-SRC_URI:append = " file://som-dashboard.service"
+SRC_URI:append = " \
+	file://som-dashboard.service \
+	file://som-dashboard.sh \
+	"
 
 RDEPENDS:${PN} += " \
+	bash \
 	dfx-mgr \
 	python3-bokeh \
 	python3 \
@@ -40,8 +44,8 @@ do_install() {
 	fi
 
      install -d ${D}${bindir}
-     install -m 0755 ${S}/som-dashboard-init ${D}${bindir}/
-     install -d ${D}${systemd_system_unitdir} 
+     install -m 0755 ${WORKDIR}/som-dashboard.sh ${D}${bindir}/som-dashboard.sh
+     install -d ${D}${systemd_system_unitdir}
      install -m 0644 ${WORKDIR}/som-dashboard.service ${D}${systemd_system_unitdir}
 
 }
