@@ -6,6 +6,7 @@ Wants=dfx-mgr.service
 
 [Service]
 ExecStart=/sbin/som-dashboard.sh
+StandardOutput=journal+console
 
 [Install]
 WantedBy=multi-user.target
