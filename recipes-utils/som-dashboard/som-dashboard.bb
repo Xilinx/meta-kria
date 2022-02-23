@@ -11,6 +11,7 @@ S = "${WORKDIR}/git"
 SRC_URI:append = " file://som-dashboard.service"
 
 RDEPENDS:${PN} += " \
+	dfx-mgr \
 	python3-bokeh \
 	python3 \
 	"
