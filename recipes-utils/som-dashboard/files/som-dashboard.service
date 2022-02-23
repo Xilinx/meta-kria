@@ -1,5 +1,8 @@
 [Unit]
 Description=som-dashboard-init
+Requires=network-online.target
+After=network-online.target
+Wants=dfx-mgr.service
 
 [Service]
 ExecStart=/usr/bin/som-dashboard-init
