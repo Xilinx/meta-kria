@@ -5,7 +5,7 @@ After=network-online.target
 Wants=dfx-mgr.service
 
 [Service]
-ExecStart=/sbin/som-dashboard.sh
+ExecStart=/usr/bin/som-dashboard.sh
 StandardOutput=journal+console
 
 [Install]
