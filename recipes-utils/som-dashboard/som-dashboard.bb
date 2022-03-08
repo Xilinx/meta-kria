@@ -4,7 +4,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
 BRANCH ?= "xlnx_rel_v2022.1"
 SRC_URI = "git://github.com/Xilinx/SOM-Dashboard.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "a24ad313772407bb50c3e81a4bd9686b81202a0b"
+SRCREV ?= "a2922acfee17e8d4e6dc5ea7e52db1b1e928c7f2"
 
 S = "${WORKDIR}/git"
 
@@ -25,7 +25,7 @@ inherit update-rc.d systemd
 do_configure[noexec]="1"
 do_compile[noexec]="1"
 
-INITSCRIPT_NAME = "som-dashboard-init"
+INITSCRIPT_NAME = "som-dashboard"
 INITSCRIPT_PARAMS = "start 98 3 5 . stop 20 0 1 2 6 ."
 
 SYSTEMD_PACKAGES="${PN}"
@@ -40,7 +40,7 @@ do_install() {
 
         if ${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
 	      install -d ${D}${sysconfdir}/init.d
-	      install -m 0755 ${S}/som-dashboard-init ${D}${sysconfdir}/init.d/som-dashboard-init
+	      install -m 0755 ${S}/som-dashboard ${D}${sysconfdir}/init.d/som-dashboard
 	fi
 
      install -d ${D}${bindir}
