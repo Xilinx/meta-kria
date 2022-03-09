@@ -1,0 +1,7 @@
+/include/ "system-conf.dtsi"
+/ {
+	chosen {
+                bootargs = "earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 ";
+                stdout-path = "serial1:115200n8";
+        };
+};
