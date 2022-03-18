@@ -43,19 +43,12 @@ scriptaddr=0x20000000
 usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot_part; fi
 preboot=setenv boot_targets; setenv modeboot; cls; run usb_init; run eth_init; usb start
 
-# Boot menu
-bootmenu_delay=5
-bootmenu_0=Auto-Select - 1. CC boot 2. SOM boot=run som_cc_boot || run som_mmc_boot
-bootmenu_1=Carrier Card (CC) boot device=run som_cc_boot
-bootmenu_2=System on Module (SOM) boot device=run som_mmc_boot
-bootmenu_default=0
-
 # SOM specific boot methods
 som_cc_boot=if test ${card1_name} = SCK-KV-G; then setenv boot_targets mmc1 usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; fi; if test ${card1_name} = SCK-KR-G; then setenv boot_targets usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; fi;
 som_mmc_boot=setenv boot_targets mmc0 && run distro_bootcmd
 
 starter=SMK-K26-XCL2G
-bootcmd=setenv model $board_name && if setexpr model gsub .*$starter* $starter; then run som_cc_boot; else bootmenu; fi
+bootcmd=setenv model $board_name && if setexpr model gsub .*$starter* $starter; then run som_cc_boot; else run som_mmc_boot; run som_cc_boot; fi
 
 usb_init=mw 0xFF180208 2020
 
