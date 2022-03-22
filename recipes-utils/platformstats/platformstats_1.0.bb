@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
 BRANCH ?= "xlnx_rel_v2022.1"
 SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "032c597863429f97e02bf53decb231d0165e0d94"
+SRCREV ?= "8fd91d805afd5728c470a9fd5acac2e7087d9035"
 
 PARALLEL_MAKE = "-j 1"
 
