@@ -6,11 +6,15 @@ BRANCH ?= "xlnx_rel_v2022.1"
 SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
 SRCREV ?= "8fd91d805afd5728c470a9fd5acac2e7087d9035"
 
+SRC_URI += "file://0001-fixup-ldflags.patch"
+
 PARALLEL_MAKE = "-j 1"
 
 S="${WORKDIR}/git"
 
-TARGET_CFLAGS = ""
+DEPENDS += "swig-native"
+
+inherit python3targetconfig
 
 do_compile(){
 	cd ${S}/src
@@ -18,19 +22,26 @@ do_compile(){
 
 	cd ${S}/app
 	oe_runmake
-}
 
-INSANE_SKIP:${PN} += "ldflags dev-so"
+	cd ${S}/python-bindings
+	oe_runmake PYTHON_INCLUDE="-I${STAGING_INCDIR}/${PYTHON_DIR}${PYTHON_ABI} -l${PYTHON_DIR}"
+}
 
 do_install(){
-	install -d ${D}/usr/lib/platformstats
-	install -d ${D}/usr/bin
+	install -d ${D}${libdir}
+	oe_soinstall ${S}/src/*.so.1.0 ${D}${libdir}
 
-	cp -r ${S}/src/*.so* ${D}/usr/lib
-	cp -r ${S}/app/platformstats ${D}/usr/bin/platformstats
+	install -d ${D}${includedir}/platformstats
+	install -m 0644 ${S}/include/platformstats/*.h ${D}${includedir}/platformstats/.
+
+	install -d ${D}${bindir}
+	install -m 0755 ${S}/app/platformstats ${D}${bindir}/platformstats
+
+	install -d ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
+	install -m 0644 ${S}/python-bindings/pbindings.py ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
+	install -m 0644 ${S}/python-bindings/_pbindings.so ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
 }
 
-FILES:${PN} += " \
-	/usr/bin \
-	/usr/lib \
-"
+PACKAGES =+ "${PN}-python"
+
+FILES:${PN}-python = "${PYTHON_SITEPACKAGES_DIR}"
