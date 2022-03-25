@@ -26,6 +26,7 @@ SOM_PACKAGES = " \
         tzdata \
         xmutil \
 	som-dashboard \
+	k26-starter-kits \
 	"
 
 RDEPENDS:${PN} = "${SOM_PACKAGES}"
