@@ -4,9 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
 BRANCH ?= "master"
 SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV ?="a6d397aa24175772840ff11d28da54dfca3fa1bf"
-
-SRC_URI += "file://0001-fixup-ldflags.patch"
+SRCREV ?= "13cbf86e0f3df4a022a72ea9b976cef0069db535"
 
 PARALLEL_MAKE = "-j 1"
 
