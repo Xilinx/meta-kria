@@ -27,6 +27,7 @@ SOM_PACKAGES = " \
         xmutil \
 	som-dashboard \
 	k26-starter-kits \
+        lmsensors-fancontrol \
 	"
 
 RDEPENDS:${PN} = "${SOM_PACKAGES}"
