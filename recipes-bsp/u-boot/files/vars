@@ -52,5 +52,9 @@ bootcmd=setenv model $board_name && if setexpr model gsub .*$starter* $starter; 
 
 usb_init=mw 0xFF180208 2020
 
-eth_init=mw 0xFF18020C 0xFC0
+eth_init=run eth-kv260
+
+eth-kv260=if test ${card1_name} = SCK-KV-G; then run kv260_gem3; fi
+
+kv260_gem3=mw 0xFF18020C 0xFC0 && gpio toggle gpio@ff0a000038 && gpio toggle gpio@ff0a000038
 
