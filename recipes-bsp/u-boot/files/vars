@@ -50,7 +50,9 @@ som_mmc_boot=setenv boot_targets mmc0 && run distro_bootcmd
 starter=SMK-K26-XCL2G
 bootcmd=setenv model $board_name && if setexpr model gsub .*$starter* $starter; then run som_cc_boot; else run som_mmc_boot; run som_cc_boot; fi
 
-usb_init=mw 0xFF180208 2020
+usb_init=mw 0xFF180208 2020; run usb-kr260
+
+usb-kr260=if test ${card1_name} = SCK-KR-G; then mw 0xFF18020C 0; fi
 
 eth_init=run eth-kv260
 
