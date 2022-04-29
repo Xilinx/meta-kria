@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
 BRANCH ?= "master"
 SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "13cbf86e0f3df4a022a72ea9b976cef0069db535"
+SRCREV ?= "74972fb806127d359d387006ebce0701ce18291f"
 
 PARALLEL_MAKE = "-j 1"
 
@@ -36,8 +36,8 @@ do_install(){
 	install -m 0755 ${S}/app/platformstats ${D}${bindir}/platformstats
 
 	install -d ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
-	install -m 0644 ${S}/python-bindings/pbindings.py ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
-	install -m 0644 ${S}/python-bindings/_pbindings.so ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
+	install -m 0644 ${S}/python-bindings/platformstats.py ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
+	install -m 0644 ${S}/python-bindings/_platformstats.so ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
 }
 
 PACKAGES =+ "${PN}-python"
