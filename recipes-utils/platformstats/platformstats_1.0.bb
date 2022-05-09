@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
 BRANCH ?= "master"
 SRC_URI = "git://github.com/Xilinx/platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "74972fb806127d359d387006ebce0701ce18291f"
+SRCREV ?= "e7a29eff1c0f9819efbda486807dfd55f7fe44d0"
 
 PARALLEL_MAKE = "-j 1"
 
@@ -12,33 +12,10 @@ S="${WORKDIR}/git"
 
 DEPENDS += "swig-native"
 
-inherit python3targetconfig
+inherit python3targetconfig autotools-brokensep
 
-do_compile(){
-	cd ${S}/src
-	oe_runmake
-
-	cd ${S}/app
-	oe_runmake
-
-	cd ${S}/python-bindings
-	oe_runmake PYTHON_INCLUDE="-I${STAGING_INCDIR}/${PYTHON_DIR}${PYTHON_ABI} -l${PYTHON_DIR}"
-}
-
-do_install(){
-	install -d ${D}${libdir}
-	oe_soinstall ${S}/src/*.so.1.0 ${D}${libdir}
-
-	install -d ${D}${includedir}/platformstats
-	install -m 0644 ${S}/include/platformstats/*.h ${D}${includedir}/platformstats/.
-
-	install -d ${D}${bindir}
-	install -m 0755 ${S}/app/platformstats ${D}${bindir}/platformstats
-
-	install -d ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
-	install -m 0644 ${S}/python-bindings/platformstats.py ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
-	install -m 0644 ${S}/python-bindings/_platformstats.so ${D}${PYTHON_SITEPACKAGES_DIR}/${BPN}
-}
+export PYTHON_BASEVERSION
+export PYTHON_SITEPACKAGES_DIR
 
 PACKAGES =+ "${PN}-python"
 
