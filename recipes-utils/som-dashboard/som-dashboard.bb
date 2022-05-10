@@ -4,7 +4,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
 BRANCH ?= "xlnx_rel_v2022.1"
 SRC_URI = "git://github.com/Xilinx/SOM-Dashboard.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "b8ea6892a8406adc1c89dc6f5ff3426e798615f3"
+SRCREV ?= "a57cb7bffa4712170bba82bc56fcc24283aecbac"
 
 S = "${WORKDIR}/git"
 
