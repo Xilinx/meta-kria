@@ -11,18 +11,18 @@ do_configure:append:k26 () {
 }
 
 # u-boot blob generation configuration for k26
-UBOOT_IMAGE_BLOB:k26 ?= "1"
-DT_BLOB_DIR ?= "${B}/arch/arm/dts/dt-blob"
-PREFIX ?= "smk"
+UBOOT_IMAGE_BLOB:k26 = "1"
+DT_BLOB_DIR:k26 = "${B}/arch/arm/dts/dt-blob"
+PREFIX:k26 = "smk"
 
-IMPORT_CC_DTBS:k26 ?= " \
+IMPORT_CC_DTBS:k26 = " \
 		zynqmp-sck-kv-g-revA.dtbo:zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-revA.dtb \
 		zynqmp-sck-kv-g-revB.dtbo:zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-revB.dtb \
 		zynqmp-sck-kr-g-revA.dtbo:zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kr-g-revA.dtb \
 		zynqmp-sck-kr-g-revB.dtbo:zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kr-g-revB.dtb \
                 "
 
-CC_DTBS_DUP:k26 ?= " \
+CC_DTBS_DUP:k26 = " \
 		zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-revZ \
 		zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-rev1 \
 		zynqmp-${PREFIX}-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-${PREFIX}-k26-xcl2g-revB-sck-kv-g-revA \
