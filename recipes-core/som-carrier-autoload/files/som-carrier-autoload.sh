@@ -1,9 +1,9 @@
 #!/bin/sh
 
-manufacturer=$(fru-print.py -b cc -f manufacturer)
-som_name=$(fru-print.py -b som -f product)
-carrier_card=$(fru-print.py -b cc -f product | tr '[:upper:]' '[:lower:]')
-cc_rev=$(fru-print.py -b cc -f revision)
+manufacturer=$(fru-print -b cc -f manufacturer)
+som_name=$(fru-print -b som -f product)
+carrier_card=$(fru-print -b cc -f product | tr '[:upper:]' '[:lower:]')
+cc_rev=$(fru-print -b cc -f revision)
 
 dtbo_path="/boot/devicetree/"
 dtbo_file="zynqmp-$carrier_card-rev$cc_rev.dtbo"
