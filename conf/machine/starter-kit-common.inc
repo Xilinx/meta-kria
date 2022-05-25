@@ -8,4 +8,4 @@ IMAGE_FSTYPES:pn-${INITRAMFS_IMAGE}:zynqmp = "${INITRAMFS_FSTYPES}"
 
 MAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr system.dtb"
 
-WKS_FILES = "k26-starter-kit-sd.wks"
+WKS_FILES = "${MACHINE}-sd.wks"
