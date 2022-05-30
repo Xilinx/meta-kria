@@ -3,8 +3,7 @@ SUMMARY = "QSPI image includes image selectors, various registers, A/B images an
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-#DEPENDS = "imgsel imgrcry xilinx-bootbin fsbl"
-DEPENDS = "imgsel xilinx-bootbin fsbl"
+DEPENDS = "imgsel imgrcry xilinx-bootbin fsbl"
 
 inherit deploy image-artifact-names
 
@@ -88,17 +87,17 @@ python do_compile () {
     qspi_data.write(bootbin)
 
     # Recovery Image & Recovery Image Backup
-    #imgrcry_file = d.getVar("DEPLOY_DIR_IMAGE")+"/imgrcry-"+d.getVar("MACHINE")
-    #try:
-    #    with open(d.getVar(imgrcry_file, "rb") as iy:
-    #        imgrcry = iy.read(-1)
-    #except OSError as err:
-    #    bb.fatal("Unable to open imgrcry file: " + str(err))
+    imgrcry_file = d.getVar("DEPLOY_DIR_IMAGE")+"/imgrcry-"+d.getVar("MACHINE")+".bin"
+    try:
+        with open(imgrcry_file, "rb") as iy:
+            imgrcry = iy.read(-1)
+    except OSError as err:
+        bb.fatal("Unable to open imgrcry file: " + str(err))
 
-    #qspi_data.seek(IMAGE_RCVRY_OFFSET)
-    #qspi_data.write(imgrcry)
-    #qspi_data.seek(IMAGE_RCVRY_BACKUP_OFFSET)
-    #qspi_data.write(imgrcry)
+    qspi_data.seek(IMAGE_RCVRY_OFFSET)
+    qspi_data.write(imgrcry)
+    qspi_data.seek(IMAGE_RCVRY_BACKUP_OFFSET)
+    qspi_data.write(imgrcry)
 
     # Version string and checksum
     version = d.getVar("QSPI_VERSION")
