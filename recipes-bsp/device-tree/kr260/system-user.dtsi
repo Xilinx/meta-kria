@@ -1,0 +1,7 @@
+/include/ "system-conf.dtsi"
+/ {
+	chosen {
+                bootargs = "earlycon console=ttyPS1,115200 clk_ignore_unused xilinx_tsn_ep.st_pcp=4 init_fatal_sh=1 cma=900M ";
+                stdout-path = "serial1:115200n8";
+        };
+};
