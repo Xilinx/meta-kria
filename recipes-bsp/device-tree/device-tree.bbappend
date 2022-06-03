@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend:k26 := "${THISDIR}/files:"
 
 SRCREV_FORMAT:k26 = "device-tree"
 SRC_URI:append:k26 = "git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=master;destsuffix=u-boot-xlnx;name=uboot"
-SRCREV_uboot = "a6b25711343354515775151589d50fdc0d5e7b1c"
+SRCREV_uboot = "3113b53d8cb1913ef8162cadf45f44ebf2ed9eea"
 
 UBOOT_DTFILES_BUNDLE:k26 ?= "1"
 UBOOT_DTFILE_PREFIX:k26 = "system"
