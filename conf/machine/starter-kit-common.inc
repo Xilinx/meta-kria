@@ -5,6 +5,7 @@ INITRAMFS_IMAGE = "petalinux-initramfs-image"
 IMAGE_FSTYPES:zynqmp = "cpio cpio.gz cpio.gz.u-boot ext4 tar.gz jffs2 wic wic.xz"
 INITRAMFS_FSTYPES = "cpio.gz cpio.gz.u-boot tar.gz"
 IMAGE_FSTYPES:pn-${INITRAMFS_IMAGE}:zynqmp = "${INITRAMFS_FSTYPES}"
+RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 
 IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr uEnv.txt"
 
