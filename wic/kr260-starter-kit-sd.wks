@@ -5,4 +5,4 @@
 # small amount of free space. If you wish to use fixed-size partitions please use --fixed-size in
 # either of the lines below (--size should be removed).
 part /boot --source bootimg-partition --ondisk sda --fstype=vfat --label boot --active --align 4 --size 100
-part / --source rootfs --ondisk mmcblk1 --fstype=ext4 --label root --align 4
+part / --source rootfs --ondisk sda --fstype=ext4 --label root --align 4
