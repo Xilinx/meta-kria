@@ -25,6 +25,8 @@ do_configure:append:k26-som() {
     echo '/include/ "system-user.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
 }
 
+EXTRA_DTFILES_BUNDLE = "1"
+
 #FIXME These appear to be installed in both the initramfs and rootfs
 EXTRA_DT_FILES:kv260-starter-kit += "\
     zynqmp-sck-kr-g-revA.dts \
