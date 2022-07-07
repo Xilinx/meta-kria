@@ -11,7 +11,7 @@ do_configure:append:k26 () {
 }
 
 # u-boot blob generation configuration for k26
-UBOOT_IMAGE_BLOB:k26 = "1"
+UBOOT_IMAGE_BLOB_DEFAULT:k26 = "1"
 DT_BLOB_DIR:k26 = "${B}/arch/arm/dts/dt-blob"
 PREFIX:k26 = "smk"
 
