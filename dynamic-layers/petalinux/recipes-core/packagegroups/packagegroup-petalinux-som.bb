@@ -2,6 +2,7 @@ DESCRIPTION = "SOM related packages"
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26 = "${MACHINE}"
+COMPATIBLE_MACHINE:k24 = "${MACHINE}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
