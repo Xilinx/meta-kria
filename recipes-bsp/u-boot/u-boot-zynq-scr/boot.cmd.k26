@@ -1,0 +1,73 @@
+# This is a boot script for U-Boot
+# Generate boot.scr:
+# mkimage -c none -A arm -T script -d boot.cmd.default boot.scr
+#
+################
+fitimage_name=@@FIT_IMAGE@@
+kernel_name=@@KERNEL_IMAGE@@
+ramdisk_name=@@RAMDISK_IMAGE1@@
+rootfs_name=@@RAMDISK_IMAGE@@
+@@PRE_BOOTENV@@
+
+# Close pmufw node so that linux can't send small fragments to pmufw
+zynqmp pmufw node close
+
+# Starter Kit default boot args
+setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=900M ';
+
+#Set boot parameters based on CC type
+if test "${card1_name}" = "SCK-KV-G"; then
+        setenv card_name sck-kv-g;
+elif test "${card1_name}" = "SCK-KR-G"; then
+        setenv card_name sck-kr-g && setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
+else #Assume Kria USB secondary boot device
+        setenv card_name unknown;
+fi
+
+#Set DT selection
+if test "${card1_name}" = "SCK-KV-G"; then
+        if test "${card1_rev}" = "Z" || test "${card1_rev}" = "A"; then
+                #revA dtb also supports revZ boards
+                dtb_name=SMK-zynqmp-${card_name}-revA
+        elif test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
+                #revB dtb also supports rev1 boards
+                dtb_name=SMK-zynqmp-${card_name}-revB
+        fi
+elif test "${card1_name}" = "SCK-KR-G"; then
+        if test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
+                #revB dtb also supports rev1 dtb
+                dtb_name=SMK-zynqmp-${card_name}-revB
+        elif test "${card1_rev}" = "A"; then
+                dtb_name=SMK-zynqmp-${card_name}-revA
+        fi
+else
+        dtb_name=system
+fi
+
+for boot_target in ${boot_targets};
+do
+echo "Trying to load boot images from ${boot_target}"
+if test "${boot_target}" = "mmc0" || test "${boot_target}" = "mmc1" || test "${boot_target}" = "usb0" || test "${boot_target}" = "usb1"; then
+        if test -e ${devtype} ${devnum}:${distro_bootpart} /${fitimage_name}; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} @@FIT_IMAGE_LOAD_ADDRESS@@ ${fitimage_name};
+                bootm @@FIT_IMAGE_LOAD_ADDRESS@@;
+        fi
+        if test -e ${devtype} ${devnum}:${distro_bootpart} /${kernel_name}; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} @@KERNEL_LOAD_ADDRESS@@ ${kernel_name};
+        fi
+        if test -e ${devtype} ${devnum}:${distro_bootpart} /${dtb_name}.dtb; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} @@DEVICETREE_ADDRESS@@ ${dtb_name}.dtb;
+        else
+		echo "Expected ${dtb_name} Not Found in FAT Partition, Booting with SOM only DTB"
+	fi
+        if test -e ${devtype} ${devnum}:${distro_bootpart} /${ramdisk_name} && test "${skip_tinyramdisk}" != "yes"; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} @@RAMDISK_IMAGE_ADDRESS@@ ${ramdisk_name};
+                @@KERNEL_BOOTCMD@@ @@KERNEL_LOAD_ADDRESS@@ @@RAMDISK_IMAGE_ADDRESS@@ @@DEVICETREE_ADDRESS@@
+        fi
+        if test -e ${devtype} ${devnum}:${distro_bootpart} /${rootfs_name} && test "${skip_ramdisk}" != "yes"; then
+                fatload ${devtype} ${devnum}:${distro_bootpart} @@RAMDISK_IMAGE_ADDRESS@@ ${rootfs_name};
+                @@KERNEL_BOOTCMD@@ @@KERNEL_LOAD_ADDRESS@@ @@RAMDISK_IMAGE_ADDRESS@@ @@DEVICETREE_ADDRESS@@
+        fi
+        @@KERNEL_BOOTCMD@@ @@KERNEL_LOAD_ADDRESS@@ - @@DEVICETREE_ADDRESS@@
+fi
+done

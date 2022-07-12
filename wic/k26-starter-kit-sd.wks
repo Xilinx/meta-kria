@@ -1,0 +1,8 @@
+# Description: Creates a partitioned SD card image. Boot files
+# are located in the first vfat partition. Rootfs will be in second ext4 partition.
+
+# This wks does not use fixed-size partitions - the partitions that are generated will only have a
+# small amount of free space. If you wish to use fixed-size partitions please use --fixed-size in
+# either of the lines below (--size should be removed).
+part /boot --source bootimg-partition --fstype=vfat --no-fstab-update --label boot --active --align 4 --size 100
+part / --source rootfs --fstype=ext4 --no-fstab-update --label root --align 4

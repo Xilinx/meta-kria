@@ -1,4 +1,5 @@
 FILESEXTRAPATHS:prepend:k26 := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend:k26-starter-kit := "${THISDIR}/k26:"
 FILESEXTRAPATHS:prepend:kv260-starter-kit := "${THISDIR}/kv260:"
 FILESEXTRAPATHS:prepend:kr260-starter-kit := "${THISDIR}/kr260:"
 
@@ -7,7 +8,7 @@ SRC_URI:append:k26 = "git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;bra
 SRCREV_uboot = "fd57de2c4516d00c424226f1e3eff28bf9b25e2d"
 
 UBOOT_DTFILES_BUNDLE:k26 ?= "1"
-UBOOT_DTFILE_PREFIX:k26 = "system"
+UBOOT_DTFILE_PREFIX:k26 = "SMK"
 
 do_configure:append:k26() {
     for dts in ${UBOOT_DT_FILES}; do
@@ -16,6 +17,7 @@ do_configure:append:k26() {
 }
 
 SRC_URI:append:k26-som = " file://pl-custom.dtsi "
+SRC_URI:append:k26-starter-kit = " file://system-user.dtsi file://system-conf.dtsi "
 SRC_URI:append:kv260-starter-kit = " file://system-user.dtsi file://system-conf.dtsi "
 SRC_URI:append:kr260-starter-kit = " file://system-user.dtsi file://system-conf.dtsi "
 
@@ -27,6 +29,9 @@ DT_PADDING_SIZE:k26-som = "0x1000"
 DTC_FLAGS:k26-som += "-@"
 CUSTOM_PL_INCLUDE_DTSI:k26-som = "pl-custom.dtsi"
 
+do_configure:append:k26-starter-kit() {
+    echo '/include/ "system-user.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
+}
 do_configure:append:kv260-starter-kit() {
     echo '/include/ "system-user.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
 }
