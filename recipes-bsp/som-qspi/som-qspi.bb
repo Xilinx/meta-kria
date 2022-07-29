@@ -3,7 +3,7 @@ SUMMARY = "QSPI image includes image selectors, various registers, A/B images an
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-DEPENDS = "imgsel imgrcry xilinx-bootbin fsbl"
+DEPENDS = "imgsel imgrcry virtual/boot-bin fsbl"
 
 inherit deploy image-artifact-names
 
