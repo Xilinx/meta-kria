@@ -2,7 +2,10 @@ require conf/machine/k26-som.conf
 
 INITRAMFS_IMAGE = "petalinux-initramfs-image"
 
-IMAGE_FSTYPES:zynqmp = "cpio cpio.gz cpio.gz.u-boot ext4 tar.gz jffs2 wic wic.xz"
+IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
+
+QB_DEFAULT_FSTYPE = "wic.qemu-sd"
+
 INITRAMFS_FSTYPES = "cpio.gz cpio.gz.u-boot tar.gz"
 IMAGE_FSTYPES:pn-${INITRAMFS_IMAGE}:zynqmp = "${INITRAMFS_FSTYPES}"
 RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
