@@ -1,5 +1,12 @@
 require conf/machine/k26-som.conf
 
+UBOOT_DT_FILES ?= "\
+    zynqmp-sck-kr-g-revA.dts \
+    zynqmp-sck-kr-g-revB.dts \
+    zynqmp-sck-kv-g-revA.dts \
+    zynqmp-sck-kv-g-revB.dts \
+    "
+
 INITRAMFS_IMAGE = "petalinux-initramfs-image"
 
 IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
