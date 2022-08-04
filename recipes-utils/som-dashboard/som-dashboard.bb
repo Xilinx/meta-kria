@@ -18,7 +18,7 @@ RDEPENDS:${PN} += " \
 	dfx-mgr \
 	python3-bokeh \
 	python3 \
-	platformstats-python \
+	xlnx-platformstats-python \
 	"
 inherit python3-dir
 inherit update-rc.d systemd
