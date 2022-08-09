@@ -20,4 +20,4 @@ RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 EXTRA_IMAGEDEPENDS:remove = "u-boot-zynq-uenv"
 IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr"
 
-WKS_FILES = "${MACHINE}-sd.wks"
+WKS_FILES = "k26-starter-kit-sd.wks"
