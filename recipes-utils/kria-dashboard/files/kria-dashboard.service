@@ -1,11 +1,11 @@
 [Unit]
-Description=som-dashboard-init
+Description=kria-dashboard-init
 Requires=network-online.target
 After=network-online.target
 Wants=dfx-mgr.service
 
 [Service]
-ExecStart=/usr/bin/som-dashboard.sh
+ExecStart=/usr/bin/kria-dashboard.sh
 StandardOutput=journal+console
 
 [Install]

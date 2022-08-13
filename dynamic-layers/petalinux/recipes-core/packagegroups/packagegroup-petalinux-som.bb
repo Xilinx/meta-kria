@@ -26,7 +26,7 @@ SOM_PACKAGES = " \
         tree \
         tzdata \
         xmutil \
-	som-dashboard \
+	kria-dashboard \
 	k26-starter-kits \
         lmsensors-fancontrol \
 	"
