@@ -26,9 +26,9 @@ SOM_PACKAGES = " \
         tree \
         tzdata \
         xmutil \
-	kria-dashboard \
-	k26-starter-kits \
+        kria-dashboard \
+        k26-starter-kits \
         lmsensors-fancontrol \
-	"
+"
 
 RDEPENDS:${PN} = "${SOM_PACKAGES}"
