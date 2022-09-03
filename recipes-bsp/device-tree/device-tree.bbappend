@@ -4,7 +4,7 @@ FILESEXTRAPATHS:prepend:kv260-starter-kit := "${THISDIR}/kv260:"
 FILESEXTRAPATHS:prepend:kr260-starter-kit := "${THISDIR}/kr260:"
 
 SRCREV_FORMAT:k26 = "device-tree"
-SRC_URI:append:k26 = "git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=master;destsuffix=u-boot-xlnx;name=uboot"
+SRC_URI:append:k26 = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=master;destsuffix=u-boot-xlnx;name=uboot"
 SRCREV_uboot = "3411b335bb7a0717da34bb4358c8d57f87deefab"
 
 UBOOT_DTFILES_BUNDLE:k26 ?= "1"
