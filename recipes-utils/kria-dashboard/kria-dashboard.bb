@@ -4,7 +4,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
 BRANCH ?= "xlnx_rel_v2022.1"
 SRC_URI = "git://github.com/Xilinx/kria-dashboard.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "5fe36f5bf5eb72711b23ae71169695fa29e2eaf7"
+SRCREV ?= "7b24d185268d1a4d310b21367beb361001e4c7a3"
 
 S = "${WORKDIR}/git"
 
