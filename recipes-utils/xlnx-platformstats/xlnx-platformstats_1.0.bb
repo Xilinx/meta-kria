@@ -2,7 +2,7 @@ SUMMARY = "Xilinx xlnx_platformstats library"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
-BRANCH ?= "master"
+BRANCH ?= "xlnx_rel_v2022.2"
 SRC_URI = "git://github.com/Xilinx/xlnx_platformstats.git;protocol=https;branch=${BRANCH}"
 SRCREV ?= "75ca94a7a6e44658e30c353030e3be0d53552c30"
 
