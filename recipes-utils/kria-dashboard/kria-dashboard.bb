@@ -13,10 +13,11 @@ PROVIDES += "som-dashboard"
 RDEPENDS:${PN} += " \
 	bash \
 	dfx-mgr \
-	python3-bokeh \
 	python3 \
 	xlnx-platformstats-python \
 	"
+# python3-bokeh
+
 inherit python3-dir systemd
 
 do_configure[noexec]="1"
