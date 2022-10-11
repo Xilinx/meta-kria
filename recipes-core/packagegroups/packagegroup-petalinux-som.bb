@@ -11,7 +11,6 @@ SOM_PACKAGES = " \
         packagegroup-core-full-cmdline \
         packagegroup-core-tools-debug \
         packagegroup-core-ssh-dropbear \
-        packagegroup-petalinux-jupyter \
         packagegroup-petalinux-networking-stack \
         packagegroup-petalinux-python-modules \
         packagegroup-petalinux-tpm \
@@ -30,5 +29,7 @@ SOM_PACKAGES = " \
         k26-starter-kits \
         lmsensors-fancontrol \
 "
+
+#        packagegroup-petalinux-jupyter
 
 RDEPENDS:${PN} = "${SOM_PACKAGES}"
