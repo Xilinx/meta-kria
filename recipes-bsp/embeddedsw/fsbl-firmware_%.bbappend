@@ -2,6 +2,8 @@ YAML_SERIAL_CONSOLE_STDIN:k26 ?= "psu_uart_1"
 YAML_SERIAL_CONSOLE_STDOUT:k26 ?= "psu_uart_1"
 YAML_COMPILER_FLAGS:append:k26 ?= "-DFSBL_DEBUG"
 
+YAML_ENABLE_APU_AS_OVERLAY_CONFIG_MASTER:k26-som = "1"
+
 # QEMU for the Kria SOM requires a section from the FSBL to be extracted
 
 FSBL_DEFAULT_NAME = "executable.elf"
