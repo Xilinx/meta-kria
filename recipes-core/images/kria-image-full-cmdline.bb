@@ -6,7 +6,7 @@ COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26 = "${MACHINE}"
 COMPATIBLE_MACHINE:k24 = "${MACHINE}"
 
-IMAGE_FEATURES += "splash ssh-server-dropbear hwcodecs"
+IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs"
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \

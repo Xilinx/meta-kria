@@ -10,7 +10,7 @@ inherit packagegroup
 SOM_PACKAGES = " \
         packagegroup-core-full-cmdline \
         packagegroup-core-tools-debug \
-        packagegroup-core-ssh-dropbear \
+        packagegroup-core-ssh-openssh \
         packagegroup-petalinux-networking-stack \
         packagegroup-petalinux-python-modules \
         packagegroup-petalinux-tpm \
