@@ -1,8 +1,8 @@
-# meta-som
+# meta-kria
 
 This layer provides support for enabling the Xilinx Kria SOM boards and starter kits.
 
-(applications and firmware moved to meta-som-apps)
+(applications and firmware moved to meta-kria-apps)
 
 ## Supported Boards/Machines
 
@@ -29,10 +29,10 @@ https://www.openembedded.org/wiki/How_to_submit_a_patch_to_OpenEmbedded
 When creating patches, please use below format.
 
 **Syntax:**
-`git format-patch -s --subject "meta-som][<release-version>][PATCH" -1`
+`git format-patch -s --subject "meta-kria][<release-version>][PATCH" -1`
 
 **Example:**
-`git format-patch -s --subject "meta-som][rel-v2022.1][PATCH" -1`
+`git format-patch -s --subject "meta-kria][rel-v2022.1][PATCH" -1`
 
 **Maintainers:**
 
