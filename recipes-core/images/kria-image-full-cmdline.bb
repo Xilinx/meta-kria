@@ -10,7 +10,7 @@ IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs"
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
-    packagegroup-petalinux-som \
+    packagegroup-petalinux-kria \
     kernel-modules \
     ${@'libdfx' if 'xilinx-tools' in d.getVar('BBFILE_COLLECTIONS').split() else ''} \
     hellopm \

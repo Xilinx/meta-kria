@@ -1,1 +1,1 @@
-require petalinux-image-common-som.inc
+require petalinux-image-common-kria.inc

@@ -12,7 +12,7 @@ TOOLCHAIN_TARGET_TASK:append = " \
     packagegroup-petalinux-audio-dev \
     packagegroup-petalinux-gstreamer-dev \
     packagegroup-petalinux-opencv-dev \
-    packagegroup-petalinux-som-dev \
+    packagegroup-petalinux-kria-dev \
     packagegroup-petalinux-tsn-dev \
     packagegroup-petalinux-vitisai-dev \
     packagegroup-petalinux-vvas-dev \

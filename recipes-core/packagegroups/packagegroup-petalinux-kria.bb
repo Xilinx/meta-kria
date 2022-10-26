@@ -1,4 +1,4 @@
-DESCRIPTION = "SOM related packages"
+DESCRIPTION = "Kira SOM related packages"
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26 = "${MACHINE}"
@@ -7,7 +7,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
 
-SOM_PACKAGES = " \
+KRIA_PACKAGES = " \
         packagegroup-core-full-cmdline \
         packagegroup-core-tools-debug \
         packagegroup-core-ssh-openssh \
@@ -32,4 +32,4 @@ SOM_PACKAGES = " \
 
 #        packagegroup-petalinux-jupyter
 
-RDEPENDS:${PN} = "${SOM_PACKAGES}"
+RDEPENDS:${PN} = "${KRIA_PACKAGES}"
