@@ -2,7 +2,7 @@ DESCRIPTION = "Init script to update MAC address by getting \
 		the information  using fru_print application"
 SUMMARY = "Init script to update MAC address by getting \
 		the information using fru_print application and \
-		this applicable for SOM devices"
+		this applicable for Kria SOM devices"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
