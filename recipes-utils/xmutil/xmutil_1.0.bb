@@ -2,7 +2,7 @@ DESCRIPTION = "xmutil"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-RDEPENDS:${PN} = "python3-core python3-distro fru-print dfx-mgr xlnx-platformstats axi-qos ddr-qos image-update som-pwrctl"
+RDEPENDS:${PN} = "python3-core python3-distro fru-print dfx-mgr xlnx-platformstats axi-qos ddr-qos image-update kria-pwrctl"
 inherit python3-dir autotools-brokensep
 
 require xmutil-1.0.inc
