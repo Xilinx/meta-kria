@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend:k26-som := "${THISDIR}/k26-som:"
 
 SRCREV_FORMAT:k26 = "device-tree"
 SRC_URI:append:k26 = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=master;destsuffix=u-boot-xlnx;name=uboot"
-SRCREV_uboot = "3ff016cfbe5e40b76ac9f8eb22646edb78fa3464"
+SRCREV_uboot = "e8a2b6b6d117e2bbac6b83cf8f951f814c85b999"
 
 UBOOT_DTFILES_BUNDLE:k26 ?= "1"
 UBOOT_DTFILE_PREFIX:k26 = "SMK"
