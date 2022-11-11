@@ -14,6 +14,7 @@ TOOLCHAIN_TARGET_TASK:append = " \
     packagegroup-petalinux-opencv-dev \
     packagegroup-petalinux-kria-dev \
     packagegroup-petalinux-tsn-dev \
-    packagegroup-petalinux-vitisai-dev \
     packagegroup-petalinux-vvas-dev \
 "
+
+#packagegroup-petalinux-vitisai-dev
