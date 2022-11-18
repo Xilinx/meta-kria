@@ -26,8 +26,7 @@ SYSTEMD_SERVICE:${PN}="update-misc-config.service"
 SYSTEMD_AUTO_ENABLE:${PN}="enable"
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:k26 = "${MACHINE}"
-COMPATIBLE_MACHINE:k24 = "${MACHINE}"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 do_install () {
 

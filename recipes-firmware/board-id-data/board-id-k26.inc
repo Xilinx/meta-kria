@@ -1,5 +1,5 @@
-COMPATIBLE_MACHINE:k26 = "${MACHINE}"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
-PATH_EEPROM:k26  = "zynqmp/som"
-SOM_EEPROM:k26   = "k26-starterkit-eeprom.bin"
-CC_EEPROM:k26    += "kv-eeprom.bin kr-eeprom.bin"
+PATH_EEPROM:kria = "zynqmp/som"
+SOM_EEPROM:kria = "k26-starterkit-eeprom.bin"
+CC_EEPROM:kria += "kv-eeprom.bin kr-eeprom.bin"

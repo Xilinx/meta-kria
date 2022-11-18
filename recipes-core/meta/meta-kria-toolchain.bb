@@ -4,7 +4,7 @@ LICENSE = "MIT"
 PR = "r0"
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:k26 = "${MACHINE}"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 inherit populate_sdk
 

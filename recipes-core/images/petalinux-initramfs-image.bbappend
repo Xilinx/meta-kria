@@ -1,1 +1,1 @@
-INITRAMFS_PACKAGES:append:k26-som = "misc-config"
+INITRAMFS_PACKAGES:append:kria = "misc-config"

@@ -1,6 +1,4 @@
-FILESEXTRAPATHS:append:k26-starter-kit := ":${THISDIR}/${PN}"
+KRIA_ADDITIONAL_INCLUDE = ""
+KRIA_ADDITIONAL_INCLUDE:k26-smk = "kria-boot-cmd.inc"
 
-BOOTMODE:k26-starter-kit = ""
-BOOTFILE_EXT:k26-starter-kit = "k26"
-
-SRC_URI:append:k26-starter-kit = " file://boot.cmd.${BOOTFILE_EXT}"
+include ${KRIA_ADDITIONAL_INCLUDE}

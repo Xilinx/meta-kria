@@ -1,1 +1,1 @@
-ATF_CONSOLE:k26-som = "cadence1"
+ATF_CONSOLE:kria = "cadence1"

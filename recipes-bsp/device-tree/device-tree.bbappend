@@ -1,28 +1,28 @@
-FILESEXTRAPATHS:prepend:k26-som := "${THISDIR}/k26-som:"
+FILESEXTRAPATHS:prepend:kria := "${THISDIR}/k26-som:"
 
 SRCREV_FORMAT:k26 = "device-tree"
 SRC_URI:append:k26 = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=master;destsuffix=u-boot-xlnx;name=uboot"
-SRCREV_uboot = "fea1a1263e81f928d4c9a3a29f6e5b475ed1fb43"
+SRCREV_uboot = "0941cbeb593a6be8bf890105d38627dd853a1115"
 
-UBOOT_DTFILES_BUNDLE:k26 ?= "1"
-UBOOT_DTFILE_PREFIX:k26 = "SMK"
+UBOOT_DTFILES_BUNDLE:kria ?= "1"
+UBOOT_DTFILE_PREFIX:kria = "SMK"
 
-do_configure:append:k26() {
+do_configure:append:kria() {
     for dts in ${UBOOT_DT_FILES}; do
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
 }
 
-SRC_URI:append:k26-som = " file://pl-custom.dtsi file://system.dtsi "
+SRC_URI:append:kria = " file://pl-custom.dtsi file://system.dtsi "
 
-YAML_CONSOLE_DEVICE_CONFIG:k26-som = "psu_uart_1"
-YAML_MAIN_MEMORY_CONFIG:k26-som = "PSU_DDR_0"
-YAML_ENABLE_NO_ALIAS:k26-som = "1"
+YAML_CONSOLE_DEVICE_CONFIG:kria = "psu_uart_1"
+YAML_MAIN_MEMORY_CONFIG:kria = "PSU_DDR_0"
+YAML_ENABLE_NO_ALIAS:kria = "1"
 
-DT_PADDING_SIZE:k26-som = "0x1000"
-DTC_FLAGS:k26-som += "-@"
-CUSTOM_PL_INCLUDE_DTSI:k26-som = "pl-custom.dtsi"
+DT_PADDING_SIZE:kria = "0x1000"
+DTC_FLAGS:kria += "-@"
+CUSTOM_PL_INCLUDE_DTSI:kria = "pl-custom.dtsi"
 
-do_configure:append:k26-som() {
+do_configure:append:kria() {
     echo '/include/ "system.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
 }

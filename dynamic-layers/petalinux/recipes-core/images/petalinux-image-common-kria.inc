@@ -8,10 +8,10 @@ k26_enable_lmsensor_fancontrol () {
     fi
 }
 
-ROOTFS_POSTPROCESS_COMMAND:append:k26 = " k26_enable_lmsensor_fancontrol ;"
+ROOTFS_POSTPROCESS_COMMAND:append:kria = " k26_enable_lmsensor_fancontrol ;"
 
 k26_mount_boot () {
     echo "LABEL=boot        /boot   vfat    defaults    0   2" >> ${IMAGE_ROOTFS}/etc/fstab
 }
 
-ROOTFS_POSTPROCESS_COMMAND:append:k26 = " k26_mount_boot ;"
+ROOTFS_POSTPROCESS_COMMAND:append:kria = " k26_mount_boot ;"

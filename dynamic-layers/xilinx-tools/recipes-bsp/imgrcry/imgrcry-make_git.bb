@@ -11,7 +11,7 @@ ESW_VER ?= "${XILINX_VER_MAIN}"
 inherit deploy xlnx-embeddedsw xsctbase
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:k26-som = "k26-som"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 S = "${WORKDIR}/git/lib/sw_apps/img_rcvry/src"
 

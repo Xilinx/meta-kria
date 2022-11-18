@@ -3,8 +3,7 @@ DESCRIPTION = "A full featured console-only image for Kria SOM."
 inherit core-image
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:k26 = "${MACHINE}"
-COMPATIBLE_MACHINE:k24 = "${MACHINE}"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs"
 

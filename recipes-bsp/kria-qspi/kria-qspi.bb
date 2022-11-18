@@ -8,7 +8,7 @@ DEPENDS = "virtual/imgsel virtual/imgrcry virtual/boot-bin virtual/fsbl"
 inherit deploy image-artifact-names
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:k26 = "${MACHINE}"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 QSPI_VERSION = "2.0"
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"

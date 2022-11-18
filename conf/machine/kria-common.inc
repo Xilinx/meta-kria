@@ -1,15 +1,6 @@
-#@TYPE: Machine
-#@NAME: Generic k26-som
-#@DESCRIPTION: Kria K26 SOM
-
-#### Preamble
-MACHINEOVERRIDES =. "${@['', 'k26-som:']['k26-som' != '${MACHINE}']}"
-MACHINEOVERRIDES =. "k26:"
-#### Regular settings follow
+require conf/machine/zynqmp-generic.conf
 
 SOC_VARIANT ?= "ev"
-
-require conf/machine/zynqmp-generic.conf
 
 MACHINE_HWCODECS = "libomxil-xlnx"
 
@@ -20,7 +11,6 @@ EXTRA_IMAGEDEPENDS += "board-id-data"
 
 SPL_BINARY = ""
 EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin "
-YAML_DT_BOARD_FLAGS:k26-som = "{BOARD zynqmp-smk-k26-reva}"
 
 YAML_SERIAL_CONSOLE_BAUDRATE = "115200"
 
@@ -44,7 +34,3 @@ QB_OPT_APPEND = "\
 # runqemu assumes the first serial device is used but Kria SOM uses the second, the following line is
 # required in order to mark the first serial as inactive as the runqemu serial config is appended
 QB_OPT_APPEND += " -serial null"
-
-#### No additional settings should be after the Postamble
-#### Postamble
-PACKAGE_EXTRA_ARCHS:append = "${@['', ' k26_som']['k26-som' != "${MACHINE}"]}"
