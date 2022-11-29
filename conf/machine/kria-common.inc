@@ -7,8 +7,6 @@ MACHINE_HWCODECS = "libomxil-xlnx"
 #FPGA manager Variables
 MACHINE_FEATURES += "fpga-overlay"
 
-EXTRA_IMAGEDEPENDS += "board-id-data"
-
 SPL_BINARY = ""
 EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin "
 
