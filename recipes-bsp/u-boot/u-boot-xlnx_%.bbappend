@@ -37,7 +37,7 @@ IMPORT_CC_DTBS:k26-sm = " \
 		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kr-g-revB.dtb \
 		"
 
-CC_DTBS_DUP:k26-smk = " \
+CC_DTBS_DUP:k26-sm = " \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revZ \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-rev1 \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-revB-sck-kv-g-revA \
