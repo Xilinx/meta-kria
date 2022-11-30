@@ -16,7 +16,6 @@ KRIA_PACKAGES = " \
         packagegroup-petalinux-utils \
         packagegroup-petalinux \
         archconfig \
-        fru-print \
         image-update \
         ldd \
         ntp \
