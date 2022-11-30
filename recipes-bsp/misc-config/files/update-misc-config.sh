@@ -5,9 +5,11 @@ function Get_MAC_ID(){
 	local output=""
 	local index=$1
 	if [ $index -eq 0 ]; then
-		output="$(fru-print -b som -f multirecord MAC_Addr MAC_ID_0)"
+		eeprom=$(ls /sys/bus/i2c/devices/*50/eeprom 2> /dev/null)
+		output=$(ipmi-fru --fru-file=${eeprom} --interpret-oem-data | awk -F": " '/^  *FRU OEM MAC ID 0*/ { print ($2); exit }')
 	else
-		output="$(fru-print -b cc -f multirecord MAC_Addr PS_MAC_ID_$index)"
+		eeprom=$(ls /sys/bus/i2c/devices/*51/eeprom 2> /dev/null)
+		output=$(ipmi-fru --fru-file=${eeprom} --interpret-oem-data | awk -F": " '/^  *FRU OEM MAC ID 0*/ { print ($2); exit }')
 	fi
 	echo $output                 
 }
