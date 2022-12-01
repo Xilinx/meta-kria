@@ -26,3 +26,9 @@ CUSTOM_PL_INCLUDE_DTSI:kria = "pl-custom.dtsi"
 do_configure:append:kria() {
     echo '/include/ "system.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
 }
+
+do_install:append:kria() {
+    # Remove dtbo files, these are no usable
+    # keep pl.dtbo
+    rm ${D}/boot/devicetree/zynqmp-sck*.dtbo
+}
