@@ -10,6 +10,8 @@ MACHINE_FEATURES += "fpga-overlay"
 SPL_BINARY = ""
 EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin "
 
+IMAGE_CLASSES += "kria-image"
+
 YAML_SERIAL_CONSOLE_BAUDRATE = "115200"
 
 SERIAL_CONSOLES = "115200;ttyPS1"
