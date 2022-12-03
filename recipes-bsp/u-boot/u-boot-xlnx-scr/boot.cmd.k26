@@ -60,6 +60,14 @@ if test "${boot_target}" = "mmc0" || test "${boot_target}" = "mmc1" || test "${b
         else
 		echo "Expected ${dtb_name} Not Found in FAT Partition, Booting with SOM only DTB"
 	fi
+	if test -e ${devtype} ${devnum}:${distro_bootpart} /devicetree/openamp.dtbo; then
+		echo "Loading and merging openamp.dtbo into device tree";
+		fatload ${devtype} ${devnum}:${distro_bootpart} @@DEVICETREE_OVERLAY_ADDRESS@@ devicetree/openamp.dtbo;
+		fdt addr @@DEVICETREE_ADDRESS@@
+		fdt resize 8192
+		fdt apply @@DEVICETREE_OVERLAY_ADDRESS@@
+	fi
+
         if test -e ${devtype} ${devnum}:${distro_bootpart} /${ramdisk_name} && test "${skip_tinyramdisk}" != "yes"; then
                 fatload ${devtype} ${devnum}:${distro_bootpart} @@RAMDISK_IMAGE_ADDRESS@@ ${ramdisk_name};
                 @@KERNEL_BOOTCMD@@ @@KERNEL_LOAD_ADDRESS@@ @@RAMDISK_IMAGE_ADDRESS@@ @@DEVICETREE_ADDRESS@@
