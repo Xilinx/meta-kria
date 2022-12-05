@@ -30,5 +30,5 @@ do_configure:append:kria() {
 do_install:append:kria() {
     # Remove dtbo files, these are no usable
     # keep pl.dtbo
-    rm ${D}/boot/devicetree/zynqmp-sck*.dtbo
+    rm -f ${D}/boot/devicetree/zynqmp-sck*.dtbo
 }
