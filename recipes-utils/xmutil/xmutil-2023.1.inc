@@ -1,5 +1,5 @@
 REPO = "git://github.com/Xilinx/xmutil.git;protocol=https"
-SRCREV = "bd389b5d1b24d061f8436e26981575acb24ad96f"
+SRCREV = "b5b1ad13bcc48d4cbd20476c97d05589bdfc7772"
 BRANCH = "master"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
