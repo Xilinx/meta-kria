@@ -1,4 +1,4 @@
-DESCRIPTION = "Kira SOM related packages"
+DESCRIPTION = "Kria SOM related packages"
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:kria = "${MACHINE}"
@@ -24,10 +24,13 @@ KRIA_PACKAGES = " \
         tzdata \
         xmutil \
         kria-dashboard \
-        k26-starter-kits \
         lmsensors-fancontrol \
+        ${KRIA_ARCH_PACKAGES} \
 "
 
 #        packagegroup-petalinux-jupyter
+
+KRIA_ARCH_PACKAGES = ""
+KRIA_ARCH_PACKAGES:k26-smk = "k26-starter-kits"
 
 RDEPENDS:${PN} = "${KRIA_PACKAGES}"
