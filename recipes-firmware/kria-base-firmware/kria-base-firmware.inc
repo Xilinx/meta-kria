@@ -10,5 +10,16 @@ SRCREV = "1d0dde7d0f7f8fe8816a526876d978480458850b"
 
 inherit fpgamanager_custom
 
+do_install:append() {
+	install -d ${D}${sysconfdir}/dfx-mgrd
+	echo "${PN}" > ${D}${sysconfdir}/dfx-mgrd/${PN}
+}
+
+FILES:${PN} += "${sysconfdir}"
+
+ALTERNATIVE:${PN} = "default_firmware"
+ALTERNATIVE_TARGET[default_firmware] = "${sysconfdir}/dfx-mgrd/${PN}"
+ALTERNATIVE_LINK_NAME[default_firmware] = "${sysconfdir}/dfx-mgrd/default_firmware"
+
 COMPATIBLE_MACHINE = "^$"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
