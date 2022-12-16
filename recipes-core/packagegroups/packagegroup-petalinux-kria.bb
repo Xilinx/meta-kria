@@ -10,6 +10,7 @@ KRIA_PACKAGES = " \
         packagegroup-core-full-cmdline \
         packagegroup-core-tools-debug \
         packagegroup-core-ssh-openssh \
+        packagegroup-petalinux-jupyter \
         packagegroup-petalinux-networking-stack \
         packagegroup-petalinux-python-modules \
         packagegroup-petalinux-tpm \
@@ -27,8 +28,6 @@ KRIA_PACKAGES = " \
         lmsensors-fancontrol \
         ${KRIA_ARCH_PACKAGES} \
 "
-
-#        packagegroup-petalinux-jupyter
 
 KRIA_ARCH_PACKAGES = ""
 KRIA_ARCH_PACKAGES:k26-smk = "k26-starter-kits"
