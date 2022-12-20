@@ -23,7 +23,6 @@ IMAGE_INSTALL = " \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     e2fsprogs-mke2fs \
     fpga-manager-script \
-    fpga-manager-util \
     udev-extraconf \
     watchdog-init \
     wireless-regdb-static \
