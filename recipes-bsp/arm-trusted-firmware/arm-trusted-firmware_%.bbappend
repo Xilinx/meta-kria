@@ -1,1 +1,1 @@
-ATF_CONSOLE:kria = "cadence1"
+ATF_CONSOLE_DEFAULT:kria = "cadence1"
