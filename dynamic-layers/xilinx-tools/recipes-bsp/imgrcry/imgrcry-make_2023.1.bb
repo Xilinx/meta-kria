@@ -6,8 +6,6 @@ PROVIDES = "virtual/imgrcry"
 RCONFLICTS:${PN} = "imgrcry"
 DEPENDS += "bootgen-native fsbl-firmware"
 
-ESW_VER ?= "${XILINX_VER_MAIN}"
-
 inherit deploy xlnx-embeddedsw xsctbase
 
 COMPATIBLE_MACHINE = "^$"
