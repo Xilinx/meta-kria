@@ -15,26 +15,26 @@ UBOOT_IMAGE_BLOB_DEFAULT:k26-sm = "1"
 DT_BLOB_DIR:k26-sm = "${B}/arch/arm/dts/dt-blob"
 
 IMPORT_CC_DTBS:k26-sm = " \
-		zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA.dtb \
-		zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB.dtb \
-		zynqmp-sck-kr-g-revA.dtbo:zynqmp-smk-k26-xcl2g-revA-sck-kr-g-revA.dtb \
-		zynqmp-sck-kr-g-revB.dtbo:zynqmp-smk-k26-xcl2g-revA-sck-kr-g-revB.dtb \
-		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revA.dtb \
-		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revB.dtb \
-		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-xcl2gc-revA-sck-kr-g-revA.dtb \
-		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-xcl2gc-revA-sck-kr-g-revB.dtb \
-		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revA.dtb \
-		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revB.dtb \
-		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-xcl2gi-revA-sck-kr-g-revA.dtb \
-		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-xcl2gi-revA-sck-kr-g-revB.dtb \
-		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revA.dtb \
-		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revB.dtb \
-		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kr-g-revA.dtb \
-		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kr-g-revB.dtb \
-		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revA.dtb \
-		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revB.dtb \
-		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kr-g-revA.dtb \
-		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kr-g-revB.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k26-revA.dtb:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k26-revA.dtb:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kr-g-revA.dtbo:zynqmp-smk-k26-revA.dtb:zynqmp-smk-k26-xcl2g-revA-sck-kr-g-revA.dtb \
+		zynqmp-sck-kr-g-revB.dtbo:zynqmp-smk-k26-revA.dtb:zynqmp-smk-k26-xcl2g-revA-sck-kr-g-revB.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-revA-sck-kr-g-revA.dtb \
+		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-revA-sck-kr-g-revB.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-revA-sck-kr-g-revA.dtb \
+		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-revA-sck-kr-g-revB.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kr-g-revA.dtb \
+		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gc-ed-revA-sck-kr-g-revB.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kr-g-revA.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kr-g-revA.dtb \
+		zynqmp-sck-kr-g-revB.dtbo:zynqmp-sm-k26-revA.dtb:zynqmp-sm-k26-xcl2gi-ed-revA-sck-kr-g-revB.dtb \
 		"
 
 CC_DTBS_DUP:k26-sm = " \
