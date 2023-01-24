@@ -1,6 +1,4 @@
-require conf/machine/zynqmp-generic.conf
-
-SOC_VARIANT ?= "ev"
+require conf/machine/zynqmp-ev-generic.conf
 
 MACHINE_HWCODECS = "libomxil-xlnx"
 
