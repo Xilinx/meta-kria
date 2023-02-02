@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${S}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 RDEPENDS:${PN} = "python3-core i2c-tools"
 inherit python3-dir
-require recipes-utils/xmutil/xmutil-2023.1.inc
+require recipes-utils/xmutil/xmutil.inc
 
 S = "${WORKDIR}/git"
 

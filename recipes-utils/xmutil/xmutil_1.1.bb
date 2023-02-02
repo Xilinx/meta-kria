@@ -14,7 +14,7 @@ RDEPENDS:${PN} = " \
 
 inherit python3-dir autotools-brokensep
 
-require xmutil-2023.1.inc
+require xmutil.inc
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:zynqmp = "zynqmp"
