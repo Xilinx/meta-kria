@@ -1,4 +1,5 @@
-require conf/machine/zynqmp-ev-generic.conf
+# This file should not use ?=, and should be included AFTER the base soc-variant
+MACHINEOVERRIDES =. "kria:"
 
 MACHINE_HWCODECS = "libomxil-xlnx"
 
