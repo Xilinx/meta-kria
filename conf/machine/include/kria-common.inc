@@ -1,8 +1,6 @@
 # This file should not use ?=, and should be included AFTER the base soc-variant
 MACHINEOVERRIDES =. "kria:"
 
-MACHINE_HWCODECS = "libomxil-xlnx"
-
 #FPGA manager Variables
 MACHINE_FEATURES += "fpga-overlay"
 
