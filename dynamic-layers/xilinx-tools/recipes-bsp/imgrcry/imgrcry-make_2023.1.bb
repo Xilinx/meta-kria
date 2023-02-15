@@ -1,6 +1,6 @@
 DESCRIPTION = "Image Recovery"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/git/license.txt;md5=7b5fc0b2a22e2882e1506436b3293e5d"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/git/license.txt;md5=ce611484168a6000bd35df68fc4f4290"
 
 PROVIDES = "virtual/imgrcry"
 RCONFLICTS:${PN} = "imgrcry"

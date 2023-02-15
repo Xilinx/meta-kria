@@ -13,6 +13,8 @@ YAML_SERIAL_CONSOLE_BAUDRATE = "115200"
 
 SERIAL_CONSOLES = "115200;ttyPS1"
 
+PREFERRED_PROVIDER_virtual/imgrcry = "imgrcry-make"
+
 # QEMU options
 QB_OPT_APPEND = "\
     -nodefaults \
