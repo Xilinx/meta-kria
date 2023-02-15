@@ -18,7 +18,6 @@ PREFERRED_PROVIDER_virtual/imgrcry = "imgrcry-make"
 # QEMU options
 QB_OPT_APPEND = "\
     -nodefaults \
-    -hw-dtb ${DEPLOY_DIR_IMAGE}/qemu-hw-devicetrees/multiarch/board-zynqmp-k26-starterkit-virt.dtb \
     ${@qemu_zynqmp_unhalt(d, True)} \
     -device loader,file=${DEPLOY_DIR_IMAGE}/arm-trusted-firmware.elf,cpu-num=0 \
     -device loader,file=${DEPLOY_DIR_IMAGE}/u-boot.elf \
