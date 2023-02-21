@@ -1,4 +1,7 @@
 KRIA_ADDITIONAL_INCLUDE = ""
-KRIA_ADDITIONAL_INCLUDE:k26-smk = "kria-boot-cmd.inc"
+
+# The settings in this include change the boot script used by u-boot but this should only be done
+# when building for k26-smk and not other machine configs which may inherit this MACHINEOVERRIDE
+KRIA_ADDITIONAL_INCLUDE:k26-smk = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') == 'k26-smk' else ''}"
 
 include ${KRIA_ADDITIONAL_INCLUDE}
