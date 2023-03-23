@@ -15,11 +15,11 @@ The following boards are supported by the meta-kria layer:
 >
 > HW Board Device tree: `YAML_DT_BOARD_FLAGS = "{BOARD zynqmp-sck-kv-g-revB}"`
 
-| Devices | Kria SOM and Evaluation Starter kits                                                                        | Machine Configuration file         | Reference XSA | HW Board Device tree   | QEMU tested | HW tested |
-|---------|-------------------------------------------------------------------------------------------------------------|------------------------------------|---------------|------------------------|-------------|-----------|
-| ZynqMP  | [Kria K26 SOM](https://www.xilinx.com/products/som/kria/k26c-commercial.html)                               | [k26-sm](conf/machine/k26-sm.conf) | `k26-sm`      | `zynqmp-smk-k26-reva`  | Yes         | Yes       |
-|         | [Kria KV260 Vision AI Starter Kit](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html)  | [k26-kv](conf/machine/k26-kv.conf) | `k26-kv`      | `zynqmp-sck-kv-g-revB` | Yes         | Yes       |
-|         | [Kria KR260 Robotics Starter Kit](https://www.xilinx.com/products/som/kria/kr260-robotics-starter-kit.html) | [k26-kr](conf/machine/k26-kr.conf) | `k26-kr`      | `zynqmp-sck-kr-g-revB` | Yes         | Yes       |
+| Devices | Kria SOM and Evaluation Starter kits                                                                        | Machine Configuration file                 | Reference XSA | HW Board Device tree   | QEMU tested | HW tested |
+|---------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|------------------------|-------------|-----------|
+| ZynqMP  | [Kria K26 SOM](https://www.xilinx.com/products/som/kria/k26c-commercial.html)                               | [k26-sm](conf/machine/k26-sm.conf)         | `k26-sm`      | `zynqmp-smk-k26-reva`  | Yes         | Yes       |
+|         | [Kria KV260 Vision AI Starter Kit](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html)  | [k26-smk-kv](conf/machine/k26-smk-kv.conf) | `k26-kv`      | `zynqmp-sck-kv-g-revB` | Yes         | Yes       |
+|         | [Kria KR260 Robotics Starter Kit](https://www.xilinx.com/products/som/kria/kr260-robotics-starter-kit.html) | [k26-smk-kr](conf/machine/k26-smk-kr.conf) | `k26-kr`      | `zynqmp-sck-kr-g-revB` | Yes         | Yes       |
 
 > **Note:** Additional information on Xilinx architectures can be found at:
 	https://www.xilinx.com/products/silicon-devices.html
