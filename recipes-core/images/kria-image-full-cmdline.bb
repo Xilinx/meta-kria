@@ -5,7 +5,7 @@ inherit core-image
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
-IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs"
+IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs package-management"
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
