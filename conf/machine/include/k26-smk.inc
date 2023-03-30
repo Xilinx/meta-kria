@@ -19,11 +19,11 @@ EXTRA_IMAGEDEPENDS += "board-id-data"
 
 INITRAMFS_IMAGE = "petalinux-initramfs-image"
 
-IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
+IMAGE_FSTYPES += "wic wic.xz wic.qemu-sd"
 
 QB_DEFAULT_FSTYPE = "wic.qemu-sd"
 
-INITRAMFS_FSTYPES = "cpio.gz cpio.gz.u-boot tar.gz"
+INITRAMFS_FSTYPES = "cpio.gz.u-boot"
 IMAGE_FSTYPES:pn-${INITRAMFS_IMAGE}:zynqmp = "${INITRAMFS_FSTYPES}"
 RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 
