@@ -23,9 +23,9 @@ IMAGE_FSTYPES += " wic wic.xz wic.qemu-sd"
 
 QB_DEFAULT_FSTYPE = "wic.qemu-sd"
 
-INITRAMFS_FSTYPES = "cpio.gz cpio.gz.u-boot"
-IMAGE_FSTYPES:pn-${INITRAMFS_IMAGE}:zynqmp = "${INITRAMFS_FSTYPES}"
-RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
+INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot"
+IMAGE_FSTYPES:pn-${INITRAMFS_IMAGE}:zynqmp ?= "${INITRAMFS_FSTYPES}"
+RAMDISK_IMAGE1 ?= "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 
 EXTRA_IMAGEDEPENDS:remove = "u-boot-xlnx-uenv"
 IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr"
