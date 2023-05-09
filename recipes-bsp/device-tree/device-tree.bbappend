@@ -13,7 +13,7 @@ do_configure:append:kria() {
     done
 }
 
-SRC_URI:append:kria = " file://system.dtsi "
+EXTRA_OVERLAYS:append:kria = " system.dtsi"
 
 YAML_CONSOLE_DEVICE_CONFIG:kria = "psu_uart_1"
 YAML_MAIN_MEMORY_CONFIG:kria = "PSU_DDR_0"
@@ -21,10 +21,6 @@ YAML_ENABLE_NO_ALIAS:kria = "1"
 
 DT_PADDING_SIZE:kria = "0x1000"
 DTC_FLAGS:kria += "-@"
-
-do_configure:append:kria() {
-    echo '/include/ "system.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
-}
 
 do_install:append:kria() {
     # Remove dtbo files, these are no usable
