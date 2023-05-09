@@ -10,6 +10,8 @@ inherit deploy image-artifact-names
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26-sm = "${MACHINE}"
 COMPATIBLE_MACHINE:k26-smk = "${MACHINE}"
+COMPATIBLE_MACHINE:k24-sm = "${MACHINE}"
+COMPATIBLE_MACHINE:k24-smk = "${MACHINE}"
 
 QSPI_VERSION = "2.0"
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"

@@ -31,5 +31,6 @@ KRIA_PACKAGES = " \
 
 KRIA_ARCH_PACKAGES = ""
 KRIA_ARCH_PACKAGES:k26-smk = "k26-starter-kits"
+KRIA_ARCH_PACKAGES:k24-smk = "k24-starter-kits"
 
 RDEPENDS:${PN} = "${KRIA_PACKAGES}"
