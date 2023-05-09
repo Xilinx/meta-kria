@@ -13,6 +13,7 @@ COMPATIBLE_MACHINE = "^$"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 require board-id-k26.inc
+require board-id-k24.inc
 
 inherit deploy
 
