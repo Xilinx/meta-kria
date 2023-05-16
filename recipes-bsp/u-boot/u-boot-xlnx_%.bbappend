@@ -1,28 +1,17 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI:append:k26-kria = " \
+SRC_URI:append:kria = " \
 	file://vars \
-	file://som_bootmenu.cfg \
-	file://som_k26.cfg \
+	file://kria_bootmenu.cfg \
+	file://kria.cfg \
 	"
-
-SRC_URI:append:k24-kria = " \
-	file://vars_k24 \
-	file://som_bootmenu.cfg \
-	file://som_k24.cfg \
-	"
-
-do_configure:append:k26-kria () {
+do_configure:append:kria () {
 	install ${WORKDIR}/vars ${S}/.
 }
 
-do_configure:append:k24-kria () {
-	install ${WORKDIR}/vars_k24 ${S}/vars
-}
-
-# u-boot blob generation configuration for k26
-UBOOT_IMAGE_BLOB_DEFAULT:k26-kria = "1"
-DT_BLOB_DIR:k26-kria = "${B}/arch/arm/dts/dt-blob"
+# u-boot blob generation configuration
+UBOOT_IMAGE_BLOB_DEFAULT:kria = "1"
+DT_BLOB_DIR:kria = "${B}/arch/arm/dts/dt-blob"
 
 IMPORT_CC_DTBS:k26-kria = " \
 		zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k26-revA.dtb:zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA.dtb \
@@ -181,10 +170,6 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kr-g-revB:zynqmp-sm-k26-xcl2gc-ed-rev1-sck-kr-g-revB \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kr-g-revB:zynqmp-sm-k26-xcl2gc-ed-rev1-sck-kr-g-rev1 \
 		"
-
-# u-boot blob generation configuration for k24
-UBOOT_IMAGE_BLOB_DEFAULT:k24-kria = "1"
-DT_BLOB_DIR:k24-kria = "${B}/arch/arm/dts/dt-blob"
 
 IMPORT_CC_DTBS:k24-kria = " \
     zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kv-g-revA.dtb \
