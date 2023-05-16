@@ -12,14 +12,21 @@ rootfs_name=@@RAMDISK_IMAGE@@
 # Close pmufw node so that linux can't send small fragments to pmufw
 zynqmp pmufw node close
 
-# Starter Kit default boot args
-setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=900M ';
+# k24 Starter Kit default boot args
+if test "${board_name}" = "${k24_starter}"; then
+	setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=700M ';
+# k26 Starter Kit default boot args
+else test "${board_name}" = "${k26_starter}";
+	setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=900M ';
+fi
 
 #Set boot parameters based on CC type
 if test "${card1_name}" = "SCK-KV-G"; then
         setenv card_name sck-kv-g;
 elif test "${card1_name}" = "SCK-KR-G"; then
-        setenv card_name sck-kr-g && setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
+	setenv card_name sck-kr-g && setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
+elif test "${card1_name}" = "SCK-KD-G"; then
+        setenv card_name sck-kd-g && setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
 else #Assume Kria USB secondary boot device
         setenv card_name unknown;
 fi
@@ -29,22 +36,23 @@ if test "${card1_name}" = "SCK-KV-G"; then
         if test "${card1_rev}" = "Z" || test "${card1_rev}" = "A"; then
                 #revA dtb also supports revZ boards
                 dtb_name=SMK-zynqmp-${card_name}-revA
-        elif test "${card1_rev}" = "B" || test "${card1_rev}" = "1" || test "${card1_rev}" = "2"; then
+        elif test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
                 #revB dtb also supports rev1 boards
                 dtb_name=SMK-zynqmp-${card_name}-revB
-        else #default dtb if card revision is not found
-                dtb_name=SMK-zynqmp-${card_name}-revB
-                echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
         fi
 elif test "${card1_name}" = "SCK-KR-G"; then
-        if test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
-                #revB dtb also supports rev1 dtb
-                dtb_name=SMK-zynqmp-${card_name}-revB
-        elif test "${card1_rev}" = "A"; then
+	if test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
+		#revB dtb also supports rev1 dtb
+		dtb_name=SMK-zynqmp-${card_name}-revB
+	elif test "${card1_rev}" = "A"; then
+		dtb_name=SMK-zynqmp-${card_name}-revA
+	else #default dtb if card revision is not found
+		dtb_name=SMK-zynqmp-${card_name}-revB
+		echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
+	fi
+elif test "${card1_name}" = "SCK-KD-G"; then
+        if test "${card1_rev}" = "A"; then
                 dtb_name=SMK-zynqmp-${card_name}-revA
-        else #default dtb if card revision is not found
-                dtb_name=SMK-zynqmp-${card_name}-revB
-                echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
         fi
 else
         dtb_name=system
