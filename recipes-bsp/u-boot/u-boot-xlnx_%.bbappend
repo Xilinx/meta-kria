@@ -172,16 +172,41 @@ CC_DTBS_DUP:k26-kria = " \
 		"
 
 IMPORT_CC_DTBS:k24-kria = " \
-    zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kv-g-revA.dtb \
-    zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kv-g-revB.dtb \
-    zynqmp-sck-kd-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA.dtb \
-    zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gi-revA-sck-kv-g-revA.dtb \
-    zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gi-revA-sck-kv-g-revB.dtb \
-    zynqmp-sck-kd-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gi-revA-sck-kd-g-revA.dtb \
-    zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gc-revA-sck-kv-g-revA.dtb \
-    zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gc-revA-sck-kv-g-revB.dtb \
-    zynqmp-sck-kd-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gc-revA-sck-kd-g-revA.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kd-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gi-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gi-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kd-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gi-revA-sck-kd-g-revA.dtb \
+		zynqmp-sck-kv-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gc-revA-sck-kv-g-revA.dtb \
+		zynqmp-sck-kv-g-revB.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gc-revA-sck-kv-g-revB.dtb \
+		zynqmp-sck-kd-g-revA.dtbo:zynqmp-smk-k24-revA.dtb:zynqmp-smk-k24-xcl2gc-revA-sck-kd-g-revA.dtb \
 "
 
-CC_DTBS_DUP:k24-kria = ""
+CC_DTBS_DUP:k24-kria = " \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-revA-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-revB-sck-kd-g-revA \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-revB-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-revB-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-rev1-sck-kd-g-revA \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-rev1-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-rev1-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-revA-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-revA-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-revB-sck-kd-g-revA \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-revB-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-revB-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-rev1-sck-kd-g-revA \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-rev1-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gi-rev1-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-revA-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-revA-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-revB-sck-kd-g-revA \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-revB-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-revB-sck-kd-g-revB \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-rev1-sck-kd-g-revA \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-rev1-sck-kd-g-rev1 \
+		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2gc-rev1-sck-kd-g-revB \
+"
 

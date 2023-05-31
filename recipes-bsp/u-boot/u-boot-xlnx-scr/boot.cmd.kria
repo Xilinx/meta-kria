@@ -51,9 +51,12 @@ elif test "${card1_name}" = "SCK-KR-G"; then
 		echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
 	fi
 elif test "${card1_name}" = "SCK-KD-G"; then
-        if test "${card1_rev}" = "A"; then
+        if test "${card1_rev}" = "A" || test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
                 dtb_name=SMK-zynqmp-${card_name}-revA
-        fi
+	else #default dtb if card revision not found
+		dtb_name=SMK-zynqmp-${card_name}-revA
+		echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
+	fi
 else
         dtb_name=system
 fi
