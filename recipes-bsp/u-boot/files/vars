@@ -41,7 +41,7 @@ script_offset_f=3e80000
 script_size_f=0x80000
 scriptaddr=0x20000000
 usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot_part; fi
-preboot=setenv boot_targets; setenv modeboot; cls; run usb_init; run eth_init; usb start; run pm-cfg-snd
+preboot=setenv boot_targets; setenv modeboot; cls; run usb_init; run eth_init; usb start
 
 # SOM specific boot methods
 som_cc_boot=if test ${card1_name} = SCK-KV-G; then setenv boot_targets mmc1 usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; elif test ${card1_name} = SCK-KR-G; then setenv boot_targets usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; else test ${card1_name} = SCK-KD-G; setenv boot_targets usb0 usb1 usb2 usb3 pxe dhcp && run distro_bootcmd; fi;"
@@ -61,6 +61,3 @@ eth-kv260=if test ${card1_name} = SCK-KV-G; then run kv260_gem3; fi
 
 kv260_gem3=mw 0xFF18020C 0xFC0 && gpio toggle gpio@ff0a000038 && gpio toggle gpio@ff0a000038
 
-pm-cfg-snd=run pm-config
-
-pm-config=if test ${card1_name} = SCK-KD-G; then zynqmp pmufw node 47; zynqmp pmufw node 33; fi
