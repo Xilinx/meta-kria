@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = " \
 
 BRANCH = "xlnx_rel_v2022.2"
 SRC_URI = "git://github.com/Xilinx/kria-base-firmware.git;protocol=https;branch=${BRANCH}"
-SRCREV = "1d0dde7d0f7f8fe8816a526876d978480458850b"
+SRCREV = "d512881ad56fcb8ad3bffea543280c5b357bb9ea"
 
 inherit fpgamanager_custom
 
