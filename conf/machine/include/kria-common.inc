@@ -5,7 +5,6 @@ MACHINEOVERRIDES =. "kria:"
 MACHINE_FEATURES += "fpga-overlay"
 
 SPL_BINARY = ""
-EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin "
 
 IMAGE_CLASSES += "kria-image"
 
@@ -16,6 +15,22 @@ YAML_SERIAL_CONSOLE_BAUDRATE = "115200"
 SERIAL_CONSOLES = "115200;ttyPS1"
 
 PREFERRED_PROVIDER_virtual/imgrcry = "imgrcry-make"
+
+EXTRA_IMAGEDEPENDS += "board-id-data"
+EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
+
+INITRAMFS_IMAGE ?= "petalinux-initramfs-image"
+
+IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
+
+INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot tar.gz"
+RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
+
+IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr"
+IMAGE_BOOT_FILES += "devicetree/SMK-*.dtb;devicetree/"
+IMAGE_BOOT_FILES += "devicetree/*.dtbo;devicetree/"
+
+WIC_DEPENDS = "virtual/kernel virtual/dtb u-boot-xlnx-scr"
 
 # QEMU options
 QB_DEFAULT_FSTYPE = "wic.qemu-sd"
