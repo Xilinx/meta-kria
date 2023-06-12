@@ -63,4 +63,4 @@ kv260_gem3=mw 0xFF18020C 0xFC0 && gpio toggle gpio@ff0a000038 && gpio toggle gpi
 
 pm-cfg-snd=run pm-config
 
-pm-config=if test ${card1_name} = SCK-KD-G; then zynqmp pmufw node 33; fi
+pm-config=if test ${card1_name} = SCK-KD-G; then zynqmp pmufw node 33; zynqmp pmufw node 47; fi
