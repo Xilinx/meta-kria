@@ -18,6 +18,8 @@ SERIAL_CONSOLES = "115200;ttyPS1"
 PREFERRED_PROVIDER_virtual/imgrcry = "imgrcry-make"
 
 # QEMU options
+QB_DEFAULT_FSTYPE = "wic.qemu-sd"
+
 QB_OPT_APPEND = "\
     -nodefaults \
     ${@qemu_zynqmp_unhalt(d, True)} \

@@ -11,6 +11,7 @@ UBOOT_DT_FILES ?= "\
     "
 
 require conf/machine/include/k24-kria-common.inc
+require conf/machine/include/kria-qemu-kd.inc
 
 HDF_MACHINE = "k24-smk"
 
@@ -19,10 +20,6 @@ EXTRA_IMAGEDEPENDS += "board-id-data"
 INITRAMFS_IMAGE ?= "petalinux-initramfs-image"
 
 IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
-
-QB_DEFAULT_FSTYPE = "wic.qemu-sd"
-
-QB_ROOTFS_OPT = "-drive file=@ROOTFS@,if=sd,format=raw,index=1"
 
 INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot tar.gz"
 RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"

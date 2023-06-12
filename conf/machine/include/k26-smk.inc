@@ -21,8 +21,6 @@ INITRAMFS_IMAGE ?= "petalinux-initramfs-image"
 
 IMAGE_FSTYPES += " wic wic.xz wic.qemu-sd"
 
-QB_DEFAULT_FSTYPE = "wic.qemu-sd"
-
 INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot"
 RAMDISK_IMAGE1 ?= "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 
