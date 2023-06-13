@@ -8,6 +8,10 @@ DEPENDS += "bootgen-native fsbl-firmware"
 
 inherit deploy xlnx-embeddedsw xsctbase
 
+# Override the 2023.1 branch and commit incorporates k24 changes
+ESW_BRANCH[2023.1] = "xlnx_rel_v2023.1_update"
+ESW_REV[2023.1] = "af784f742dad0ca6e69e05baf8de51152c396b9a"
+
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
