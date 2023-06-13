@@ -11,6 +11,7 @@ UBOOT_DT_FILES ?= "\
     "
 
 require conf/machine/include/k24-kria-common.inc
+require conf/machine/include/kria-qemu-kd.inc
 
 HDF_MACHINE = "k24-smk"
 
