@@ -1,5 +1,9 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+# Temporary branch and srcrev
+UBRANCH = "xlnx_rebase_v2023.01_update"
+SRCREV = "4aef94327c7947c2b304e736a200eab244b83792"
+
 SRC_URI:append:kria = " \
 	file://vars \
 	file://kria_bootmenu.cfg \
