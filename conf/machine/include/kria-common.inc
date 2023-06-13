@@ -19,7 +19,7 @@ PREFERRED_PROVIDER_virtual/imgrcry = "imgrcry-make"
 EXTRA_IMAGEDEPENDS += "board-id-data"
 EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
 
-INITRAMFS_IMAGE ?= "petalinux-initramfs-image"
+INITRAMFS_IMAGE ?= "kria-image-initramfs"
 
 IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
 
@@ -31,6 +31,8 @@ IMAGE_BOOT_FILES += "devicetree/SMK-*.dtb;devicetree/"
 IMAGE_BOOT_FILES += "devicetree/*.dtbo;devicetree/"
 
 WIC_DEPENDS = "virtual/kernel virtual/dtb u-boot-xlnx-scr"
+
+KERNEL_COMMAND_APPEND ?= "root=LABEL=root"
 
 # QEMU options
 QB_DEFAULT_FSTYPE = "wic.qemu-sd"

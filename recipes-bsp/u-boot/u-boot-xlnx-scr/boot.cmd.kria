@@ -14,10 +14,10 @@ zynqmp pmufw node close
 
 # k24 Starter Kit default boot args
 if test "${board_name}" = "${k24_starter}"; then
-	setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=700M ';
+	setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=700M @@KERNEL_COMMAND_APPEND@@';
 # k26 Starter Kit default boot args
 else test "${board_name}" = "${k26_starter}";
-	setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=900M ';
+	setenv bootargs 'earlycon console=ttyPS1,115200 clk_ignore_unused init_fatal_sh=1 cma=900M @@KERNEL_COMMAND_APPEND@@';
 fi
 
 #Set boot parameters based on CC type
