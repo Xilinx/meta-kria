@@ -10,6 +10,15 @@ UBOOT_DT_FILES ?= "\
     zynqmp-sck-kv-g-revB.dts \
     "
 
+INITRAMFS_IMAGE ?= "petalinux-initramfs-image"
+
+INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot tar.gz"
+RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
+
+IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr"
+IMAGE_BOOT_FILES += "devicetree/SMK-*.dtb;devicetree/"
+IMAGE_BOOT_FILES += "devicetree/*.dtbo;devicetree/"
+
 require conf/machine/include/k24-kria-common.inc
 require conf/machine/include/kria-qemu-kd.inc
 
