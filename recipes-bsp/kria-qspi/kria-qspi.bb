@@ -16,6 +16,8 @@ COMPATIBLE_MACHINE:k24-smk = "${MACHINE}"
 QSPI_VERSION = "2.0"
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"
 
+do_compile[depends] += "virtual/boot-bin:do_deploy"
+
 python do_compile () {
     import io
     import hashlib
