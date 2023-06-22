@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 # Temporary branch and srcrev
 UBRANCH = "xlnx_rebase_v2023.01_update"
-SRCREV = "4aef94327c7947c2b304e736a200eab244b83792"
+SRCREV = "65ae76682f20f46596c239e59b485d2d26eb1182"
 
 SRC_URI:append:kria = " \
 	file://vars \
