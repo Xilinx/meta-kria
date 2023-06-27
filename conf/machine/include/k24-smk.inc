@@ -10,7 +10,7 @@ UBOOT_DT_FILES ?= "\
     zynqmp-sck-kv-g-revB.dts \
     "
 
-INITRAMFS_IMAGE ?= "kria-image-initramfs"
+INITRAMFS_IMAGE ?= "petalinux-initramfs-image"
 
 INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot tar.gz"
 RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
