@@ -8,7 +8,7 @@ BRANCH = "xlnx_rel_v2023.1"
 SRC_URI = "git://github.com/Xilinx/kria-base-firmware.git;protocol=https;branch=${BRANCH}"
 SRCREV = "d512881ad56fcb8ad3bffea543280c5b357bb9ea"
 
-inherit fpgamanager_custom
+inherit dfx_user_dts
 
 do_install:append() {
 	install -d ${D}${sysconfdir}/dfx-mgrd
