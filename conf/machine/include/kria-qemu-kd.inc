@@ -1,5 +1,6 @@
-#QB_ROOTFS_OPT = "-drive file=@ROOTFS@,if=sd,format=raw,index=1"
 QB_ROOTFS_OPT = "-drive file=@ROOTFS@,if=none,format=raw,id=stick"
+
+QB_NETWORK_DEVICE = "-net nic -net nic,netdev=net0,macaddr=@MAC@"
 
 QB_OPT_APPEND += " \
     -hw-dtb ${DEPLOY_DIR_IMAGE}/qemu-hw-devicetrees/multiarch/board-zynqmp-kd240.dtb \
