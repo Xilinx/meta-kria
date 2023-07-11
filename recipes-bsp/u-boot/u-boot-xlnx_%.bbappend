@@ -9,8 +9,21 @@ SRC_URI:append:kria = " \
 	file://kria_bootmenu.cfg \
 	file://kria.cfg \
 	"
+
 do_configure:append:kria () {
 	install ${WORKDIR}/vars ${S}/.
+}
+
+UBOOT_MANIFEST = "${UBOOT_BINARYNAME}-${MACHINE}-${PV}-${PR}.manifest"
+
+do_compile:append:kria() {
+    echo "---------------- ${PN} ----------------" > ${S}/${UBOOT_MANIFEST}
+    echo "SRCREV: ${SRCREV} \nBRANCH: ${UBRANCH}\n" >> ${S}/${UBOOT_MANIFEST}
+}
+
+do_deploy:append:kria() {
+    install -m 0644 ${S}/${UBOOT_MANIFEST} ${DEPLOYDIR}/
+    ln -sf ${UBOOT_MANIFEST} ${DEPLOYDIR}/${UBOOT_BINARYNAME}-${MACHINE}.manifest
 }
 
 # u-boot blob generation configuration

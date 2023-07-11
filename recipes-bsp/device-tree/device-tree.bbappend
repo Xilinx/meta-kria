@@ -13,6 +13,9 @@ do_configure:append:kria() {
     for dts in ${UBOOT_DT_FILES}; do
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
+
+    echo "---------------- ${PN} ----------------" > ${S}/device-tree-${MACHINE}.manifest
+    echo "SRCREV: ${SRCREV} \nBRANCH: ${BRANCH}\n" >> ${S}/device-tree-${MACHINE}.manifest
 }
 
 SRC_URI:append:kria = " file://system.dtsi "
@@ -32,4 +35,8 @@ do_install:append:kria() {
     # Remove dtbo files, these are no usable
     # keep pl.dtbo
     rm -f ${D}/boot/devicetree/zynqmp-sck*.dtbo
+}
+
+do_deploy:append:kria() {
+    install -m 0644 ${S}/device-tree-${MACHINE}.manifest ${DEPLOYDIR}/
 }
