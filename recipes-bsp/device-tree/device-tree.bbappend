@@ -15,7 +15,7 @@ do_configure:append:kria() {
     done
 
     echo "---------------- ${PN} ----------------" > ${S}/device-tree-${MACHINE}.manifest
-SRCREV = "d627991fce3232f7d95c736868bc001a8624fc46"
+    echo "SRCREV: ${SRCREV} \nBRANCH: ${BRANCH}\n" >> ${S}/device-tree-${MACHINE}.manifest
 }
 
 EXTRA_OVERLAYS:append:kria = " system.dtsi"
