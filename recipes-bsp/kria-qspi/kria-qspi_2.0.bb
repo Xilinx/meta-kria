@@ -13,7 +13,6 @@ COMPATIBLE_MACHINE:k26-smk = "${MACHINE}"
 COMPATIBLE_MACHINE:k24-sm = "${MACHINE}"
 COMPATIBLE_MACHINE:k24-smk = "${MACHINE}"
 
-QSPI_VERSION = "2.0"
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"
 
 do_compile[depends] += "virtual/boot-bin:do_deploy"
@@ -105,7 +104,7 @@ python do_compile () {
     qspi_data.write(imgrcry)
 
     # Version string and checksum
-    version = d.getVar("QSPI_VERSION")
+    version = d.getVar("PV")
     date = time.strftime("%m%d%H%M")
     image_name = d.getVar("QSPI_IMAGE_NAME")
 
@@ -127,7 +126,7 @@ ADDN_COMPILE_DEPENDS:kria = "xilinx-bootbin:do_deploy virtual/imgsel:do_deploy v
 
 do_manifest[depends] += "${ADDN_COMPILE_DEPENDS}"
 do_manifest () {
-    echo "=== QSPI\n\nVERSION: ${QSPI_VERSION}\n" > ${B}/${IMAGE_NAME}.manifest
+    echo "=== QSPI\n\nVERSION: ${PV}\n" > ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/imgrcry-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/imgsel-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
     echo "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
