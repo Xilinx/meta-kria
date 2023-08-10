@@ -1,12 +1,12 @@
 DESCRIPTION = "Image Recovery"
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/git/license.txt;md5=ce611484168a6000bd35df68fc4f4290"
-
 PROVIDES = "virtual/imgrcry"
 RCONFLICTS:${PN} = "imgrcry"
 DEPENDS += "bootgen-native fsbl-firmware"
 
-inherit deploy xlnx-embeddedsw xsctbase
+inherit deploy xlnx-embeddedsw xsctbase image-artifact-names
+
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://../../../../license.txt;md5=${@d.getVarFlag('LIC_FILES_CHKSUM', d.getVar('BRANCH')) or '0'}"
 
 # Override the 2023.1 branch and commit incorporates k24 changes
 ESW_BRANCH[2023.1] = "xlnx_rel_v2023.1_update"
