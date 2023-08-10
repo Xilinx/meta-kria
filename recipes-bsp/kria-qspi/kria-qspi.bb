@@ -122,9 +122,25 @@ python do_compile () {
         sq.write(qspi_data.getbuffer())
 }
 
+ADDN_COMPILE_DEPENDS = ""
+ADDN_COMPILE_DEPENDS:kria = "xilinx-bootbin:do_deploy virtual/imgsel:do_deploy virtual/imgrcry:do_deploy"
+
+do_manifest[depends] += "${ADDN_COMPILE_DEPENDS}"
+do_manifest () {
+    echo "=== QSPI\n\nVERSION: ${QSPI_VERSION}\n" > ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/imgrcry-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/imgsel-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
+    echo "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/boot.bin.manifest >> ${B}/${IMAGE_NAME}.manifest
+}
+
 do_deploy () {
     install -Dm 644 ${B}/${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_NAME}.bin
     ln -s ${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_LINK_NAME}.bin
+
+    install -Dm 644 ${B}/${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_NAME}.manifest
+    ln -s ${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_LINK_NAME}.manifest
 }
 
-addtask deploy after do_compile
+addtask manifest after do_compile
+addtask deploy after do_manifest

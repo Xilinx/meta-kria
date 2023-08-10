@@ -31,12 +31,17 @@ EOF
 do_compile () {
     oe_runmake all
     bootgen -image ${WORKDIR}/${PN}.bif -arch ${SOC_FAMILY} -w -o ${B}/${PN}.bin
+
+    echo "--- ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n" > ${S}/${PN}.manifest
 }
 
 do_deploy () {
     install -Dm 0644 ${S}/../misc/web.img ${DEPLOYDIR}/imgrcry_web.img
     install -Dm 0644 ${B}/${PN}.bin ${DEPLOYDIR}/${PN}-${MACHINE}-${IMAGE_VERSION_SUFFIX}.bin
     ln -sf ${PN}-${MACHINE}-${IMAGE_VERSION_SUFFIX}.bin ${DEPLOYDIR}/imgrcry-${MACHINE}.bin
+
+    install -Dm 0644 ${S}/${PN}.manifest ${DEPLOYDIR}/${PN}-${MACHINE}-${IMAGE_VERSION_SUFFIX}.manifest
+    ln -sf ${PN}-${MACHINE}-${IMAGE_VERSION_SUFFIX}.manifest ${DEPLOYDIR}/imgrcry-${MACHINE}.manifest
 }
 
 addtask do_deploy after do_compile
