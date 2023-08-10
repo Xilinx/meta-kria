@@ -17,8 +17,7 @@ do_configure:append:kria () {
 UBOOT_MANIFEST = "${UBOOT_BINARYNAME}-${MACHINE}-${PV}-${PR}.manifest"
 
 do_compile:append:kria() {
-    echo "---------------- ${PN} ----------------" > ${S}/${UBOOT_MANIFEST}
-    echo "SRCREV: ${SRCREV} \nBRANCH: ${UBRANCH}\n" >> ${S}/${UBOOT_MANIFEST}
+    echo "--- ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${UBRANCH}\n" > ${S}/${UBOOT_MANIFEST}
 }
 
 do_deploy:append:kria() {

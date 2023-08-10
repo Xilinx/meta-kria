@@ -1,6 +1,5 @@
 do_compile:append:kria() {
-    echo "---------------- ${PN} ----------------" > ${S}/${ATF_BASE_NAME}.manifest
-    echo "SRCREV: ${SRCREV} \nBRANCH: ${BRANCH}\n" >> ${S}/${ATF_BASE_NAME}.manifest
+    echo "--- ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n" > ${S}/${ATF_BASE_NAME}.manifest
 }
 
 do_deploy:append:kria() {
