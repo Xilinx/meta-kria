@@ -18,7 +18,7 @@ do_configure:append:kria() {
     layer_revs = {r[1]: r[3] for r in revisions}
 
     with open(d.expand("${B}/bootbin_yocto_layers.txt"), "w") as f:
-        f.write("---------------- Yocto Layers ----------------\n")
+        f.write("--- Yocto Layers\n")
         for layer in d.getVar("BOOTBIN_MANIFEST_LAYERS").split():
             if layer in layer_revs:
                 f.write(layer + " -> " + layer_revs[layer] + "\n")

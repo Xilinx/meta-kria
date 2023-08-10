@@ -1,6 +1,5 @@
 do_compile:append:kria() {
-    echo "---------------- ${PN} ----------------" > ${S}/${PMU_FIRMWARE_BASE_NAME}.manifest
-    echo "SRCREV: ${SRCREV} \nBRANCH: ${BRANCH}\n" >> ${S}/${PMU_FIRMWARE_BASE_NAME}.manifest
+    echo "--- ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n" > ${S}/${PMU_FIRMWARE_BASE_NAME}.manifest
 }
 
 do_deploy:append:kria() {

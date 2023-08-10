@@ -30,12 +30,12 @@ python do_configure() {
         f.write(version.encode("utf-8").hex())
 
     with open(d.expand("${B}/${BOOTBIN_MANIFEST_FILE}"), "w") as f:
-        f.write("---------------- %s ----------------\n" % d.getVar('PN'))
+        f.write("--- %s\n" % d.getVar('PN'))
         f.write("VERSION: %s\n" % version)
         f.write("PV: %s\n" % d.getVar('PV'))
         f.write("XILINX_VER_MAIN: %s\n" % d.getVar('XILINX_VER_MAIN'))
         f.write("XILINX_VER_UPDATE: %s\n" % d.getVar('XILINX_VER_UPDATE'))
-        f.write("XILINX_VER_BUILD: %s\n" % d.getVar('XILINX_VER_BUILD'))
+        f.write("XILINX_VER_BUILD: %s\n\n" % d.getVar('XILINX_VER_BUILD'))
 }
 
 do_install() {
