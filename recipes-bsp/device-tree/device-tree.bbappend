@@ -14,7 +14,7 @@ do_configure:append:kria() {
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
 
-    echo "--- ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n" > ${S}/device-tree-${MACHINE}.manifest
+    printf "* ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n\n" > ${S}/device-tree-${MACHINE}.manifest
 }
 
 SRC_URI:append:kria = " file://system.dtsi "

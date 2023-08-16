@@ -1,5 +1,5 @@
 do_compile:append() {
-    echo "--- ${PN}\nSRCREV: ${SRCREV} \nBRANCH: ${BRANCH}\n" > ${S}/${PN}.manifest
+    printf "* ${PN}\nSRCREV: ${SRCREV} \nBRANCH: ${BRANCH}\n\n" > ${S}/${PN}.manifest
 }
 
 do_deploy:append() {
