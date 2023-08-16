@@ -18,7 +18,7 @@ do_configure:append:kria() {
     layer_revs = {r[1]: r[3] for r in revisions}
 
     with open(d.expand("${B}/bootbin_yocto_layers.txt"), "w") as f:
-        f.write("--- Yocto Layers\n")
+        f.write("* Yocto Layers\n")
         for layer in d.getVar("BOOTBIN_MANIFEST_LAYERS").split():
             if layer in layer_revs:
                 f.write(layer + " -> " + layer_revs[layer] + "\n")
@@ -30,7 +30,7 @@ ADDN_COMPILE_DEPENDS:kria = "bootbin-version-header:do_deploy fsbl:do_deploy pmu
 do_compile[depends] += "${ADDN_COMPILE_DEPENDS}"
 do_compile:append:kria() {
     bootbin_sha=$(sha1sum ${B}/BOOT.bin | cut -f 1 -d ' ')
-    echo "SHA1: ${bootbin_sha}\n" > ${B}/${BOOTBIN_MANIFEST_FILE}
+    printf "SHA1: ${bootbin_sha}\n\n" > ${B}/${BOOTBIN_MANIFEST_FILE}
 
     cat ${DEPLOY_DIR_IMAGE}/bootbin-version-header-${MACHINE}.manifest \
         ${DEPLOY_DIR_IMAGE}/fsbl-${MACHINE}.manifest ${DEPLOY_DIR_IMAGE}/pmu-firmware-${MACHINE}.manifest \
