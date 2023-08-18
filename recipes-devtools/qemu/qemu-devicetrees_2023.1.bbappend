@@ -1,3 +1,0 @@
-# Version with Kria updates
-SRCREV = "56538937584f527fb408347c3b430142e74723e8"
-
