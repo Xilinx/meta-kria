@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend:kria := "${THISDIR}/k26-som:"
 
 SRCREV_FORMAT:kria = "device-tree"
 DT_UBOOT_BRANCH ?= "xlnx_rebase_v2023.01"
-DT_UBOOT_SRCREV ?= "4494d845c4a6d339a29c0cad745b13ddcfd361aa"
+DT_UBOOT_SRCREV ?= "2d10e6530d13a272b7e43c943f5c814a5d304f6a"
 SRC_URI:append:kria = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=${DT_UBOOT_BRANCH};destsuffix=u-boot-xlnx;name=uboot"
 SRCREV_uboot = "${DT_UBOOT_SRCREV}"
 
@@ -14,7 +14,7 @@ do_configure:append:kria() {
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
 
-SRCREV = "4494d845c4a6d339a29c0cad745b13ddcfd361aa"
+    printf "* ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n\n" > ${S}/device-tree-${MACHINE}.manifest
 }
 
 EXTRA_OVERLAYS:append:kria = " system.dtsi"
