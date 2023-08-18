@@ -8,10 +8,6 @@ inherit deploy xlnx-embeddedsw xsctbase image-artifact-names
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://../../../../license.txt;md5=${@d.getVarFlag('LIC_FILES_CHKSUM', d.getVar('BRANCH')) or '0'}"
 
-# Override the 2023.1 branch and commit incorporates k24 changes
-ESW_BRANCH[2023.1] = "xlnx_rel_v2023.1_update"
-ESW_REV[2023.1] = "af784f742dad0ca6e69e05baf8de51152c396b9a"
-
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
