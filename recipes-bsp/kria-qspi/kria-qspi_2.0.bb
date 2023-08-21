@@ -15,7 +15,7 @@ COMPATIBLE_MACHINE:k24-smk = "${MACHINE}"
 
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"
 
-do_compile[depends] += "virtual/boot-bin:do_deploy"
+do_compile[depends] += "virtual/boot-bin:do_deploy virtual/imgsel:do_deploy virtual/imgrcry:do_deploy"
 
 python do_compile () {
     import io
@@ -121,10 +121,6 @@ python do_compile () {
         sq.write(qspi_data.getbuffer())
 }
 
-ADDN_COMPILE_DEPENDS = ""
-ADDN_COMPILE_DEPENDS:kria = "xilinx-bootbin:do_deploy virtual/imgsel:do_deploy virtual/imgrcry:do_deploy"
-
-do_manifest[depends] += "${ADDN_COMPILE_DEPENDS}"
 do_manifest () {
     echo "=== QSPI\n\nVERSION: ${PV}\n" > ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/imgrcry-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
