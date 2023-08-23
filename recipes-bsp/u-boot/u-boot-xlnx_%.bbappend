@@ -1,10 +1,14 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI:append:kria = " \
+KRIA_SRCURI ?= ""
+KRIA_SRCURI:kria ?= " \
 	file://vars \
 	file://kria_bootmenu.cfg \
 	file://kria.cfg \
 	"
+
+SRC_URI[vardepsexclude] = "KRIA_SRCURI"
+SRC_URI .= "${KRIA_SRCURI}"
 
 do_configure:append:kria () {
 	install ${WORKDIR}/vars ${S}/.
