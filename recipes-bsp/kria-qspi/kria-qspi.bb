@@ -10,9 +10,16 @@ inherit deploy image-artifact-names
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:k26-sm = "${MACHINE}"
 COMPATIBLE_MACHINE:k26-smk = "${MACHINE}"
+COMPATIBLE_MACHINE:k24-sm = "${MACHINE}"
+COMPATIBLE_MACHINE:k24-smk = "${MACHINE}"
 
-QSPI_VERSION = "2.0"
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"
+
+QSPI_IMAGE_VERSION ?= ""
+QSPI_IMAGE_VERSION:k26-kria = "2.0"
+QSPI_IMAGE_VERSION:k24-kria = "1.0"
+
+do_compile[depends] += "virtual/boot-bin:do_deploy virtual/imgsel:do_deploy virtual/imgrcry:do_deploy"
 
 python do_compile () {
     import io
@@ -101,11 +108,12 @@ python do_compile () {
     qspi_data.write(imgrcry)
 
     # Version string and checksum
-    version = d.getVar("QSPI_VERSION")
+    version = d.getVar("QSPI_IMAGE_VERSION")
     date = time.strftime("%m%d%H%M")
+    machine = d.getVar("MACHINE")[:3]
     image_name = d.getVar("QSPI_IMAGE_NAME")
 
-    qspi_version = f"{image_name}-v{version}-{date}\x00"
+    qspi_version = f"{image_name}-{machine}-v{version}-{date}\x00"
     qspi_data.seek(VERSION_OFFSET)
     qspi_data.write(qspi_version.encode())
 
@@ -118,9 +126,21 @@ python do_compile () {
         sq.write(qspi_data.getbuffer())
 }
 
+do_manifest () {
+    echo "=== QSPI\n\nVERSION: ${QSPI_IMAGE_VER}\n" > ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/imgrcry-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/imgsel-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
+    echo "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/boot.bin.manifest >> ${B}/${IMAGE_NAME}.manifest
+}
+
 do_deploy () {
     install -Dm 644 ${B}/${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_NAME}.bin
     ln -s ${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_LINK_NAME}.bin
+
+    install -Dm 644 ${B}/${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_NAME}.manifest
+    ln -s ${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_LINK_NAME}.manifest
 }
 
-addtask deploy after do_compile
+addtask manifest after do_compile
+addtask deploy after do_manifest

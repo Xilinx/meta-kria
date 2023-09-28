@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=e02145ed27d5ba38507cf0f17e27adf0"
 
 BRANCH ?= "xlnx_rel_v2023.1"
 SRC_URI = "git://github.com/Xilinx/xlnx-board-id-data.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "d4e775aa6110b659587686c428a5e0f42e5e4f3d"
+SRCREV ?= "57dbb34fd92d8e34c5118a28ff2bb276f0c5ed5b"
 
 S = "${WORKDIR}/git"
 
@@ -13,6 +13,7 @@ COMPATIBLE_MACHINE = "^$"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 require board-id-k26.inc
+require board-id-k24.inc
 
 inherit deploy
 
