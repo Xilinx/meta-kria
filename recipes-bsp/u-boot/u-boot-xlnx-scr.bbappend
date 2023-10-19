@@ -6,3 +6,7 @@ KRIA_ADDITIONAL_INCLUDE:k26-smk = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE')
 KRIA_ADDITIONAL_INCLUDE:k24-smk = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') == 'k24-smk' else ''}"
 
 include ${KRIA_ADDITIONAL_INCLUDE}
+
+KERNEL_ROOT_RAMDISK:k26-smk-kv = ""
+KERNEL_ROOT_RAMDISK:k26-smk-kr = ""
+KERNEL_ROOT_RAMDISK:k24-smk-kd = ""
