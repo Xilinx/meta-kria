@@ -68,6 +68,7 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-rev1-sck-kv-g-rev2 \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-rev2-sck-kv-g-revA \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-rev2-sck-kv-g-revZ \
+		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-rev2-sck-kv-g-revY \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-rev2-sck-kv-g-revB \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-rev2-sck-kv-g-rev1 \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-rev2-sck-kv-g-rev2 \
@@ -100,6 +101,7 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-ed-rev1-sck-kv-g-rev2 \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-ed-rev2-sck-kv-g-revA \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-ed-rev2-sck-kv-g-revZ \
+		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revA:zynqmp-smk-k26-xcl2g-ed-rev2-sck-kv-g-revY \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-ed-rev2-sck-kv-g-revB \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-ed-rev2-sck-kv-g-rev1 \
 		zynqmp-smk-k26-xcl2g-revA-sck-kv-g-revB:zynqmp-smk-k26-xcl2g-ed-rev2-sck-kv-g-rev2 \
@@ -128,6 +130,7 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-rev1-sck-kv-g-rev2 \
 		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gi-rev2-sck-kv-g-revA \
 		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gi-rev2-sck-kv-g-revZ \
+		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gi-rev2-sck-kv-g-revY \
 		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-rev2-sck-kv-g-revB \
 		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-rev2-sck-kv-g-rev1 \
 		zynqmp-sm-k26-xcl2gi-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-rev2-sck-kv-g-rev2 \
@@ -156,6 +159,7 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-rev1-sck-kv-g-rev2 \
 		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gc-rev2-sck-kv-g-revA \
 		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gc-rev2-sck-kv-g-revZ \
+		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gc-rev2-sck-kv-g-revY \
 		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-rev2-sck-kv-g-revB \
 		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-rev2-sck-kv-g-rev1 \
 		zynqmp-sm-k26-xcl2gc-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-rev2-sck-kv-g-rev2 \
@@ -188,6 +192,7 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-ed-rev1-sck-kv-g-rev2 \
 		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gi-ed-rev2-sck-kv-g-revA \
 		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gi-ed-rev2-sck-kv-g-revZ \
+		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gi-ed-rev2-sck-kv-g-revY \
 		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-ed-rev2-sck-kv-g-revB \
 		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-ed-rev2-sck-kv-g-rev1 \
 		zynqmp-sm-k26-xcl2gi-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gi-ed-rev2-sck-kv-g-rev2 \
@@ -220,6 +225,7 @@ CC_DTBS_DUP:k26-kria = " \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-ed-rev1-sck-kv-g-rev2 \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gc-ed-rev2-sck-kv-g-revA \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gc-ed-rev2-sck-kv-g-revZ \
+		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revA:zynqmp-sm-k26-xcl2gc-ed-rev2-sck-kv-g-revY \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-ed-rev2-sck-kv-g-revB \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-ed-rev2-sck-kv-g-rev1 \
 		zynqmp-sm-k26-xcl2gc-ed-revA-sck-kv-g-revB:zynqmp-sm-k26-xcl2gc-ed-rev2-sck-kv-g-rev2 \
