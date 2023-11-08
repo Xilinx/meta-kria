@@ -1,0 +1,2 @@
+BOOTBIN_VER_MAIN:k26-kria = "01.01"
+BOOTBIN_VER_MAIN:k24-kria = "01.01"

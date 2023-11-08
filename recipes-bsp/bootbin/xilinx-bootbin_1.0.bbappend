@@ -13,6 +13,8 @@ BIF_PARTITION_ATTR:k24-kria = "${BIF_FSBL_ATTR} ${BIF_BITSTREAM_ATTR} ${BIF_ATF_
 BOOTBIN_MANIFEST_LAYERS ?= "meta-xilinx-standalone meta-xilinx-tools meta-kria"
 BOOTBIN_MANIFEST_FILE ?= "boot.bin.manifest"
 
+require xilinx-bootbin-version.inc
+
 do_configure:append:kria() {
     revisions = oe.buildcfg.get_layer_revisions(d)
     layer_revs = {r[1]: r[3] for r in revisions}
@@ -41,4 +43,6 @@ do_compile:append:kria() {
 do_deploy:append:kria() {
     install -m 0644 ${B}/${BOOTBIN_MANIFEST_FILE} ${DEPLOYDIR}/${BOOTBIN_BASE_NAME}.bin.manifest
     ln -sf ${BOOTBIN_BASE_NAME}.bin.manifest ${DEPLOYDIR}/${BOOTBIN_MANIFEST_FILE}
+
+    ln -sf ${BOOTBIN_BASE_NAME}.bin ${DEPLOYDIR}/K26-BootFW-${BOOTBIN_VER_MAIN}.bin
 }

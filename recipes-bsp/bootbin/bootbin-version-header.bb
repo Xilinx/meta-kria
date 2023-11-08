@@ -10,8 +10,6 @@ COMPATIBLE_MACHINE:k24-kria = "${MACHINE}"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 BOOTBIN_VER_MAIN ?= ""
-BOOTBIN_VER_MAIN:k26-kria = "01.01"
-BOOTBIN_VER_MAIN:k24-kria = "01.01"
 
 BOOTBIN_VER_SUFFIX ?= "${@(d.getVar('XILINX_VER_BUILD') or '')[:8] if d.getVar('XILINX_VER_UPDATE') != 'release' and not d.getVar('XILINX_VER_UPDATE').startswith('update') else ''}"
 BOOTBIN_VER_FILE = "bootbin-version-header.txt"
@@ -20,6 +18,7 @@ BOOTBIN_VER_MAX_LEN = "36"
 BOOTBIN_MANIFEST_FILE ?= "bootbin-version-header.manifest"
 
 inherit deploy image-artifact-names
+require xilinx-bootbin-version.inc
 
 python do_configure() {
     version = d.getVar("MACHINE")[0:3].upper() + "-BootFW-" + d.getVar("BOOTBIN_VER_MAIN")
