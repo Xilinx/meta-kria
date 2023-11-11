@@ -40,11 +40,8 @@ do_install () {
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${WORKDIR}/update-misc-config.service ${D}${systemd_system_unitdir}
 
-
-    if [ "${INITRAMFS_IMAGE}" = "petalinux-initramfs-image" ]; then
 	install -d ${D}/exec.d/
 	install -m 0755 ${WORKDIR}/update-misc-config.sh ${D}/exec.d/
-    fi
 }
 
 FILES:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','sysvinit','${sysconfdir}/init.d/update-misc-config.sh', '', d)} /exec.d/update-misc-config.sh"

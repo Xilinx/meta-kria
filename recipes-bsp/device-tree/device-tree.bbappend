@@ -1,8 +1,8 @@
 FILESEXTRAPATHS:prepend:kria := "${THISDIR}/k26-som:"
 
 SRCREV_FORMAT:kria = "device-tree"
-DT_UBOOT_BRANCH ?= "xlnx_rebase_v2023.01_update"
-DT_UBOOT_SRCREV ?= "1689570b68dd3827e527a520805aa0bb7f58ee09"
+DT_UBOOT_BRANCH ?= "xlnx_rebase_v2023.01"
+DT_UBOOT_SRCREV ?= "0fc19cad5a07a09958443e7a5b6f11e420ef195c"
 SRC_URI:append:kria = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=${DT_UBOOT_BRANCH};destsuffix=u-boot-xlnx;name=uboot"
 SRCREV_uboot = "${DT_UBOOT_SRCREV}"
 
@@ -14,11 +14,10 @@ do_configure:append:kria() {
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
 
-    printf "* ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n" > ${S}/device-tree-${MACHINE}.manifest
-    printf "** ${PN} - u-boot-xlnx\nDT_UBOOT_SRCREV: ${DT_UBOOT_SRCREV}\nDT_UBOOT_BRANCH: ${DT_UBOOT_BRANCH}\n\n" >> ${S}/device-tree-${MACHINE}.manifest
+    printf "* ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n\n" > ${S}/device-tree-${MACHINE}.manifest
 }
 
-SRC_URI:append:kria = " file://system.dtsi "
+EXTRA_OVERLAYS:append:kria = " system.dtsi"
 
 YAML_CONSOLE_DEVICE_CONFIG:kria = "psu_uart_1"
 YAML_MAIN_MEMORY_CONFIG:kria = "PSU_DDR_0"
@@ -26,10 +25,6 @@ YAML_ENABLE_NO_ALIAS:kria = "1"
 
 DT_PADDING_SIZE:kria = "0x1000"
 DTC_FLAGS:kria += "-@"
-
-do_configure:append:kria() {
-    echo '/include/ "system.dtsi"' >> ${DT_FILES_PATH}/system-top.dts
-}
 
 do_install:append:kria() {
     # Remove dtbo files, these are no usable

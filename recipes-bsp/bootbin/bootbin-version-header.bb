@@ -21,9 +21,6 @@ BOOTBIN_MANIFEST_FILE ?= "bootbin-version-header.manifest"
 
 inherit deploy image-artifact-names
 
-# This isn't really an image, so clear the extension name
-IMAGE_NAME_SUFFIX = ""
-
 python do_configure() {
     version = d.getVar("MACHINE")[0:3].upper() + "-BootFW-" + d.getVar("BOOTBIN_VER_MAIN")
     if d.getVar("BOOTBIN_VER_SUFFIX"):

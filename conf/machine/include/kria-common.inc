@@ -5,7 +5,6 @@ MACHINEOVERRIDES =. "kria:"
 MACHINE_FEATURES += "fpga-overlay"
 
 SPL_BINARY = ""
-EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin "
 
 IMAGE_CLASSES += "kria-image"
 
@@ -17,7 +16,18 @@ SERIAL_CONSOLES = "115200;ttyPS1"
 
 PREFERRED_PROVIDER_virtual/imgrcry = "imgrcry-make"
 
+EXTRA_IMAGEDEPENDS += "board-id-data"
+EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
+
+IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
+
+WIC_DEPENDS = "virtual/kernel virtual/dtb u-boot-xlnx-scr"
+
+KERNEL_COMMAND_APPEND ?= "root=LABEL=root"
+
 # QEMU options
+QB_DEFAULT_FSTYPE = "wic.qemu-sd"
+
 QB_OPT_APPEND = "\
     -nodefaults \
     ${@qemu_zynqmp_unhalt(d, True)} \
