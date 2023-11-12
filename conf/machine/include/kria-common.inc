@@ -43,4 +43,4 @@ QB_OPT_APPEND = "\
 
 # runqemu assumes the first serial device is used but Kria SOM uses the second, the following line is
 # required in order to mark the first serial as inactive as the runqemu serial config is appended
-QB_OPT_APPEND += " -serial null"
+QB_OPT_APPEND += " -serial null -serial mon:stdio"
