@@ -18,4 +18,5 @@ IMAGE_INSTALL = " \
     linux-xlnx-udev-rules \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     udev-extraconf \
+    wireless-regdb-static \
 "
