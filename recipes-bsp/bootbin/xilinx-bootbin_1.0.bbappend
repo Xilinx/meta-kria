@@ -44,5 +44,5 @@ do_deploy:append:kria() {
     install -m 0644 ${B}/${BOOTBIN_MANIFEST_FILE} ${DEPLOYDIR}/${BOOTBIN_BASE_NAME}.bin.manifest
     ln -sf ${BOOTBIN_BASE_NAME}.bin.manifest ${DEPLOYDIR}/${BOOTBIN_MANIFEST_FILE}
 
-    ln -sf ${BOOTBIN_BASE_NAME}.bin ${DEPLOYDIR}/K26-BootFW-${BOOTBIN_VER_MAIN}.bin
+    ln -sf ${BOOTBIN_BASE_NAME}.bin ${DEPLOYDIR}/${@d.getVar("MACHINE")[:3].upper()}-BootFW-${BOOTBIN_VER_MAIN}.bin
 }
