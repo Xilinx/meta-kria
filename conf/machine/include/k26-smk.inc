@@ -16,11 +16,11 @@ INITRAMFS_IMAGE ?= "kria-image-initramfs"
 INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot tar.gz"
 RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 
+require conf/machine/include/k26-kria-common.inc
+
 IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr"
 IMAGE_BOOT_FILES += "devicetree/SMK-*.dtb;devicetree/"
 IMAGE_BOOT_FILES += "devicetree/*.dtbo;devicetree/"
-
-require conf/machine/include/k26-kria-common.inc
 
 HDF_MACHINE = "k26-smk"
 
