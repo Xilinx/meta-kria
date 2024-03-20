@@ -17,11 +17,19 @@ The following boards are supported by the meta-kria layer:
 
 | Devices | Kria SOM and Evaluation Starter kits                                                                        | Machine Configuration file                 | Reference XSA | HW Board Device tree   | QEMU tested | HW tested |
 |---------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------|---------------|------------------------|-------------|-----------|
-| ZynqMP  | [Kria K26 SOM](https://www.xilinx.com/products/som/kria/k26c-commercial.html)                               | [k26-sm](conf/machine/k26-sm.conf)         | `k26-sm`      | `zynqmp-smk-k26-reva`  | Yes         | Yes       |
+| ZynqMP  | [Kria K26 SOM](https://www.xilinx.com/products/som/kria/k26c-commercial.html)                               | [k26-sm](conf/machine/k26-sm.conf)         | `k26-sm`      | `zynqmp-sm-k26-reva`   | Yes         | Yes       |
 |         | [Kria KV260 Vision AI Starter Kit](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html)  | [k26-smk-kv](conf/machine/k26-smk-kv.conf) | `k26-smk-kv`  | `zynqmp-sck-kv-g-revB` | Yes         | Yes       |
 |         | [Kria KR260 Robotics Starter Kit](https://www.xilinx.com/products/som/kria/kr260-robotics-starter-kit.html) | [k26-smk-kr](conf/machine/k26-smk-kr.conf) | `k26-smk-kr`  | `zynqmp-sck-kr-g-revB` | Yes         | Yes       |
-|         | Kria K24 SOM                                                                                                | [k24-sm](conf/machine/k24-sm.conf)         | `k24-km`      | `zynqmp-sm-k24-reva`   | Yes         | Yes       |
-|         | Kria KD240 Drives Starter Kit                                                                               | [k24-smk-kd](conf/machine/k24-smk-kd.conf) | `k24-smk-kd`  | `zynqmp-sck-kd-g-revA` | Yes         | Yes       |
+|         | [Kria K24c SOM](https://www.xilinx.com/products/som/kria/k24c-commercial.html)                              | [k24c-sm](conf/machine/k24c-sm.conf)       | `k24c-sm`     | `zynqmp-sm-k24-reva`   | Yes         | Yes       |
+|         | [Kria K24i SOM](https://www.xilinx.com/products/som/kria/k24c-commercial.html)                              | [k24i-sm](conf/machine/k24i-sm.conf)       | `k24i-sm`     | `zynqmp-sm-k24-reva`   | Yes         | Yes       |
+|         | [Kria KD240 Drives Starter Kit](https://www.xilinx.com/products/som/kria/kd240-drives-starter-kit.html)     | [k24-smk-kd](conf/machine/k24-smk-kd.conf) | `k24-smk-kd`  | `zynqmp-sck-kd-g-revA` | Yes         | Yes       |
+
+**Commercial and Industrial grades**
+For both K26 and K24 there are C (commercial) and I (industrial) grades of the
+production (-sm) SOM. The K26 SOM has no practical software difference between
+the two grades so a single machine is supported. However, for K24 the Industrial
+grade supports ECC memory but the Commercial grade do not so two machine
+configurations are provided.
 
 > **Note:** Additional information on Xilinx architectures can be found at:
 	https://www.xilinx.com/products/silicon-devices.html

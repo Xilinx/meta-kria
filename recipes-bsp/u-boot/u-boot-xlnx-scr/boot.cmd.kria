@@ -36,9 +36,12 @@ if test "${card1_name}" = "SCK-KV-G"; then
         if test "${card1_rev}" = "Z" || test "${card1_rev}" = "A"; then
                 #revA dtb also supports revZ boards
                 dtb_name=SMK-zynqmp-${card_name}-revA
-        elif test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
-                #revB dtb also supports rev1 boards
+        elif test "${card1_rev}" = "B" || test "${card1_rev}" = "1" || test "${card1_rev}" = "2"; then
+                #revB dtb also supports rev1 and rev2 boards
                 dtb_name=SMK-zynqmp-${card_name}-revB
+        else #default dtb if card revision is not found
+                dtb_name=SMK-zynqmp-${card_name}-revB
+                echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
         fi
 elif test "${card1_name}" = "SCK-KR-G"; then
 	if test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
