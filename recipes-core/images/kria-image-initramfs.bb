@@ -16,7 +16,7 @@ PACKAGE_INSTALL ?= " \
     base-passwd \
     ${ROOTFS_BOOTSTRAP_INSTALL} \
     e2fsprogs \
-    misc-config \
+    mac-config \
     "
 
 # Do not pollute the initrd image with rootfs features

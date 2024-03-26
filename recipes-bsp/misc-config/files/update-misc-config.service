@@ -1,8 +1,0 @@
-[Unit]
-Description=update-misc-config
-
-[Service]
-ExecStart=/usr/bin/update-misc-config.sh
-
-[Install]
-WantedBy=multi-user.target

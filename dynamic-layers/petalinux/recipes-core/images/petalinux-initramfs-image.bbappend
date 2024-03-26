@@ -1,1 +1,1 @@
-INITRAMFS_PACKAGES:append:kria = "misc-config"
+INITRAMFS_PACKAGES:append:kria = "mac-config"

@@ -20,10 +20,10 @@ QSPI_IMAGE_VERSION:k26-kria = "2.0"
 QSPI_IMAGE_VERSION:k24-kria = "1.0"
 
 do_manifest () {
-    echo "=== QSPI\n\nVERSION: ${QSPI_IMAGE_VER}\n" > ${B}/${IMAGE_NAME}.manifest
+    printf "=== QSPI\nVERSION: ${QSPI_IMAGE_VERSION}\n\n" > ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/imgrcry-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/imgsel-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
-    echo "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
+    printf "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/boot.bin.manifest >> ${B}/${IMAGE_NAME}.manifest
 }
 

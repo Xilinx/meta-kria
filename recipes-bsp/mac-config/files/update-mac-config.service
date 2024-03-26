@@ -1,0 +1,8 @@
+[Unit]
+Description=update-mac-config
+
+[Service]
+ExecStart=/usr/bin/update-mac-config.sh
+
+[Install]
+WantedBy=multi-user.target
