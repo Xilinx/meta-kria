@@ -1,9 +1,6 @@
 # This file should not use ?=, and should be included AFTER the base soc-variant
 MACHINEOVERRIDES =. "kria:"
 
-#FPGA manager Variables
-MACHINE_FEATURES += "fpga-overlay"
-
 SPL_BINARY = ""
 
 IMAGE_CLASSES += "kria-image"

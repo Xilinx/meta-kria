@@ -1,0 +1,11 @@
+#!/bin/sh
+
+loadkernelmodule_enabled() {
+        return 0
+}
+
+loadkernelmodule_run() {
+	for MODULE in @@INITRAMFS_LOAD_MODULES@@ ;do
+		load_kernel_module $MODULE
+	done
+}

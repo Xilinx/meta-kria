@@ -8,6 +8,7 @@ INITRAMFS_SCRIPTS ?= " \
     initramfs-module-e2fs \
     initramfs-module-rootfs \
     initramfs-module-udev \
+    initramfs-module-loadkernelmodule \
     "
 
 PACKAGE_INSTALL ?= " \
@@ -18,6 +19,9 @@ PACKAGE_INSTALL ?= " \
     e2fsprogs \
     mac-config \
     "
+
+PACKAGE_INSTALL:append:kria = " kernel-module-usb2244 kernel-module-usb5744"
+INITRAMFS_MAXSIZE = "150000"
 
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""

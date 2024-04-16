@@ -15,6 +15,8 @@ INITRAMFS_IMAGE ?= "kria-image-initramfs"
 INITRAMFS_FSTYPES ?= "cpio.gz cpio.gz.u-boot tar.gz"
 RAMDISK_IMAGE1 = "${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot"
 
+INITRAMFS_LOAD_MODULES ?= "usb2244.ko usb5744.ko"
+
 require conf/machine/include/k24-kria-common.inc
 require conf/machine/include/kria-qemu-kd.inc
 
