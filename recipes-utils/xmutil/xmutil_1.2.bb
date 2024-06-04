@@ -29,6 +29,7 @@ inherit python3-dir autotools-brokensep
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:zynqmp = "zynqmp"
 COMPATIBLE_MACHINE:versal = "versal"
+COMPATIBLE_MACHINE:versal-net = "versal-net"
 
 RREPLACES:${PN} = "kria-pwrctl"
 
