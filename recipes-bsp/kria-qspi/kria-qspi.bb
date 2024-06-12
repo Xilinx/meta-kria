@@ -16,8 +16,8 @@ COMPATIBLE_MACHINE:k24-smk = "${MACHINE}"
 QSPI_IMAGE_NAME = "XilinxSom_QspiImage"
 
 QSPI_IMAGE_VERSION ?= ""
-QSPI_IMAGE_VERSION:k26-kria = "2.0"
-QSPI_IMAGE_VERSION:k24-kria = "1.0"
+QSPI_IMAGE_VERSION:k26-kria = "2.1"
+QSPI_IMAGE_VERSION:k24-kria = "1.1"
 
 do_manifest () {
     printf "=== QSPI\nVERSION: ${QSPI_IMAGE_VERSION}\n\n" > ${B}/${IMAGE_NAME}.manifest
