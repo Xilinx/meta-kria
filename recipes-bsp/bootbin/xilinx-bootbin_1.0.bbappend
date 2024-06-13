@@ -34,7 +34,7 @@ do_compile:append:kria() {
     bootbin_sha=$(sha1sum ${B}/BOOT.bin | cut -f 1 -d ' ')
     printf "SHA1: ${bootbin_sha}\n\n" > ${B}/${BOOTBIN_MANIFEST_FILE}
 
-    cat ${DEPLOY_DIR_IMAGE}/bootbin-version-header-${MACHINE}.rootfs.manifest \
+    cat ${DEPLOY_DIR_IMAGE}/bootbin-version-header-${MACHINE}.manifest \
         ${DEPLOY_DIR_IMAGE}/fsbl-${MACHINE}.manifest ${DEPLOY_DIR_IMAGE}/pmu-firmware-${MACHINE}.manifest \
         ${DEPLOY_DIR_IMAGE}/arm-trusted-firmware.manifest ${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.manifest \
         ${DEPLOY_DIR_IMAGE}/device-tree-${MACHINE}.manifest ${B}/bootbin_yocto_layers.txt >> ${B}/${BOOTBIN_MANIFEST_FILE}
@@ -44,5 +44,5 @@ do_deploy:append:kria() {
     install -m 0644 ${B}/${BOOTBIN_MANIFEST_FILE} ${DEPLOYDIR}/${BOOTBIN_BASE_NAME}.bin.manifest
     ln -sf ${BOOTBIN_BASE_NAME}.bin.manifest ${DEPLOYDIR}/${BOOTBIN_MANIFEST_FILE}
 
-    ln -sf ${BOOTBIN_BASE_NAME}.bin ${DEPLOYDIR}/${@d.getVar("MACHINE")[:3].upper()}-BootFW-${BOOTBIN_VER_MAIN}.bin
+    ln -sf ${BOOTBIN_BASE_NAME}.bin ${DEPLOYDIR}/${@d.getVar("MACHINE")}-${BOOTBIN_VER_MAIN}${IMAGE_VERSION_SUFFIX}.bin
 }
