@@ -9,12 +9,12 @@ COMPATIBLE_MACHINE:kria = "${MACHINE}"
 inherit populate_sdk
 
 TOOLCHAIN_TARGET_TASK:append = " \
-    packagegroup-petalinux-audio-dev \
-    packagegroup-petalinux-gstreamer-dev \
-    packagegroup-petalinux-opencv-dev \
-    packagegroup-petalinux-kria-dev \
-    packagegroup-petalinux-tsn-dev \
+    packagegroup-xilinx-audio-dev \
+    packagegroup-xilinx-gstreamer-dev \
+    packagegroup-opencv-dev \
+    packagegroup-kria-dev \
+    packagegroup-tsn-dev \
 "
 
-#packagegroup-petalinux-vitisai-dev
+#packagegroup-vitisai-dev
 #packagegroup-petalinux-vvas-dev

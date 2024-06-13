@@ -12,7 +12,7 @@ IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs package-management"
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
-    packagegroup-petalinux-kria \
+    packagegroup-kria \
     kernel-modules \
     nfs-utils \
     nfs-utils-client \

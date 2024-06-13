@@ -1,5 +1,5 @@
-FEATURE_PACKAGES_petalinux-kria ?= "packagegroup-petalinux-kria"
-FEATURE_PACKAGES_petalinux-kria[optional] ?= "1"
+FEATURE_PACKAGES-kria ?= "packagegroup-kria"
+FEATURE_PACKAGES_kria[optional] ?= "1"
 
 kria_enable_lmsensor_fancontrol () {
     # Check if lmsensors-fancontrol is installed, if so enable it

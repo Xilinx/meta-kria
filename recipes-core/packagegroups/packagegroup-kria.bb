@@ -7,26 +7,34 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 KRIA_PACKAGES = " \
-        packagegroup-core-full-cmdline \
-        packagegroup-core-tools-debug \
-        packagegroup-core-ssh-openssh \
-        packagegroup-petalinux-jupyter \
-        packagegroup-petalinux-networking-stack \
-        packagegroup-petalinux-python-modules \
-        packagegroup-petalinux-tpm \
-        packagegroup-petalinux-utils \
-        packagegroup-petalinux \
+        bridge-utils \
+        can-utils \
+        cpufrequtils \
+        e2fsprogs \
+        i2c-tools \
+        mtd-utils \
+        pciutils \
+        smartmontools \
+        usbutils \
+        util-linux \
+        ${KRIA_ARCH_PACKAGES} \
         archconfig \
         image-update \
+        kria-dashboard \
         ldd \
+        lmsensors-fancontrol \
         ntp \
+        packagegroup-core-full-cmdline \
+        packagegroup-core-ssh-openssh \
+        packagegroup-core-tools-debug \
+        packagegroup-petalinux-jupyter \
+        packagegroup-networking-stack \
+        packagegroup-python-modules \
+        packagegroup-security-tpm2 \
         resize-part \
         tree \
         tzdata \
         xmutil \
-        kria-dashboard \
-        lmsensors-fancontrol \
-        ${KRIA_ARCH_PACKAGES} \
 "
 
 KRIA_ARCH_PACKAGES = ""
