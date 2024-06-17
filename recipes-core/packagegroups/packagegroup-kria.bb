@@ -29,8 +29,15 @@ KRIA_PACKAGES = " \
         packagegroup-core-tools-debug \
         packagegroup-petalinux-jupyter \
         packagegroup-networking-stack \
-        packagegroup-python-modules \
         packagegroup-security-tpm2 \
+        python3-pip \
+        python3-multiprocessing \
+        python3-numpy \
+        python3-shell \
+        python3-threading \
+        python3-threading \
+        python3-pyserial \
+        python3-h5py \
         resize-part \
         tree \
         tzdata \
