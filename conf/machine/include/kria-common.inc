@@ -18,8 +18,6 @@ EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
 
 IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
 
-WIC_DEPENDS = "virtual/kernel virtual/dtb u-boot-xlnx-scr"
-
 KERNEL_COMMAND_APPEND ?= "root=LABEL=root"
 
 UBOOT_MACHINE = "xilinx_zynqmp_kria_defconfig"
