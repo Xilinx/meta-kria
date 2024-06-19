@@ -32,5 +32,8 @@ KRIA_PACKAGES = " \
 KRIA_ARCH_PACKAGES = ""
 KRIA_ARCH_PACKAGES:k26-smk = "k26-starter-kits"
 KRIA_ARCH_PACKAGES:k24-smk = "k24-starter-kits"
+KRIA_ARCH_PACKAGES:kria-zynqmp-generic = "k26-starter-kits k24-starter-kits"
+
+KRIA_PACKAGES:remove:kria-zynqmp-generic = "archconfig"
 
 RDEPENDS:${PN} = "${KRIA_PACKAGES}"
