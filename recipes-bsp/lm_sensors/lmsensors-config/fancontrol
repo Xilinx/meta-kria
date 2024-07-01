@@ -2,12 +2,12 @@
 # Place your device specific configuration in this file.
 
 INTERVAL=5
-FCTEMPS=/sys/class/hwmon/hwmon2/pwm1=/sys/class/hwmon/hwmon1/temp1_input
-FCFANS=/sys/class/hwmon/hwmon2/pwm1=/sys/class/hwmon/hwmon2/pwm1
-MINTEMP=/sys/class/hwmon/hwmon2/pwm1=35
-MAXTEMP=/sys/class/hwmon/hwmon2/pwm1=45
-MINSTART=/sys/class/hwmon/hwmon2/pwm1=30
-MINSTOP=/sys/class/hwmon/hwmon2/pwm1=15
-MINPWM=/sys/class/hwmon/hwmon2/pwm1=15
-MAXPWM=/sys/class/hwmon/hwmon2/pwm1=255
-AVERAGE=/sys/class/hwmon/hwmon2/pwm1=4
+FCTEMPS=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=/sys/devices/platform/ams/hwmon/hwmon[[:print:]]*/temp1_input
+FCFANS=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1
+MINTEMP=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=35
+MAXTEMP=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=45
+MINSTART=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=30
+MINSTOP=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=15
+MINPWM=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=15
+MAXPWM=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=255
+AVERAGE=/sys/devices/platform/pwm-fan/hwmon/hwmon[[:print:]]*/pwm1=4
