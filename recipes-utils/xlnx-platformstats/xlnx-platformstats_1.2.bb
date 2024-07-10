@@ -2,9 +2,9 @@ SUMMARY = "Xilinx xlnx_platformstats library"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
-BRANCH ?= "xlnx_rel_v2024.1"
+BRANCH ?= "master"
 SRC_URI = "git://github.com/Xilinx/xlnx_platformstats.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "d391d38385368689a85d1cb76606a40f467e80fb"
+SRCREV ?= "c5771895bf1b9d68785a0cb8e24b5220d4bb9748"
 
 PARALLEL_MAKE = "-j 1"
 
