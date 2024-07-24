@@ -27,7 +27,7 @@ KRIA_PACKAGES = " \
         packagegroup-core-full-cmdline \
         packagegroup-core-ssh-openssh \
         packagegroup-core-tools-debug \
-        packagegroup-petalinux-jupyter \
+        packagegroup-xilinx-jupyter \
         packagegroup-networking-stack \
         packagegroup-security-tpm2 \
         python3-pip \
