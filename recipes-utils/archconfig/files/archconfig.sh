@@ -29,7 +29,7 @@ if [ -f "${ARCHCONFIG_FILE}" ]; then # Check config
         error "Carrier card configuration missing from RPM config"
     fi
 
-    if ! grep "${SOM}_${CARRIER}" /etc/oe-remote-repo-*.repo > /dev/null; then
+    if ! grep "${SOM}_${CARRIER}" /etc/yum.repos.d/oe-remote-repo-*.repo > /dev/null; then
         error "Carrier card configuration missing from remote repo config"
     fi
 
