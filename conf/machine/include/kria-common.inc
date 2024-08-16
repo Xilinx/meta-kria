@@ -22,6 +22,10 @@ KERNEL_COMMAND_APPEND ?= "root=LABEL=root"
 
 UBOOT_MACHINE = "xilinx_zynqmp_kria_defconfig"
 
+# Default values for deploy dirs
+FSBL_DEPLOY_DIR ??= "${DEPLOY_DIR_IMAGE}"
+PMU_FIRMWARE_DEPLOY_DIR ??= "${DEPLOY_DIR_IMAGE}"
+
 # QEMU options
 QB_DEFAULT_FSTYPE = "wic.qemu-sd"
 
