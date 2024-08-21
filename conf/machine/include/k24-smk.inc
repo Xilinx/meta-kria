@@ -24,8 +24,6 @@ IMAGE_BOOT_FILES = "Image ${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz.u-boot boot.scr"
 IMAGE_BOOT_FILES += "devicetree/SMK-*.dtb;devicetree/"
 IMAGE_BOOT_FILES += "devicetree/*.dtbo;devicetree/"
 
-HDF_MACHINE = "k24-smk"
-
 #### No additional settings should be after the Postamble
 #### Postamble
 PACKAGE_EXTRA_ARCHS:append = "${@['', ' k24_smk']['k24-smk' != "${MACHINE}"]}"
