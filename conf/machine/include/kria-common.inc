@@ -22,6 +22,8 @@ KERNEL_COMMAND_APPEND ?= "root=LABEL=root"
 
 UBOOT_MACHINE = "xilinx_zynqmp_kria_defconfig"
 
+MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "${PREFERRED_PROVIDER_virtual/dtb}"
+
 # Default values for deploy dirs
 FSBL_DEPLOY_DIR ??= "${DEPLOY_DIR_IMAGE}"
 PMU_FIRMWARE_DEPLOY_DIR ??= "${DEPLOY_DIR_IMAGE}"
