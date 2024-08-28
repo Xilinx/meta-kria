@@ -4,14 +4,6 @@
 	firmware-name = "project_1.bit.bin";
 };
 &amba{
-	clocking1: clocking1 {
-		compatible = "xlnx,fclk";
-		assigned-clocks = <&zynqmp_clk 0x48>;
-		assigned-clock-rates = <0x5f5dd19>;
-		#clock-cells = <0x0>;
-		clock-output-names = "fabric_clk";
-		clocks = <&zynqmp_clk 0x48>;
-	};
 	clocking0: clocking0 {
 		compatible = "xlnx,fclk";
 		assigned-clocks = <&zynqmp_clk 0x47>;
@@ -19,6 +11,14 @@
 		#clock-cells = <0x0>;
 		clock-output-names = "fabric_clk";
 		clocks = <&zynqmp_clk 0x47>;
+	};
+	clocking1: clocking1 {
+		compatible = "xlnx,fclk";
+		assigned-clocks = <&zynqmp_clk 0x48>;
+		assigned-clock-rates = <0x5f5dd19>;
+		#clock-cells = <0x0>;
+		clock-output-names = "fabric_clk";
+		clocks = <&zynqmp_clk 0x48>;
 	};
 	afi0: afi0 {
 		status = "okay";

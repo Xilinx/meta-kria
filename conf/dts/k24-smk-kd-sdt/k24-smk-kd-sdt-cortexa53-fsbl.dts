@@ -138,7 +138,7 @@
                         enable-method = "psci";
                         operating-points-v2 = <0x6c>;
                         reg = <0x0>;
-                        cpu-idle-states = <0x6d>;
+                        cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <0x6e>;
                         clocks = <&zynqmp_clk 0xa>;
                         xlnx,psu-ep = <0x1>;
@@ -166,7 +166,7 @@
                         enable-method = "psci";
                         reg = <0x1>;
                         operating-points-v2 = <0x6c>;
-                        cpu-idle-states = <0x6d>;
+                        cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <0x6e>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,rable = <0x0>;
@@ -189,7 +189,7 @@
                         enable-method = "psci";
                         reg = <0x2>;
                         operating-points-v2 = <0x6c>;
-                        cpu-idle-states = <0x6d>;
+                        cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <0x6e>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,rable = <0x0>;
@@ -212,7 +212,7 @@
                         enable-method = "psci";
                         reg = <0x3>;
                         operating-points-v2 = <0x6c>;
-                        cpu-idle-states = <0x6d>;
+                        cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <0x6e>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,rable = <0x0>;
@@ -365,7 +365,7 @@
                         compatible = "arm,cortex-r5", "arm,armv8";
                         device_type = "cpu";
                         reg = <0x0>;
-                        power-domains = <0x78 0x7>;
+                        power-domains = <&zynqmp_firmware 0x7>;
                         xlnx,is-cache-coherent = <0x0>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,tz-nonsecure = <0x0>;
@@ -498,7 +498,7 @@
                         compatible = "arm,cortex-r5", "arm,armv8";
                         device_type = "cpu";
                         reg = <0x1>;
-                        power-domains = <0x78 0x8>;
+                        power-domains = <&zynqmp_firmware 0x8>;
                         xlnx,is-cache-coherent = <0x0>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,tz-nonsecure = <0x0>;
@@ -1047,7 +1047,7 @@
                         tx-fifo-depth = <0x40>;
                         rx-fifo-depth = <0x40>;
                         resets = <&zynqmp_reset 0x28>;
-                        power-domains = <0x78 0x2f>;
+                        power-domains = <&zynqmp_firmware 0x2f>;
                         clocks = <&zynqmp_clk 0x3f>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1069,7 +1069,7 @@
                         tx-fifo-depth = <0x40>;
                         rx-fifo-depth = <0x40>;
                         resets = <&zynqmp_reset 0x29>;
-                        power-domains = <0x78 0x30>;
+                        power-domains = <&zynqmp_firmware 0x30>;
                         clocks = <&zynqmp_clk 0x40>,
                          <&zynqmp_clk 0x1f>;
                         phandle = <0xb5>;
@@ -1102,7 +1102,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14e8>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1124,7 +1124,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14e9>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1146,7 +1146,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14ea>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1168,7 +1168,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14eb>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1190,7 +1190,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14ec>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1212,7 +1212,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14ed>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1234,7 +1234,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14ee>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1256,7 +1256,7 @@
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
                         iommus = <&smmu 0x14ef>;
-                        power-domains = <0x78 0x2a>;
+                        power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1276,7 +1276,7 @@
                         interrupts = <0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4>;
                         interrupt-names = "gp", "gpmmu", "pp0", "ppmmu0", "pp1", "ppmmu1";
                         clock-names = "bus", "core";
-                        power-domains = <0x78 0x3a>;
+                        power-domains = <&zynqmp_firmware 0x3a>;
                         clocks = <&zynqmp_clk 0x18>,
                          <&zynqmp_clk 0x19>;
                         xlnx,rable = <0x0>;
@@ -1296,7 +1296,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1318,7 +1318,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1340,7 +1340,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1362,7 +1362,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1384,7 +1384,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1406,7 +1406,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1427,7 +1427,7 @@
                         interrupts = <0x0 0x53 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1449,7 +1449,7 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        power-domains = <0x78 0x2b>;
+                        power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -1506,7 +1506,7 @@
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
                         iommus = <&smmu 0x872>;
-                        power-domains = <0x78 0x2c>;
+                        power-domains = <&zynqmp_firmware 0x2c>;
                         clocks = <&zynqmp_clk 0x3c>,
                          <&zynqmp_clk 0x1f>;
                         phandle = <0xb7>;
@@ -1522,7 +1522,7 @@
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
                         iommus = <&smmu 0x874>;
-                        power-domains = <0x78 0x1d>;
+                        power-domains = <&zynqmp_firmware 0x1d>;
                         resets = <&zynqmp_reset 0x1d>;
                         reset-names = "gem0_rst";
                         clocks = <&zynqmp_clk 0x1f>,
@@ -1544,7 +1544,7 @@
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
                         iommus = <&smmu 0x875>;
-                        power-domains = <0x78 0x1e>;
+                        power-domains = <&zynqmp_firmware 0x1e>;
                         resets = <&zynqmp_reset 0x1e>;
                         reset-names = "gem1_rst";
                         clocks = <&zynqmp_clk 0x1f>,
@@ -1587,7 +1587,7 @@
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
                         iommus = <&smmu 0x876>;
-                        power-domains = <0x78 0x1f>;
+                        power-domains = <&zynqmp_firmware 0x1f>;
                         resets = <&zynqmp_reset 0x1f>;
                         reset-names = "gem2_rst";
                         clocks = <&zynqmp_clk 0x1f>,
@@ -1609,7 +1609,7 @@
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
                         iommus = <&smmu 0x877>;
-                        power-domains = <0x78 0x20>;
+                        power-domains = <&zynqmp_firmware 0x20>;
                         resets = <&zynqmp_reset 0x20>;
                         reset-names = "gem3_rst";
                         clocks = <&zynqmp_clk 0x1f>,
@@ -1631,7 +1631,7 @@
                         interrupt-controller;
                         #interrupt-cells = <0x2>;
                         reg = <0x0 0xff0a0000 0x0 0x1000>;
-                        power-domains = <0x78 0x2e>;
+                        power-domains = <&zynqmp_firmware 0x2e>;
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,mio-gpio-mask = <0x5600>;
@@ -1656,7 +1656,7 @@
                         reg = <0x0 0xff020000 0x0 0x1000>;
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
-                        power-domains = <0x78 0x25>;
+                        power-domains = <&zynqmp_firmware 0x25>;
                         clocks = <&zynqmp_clk 0x3d>;
                         phandle = <0xbb>;
                 };
@@ -1670,7 +1670,7 @@
                         reg = <0x0 0xff030000 0x0 0x1000>;
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
-                        power-domains = <0x78 0x26>;
+                        power-domains = <&zynqmp_firmware 0x26>;
                         clocks = <&zynqmp_clk 0x3e>;
                         xlnx,rable = <0x0>;
                         xlnx,i2c-reset = <0x0>;
@@ -1894,12 +1894,12 @@
                         ranges = <0x2000000 0x0 0xe0000000 0x0 0xe0000000 0x0 0x10000000 0x43000000 0x6 0x0 0x6 0x0 0x2 0x0>;
                         interrupt-map-mask = <0x0 0x0 0x0 0x7>;
                         bus-range = <0x0 0xff>;
-                        interrupt-map = <0x1 &pcie_intc 0x1>,
-                         <0x2 &pcie_intc 0x2>,
-                         <0x3 &pcie_intc 0x3>,
-                         <0x4 &pcie_intc 0x4>;
+                        interrupt-map = <0x0 0x0 0x0 0x1 &pcie_intc 0x1>,
+                         <0x0 0x0 0x0 0x2 &pcie_intc 0x2>,
+                         <0x0 0x0 0x0 0x3 &pcie_intc 0x3>,
+                         <0x0 0x0 0x0 0x4 &pcie_intc 0x4>;
                         iommus = <&smmu 0x4d0>;
-                        power-domains = <0x78 0x3b>;
+                        power-domains = <&zynqmp_firmware 0x3b>;
                         clocks = <&zynqmp_clk 0x17>;
                         phandle = <0x8f>;
 
@@ -1923,7 +1923,7 @@
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
                         iommus = <&smmu 0x873>;
-                        power-domains = <0x78 0x2d>;
+                        power-domains = <&zynqmp_firmware 0x2d>;
                         clocks = <&zynqmp_clk 0x35>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,is-cache-coherent = <0x0>;
@@ -2097,7 +2097,7 @@
                         reg = <0x0 0xfd0c0000 0x0 0x2000>;
                         interrupt-parent = <&gic_a53>;
                         interrupts = <0x0 0x85 0x4>;
-                        power-domains = <0x78 0x1c>;
+                        power-domains = <&zynqmp_firmware 0x1c>;
                         resets = <&zynqmp_reset 0x10>;
                         clocks = <&zynqmp_clk 0x16>;
                         phandle = <0xc4>;
@@ -2112,7 +2112,7 @@
                         reg = <0x0 0xff160000 0x0 0x1000>;
                         clock-names = "clk_xin", "clk_ahb";
                         iommus = <&smmu 0x870>;
-                        power-domains = <0x78 0x27>;
+                        power-domains = <&zynqmp_firmware 0x27>;
                         #clock-cells = <0x1>;
                         clock-output-names = "clk_out_sd0", "clk_in_sd0";
                         resets = <&zynqmp_reset 0x26>;
@@ -2138,7 +2138,7 @@
                         reg = <0x0 0xff170000 0x0 0x1000>;
                         clock-names = "clk_xin", "clk_ahb";
                         iommus = <&smmu 0x871>;
-                        power-domains = <0x78 0x28>;
+                        power-domains = <&zynqmp_firmware 0x28>;
                         #clock-cells = <0x1>;
                         clock-output-names = "clk_out_sd1", "clk_in_sd1";
                         resets = <&zynqmp_reset 0x27>;
@@ -2172,7 +2172,7 @@
                         clock-names = "ref_clk", "pclk";
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
-                        power-domains = <0x78 0x23>;
+                        power-domains = <&zynqmp_firmware 0x23>;
                         clocks = <&zynqmp_clk 0x3a>,
                          <&zynqmp_clk 0x1f>;
                         phandle = <0xc7>;
@@ -2187,7 +2187,7 @@
                         clock-names = "ref_clk", "pclk";
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
-                        power-domains = <0x78 0x24>;
+                        power-domains = <&zynqmp_firmware 0x24>;
                         clocks = <&zynqmp_clk 0x3b>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
@@ -2217,7 +2217,7 @@
                         interrupts = <0x0 0x24 0x4 0x0 0x25 0x4 0x0 0x26 0x4>;
                         reg = <0x0 0xff110000 0x0 0x1000>;
                         timer-width = <0x20>;
-                        power-domains = <0x78 0x18>;
+                        power-domains = <&zynqmp_firmware 0x18>;
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,ttc-board-interface = "custom";
@@ -2239,7 +2239,7 @@
                         interrupts = <0x0 0x27 0x4 0x0 0x28 0x4 0x0 0x29 0x4>;
                         reg = <0x0 0xff120000 0x0 0x1000>;
                         timer-width = <0x20>;
-                        power-domains = <0x78 0x19>;
+                        power-domains = <&zynqmp_firmware 0x19>;
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,ttc-board-interface = "custom";
@@ -2260,7 +2260,7 @@
                         interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
                         reg = <0x0 0xff130000 0x0 0x1000>;
                         timer-width = <0x20>;
-                        power-domains = <0x78 0x1a>;
+                        power-domains = <&zynqmp_firmware 0x1a>;
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,ttc-board-interface = "custom";
@@ -2281,7 +2281,7 @@
                         interrupts = <0x0 0x2d 0x4 0x0 0x2e 0x4 0x0 0x2f 0x4>;
                         reg = <0x0 0xff140000 0x0 0x1000>;
                         timer-width = <0x20>;
-                        power-domains = <0x78 0x1b>;
+                        power-domains = <&zynqmp_firmware 0x1b>;
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,ttc-board-interface = "custom";
@@ -2303,7 +2303,7 @@
                         interrupts = <0x0 0x15 0x4>;
                         reg = <0x0 0xff000000 0x0 0x1000>;
                         clock-names = "uart_clk", "pclk";
-                        power-domains = <0x78 0x21>;
+                        power-domains = <&zynqmp_firmware 0x21>;
                         clocks = <&zynqmp_clk 0x38>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,has-modem = <0x0>;
@@ -2329,7 +2329,7 @@
                         interrupts = <0x0 0x16 0x4>;
                         reg = <0x0 0xff010000 0x0 0x1000>;
                         clock-names = "uart_clk", "pclk";
-                        power-domains = <0x78 0x22>;
+                        power-domains = <&zynqmp_firmware 0x22>;
                         clocks = <&zynqmp_clk 0x39>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,has-modem = <0x0>;
@@ -2354,7 +2354,7 @@
                         compatible = "xlnx,zynqmp-dwc3";
                         reg = <0x0 0xff9d0000 0x0 0x100>;
                         clock-names = "bus_clk", "ref_clk";
-                        power-domains = <0x78 0x16>;
+                        power-domains = <&zynqmp_firmware 0x16>;
                         resets = <&zynqmp_reset 0x3b>,
                          <&zynqmp_reset 0x3d>,
                          <&zynqmp_reset 0x3f>;
@@ -2408,7 +2408,7 @@
                         compatible = "xlnx,zynqmp-dwc3";
                         reg = <0x0 0xff9e0000 0x0 0x100>;
                         clock-names = "bus_clk", "ref_clk";
-                        power-domains = <0x78 0x17>;
+                        power-domains = <&zynqmp_firmware 0x17>;
                         resets = <&zynqmp_reset 0x3c>,
                          <&zynqmp_reset 0x3e>,
                          <&zynqmp_reset 0x40>;
@@ -2512,7 +2512,7 @@
                         interrupts = <0x0 0x7a 0x4>;
                         interrupt-parent = <&gic_a53>;
                         clock-names = "axi_clk";
-                        power-domains = <0x78 0x29>;
+                        power-domains = <&zynqmp_firmware 0x29>;
                         dma-channels = <0x6>;
                         iommus = <&smmu 0xce4>;
                         #dma-cells = <0x1>;
@@ -2542,7 +2542,7 @@
                         interrupt-parent = <&gic_a53>;
                         iommus = <&smmu 0xce3>;
                         clock-names = "dp_apb_clk", "dp_aud_clk", "dp_vtc_pixel_clk_in";
-                        power-domains = <0x78 0x29>;
+                        power-domains = <&zynqmp_firmware 0x29>;
                         resets = <&zynqmp_reset 0x3>;
                         dma-names = "vid0", "vid1", "vid2", "gfx0";
                         dmas = <0x33 0x0 0x33 0x1 0x33 0x2 0x33 0x3>;
@@ -3324,7 +3324,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-tcm-ram-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0xf>;
+                        power-domains = <&zynqmp_firmware 0xf>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_tcm_ram";
                         reg = <0x0 0xffe00000 0x0 0x40000>;
@@ -3336,7 +3336,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-tcm-ram-1.0";
                         status = "okay";
-                        power-domains = <0x78 0xf>;
+                        power-domains = <&zynqmp_firmware 0xf>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_tcm_ram";
                         reg = <0x0 0x0 0x0 0x40000>;
@@ -3348,7 +3348,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ocm-ram-0-1.0";
                         status = "okay";
-                        power-domains = <0x78 0xb>;
+                        power-domains = <&zynqmp_firmware 0xb>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ocm_ram_0";
                         reg = <0x0 0xfffc0000 0x0 0x40000>;
@@ -3360,7 +3360,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-1-btcm-1.0";
                         status = "okay";
-                        power-domains = <0x78 0x12>;
+                        power-domains = <&zynqmp_firmware 0x12>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_btcm";
                         reg = <0x0 0x20000 0x0 0x10000>;
@@ -3372,7 +3372,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0x12>;
+                        power-domains = <&zynqmp_firmware 0x12>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_btcm_global";
                         reg = <0x0 0xffeb0000 0x0 0x10000>;
@@ -3384,7 +3384,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-1-atcm-1.0";
                         status = "okay";
-                        power-domains = <0x78 0x11>;
+                        power-domains = <&zynqmp_firmware 0x11>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_atcm";
                         reg = <0x0 0x0 0x0 0x10000>;
@@ -3396,7 +3396,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-1-atcm-global-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0x11>;
+                        power-domains = <&zynqmp_firmware 0x11>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_atcm_global";
                         reg = <0x0 0xffe90000 0x0 0x10000>;
@@ -3408,7 +3408,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-0-btcm-lockstep-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0x10>;
+                        power-domains = <&zynqmp_firmware 0x10>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_btcm_lockstep";
                         xlnx,is-hierarchy;
@@ -3421,7 +3421,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-0-btcm-1.0";
                         status = "okay";
-                        power-domains = <0x78 0x10>;
+                        power-domains = <&zynqmp_firmware 0x10>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_btcm";
                         reg = <0x0 0x20000 0x0 0x10000>;
@@ -3433,7 +3433,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-0-btcm-global-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0x10>;
+                        power-domains = <&zynqmp_firmware 0x10>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_btcm_global";
                         reg = <0x0 0xffe20000 0x0 0x10000>;
@@ -3445,7 +3445,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-0-atcm-lockstep-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0xf>;
+                        power-domains = <&zynqmp_firmware 0xf>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_atcm_lockstep";
                         xlnx,is-hierarchy;
@@ -3458,7 +3458,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-0-atcm-1.0";
                         status = "okay";
-                        power-domains = <0x78 0xf>;
+                        power-domains = <&zynqmp_firmware 0xf>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_atcm";
                         reg = <0x0 0x0 0x0 0x10000>;
@@ -3470,7 +3470,7 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-r5-0-atcm-global-1.0", "mmio-sram";
                         status = "okay";
-                        power-domains = <0x78 0xf>;
+                        power-domains = <&zynqmp_firmware 0xf>;
                         xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_atcm_global";
                         reg = <0x0 0xffe00000 0x0 0x10000>;
