@@ -1,9 +1,0 @@
-[Unit]
-Description=Package Manager Arch Configuration
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/archconfig.sh
-
-[Install]
-WantedBy=multi-user.target
