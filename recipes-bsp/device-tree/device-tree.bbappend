@@ -3,6 +3,10 @@ FILESEXTRAPATHS:prepend:kria := "${THISDIR}/k26-som:"
 # This recipe should never be used with the generic image
 COMPATIBLE_MACHINE:kria-zynqmp-generic = "^$"
 
+DT_INCLUDE_KRIA:kria ?= "${@'${DT_FILES_PATH}/u-boot-xlnx/include/' if d.getVar('XILINX_WITH_ESW') == 'sdt' else ''}"
+
+DT_INCLUDE:append = " ${DT_INCLUDE_KRIA}"
+
 SRCREV_FORMAT:kria = "device-tree"
 DT_UBOOT_BRANCH ?= "xlnx_rebase_v2024.01"
 DT_UBOOT_SRCREV ?= "60f65f2e85fdb33a1d28212d1271bf1f356cee77"
