@@ -1,3 +1,5 @@
+require kria-qemu-common.inc
+
 QB_ROOTFS_OPT = "-drive file=@ROOTFS@,if=none,format=raw,id=stick"
 
 QB_NETWORK_DEVICE = "-net nic -net nic,netdev=net0,macaddr=@MAC@"

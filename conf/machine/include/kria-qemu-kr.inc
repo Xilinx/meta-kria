@@ -1,3 +1,5 @@
+require kria-qemu-common.inc
+
 QB_NETWORK_DEVICE = "-net nic -net nic,netdev=net0,macaddr=@MAC@"
 
 QB_OPT_APPEND += "\
