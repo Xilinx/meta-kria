@@ -27,7 +27,7 @@ do_configure:append:kria() {
 }
 
 ADDN_COMPILE_DEPENDS = ""
-ADDN_COMPILE_DEPENDS:kria = "bootbin-version-header:do_deploy fsbl:do_deploy pmufw:do_deploy arm-trusted-firmware:do_deploy u-boot-xlnx:do_deploy device-tree:do_deploy"
+ADDN_COMPILE_DEPENDS:kria = "bootbin-version-header:do_deploy fsbl:do_deploy pmufw:do_deploy virtual/arm-trusted-firmware:do_deploy u-boot-xlnx:do_deploy device-tree:do_deploy"
 
 do_compile[depends] += "${ADDN_COMPILE_DEPENDS}"
 do_compile:append:kria() {
