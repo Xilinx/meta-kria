@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 &fpga_full{
-	firmware-name = "kr260_starter_kit.bit.bin";
+	firmware-name = "kr260_base.bit.bin";
 };
 &amba{
 	clocking1: clocking1 {
