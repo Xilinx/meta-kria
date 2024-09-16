@@ -1,5 +1,8 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+SRC_URI:append:k24i-sm = " file://kria-prod-bootmenu.cfg"
+SRC_URI:append:k24c-sm = " file://kria-prod-bootmenu.cfg"
+SRC_URI:append:k26-sm = " file://kria-prod-bootmenu.cfg"
 
 UBOOT_MANIFEST = "${UBOOT_BINARYNAME}-${MACHINE}-${PV}-${PR}.manifest"
 
