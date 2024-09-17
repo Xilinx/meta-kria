@@ -20,7 +20,7 @@ QSPI_IMAGE_VERSION:kria = "${PN}-${MACHINE}-v${QSPI_VERSION}${IMAGE_VERSION_SUFF
 
 do_manifest () {
     printf "=== QSPI\nVERSION: ${QSPI_IMAGE_VERSION}\n\n" > ${B}/${IMAGE_NAME}.manifest
-    cat ${DEPLOY_DIR_IMAGE}/imgrcry-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
+    cat ${DEPLOY_DIR_IMAGE}/image-recovery-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/image-selector-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
     printf "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
     cat ${DEPLOY_DIR_IMAGE}/boot.bin.manifest >> ${B}/${IMAGE_NAME}.manifest
