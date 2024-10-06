@@ -25,7 +25,7 @@ do_configure:append:kria() {
     printf "** ${PN} - u-boot-xlnx\nDT_UBOOT_SRCREV: ${DT_UBOOT_SRCREV}\nDT_UBOOT_BRANCH: ${DT_UBOOT_BRANCH}\n\n" >> ${S}/device-tree-${MACHINE}.manifest
 }
 
-EXTRA_OVERLAYS:append:kria = " system.dtsi"
+EXTRA_DT_INCLUDE_FILES:append:kria = " system.dtsi"
 
 YAML_CONSOLE_DEVICE_CONFIG:kria = "psu_uart_1"
 YAML_MAIN_MEMORY_CONFIG:kria = "PSU_DDR_0"
