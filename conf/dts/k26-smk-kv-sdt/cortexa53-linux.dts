@@ -2057,6 +2057,22 @@
                 };
         };
 
+        amba_xppu: indirect-bus@1 {
+                compatible = "indirect-bus";
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                phandle = <0x108>;
+
+                lpd_xppu: xppu@ff980000 {
+                        compatible = "xlnx,xppu";
+                        #firewall-cells = <0x0>;
+                        reg = <0x0 0xff980000 0x0 0x1000>;
+                        status = "okay";
+                        xlnx,ip-name = "psu_lpd_xppu";
+                        phandle = <0x4c>;
+                };
+        };
+
         pss_ref_clk: pss_ref_clk {
                 bootph-all;
                 compatible = "fixed-clock";
@@ -2330,6 +2346,8 @@
                 psu_message_buffers = "/axi/PERIPHERAL@ff990000";
                 psu_iouslcr_0 = "/axi/psu_iouslcr@ff180000";
                 psu_qspi_linear_0 = "/axi/psu_qspi_linear@c0000000";
+                amba_xppu = "/indirect-bus@1";
+                lpd_xppu = "/indirect-bus@1/xppu@ff980000";
                 pss_ref_clk = "/pss_ref_clk";
                 video_clk = "/video_clk";
                 pss_alt_ref_clk = "/pss_alt_ref_clk";
