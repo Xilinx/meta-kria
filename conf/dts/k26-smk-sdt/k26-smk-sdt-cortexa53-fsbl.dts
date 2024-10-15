@@ -31,7 +31,7 @@
                  <0x0 0xff300000 &ipi0 0x0 0xff300000 0x0 0x10000>,
                  <0x0 0x0 &psu_ddr_0_memory 0x0 0x0 0x0 0x7ff00000>,
                  <0x8 0x0 &psu_ddr_1_memory 0x8 0x0 0x0 0x80000000>,
-                 <0x0 0xf9010000 &gic_a53 0x0 0xf9010000 0x0 0x70000>,
+                 <0x0 0xf9010000 &gic 0x0 0xf9010000 0x0 0x70000>,
                  <0x0 0xffa80000 &lpd_dma_chan1 0x0 0xffa80000 0x0 0x10000>,
                  <0x0 0xffa90000 &lpd_dma_chan2 0x0 0xffa90000 0x0 0x10000>,
                  <0x0 0xffaa0000 &lpd_dma_chan3 0x0 0xffaa0000 0x0 0x10000>,
@@ -628,7 +628,6 @@
                         xlnx,addr-tag-bits = <0x0>;
                         xlnx,number-of-wr-addr-brk = <0x1>;
                         xlnx,dynamic-bus-sizing = <0x0>;
-                        xlnx,icache-highaddr = <0x3fffffff>;
                         xlnx,rable = <0x0>;
                         d-cache-highaddr = <0x3fffffff>;
                         xlnx,ip-name = "psu_pmu";
@@ -648,15 +647,14 @@
                         xlnx,trace = <0x1>;
                         xlnx,use-config-reset = <0x0>;
                         xlnx,pvr = <0x0>;
-                        xlnx,dcache-highaddr = <0x3fffffff>;
                         xlnx,dcache-byte-size = <0x2000>;
                         xlnx,is-cache-coherent = <0x0>;
                         xlnx,data-size = <0x20>;
                         xlnx,fault-tolerant = <0x1>;
                         xlnx,mmu-zones = <0x10>;
                         d-cache-line-size = <0x10>;
-                        xlnx,mmu-privileged-instr = <0x0>;
                         xlnx,enable-discrete-ports = <0x1>;
+                        xlnx,mmu-privileged-instr = <0x0>;
                         xlnx,sco = <0x0>;
                         clock-frequency = <0xaba9500>;
                         xlnx,use-ext-brk = <0x0>;
@@ -698,7 +696,6 @@
                         d-cache-size = <0x2000>;
                         xlnx,use-pcmp-instr = <0x1>;
                         xlnx,use-icache = <0x0>;
-                        xlnx,icache-baseaddr = <0x0>;
                         xlnx,dcache-addr-tag = <0x0>;
                         d-cache-baseaddr = <0x0>;
                         xlnx,number-of-rd-addr-brk = <0x1>;
@@ -707,9 +704,8 @@
                         xlnx,ddr-reserve-ea = <0x7fffffff>;
                         xlnx,use-ext-nm-brk = <0x0>;
                         xlnx,icache-always-used = <0x0>;
-                        xlnx,mmu-dtlb-size = <0x4>;
                         xlnx,lockstep-select = <0x0>;
-                        xlnx,dcache-baseaddr = <0x0>;
+                        xlnx,mmu-dtlb-size = <0x4>;
                         xlnx,fsl-links = <0x0>;
                         xlnx,dcache-data-width = <0x0>;
                         xlnx,dcache-victims = <0x0>;
@@ -758,7 +754,7 @@
         zynqmp_ipi: zynqmp-ipi {
                 bootph-all;
                 compatible = "xlnx,zynqmp-ipi-mailbox";
-                interrupt-parent = <&gic_a53>;
+                interrupt-parent = <&gic>;
                 interrupts = <0x0 0x23 0x4>;
                 xlnx,ipi-id = <0x0>;
                 #address-cells = <0x2>;
@@ -785,7 +781,7 @@
 
         pmu {
                 compatible = "arm,armv8-pmuv3";
-                interrupt-parent = <&gic_a53>;
+                interrupt-parent = <&gic>;
                 interrupts = <0x0 0x8f 0x4 0x0 0x90 0x4 0x0 0x91 0x4 0x0 0x92 0x4>;
                 interrupt-affinity = <&psu_cortexa53_0>,
                  <&psu_cortexa53_1>,
@@ -810,7 +806,7 @@
                         zynqmp_power: zynqmp-power {
                                 bootph-all;
                                 compatible = "xlnx,zynqmp-power";
-                                interrupt-parent = <&gic_a53>;
+                                interrupt-parent = <&gic>;
                                 interrupts = <0x0 0x23 0x4>;
                                 mboxes = <0x85 0x0 0x85 0x1>;
                                 mbox-names = "tx", "rx";
@@ -977,7 +973,7 @@
 
         timer {
                 compatible = "arm,armv8-timer";
-                interrupt-parent = <&gic_a53>;
+                interrupt-parent = <&gic>;
                 interrupts = <0x1 0xd 0xf08 0x1 0xe 0xf08 0x1 0xb 0xf08 0x1 0xa 0xf08>;
         };
 
@@ -1009,7 +1005,6 @@
                         interrupts = <0x1 0x9 0xf04>;
                         status = "okay";
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_rcpu_gic";
                         xlnx,name = "psu_rcpu_gic";
                         phandle = <0x74>;
@@ -1022,7 +1017,7 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 ranges;
-                interrupt-parent = <&gic_a53>;
+                interrupt-parent = <&gic>;
                 phandle = <0x1>;
 
                 can0: can@ff060000 {
@@ -1031,7 +1026,7 @@
                         clock-names = "can_clk", "pclk";
                         reg = <0x0 0xff060000 0x0 0x1000>;
                         interrupts = <0x0 0x17 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         tx-fifo-depth = <0x40>;
                         rx-fifo-depth = <0x40>;
                         resets = <&zynqmp_reset 0x28>;
@@ -1047,7 +1042,7 @@
                         clock-names = "can_clk", "pclk";
                         reg = <0x0 0xff070000 0x0 0x1000>;
                         interrupts = <0x0 0x18 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         tx-fifo-depth = <0x40>;
                         rx-fifo-depth = <0x40>;
                         resets = <&zynqmp_reset 0x29>;
@@ -1069,7 +1064,7 @@
                         pmu@9000 {
                                 compatible = "arm,cci-400-pmu,r1";
                                 reg = <0x9000 0x5000>;
-                                interrupt-parent = <&gic_a53>;
+                                interrupt-parent = <&gic>;
                                 interrupts = <0x0 0x7b 0x4 0x0 0x7b 0x4 0x0 0x7b 0x4 0x0 0x7b 0x4 0x0 0x7b 0x4>;
                         };
                 };
@@ -1078,7 +1073,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd500000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x7c 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1088,7 +1083,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1100,7 +1094,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd510000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x7d 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1110,7 +1104,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1122,7 +1115,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd520000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x7e 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1132,7 +1125,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1144,7 +1136,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd530000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x7f 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1154,7 +1146,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1166,7 +1157,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd540000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x80 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1176,7 +1167,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1188,7 +1178,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd550000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x81 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1198,7 +1188,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1210,7 +1199,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd560000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x82 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1220,7 +1209,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1232,7 +1220,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xfd570000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x83 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1242,7 +1230,6 @@
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gdma";
                         xlnx,dma-mode = <0x0>;
                         xlnx,dma-type = <0x0>;
@@ -1254,7 +1241,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-mali", "arm,mali-400";
                         reg = <0x0 0xfd4b0000 0x0 0x10000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4 0x0 0x84 0x4>;
                         interrupt-names = "gp", "gpmmu", "pp0", "ppmmu0", "pp1", "ppmmu1";
                         clock-names = "bus", "core";
@@ -1262,7 +1249,6 @@
                         clocks = <&zynqmp_clk 0x18>,
                          <&zynqmp_clk 0x19>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_gpu";
                         xlnx,tz-nonsecure = <0x1>;
                         xlnx,name = "psu_gpu";
@@ -1273,7 +1259,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffa80000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x4d 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1283,7 +1269,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1295,7 +1280,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffa90000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x4e 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1305,7 +1290,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1317,7 +1301,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffaa0000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x4f 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1327,7 +1311,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1339,7 +1322,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffab0000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x50 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1349,7 +1332,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1361,7 +1343,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffac0000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x51 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1371,7 +1353,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1383,7 +1364,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffad0000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x52 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1393,7 +1374,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1405,7 +1385,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffae0000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x53 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         xlnx,bus-width = <0x40>;
@@ -1414,7 +1394,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1426,7 +1405,7 @@
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
                         reg = <0x0 0xffaf0000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x54 0x4>;
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
@@ -1436,7 +1415,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,is-cache-coherent = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_adma";
                         xlnx,dma-mode = <0x1>;
                         xlnx,dma-type = <0x1>;
@@ -1447,7 +1425,7 @@
                 mc: memory-controller@fd070000 {
                         compatible = "xlnx,zynqmp-ddrc-2.40a";
                         reg = <0x0 0xfd070000 0x0 0x30000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x70 0x4>;
                         xlnx,bank-addr-bits = <0x2>;
                         xlnx,ddrc-parity = <0x0>;
@@ -1456,7 +1434,6 @@
                         xlnx,ddr-freq = <0x3f93e105>;
                         xlnx,rable = <0x0>;
                         xlnx,row-addr-bits = <0x10>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ddrc-low-power-auto-self-refresh = <0x0>;
                         xlnx,ip-name = "psu_ddrc";
                         xlnx,ddrc-2nd-clock = <0x0>;
@@ -1489,7 +1466,7 @@
                         status = "disabled";
                         reg = <0x0 0xff100000 0x0 0x1000>;
                         clock-names = "controller", "bus";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0xe 0x4>;
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
@@ -1503,7 +1480,7 @@
                 gem0: ethernet@ff0b0000 {
                         compatible = "xlnx,zynqmp-gem", "cdns,gem";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x39 0x4 0x0 0x39 0x4>;
                         reg = <0x0 0xff0b0000 0x0 0x1000>;
                         clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
@@ -1525,7 +1502,7 @@
                 gem1: ethernet@ff0c0000 {
                         compatible = "xlnx,zynqmp-gem", "cdns,gem";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x3b 0x4 0x0 0x3b 0x4>;
                         reg = <0x0 0xff0c0000 0x0 0x1000>;
                         clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
@@ -1547,7 +1524,7 @@
                 gem2: ethernet@ff0d0000 {
                         compatible = "xlnx,zynqmp-gem", "cdns,gem";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x3d 0x4 0x0 0x3d 0x4>;
                         reg = <0x0 0xff0d0000 0x0 0x1000>;
                         clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
@@ -1569,7 +1546,7 @@
                 gem3: ethernet@ff0e0000 {
                         compatible = "xlnx,zynqmp-gem", "cdns,gem";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x3f 0x4 0x0 0x3f 0x4>;
                         reg = <0x0 0xff0e0000 0x0 0x1000>;
                         clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
@@ -1593,7 +1570,7 @@
                         status = "okay";
                         #gpio-cells = <0x2>;
                         gpio-controller;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x10 0x4>;
                         interrupt-controller;
                         #interrupt-cells = <0x2>;
@@ -1604,7 +1581,6 @@
                         xlnx,gpio-board-interface = "custom";
                         xlnx,mio-gpio-mask = <0x5600>;
                         gpio-mask-high = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,emio-gpio-width = <0x20>;
                         xlnx,ip-name = "psu_gpio";
                         gpio-mask-low = <0x5600>;
@@ -1617,7 +1593,7 @@
                 i2c0: i2c@ff020000 {
                         compatible = "cdns,i2c-r1p14";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x11 0x4>;
                         clock-frequency = <0x61a80>;
                         reg = <0x0 0xff020000 0x0 0x1000>;
@@ -1631,7 +1607,7 @@
                 i2c1: i2c@ff030000 {
                         compatible = "cdns,i2c-r1p14";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x12 0x4>;
                         clock-frequency = <0x61a80>;
                         reg = <0x0 0xff030000 0x0 0x1000>;
@@ -1643,7 +1619,6 @@
                         xlnx,i2c-reset = <0x0>;
                         xlnx,has-interrupt = <0x2faf080>;
                         xlnx,clock-freq = <0x5f5dd19>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,i2c-clk-freq-hz = <0x5f5dd19>;
                         xlnx,ip-name = "psu_i2c";
                         xlnx,iic-board-interface = "custom";
@@ -1710,11 +1685,10 @@
                 ocm: memory-controller@ff960000 {
                         compatible = "xlnx,zynqmp-ocmc-1.0";
                         reg = <0x0 0xff960000 0x0 0x1000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0xa 0x4>;
                         xlnx,rable = <0x0>;
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ocm";
                         xlnx,name = "psu_ocm";
                         phandle = <0x4f>;
@@ -1724,7 +1698,7 @@
                         compatible = "xlnx,axi-perf-monitor";
                         reg = <0x0 0xffa00000 0x0 0x10000>;
                         interrupts = <0x0 0x19 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         xlnx,enable-profile = <0x0>;
                         xlnx,enable-trace = <0x0>;
                         xlnx,num-monitor-slots = <0x1>;
@@ -1739,7 +1713,6 @@
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,enable-32bit-filter-id = <0x1>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_apm";
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
@@ -1755,7 +1728,7 @@
                         compatible = "xlnx,axi-perf-monitor";
                         reg = <0x0 0xfd0b0000 0x0 0x10000>;
                         interrupts = <0x0 0x7b 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         xlnx,enable-profile = <0x0>;
                         xlnx,enable-trace = <0x0>;
                         xlnx,num-monitor-slots = <0x6>;
@@ -1770,7 +1743,6 @@
                         clocks = <&zynqmp_clk 0x1c>;
                         xlnx,enable-32bit-filter-id = <0x1>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_apm";
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
@@ -1786,7 +1758,7 @@
                         compatible = "xlnx,axi-perf-monitor";
                         reg = <0x0 0xfd490000 0x0 0x10000>;
                         interrupts = <0x0 0x7b 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         xlnx,enable-profile = <0x0>;
                         xlnx,enable-trace = <0x0>;
                         xlnx,num-monitor-slots = <0x1>;
@@ -1801,7 +1773,6 @@
                         clocks = <&zynqmp_clk 0x1c>;
                         xlnx,enable-32bit-filter-id = <0x1>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_apm";
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
@@ -1817,7 +1788,7 @@
                         compatible = "xlnx,axi-perf-monitor";
                         reg = <0x0 0xffa10000 0x0 0x10000>;
                         interrupts = <0x0 0x19 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         xlnx,enable-profile = <0x0>;
                         xlnx,enable-trace = <0x0>;
                         xlnx,num-monitor-slots = <0x1>;
@@ -1832,7 +1803,6 @@
                         clocks = <&zynqmp_clk 0x1f>;
                         xlnx,enable-32bit-filter-id = <0x1>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_apm";
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
@@ -1852,7 +1822,7 @@
                         #interrupt-cells = <0x1>;
                         msi-controller;
                         device_type = "pci";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x76 0x4 0x0 0x75 0x4 0x0 0x74 0x4 0x0 0x73 0x4 0x0 0x72 0x4>;
                         interrupt-names = "misc", "dummy", "intx", "msi1", "msi0";
                         msi-parent = <0x8c>;
@@ -1884,7 +1854,7 @@
                         status = "okay";
                         clock-names = "ref_clk", "pclk";
                         interrupts = <0x0 0xf 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         num-cs = <0x1>;
                         reg = <0x0 0xff0f0000 0x0 0x1000 0x0 0xc0000000 0x0 0x8000000>;
                         #address-cells = <0x1>;
@@ -1899,7 +1869,6 @@
                         xlnx,rable = <0x0>;
                         xlnx,bus-width = <0x2>;
                         xlnx,ip-name = "psu_qspi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,qspi-board-interface = "custom";
                         spi-rx-bus-width = <0x4>;
                         xlnx,connection-mode = <0x0>;
@@ -2037,7 +2006,6 @@
                         reg-names = "serdes", "siou";
                         #phy-cells = <0x4>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_serdes";
                         xlnx,name = "psu_serdes";
                         phandle = <0x5d>;
@@ -2047,12 +2015,11 @@
                         compatible = "xlnx,zynqmp-rtc";
                         status = "okay";
                         reg = <0x0 0xffa60000 0x0 0x100>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x1a 0x4 0x0 0x1b 0x4>;
                         interrupt-names = "alarm", "sec";
                         calibration = <0x7fff>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_rtc";
                         xlnx,name = "psu_rtc";
                         phandle = <0x5b>;
@@ -2062,7 +2029,7 @@
                         compatible = "ceva,ahci-1v84";
                         status = "disabled";
                         reg = <0x0 0xfd0c0000 0x0 0x2000>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x85 0x4>;
                         power-domains = <&zynqmp_firmware 0x1c>;
                         resets = <&zynqmp_reset 0x10>;
@@ -2074,7 +2041,7 @@
                         bootph-all;
                         compatible = "xlnx,zynqmp-8.9a", "arasan,sdhci-8.9a";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x30 0x4>;
                         reg = <0x0 0xff160000 0x0 0x1000>;
                         clock-names = "clk_xin", "clk_ahb";
@@ -2096,7 +2063,6 @@
                         xlnx,clk-100-sdr-otap-dly = <0x0>;
                         xlnx,rable = <0x0>;
                         xlnx,mio-bank = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_sd";
                         xlnx,bus-width = <0x8>;
                         xlnx,card-detect = <0x0>;
@@ -2123,7 +2089,7 @@
                         bootph-all;
                         compatible = "xlnx,zynqmp-8.9a", "arasan,sdhci-8.9a";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x31 0x4>;
                         reg = <0x0 0xff170000 0x0 0x1000>;
                         clock-names = "clk_xin", "clk_ahb";
@@ -2144,10 +2110,9 @@
                         #iommu-cells = <0x1>;
                         status = "okay";
                         #global-interrupts = <0x1>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4 0x0 0x9b 0x4>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_smmu_gpv";
                         xlnx,name = "psu_smmu_gpv";
                         phandle = <0x5f>;
@@ -2156,7 +2121,7 @@
                 spi0: spi@ff040000 {
                         compatible = "cdns,spi-r1p6";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x13 0x4>;
                         reg = <0x0 0xff040000 0x0 0x1000>;
                         clock-names = "ref_clk", "pclk";
@@ -2171,7 +2136,7 @@
                 spi1: spi@ff050000 {
                         compatible = "cdns,spi-r1p6";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x14 0x4>;
                         reg = <0x0 0xff050000 0x0 0x1000>;
                         clock-names = "ref_clk", "pclk";
@@ -2182,7 +2147,6 @@
                          <&zynqmp_clk 0x1f>;
                         xlnx,rable = <0x0>;
                         xlnx,spi-board-interface = "custom";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,has-ss0 = <0x1>;
                         xlnx,ip-name = "psu_spi";
                         xlnx,has-ss1 = <0x0>;
@@ -2203,7 +2167,7 @@
                 ttc0: timer@ff110000 {
                         compatible = "cdns,ttc";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x24 0x4 0x0 0x25 0x4 0x0 0x26 0x4>;
                         reg = <0x0 0xff110000 0x0 0x1000>;
                         timer-width = <0x20>;
@@ -2213,7 +2177,6 @@
                         xlnx,rable = <0x0>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ttc";
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
@@ -2225,7 +2188,7 @@
                 ttc1: timer@ff120000 {
                         compatible = "cdns,ttc";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x27 0x4 0x0 0x28 0x4 0x0 0x29 0x4>;
                         reg = <0x0 0xff120000 0x0 0x1000>;
                         timer-width = <0x20>;
@@ -2235,7 +2198,6 @@
                         xlnx,rable = <0x0>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ttc";
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
@@ -2246,7 +2208,7 @@
                 ttc2: timer@ff130000 {
                         compatible = "cdns,ttc";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
                         reg = <0x0 0xff130000 0x0 0x1000>;
                         timer-width = <0x20>;
@@ -2256,7 +2218,6 @@
                         xlnx,rable = <0x0>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ttc";
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
@@ -2267,7 +2228,7 @@
                 ttc3: timer@ff140000 {
                         compatible = "cdns,ttc";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x2d 0x4 0x0 0x2e 0x4 0x0 0x2f 0x4>;
                         reg = <0x0 0xff140000 0x0 0x1000>;
                         timer-width = <0x20>;
@@ -2277,7 +2238,6 @@
                         xlnx,rable = <0x0>;
                         xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
                         xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ttc";
                         xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
@@ -2289,7 +2249,7 @@
                         bootph-all;
                         compatible = "xlnx,zynqmp-uart", "cdns,uart-r1p12";
                         status = "disabled";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x15 0x4>;
                         reg = <0x0 0xff000000 0x0 0x1000>;
                         clock-names = "uart_clk", "pclk";
@@ -2303,7 +2263,7 @@
                         bootph-all;
                         compatible = "xlnx,zynqmp-uart", "cdns,uart-r1p12";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x16 0x4>;
                         reg = <0x0 0xff010000 0x0 0x1000>;
                         clock-names = "uart_clk", "pclk";
@@ -2315,7 +2275,6 @@
                         port-number = <0x0>;
                         xlnx,rable = <0x0>;
                         xlnx,ip-name = "psu_uart";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,uart-board-interface = "custom";
                         xlnx,baudrate = <0x1c200>;
                         cts-override;
@@ -2349,7 +2308,7 @@
                                 compatible = "snps,dwc3";
                                 status = "disabled";
                                 reg = <0x0 0xfe200000 0x0 0x40000>;
-                                interrupt-parent = <&gic_a53>;
+                                interrupt-parent = <&gic>;
                                 interrupt-names = "host", "peripheral", "otg", "hiber";
                                 interrupts = <0x0 0x41 0x4 0x0 0x41 0x4 0x0 0x45 0x4 0x0 0x4b 0x4>;
                                 iommus = <&smmu 0x860>;
@@ -2385,7 +2344,7 @@
                                 compatible = "snps,dwc3";
                                 status = "disabled";
                                 reg = <0x0 0xfe300000 0x0 0x40000>;
-                                interrupt-parent = <&gic_a53>;
+                                interrupt-parent = <&gic>;
                                 interrupt-names = "host", "peripheral", "otg", "hiber";
                                 interrupts = <0x0 0x46 0x4 0x0 0x46 0x4 0x0 0x4a 0x4 0x0 0x4c 0x4>;
                                 iommus = <&smmu 0x861>;
@@ -2401,14 +2360,13 @@
                 watchdog0: watchdog@fd4d0000 {
                         compatible = "cdns,wdt-r1p2";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x71 0x1>;
                         reg = <0x0 0xfd4d0000 0x0 0x1000>;
                         timeout-sec = <0x3c>;
                         reset-on-timeout;
                         clocks = <&zynqmp_clk 0x4b>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_wdt";
                         xlnx,wdt-clk-freq-hz = <0x5f5dd19>;
                         xlnx,swdt-board-interface = "custom";
@@ -2419,13 +2377,12 @@
                 lpd_watchdog: watchdog@ff150000 {
                         compatible = "cdns,wdt-r1p2";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x34 0x1>;
                         reg = <0x0 0xff150000 0x0 0x1000>;
                         timeout-sec = <0xa>;
                         clocks = <&zynqmp_clk 0x70>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_wdt";
                         xlnx,wdt-clk-freq-hz = <0x5f5dd19>;
                         xlnx,swdt-board-interface = "custom";
@@ -2436,7 +2393,7 @@
                 xilinx_ams: ams@ffa50000 {
                         compatible = "xlnx,zynqmp-ams";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x38 0x4>;
                         reg = <0x0 0xffa50000 0x0 0x800>;
                         #address-cells = <0x1>;
@@ -2446,7 +2403,6 @@
                         clocks = <&zynqmp_clk 0x46>;
                         xlnx,rable = <0x0>;
                         xlnx,clock-freq = <0x31>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ams";
                         xlnx,name = "psu_ams";
                         phandle = <0x1b>;
@@ -2471,7 +2427,7 @@
                         status = "okay";
                         reg = <0x0 0xfd4c0000 0x0 0x1000>;
                         interrupts = <0x0 0x7a 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         clock-names = "axi_clk";
                         power-domains = <&zynqmp_firmware 0x29>;
                         dma-channels = <0x6>;
@@ -2480,7 +2436,6 @@
                         clocks = <&zynqmp_clk 0x14>;
                         assigned-clocks = <&zynqmp_clk 0x14>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_dpdma";
                         xlnx,name = "psu_dpdma";
                         phandle = <0x33>;
@@ -2500,7 +2455,7 @@
                         reg-names = "dp", "blend", "av_buf";
                         xlnx,dpaud-reg = <0x90>;
                         interrupts = <0x0 0x77 0x4>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         iommus = <&smmu 0xce3>;
                         clock-names = "dp_apb_clk", "dp_aud_clk", "dp_vtc_pixel_clk_in";
                         power-domains = <&zynqmp_firmware 0x29>;
@@ -2515,7 +2470,6 @@
                          <&zynqmp_clk 0x10>;
                         xlnx,rable = <0x0>;
                         xlnx,dp-board-interface = "custom";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_dp";
                         xlnx,tz-nonsecure = <0x0>;
                         xlnx,name = "psu_dp";
@@ -2556,14 +2510,13 @@
                 csuwdt_0: watchdog@ffcb0000 {
                         compatible = "cdns,wdt-r1p2";
                         status = "okay";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x35 0x1>;
                         reg = <0x0 0xffcb0000 0x0 0x1000>;
                         timeout-sec = <0x3c>;
                         reset-on-timeout;
                         xlnx,clock-freq = <0x5f5b9f5>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_wdt";
                         xlnx,wdt-clk-freq-hz = <0x5f5e100>;
                         xlnx,name = "psu_csu_wdt";
@@ -2575,7 +2528,6 @@
                         status = "okay";
                         reg = <0x0 0xfe800000 0x0 0x10000>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_coresight_0";
                         xlnx,name = "psu_coresight_0";
                         phandle = <0x23>;
@@ -2584,11 +2536,10 @@
                 csudma_0: dma@ffc80000 {
                         status = "okay";
                         compatible = "xlnx,zynqmp-csudma-1.0";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x56 0x4>;
                         reg = <0x0 0xffc80000 0x0 0x40000>;
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_csudma";
                         xlnx,dma-type = <0x0>;
                         xlnx,name = "psu_csudma";
@@ -2598,7 +2549,7 @@
                 ipi0: ipi@ff300000 {
                         status = "okay";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x23 0x4>;
                         reg = <0x0 0xff300000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x1>;
@@ -2608,16 +2559,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "APU";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x0>;
+                        xlnx,cpu-name = "APU";
                         xlnx,buffer-base = <0xff990400>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x43>;
                         xlnx,base-address = <0xff300000>;
                         xlnx,buffer-index = <0x2>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x43>;
+                        xlnx,bit-position = <0x0>;
                         xlnx,name = "psu_ipi_0";
                         phandle = <0x8>;
 
@@ -2688,7 +2638,7 @@
                 ipi1: ipi@ff310000 {
                         status = "okay";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x21 0x4>;
                         reg = <0x0 0xff310000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x100>;
@@ -2698,16 +2648,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "RPU0";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x8>;
+                        xlnx,cpu-name = "RPU0";
                         xlnx,buffer-base = <0xff990000>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x41>;
                         xlnx,base-address = <0xff310000>;
                         xlnx,buffer-index = <0x0>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x41>;
+                        xlnx,bit-position = <0x8>;
                         xlnx,name = "psu_ipi_1";
                         phandle = <0x6e>;
 
@@ -2778,7 +2727,7 @@
                 ipi2: ipi@ff320000 {
                         status = "okay";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x22 0x4>;
                         reg = <0x0 0xff320000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x200>;
@@ -2788,16 +2737,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "RPU1";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x9>;
+                        xlnx,cpu-name = "RPU1";
                         xlnx,buffer-base = <0xff990200>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x42>;
                         xlnx,base-address = <0xff320000>;
                         xlnx,buffer-index = <0x1>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x42>;
+                        xlnx,bit-position = <0x9>;
                         xlnx,name = "psu_ipi_2";
                         phandle = <0x76>;
 
@@ -2876,16 +2824,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "PMU";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x10>;
+                        xlnx,cpu-name = "PMU";
                         xlnx,buffer-base = <0xff990e00>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x0>;
                         xlnx,base-address = <0xff330000>;
                         xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x10>;
                         xlnx,name = "psu_ipi_3";
                         phandle = <0x79>;
 
@@ -2964,16 +2911,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "PMU";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x11>;
+                        xlnx,cpu-name = "PMU";
                         xlnx,buffer-base = <0xff990e00>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x0>;
                         xlnx,base-address = <0xff331000>;
                         xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x11>;
                         xlnx,name = "psu_ipi_4";
                         phandle = <0x7a>;
 
@@ -3052,16 +2998,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "PMU";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x12>;
+                        xlnx,cpu-name = "PMU";
                         xlnx,buffer-base = <0xff990e00>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x0>;
                         xlnx,base-address = <0xff332000>;
                         xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x12>;
                         xlnx,name = "psu_ipi_5";
                         phandle = <0x7b>;
 
@@ -3140,16 +3085,15 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        xlnx,cpu-name = "PMU";
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ipi";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        xlnx,bit-position = <0x13>;
+                        xlnx,cpu-name = "PMU";
                         xlnx,buffer-base = <0xff990e00>;
-                        xlnx,ipi-target-count = <0x7>;
-                        xlnx,int-id = <0x0>;
                         xlnx,base-address = <0xff333000>;
                         xlnx,buffer-index = <0x7>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0x7>;
+                        xlnx,int-id = <0x0>;
+                        xlnx,bit-position = <0x13>;
                         xlnx,name = "psu_ipi_6";
                         phandle = <0x7c>;
 
@@ -3220,7 +3164,7 @@
                 ipi7: ipi@ff340000 {
                         status = "disabled";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x1d 0x4>;
                         reg = <0x0 0xff340000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x1000000>;
@@ -3236,7 +3180,7 @@
                 ipi8: ipi@ff350000 {
                         status = "disabled";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x1e 0x4>;
                         reg = <0x0 0xff350000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x2000000>;
@@ -3252,7 +3196,7 @@
                 ipi9: ipi@ff360000 {
                         status = "disabled";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x1f 0x4>;
                         reg = <0x0 0xff360000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x4000000>;
@@ -3268,7 +3212,7 @@
                 ipi10: ipi@ff370000 {
                         status = "disabled";
                         compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupts = <0x0 0x20 0x4>;
                         reg = <0x0 0xff370000 0x0 0x20>;
                         xlnx,ipi-bitmask = <0x8000000>;
@@ -3286,7 +3230,6 @@
                         compatible = "xlnx,psu-r5-tcm-ram-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_tcm_ram";
                         reg = <0x0 0xffe00000 0x0 0x40000>;
                         xlnx,name = "psu_r5_tcm_ram_global";
@@ -3298,7 +3241,6 @@
                         compatible = "xlnx,psu-r5-tcm-ram-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_tcm_ram";
                         reg = <0x0 0x0 0x0 0x40000>;
                         xlnx,name = "psu_r5_tcm_ram_0";
@@ -3310,7 +3252,6 @@
                         compatible = "xlnx,psu-ocm-ram-0-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xb>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ocm_ram_0";
                         reg = <0x0 0xfffc0000 0x0 0x40000>;
                         xlnx,name = "psu_ocm_ram_0";
@@ -3322,7 +3263,6 @@
                         compatible = "xlnx,psu-r5-1-btcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x12>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_btcm";
                         reg = <0x0 0x20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_btcm";
@@ -3334,7 +3274,6 @@
                         compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x12>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_btcm_global";
                         reg = <0x0 0xffeb0000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_btcm_global";
@@ -3346,7 +3285,6 @@
                         compatible = "xlnx,psu-r5-1-atcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x11>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_atcm";
                         reg = <0x0 0x0 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_atcm";
@@ -3358,7 +3296,6 @@
                         compatible = "xlnx,psu-r5-1-atcm-global-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x11>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_1_atcm_global";
                         reg = <0x0 0xffe90000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_atcm_global";
@@ -3370,7 +3307,6 @@
                         compatible = "xlnx,psu-r5-0-btcm-lockstep-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_btcm_lockstep";
                         xlnx,is-hierarchy;
                         reg = <0x0 0xffe30000 0x0 0x10000>;
@@ -3383,7 +3319,6 @@
                         compatible = "xlnx,psu-r5-0-btcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_btcm";
                         reg = <0x0 0x20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm";
@@ -3395,7 +3330,6 @@
                         compatible = "xlnx,psu-r5-0-btcm-global-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_btcm_global";
                         reg = <0x0 0xffe20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm_global";
@@ -3407,7 +3341,6 @@
                         compatible = "xlnx,psu-r5-0-atcm-lockstep-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_atcm_lockstep";
                         xlnx,is-hierarchy;
                         reg = <0x0 0xffe10000 0x0 0x10000>;
@@ -3420,7 +3353,6 @@
                         compatible = "xlnx,psu-r5-0-atcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_atcm";
                         reg = <0x0 0x0 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm";
@@ -3432,7 +3364,6 @@
                         compatible = "xlnx,psu-r5-0-atcm-global-1.0", "mmio-sram";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_r5_0_atcm_global";
                         reg = <0x0 0xffe00000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm_global";
@@ -3443,7 +3374,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-bbram-0-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_bbram_0";
                         reg = <0x0 0xffcd0000 0x0 0x10000>;
                         xlnx,name = "psu_bbram_0";
@@ -3454,7 +3384,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-pmu-ram-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_pmu_ram";
                         reg = <0x0 0xffdc0000 0x0 0x20000>;
                         xlnx,name = "psu_pmu_ram";
@@ -3462,17 +3391,16 @@
                 };
 
                 psu_pmu_iomodule: psu_pmu_iomodule@ffd40000 {
-                        compatible = "xlnx,psu-pmu-iomodule-1.0";
-                        xlnx,gpo2-enable = <0x0>;
-                        xlnx,gpo4-enable = <0x0>;
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_pmu_iomodule";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        reg = <0x0 0xffd40000 0x0 0x20000>;
+                        xlnx,gpo4-enable = <0x0>;
                         xlnx,gpo3-polarity = <0x0>;
-                        xlnx,gpo3-enable = <0x1>;
+                        compatible = "xlnx,psu-pmu-iomodule-1.0";
                         status = "okay";
                         xlnx,gpo5-enable = <0x0>;
+                        xlnx,ip-name = "psu_pmu_iomodule";
+                        xlnx,gpo2-enable = <0x0>;
+                        reg = <0x0 0xffd40000 0x0 0x20000>;
+                        xlnx,gpo3-enable = <0x1>;
                         xlnx,name = "psu_pmu_iomodule";
                         phandle = <0x7e>;
                 };
@@ -3481,7 +3409,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-pmu-global-0-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_pmu_global_0";
                         reg = <0x0 0xffd80000 0x0 0x40000>;
                         xlnx,name = "psu_pmu_global_0";
@@ -3492,7 +3419,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-mbistjtag-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_mbistjtag";
                         reg = <0x0 0xffcf0000 0x0 0x10000>;
                         xlnx,name = "psu_mbistjtag";
@@ -3503,7 +3429,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-rsa-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_rsa";
                         reg = <0x0 0xffce0000 0x0 0x10000>;
                         xlnx,name = "psu_rsa";
@@ -3514,7 +3439,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-efuse-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_efuse";
                         reg = <0x0 0xffcc0000 0x0 0x10000>;
                         xlnx,name = "psu_efuse";
@@ -3526,7 +3450,6 @@
                         xlnx,csu-board-interface = "custom";
                         compatible = "xlnx,psu-csu-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,can-clk-freq-hz = <0xaba9500>;
                         xlnx,ip-name = "psu_csu";
                         reg = <0x0 0xffca0000 0x0 0x10000>;
@@ -3538,7 +3461,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-fpd-gpv-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_fpd_gpv";
                         reg = <0x0 0xfd700000 0x0 0x100000>;
                         xlnx,name = "psu_fpd_gpv";
@@ -3549,7 +3471,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-cci-gpv-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_cci_gpv";
                         reg = <0x0 0xfd6e0000 0x0 0x10000>;
                         xlnx,name = "psu_cci_gpv";
@@ -3560,7 +3481,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-fpd-slcr-secure-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_fpd_slcr_secure";
                         reg = <0x0 0xfd690000 0x0 0x40000>;
                         xlnx,name = "psu_fpd_slcr_secure";
@@ -3571,7 +3491,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-fpd-slcr-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_fpd_slcr";
                         reg = <0x0 0xfd610000 0x0 0x80000>;
                         xlnx,name = "psu_fpd_slcr";
@@ -3582,7 +3501,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-smmu-reg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_smmu_reg";
                         reg = <0x0 0xfd5f0000 0x0 0x10000>;
                         xlnx,name = "psu_smmu_reg";
@@ -3593,7 +3511,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-cci-reg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_cci_reg";
                         reg = <0x0 0xfd5e0000 0x0 0x10000>;
                         xlnx,name = "psu_cci_reg";
@@ -3604,7 +3521,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-fpd-xmpu-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_fpd_xmpu_cfg";
                         reg = <0x0 0xfd5d0000 0x0 0x10000>;
                         xlnx,name = "psu_fpd_xmpu_cfg";
@@ -3615,7 +3531,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-apu-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_apu";
                         reg = <0x0 0xfd5c0000 0x0 0x10000>;
                         xlnx,name = "psu_apu";
@@ -3626,7 +3541,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-fpd-xmpu-sink-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_fpd_xmpu_sink";
                         reg = <0x0 0xfd4f0000 0x0 0x10000>;
                         xlnx,name = "psu_fpd_xmpu_sink";
@@ -3637,7 +3551,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-siou-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_siou";
                         reg = <0x0 0xfd3d0000 0x0 0x10000>;
                         xlnx,name = "psu_siou";
@@ -3648,7 +3561,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd3b0000 0x0 0x10000>;
                         xlnx,name = "psu_afi_5";
@@ -3659,7 +3571,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd3a0000 0x0 0x10000>;
                         xlnx,name = "psu_afi_4";
@@ -3670,7 +3581,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd390000 0x0 0x10000>;
                         xlnx,name = "psu_afi_3";
@@ -3681,7 +3591,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd380000 0x0 0x10000>;
                         xlnx,name = "psu_afi_2";
@@ -3692,7 +3601,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd370000 0x0 0x10000>;
                         xlnx,name = "psu_afi_1";
@@ -3703,7 +3611,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xfd360000 0x0 0x10000>;
                         xlnx,name = "psu_afi_0";
@@ -3714,7 +3621,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-crf-apb-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_crf_apb";
                         reg = <0x0 0xfd1a0000 0x0 0x140000>;
                         xlnx,name = "psu_crf_apb";
@@ -3725,7 +3631,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-qos-ctrl-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_qos_ctrl";
                         reg = <0x0 0xfd090000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_qos_ctrl";
@@ -3736,7 +3641,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-phy-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_phy";
                         reg = <0x0 0xfd080000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_phy";
@@ -3747,7 +3651,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-xmpu5-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_xmpu5_cfg";
                         reg = <0x0 0xfd050000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu5_cfg";
@@ -3758,7 +3661,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-xmpu4-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_xmpu4_cfg";
                         reg = <0x0 0xfd040000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu4_cfg";
@@ -3769,7 +3671,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-xmpu3-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_xmpu3_cfg";
                         reg = <0x0 0xfd030000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu3_cfg";
@@ -3780,7 +3681,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-xmpu2-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_xmpu2_cfg";
                         reg = <0x0 0xfd020000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu2_cfg";
@@ -3791,7 +3691,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-xmpu1-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_xmpu1_cfg";
                         reg = <0x0 0xfd010000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu1_cfg";
@@ -3802,7 +3701,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-xmpu0-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr_xmpu0_cfg";
                         reg = <0x0 0xfd000000 0x0 0x10000>;
                         xlnx,name = "psu_ddr_xmpu0_cfg";
@@ -3813,7 +3711,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ocm-xmpu-cfg-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_ocm_xmpu_cfg";
                         reg = <0x0 0xffa70000 0x0 0x10000>;
                         xlnx,name = "psu_ocm_xmpu_cfg";
@@ -3824,7 +3721,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-lpd-xppu-sink-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_lpd_xppu_sink";
                         reg = <0x0 0xff9c0000 0x0 0x10000>;
                         xlnx,name = "psu_lpd_xppu_sink";
@@ -3835,7 +3731,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_afi";
                         reg = <0x0 0xff9b0000 0x0 0x10000>;
                         xlnx,name = "psu_afi_6";
@@ -3847,7 +3742,6 @@
                         xlnx,is-cache-coherent = <0x0>;
                         compatible = "xlnx,psu-rpu-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_rpu";
                         reg = <0x0 0xff9a0000 0x0 0x10000>;
                         xlnx,name = "psu_rpu";
@@ -3858,7 +3752,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-crl-apb-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_crl_apb";
                         reg = <0x0 0xff5e0000 0x0 0x280000>;
                         xlnx,name = "psu_crl_apb";
@@ -3869,7 +3762,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-lpd-slcr-secure-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_lpd_slcr_secure";
                         reg = <0x0 0xff4b0000 0x0 0x30000>;
                         xlnx,name = "psu_lpd_slcr_secure";
@@ -3880,7 +3772,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-lpd-slcr-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_lpd_slcr";
                         reg = <0x0 0xff410000 0x0 0xa0000>;
                         xlnx,name = "psu_lpd_slcr";
@@ -3890,7 +3781,6 @@
                 psu_ctrl_ipi: PERIPHERAL@ff380000 {
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,PERIPHERAL-1.0";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         reg = <0x0 0xff380000 0x0 0x80000>;
                         phandle = <0x28>;
                 };
@@ -3898,7 +3788,6 @@
                 psu_message_buffers: PERIPHERAL@ff990000 {
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,PERIPHERAL-1.0";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         reg = <0x0 0xff990000 0x0 0x10000>;
                         phandle = <0x4e>;
                 };
@@ -3907,7 +3796,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-iou-scntrs-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_iou_scntrs";
                         reg = <0x0 0xff260000 0x0 0x10000>;
                         xlnx,name = "psu_iou_scntrs";
@@ -3918,7 +3806,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-iou-scntr-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_iou_scntr";
                         reg = <0x0 0xff250000 0x0 0x10000>;
                         xlnx,name = "psu_iou_scntr";
@@ -3929,7 +3816,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-iousecure-slcr-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_iousecure_slcr";
                         reg = <0x0 0xff240000 0x0 0x10000>;
                         xlnx,name = "psu_iousecure_slcr";
@@ -3940,7 +3826,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-iouslcr-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_iouslcr";
                         reg = <0x0 0xff180000 0x0 0xc0000>;
                         xlnx,name = "psu_iouslcr_0";
@@ -3948,44 +3833,26 @@
                 };
 
                 psu_r5_ddr_0: psu_ddr@100000 {
-                        compatible = "xlnx,psu-ddr-1.0";
-                        xlnx,s-axi-hp1-baseaddr = <0xfffffff>;
-                        xlnx,s-axi-hp3-baseaddr = <0xfffffff>;
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ddr";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
-                        reg = <0x0 0x100000 0x0 0x7fe00000>;
-                        xlnx,s-axi-hp1-highaddr = <0xfffffff>;
-                        xlnx,s-axi-hp3-highaddr = <0xfffffff>;
-                        xlnx,s-axi-hp0-baseaddr = <0xfffffff>;
-                        xlnx,s-axi-hp2-baseaddr = <0xfffffff>;
+                        compatible = "xlnx,psu-ddr-1.0";
                         status = "okay";
-                        xlnx,s-axi-hp0-highaddr = <0xfffffff>;
+                        xlnx,ip-name = "psu_ddr";
+                        reg = <0x0 0x100000 0x0 0x7fe00000>;
                         xlnx,name = "psu_r5_ddr_0";
-                        xlnx,s-axi-hp2-highaddr = <0xfffffff>;
                         phandle = <0x104>;
                 };
 
                 psu_ddr_0: psu_ddr@0 {
-                        compatible = "xlnx,psu-ddr-1.0";
-                        xlnx,s-axi-hp1-baseaddr = <0xfffffff>;
-                        xlnx,ddrc-act-freq-hz = <0x3f93e105>;
-                        xlnx,s-axi-hp3-baseaddr = <0xfffffff>;
                         xlnx,rable = <0x0>;
-                        xlnx,ip-name = "psu_ddr";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP";
-                        xlnx,s-axi-hp1-highaddr = <0xfffffff>;
-                        reg = <0x0 0x0 0x0 0x7ff00000 0x0 0x7ff00000 0x0 0x100000>;
-                        xlnx,ddrc-video-buffer-size = <0x0>;
-                        xlnx,s-axi-hp3-highaddr = <0xfffffff>;
                         xlnx,ddrc-brc-mapping = <0x0>;
-                        xlnx,s-axi-hp0-baseaddr = <0xfffffff>;
-                        xlnx,s-axi-hp2-baseaddr = <0xfffffff>;
+                        compatible = "xlnx,psu-ddr-1.0";
                         status = "okay";
-                        xlnx,s-axi-hp0-highaddr = <0xfffffff>;
-                        xlnx,s-axi-hp2-highaddr = <0xfffffff>;
-                        xlnx,name = "psu_ddr_0";
+                        xlnx,ip-name = "psu_ddr";
+                        xlnx,ddrc-video-buffer-size = <0x0>;
+                        xlnx,ddrc-act-freq-hz = <0x3f93e105>;
+                        reg = <0x0 0x0 0x0 0x7ff00000 0x0 0x7ff00000 0x0 0x100000>;
                         xlnx,ddrc-ddr4-addr-mapping = <0x1>;
+                        xlnx,name = "psu_ddr_0";
                         phandle = <0x105>;
                 };
 
@@ -3993,7 +3860,6 @@
                         xlnx,rable = <0x0>;
                         compatible = "xlnx,psu-ddr-1.0";
                         status = "okay";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP";
                         xlnx,ip-name = "psu_ddr";
                         reg = <0x8 0x0 0x0 0x80000000>;
                         xlnx,name = "psu_ddr_1";
@@ -4005,15 +3871,14 @@
                         phandle = <0x107>;
                 };
 
-                gic_a53: interrupt-controller@f9010000 {
+                gic: interrupt-controller@f9010000 {
                         phandle = <0xb>;
                         xlnx,name = "psu_acpu_gic";
                         xlnx,ip-name = "psu_acpu_gic";
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,rable = <0x0>;
                         status = "okay";
                         interrupts = <0x1 0x9 0xf04>;
-                        interrupt-parent = <&gic_a53>;
+                        interrupt-parent = <&gic>;
                         interrupt-controller;
                         reg = <0x0 0xf9010000 0x0 0x10000 0x0 0xf9020000 0x0 0x20000 0x0 0xf9040000 0x0 0x20000 0x0 0xf9060000 0x0 0x20000>;
                         #interrupt-cells = <0x3>;
@@ -4033,7 +3898,6 @@
                         reg = <0x0 0xff980000 0x0 0x1000>;
                         status = "okay";
                         xlnx,rable = <0x0>;
-                        xlnx,interconnect-s-axi-masters = "psu_cortexa53_0.M_AXI_DP , & , psu_cortexa53_1.M_AXI_DP , & , psu_cortexa53_2.M_AXI_DP , & , psu_cortexa53_3.M_AXI_DP , & , psu_cortexr5_0.M_AXI_DP , & , psu_cortexr5_1.M_AXI_DP , & , psu_pmu_0.M_AXI_DP";
                         xlnx,ip-name = "psu_lpd_xppu";
                         xlnx,name = "psu_lpd_xppu";
                         phandle = <0x4b>;
@@ -4118,6 +3982,7 @@
 
                 clocking1: clocking1 {
                         compatible = "xlnx,fclk";
+                        status = "okay";
                         assigned-clocks = <&zynqmp_clk 0x48>;
                         assigned-clock-rates = <0x5f5dd19>;
                         #clock-cells = <0x0>;
@@ -4128,6 +3993,7 @@
 
                 clocking0: clocking0 {
                         compatible = "xlnx,fclk";
+                        status = "okay";
                         assigned-clocks = <&zynqmp_clk 0x47>;
                         assigned-clock-rates = <0x5f5dd19>;
                         #clock-cells = <0x0>;
@@ -4315,7 +4181,6 @@
                 zynqmp_clk = "/firmware/zynqmp-firmware/clock-controller";
                 fpga_full = "/fpga-full";
                 amba_apu = "/apu-bus";
-                gic_a53 = "/apu-bus/interrupt-controller@f9010000";
                 amba_rpu = "/rpu-bus";
                 gic_r5 = "/rpu-bus/interrupt-controller@f9000000";
                 amba = "/axi";
@@ -4542,5 +4407,6 @@
                 psu_ddr_1_memory = "/memory@800000000";
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
+                gic = "/axi/interrupt-controller@f9010000";
         };
 };
