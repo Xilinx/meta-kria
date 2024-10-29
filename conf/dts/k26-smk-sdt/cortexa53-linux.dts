@@ -2132,7 +2132,7 @@
                 pmu_region: pmu@7ff00000 {
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
-                        phandle = <0x111>;
+                        phandle = <0x10d>;
                 };
         };
 
