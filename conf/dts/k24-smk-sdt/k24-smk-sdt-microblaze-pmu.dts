@@ -359,7 +359,7 @@
                         compatible = "arm,cortex-r5", "arm,armv8";
                         device_type = "cpu";
                         reg = <0x0>;
-                        power-domains = <&zynqmp_firmware 0x6>;
+                        power-domains = <&zynqmp_firmware 0x7>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,is-cache-coherent = <0x0>;
                         xlnx,tz-nonsecure = <0x0>;
@@ -488,7 +488,7 @@
                         compatible = "arm,cortex-r5", "arm,armv8";
                         device_type = "cpu";
                         reg = <0x1>;
-                        power-domains = <&zynqmp_firmware 0x7>;
+                        power-domains = <&zynqmp_firmware 0x8>;
                         xlnx,psu-ep = <0x1>;
                         xlnx,is-cache-coherent = <0x0>;
                         xlnx,tz-nonsecure = <0x0>;
@@ -728,27 +728,43 @@
                 phandle = <0x68>;
 
                 opp00 {
-                        opp-hz = <0x0 0x47868bf4>;
-                        opp-microvolt = <0xf4240>;
-                        clock-latency-ns = <0x7a120>;
+                        opp-hz = <0x0 0x4f790d55>;
                 };
 
                 opp01 {
-                        opp-hz = <0x0 0x23c345fa>;
-                        opp-microvolt = <0xf4240>;
-                        clock-latency-ns = <0x7a120>;
+                        opp-hz = <0x0 0x27bc86aa>;
                 };
 
                 opp02 {
-                        opp-hz = <0x0 0x17d783fc>;
-                        opp-microvolt = <0xf4240>;
-                        clock-latency-ns = <0x7a120>;
+                        opp-hz = <0x0 0x1a7daf1c>;
                 };
 
                 opp03 {
-                        opp-hz = <0x0 0x11e1a2fd>;
-                        opp-microvolt = <0xf4240>;
+                        opp-hz = <0x0 0x13de4355>;
+                };
+
+                opp-1333000000 {
+                        opp-hz = <0x0 0x4f73f740>;
                         clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+
+                opp-666500000 {
+                        opp-hz = <0x0 0x27b9fba0>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+
+                opp-444333333 {
+                        opp-hz = <0x0 0x1a7bfd15>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
+                };
+
+                opp-333250000 {
+                        opp-hz = <0x0 0x13dcfdd0>;
+                        clock-latency-ns = <0x7a120>;
+                        opp-microvolt = <0xf4240>;
                 };
         };
 
@@ -1789,8 +1805,8 @@
                         xlnx,iic-board-interface = "custom";
                         xlnx,name = "psu_i2c_1";
                         bootph-all;
-                        scl-gpios = <0x41 0x18 0x0>;
-                        sda-gpios = <0x41 0x19 0x0>;
+                        scl-gpios = <0x41 0x18 0x6>;
+                        sda-gpios = <0x41 0x19 0x6>;
                         phandle = <0x43>;
 
                         eeprom: eeprom@50 {
@@ -2046,9 +2062,7 @@
                         phandle = <0x51>;
 
                         spi_flash: flash@0 {
-                                compatible = "mt25qu512a", "jedec,spi-nor";
-                                #address-cells = <0x1>;
-                                #size-cells = <0x1>;
+                                compatible = "jedec,spi-nor";
                                 reg = <0x0>;
                                 spi-tx-bus-width = <0x4>;
                                 spi-rx-bus-width = <0x4>;
@@ -2154,7 +2168,7 @@
                                                 reg = <0x2280000 0x20000>;
                                         };
 
-                                        partition@22A0000 {
+                                        partition@22a0000 {
                                                 label = "User";
                                                 reg = <0x22a0000 0x1d60000>;
                                         };
@@ -2242,6 +2256,9 @@
                         pinctrl-0 = <0x8d>;
                         non-removable;
                         disable-wp;
+                        no-sd;
+                        no-sdio;
+                        cap-mmc-hw-reset;
                         bus-width = <0x8>;
                         assigned-clock-rates = <0xb2cfe8b>;
                         phandle = <0x5b>;
@@ -4121,7 +4138,6 @@
                 spi0 = "/axi/spi@ff0f0000";
                 serial1 = "/axi/serial@ff010000";
                 i2c0 = "/axi/i2c@ff020000";
-                gpio0 = "/axi/gpio@ff0a0000";
                 i2c1 = "/axi/i2c@ff030000";
                 mmc0 = "/axi/mmc@ff160000";
                 mmc1 = "/axi/mmc@ff170000";
@@ -4183,7 +4199,7 @@
 
         pwm-fan {
                 compatible = "pwm-fan";
-                pwms = <0x61 0x2 0x9c40 0x0>;
+                pwms = <0x61 0x2 0x9c40 0x1>;
         };
 
         __symbols__ {
