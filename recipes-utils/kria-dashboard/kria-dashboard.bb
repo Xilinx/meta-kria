@@ -2,9 +2,9 @@ SUMMARY = "kria-dashboard including dashboard and daemon"
 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
-BRANCH ?= "xlnx_rel_v2024.1"
+BRANCH ?= "xlnx_rel_v2025.1"
 SRC_URI = "git://github.com/Xilinx/kria-dashboard.git;protocol=https;branch=${BRANCH}"
-SRCREV ?= "550a59619ad63b9d4bf1ebc7c31988862e4fa0ea"
+SRCREV ?= "46465ed651963cb2ee6ec558caef161a9f717671"
 
 S = "${WORKDIR}/git"
 
