@@ -727,22 +727,6 @@
                 opp-shared;
                 phandle = <0x68>;
 
-                opp00 {
-                        opp-hz = <0x0 0x4f790d55>;
-                };
-
-                opp01 {
-                        opp-hz = <0x0 0x27bc86aa>;
-                };
-
-                opp02 {
-                        opp-hz = <0x0 0x1a7daf1c>;
-                };
-
-                opp03 {
-                        opp-hz = <0x0 0x13de4355>;
-                };
-
                 opp-1333000000 {
                         opp-hz = <0x0 0x4f73f740>;
                         clock-latency-ns = <0x7a120>;
