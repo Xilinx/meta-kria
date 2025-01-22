@@ -20,7 +20,6 @@ PACKAGE_INSTALL ?= " \
     mac-config \
     "
 
-PACKAGE_INSTALL:append:kria = " kernel-module-usb2244 kernel-module-usb5744"
 INITRAMFS_MAXSIZE = "170000"
 
 # Do not pollute the initrd image with rootfs features
