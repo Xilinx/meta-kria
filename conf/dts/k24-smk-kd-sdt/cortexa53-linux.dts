@@ -1644,6 +1644,7 @@
                                 xlnx,is-cache-coherent = <0x0>;
                                 xlnx,usb-reset = <0x4c>;
                                 xlnx,ip-name = "psu_usb_xhci";
+                                xlnx,enable-superspeed = <0x1>;
                                 xlnx,usb-board-interface = "custom";
                                 phandle = <0x69>;
                         };

@@ -2539,6 +2539,7 @@
                                 xlnx,is-cache-coherent = <0x0>;
                                 xlnx,usb-reset = <0x4c>;
                                 xlnx,ip-name = "psu_usb_xhci";
+                                xlnx,enable-superspeed = <0x1>;
                                 xlnx,usb-board-interface = "custom";
                                 xlnx,name = "psu_usb_xhci_0";
                                 phandle = <0x6a>;
@@ -2588,6 +2589,7 @@
                                 xlnx,is-cache-coherent = <0x0>;
                                 xlnx,usb-reset = <0x4d>;
                                 xlnx,ip-name = "psu_usb_xhci";
+                                xlnx,enable-superspeed = <0x1>;
                                 xlnx,usb-board-interface = "custom";
                                 xlnx,name = "psu_usb_xhci_1";
                                 phandle = <0x6b>;
