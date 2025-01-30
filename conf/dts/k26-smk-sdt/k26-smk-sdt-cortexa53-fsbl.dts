@@ -1850,6 +1850,7 @@
                         clocks = <&zynqmp_clk 0x35>,
                          <&zynqmp_clk 0x1f>;
                         xlnx,is-cache-coherent = <0x0>;
+                        xlnx,qspi-fbclk = <0x0>;
                         xlnx,tz-nonsecure = <0x1>;
                         xlnx,qspi-clk-freq-hz = <0x773545d>;
                         xlnx,rable = <0x0>;
@@ -1859,7 +1860,6 @@
                         spi-rx-bus-width = <0x4>;
                         xlnx,connection-mode = <0x0>;
                         spi-tx-bus-width = <0x4>;
-                        qspi-fbclk = <0x0>;
                         xlnx,clock-freq = <0x773545d>;
                         xlnx,fb-clk = <0x1>;
                         xlnx,qspi-mode = <0x0>;
