@@ -13,9 +13,10 @@ INITRAMFS_SCRIPTS ?= " \
 
 PACKAGE_INSTALL ?= " \
     ${INITRAMFS_SCRIPTS} \
-    ${VIRTUAL-RUNTIME_base-utils} \
     base-passwd \
     ${ROOTFS_BOOTSTRAP_INSTALL} \
+    busybox \
+    busybox-syslog \
     e2fsprogs \
     mac-config \
     "
