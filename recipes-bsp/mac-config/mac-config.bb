@@ -11,7 +11,7 @@ SRC_URI = " \
 
 inherit update-rc.d systemd
 
-RDEPENDS:${PN} += "freeipmi python3"
+RDEPENDS:${PN} += "freeipmi"
 
 INSANE_SKIP:${PN} += "installed-vs-shipped"
 
