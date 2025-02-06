@@ -2022,6 +2022,10 @@
                 };
         };
 
+        binman: binman {
+                phandle = <0x10a>;
+        };
+
         pss_ref_clk: pss_ref_clk {
                 bootph-all;
                 compatible = "fixed-clock";
@@ -2111,7 +2115,7 @@
                 pmu_region: pmu@7ff00000 {
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
-                        phandle = <0x10a>;
+                        phandle = <0x10b>;
                 };
         };
 
@@ -2295,6 +2299,7 @@
                 psu_qspi_linear_0 = "/axi/psu_qspi_linear@c0000000";
                 amba_xppu = "/indirect-bus@1";
                 lpd_xppu = "/indirect-bus@1/xppu@ff980000";
+                binman = "/binman";
                 pss_ref_clk = "/pss_ref_clk";
                 video_clk = "/video_clk";
                 pss_alt_ref_clk = "/pss_alt_ref_clk";
