@@ -12,12 +12,12 @@ QB_DEFAULT_FSTYPE = "wic.qemu-sd"
 QB_OPT_APPEND = "\
     -nodefaults \
     ${@qemu_zynqmp_unhalt(d, True)} \
-    -device loader,file=${DEPLOY_DIR_IMAGE}/arm-trusted-firmware.elf,cpu-num=0 \
-    -device loader,file=${DEPLOY_DIR_IMAGE}/u-boot.elf \
-    -device loader,file=${DEPLOY_DIR_IMAGE}/fit-dtb.blob,addr=0x100000,force-raw=on \
+    -device loader,file=@DEPLOY_DIR_IMAGE@/arm-trusted-firmware.elf,cpu-num=0 \
+    -device loader,file=@DEPLOY_DIR_IMAGE@/u-boot.elf \
+    -device loader,file=@DEPLOY_DIR_IMAGE@/fit-dtb.blob,addr=0x100000,force-raw=on \
     ${@qemu_add_extra_args(d)} \
-    -blockdev filename=${DEPLOY_DIR_IMAGE}/som-eeprom.bin,node-name=i2c1.eeprom-50,driver=file \
-    -blockdev node-name=pmu-cfg,filename=${DEPLOY_DIR_IMAGE}/pmu-conf.bin,driver=file \
+    -blockdev filename=@DEPLOY_DIR_IMAGE@/som-eeprom.bin,node-name=i2c1.eeprom-50,driver=file \
+    -blockdev node-name=pmu-cfg,filename=@DEPLOY_DIR_IMAGE@/pmu-conf.bin,driver=file \
     -global xlnx,zynqmp-boot.drive=pmu-cfg \
     -pmu-args '${QB_PMU_OPT}' \
 "
