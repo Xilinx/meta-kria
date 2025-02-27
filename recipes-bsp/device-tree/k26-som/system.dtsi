@@ -1,6 +1,6 @@
 / {
     chosen {
-        bootargs = "earlycon console=ttyPS1,115200 xilinx_tsn_ep.st_pcp=4 init_fatal_sh=1 cma=900M ";
+        bootargs = "earlycon console=ttyPS1,115200 xilinx_tsn_ep.st_pcp=4 init_fatal_sh=1 cma=800M ";
         stdout-path = "serial1:115200n8";
     };
     /* Add empty binman node to fix build issues when CONFIG_BINMAN_DTB is set to
