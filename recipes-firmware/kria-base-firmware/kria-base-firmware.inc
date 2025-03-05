@@ -10,4 +10,5 @@ SRCREV = "d512881ad56fcb8ad3bffea543280c5b357bb9ea"
 
 inherit dfx_user_dts
 
-COMPATIBLE_MACHINE = "${MACHINE}"
+COMPATIBLE_MACHINE = "^$"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
