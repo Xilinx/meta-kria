@@ -1,5 +1,4 @@
 /dts-v1/;
-
 / {
         compatible = "xlnx,zynqmp-smk-k24-revA", "xlnx,zynqmp-smk-k24", "xlnx,zynqmp";
         #address-cells = <0x2>;
