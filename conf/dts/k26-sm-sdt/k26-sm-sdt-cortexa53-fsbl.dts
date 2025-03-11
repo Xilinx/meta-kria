@@ -3233,10 +3233,12 @@
 
                 psu_r5_1_btcm: psu_r5_1_btcm@20000 {
                         xlnx,rable = <0x0>;
+                        xlnx,power-domain = <0x10>;
                         compatible = "xlnx,psu-r5-1-btcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x12>;
                         xlnx,ip-name = "psu_r5_1_btcm";
+                        xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_btcm";
                         phandle = <0x78>;
@@ -3255,10 +3257,12 @@
 
                 psu_r5_1_atcm: psu_r5_1_atcm@0 {
                         xlnx,rable = <0x0>;
+                        xlnx,power-domain = <0xf>;
                         compatible = "xlnx,psu-r5-1-atcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x11>;
                         xlnx,ip-name = "psu_r5_1_atcm";
+                        xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x0 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_atcm";
                         phandle = <0x77>;
@@ -3289,10 +3293,12 @@
 
                 psu_r5_0_btcm: psu_r5_0_btcm@20000 {
                         xlnx,rable = <0x0>;
+                        xlnx,power-domain = <0x12>;
                         compatible = "xlnx,psu-r5-0-btcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0x10>;
                         xlnx,ip-name = "psu_r5_0_btcm";
+                        xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm";
                         phandle = <0x72>;
@@ -3323,10 +3329,12 @@
 
                 psu_r5_0_atcm: psu_r5_0_atcm@0 {
                         xlnx,rable = <0x0>;
+                        xlnx,power-domain = <0x11>;
                         compatible = "xlnx,psu-r5-0-atcm-1.0";
                         status = "okay";
                         power-domains = <&zynqmp_firmware 0xf>;
                         xlnx,ip-name = "psu_r5_0_atcm";
+                        xlnx,bank-size = <0x10000>;
                         reg = <0x0 0x0 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm";
                         phandle = <0x71>;
