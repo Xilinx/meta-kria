@@ -14,3 +14,6 @@ include ${KRIA_ADDITIONAL_INCLUDE}
 KERNEL_ROOT_RAMDISK:k26-smk-kv = ""
 KERNEL_ROOT_RAMDISK:k26-smk-kr = ""
 KERNEL_ROOT_RAMDISK:k24-smk-kd = ""
+KERNEL_ROOT_RAMDISK:k26-smk-kv-sdt = ""
+KERNEL_ROOT_RAMDISK:k26-smk-kr-sdt = ""
+KERNEL_ROOT_RAMDISK:k24-smk-kd-sdt = ""
