@@ -60,17 +60,17 @@
                         operating-points-v2 = <&cpu_opp_table>;
                         cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <&L2>;
-                        xlnx,psu-ep = <0x1>;
-                        xlnx,ip-name = "psu_cortexa53";
-                        xlnx,cpu-1x-clk-freq-hz = <0x0>;
-                        cpu-frequency = <0x4f790c10>;
-                        xlnx,cpu-clk-freq-hz = <0x4f790c10>;
-                        xlnx,psu-silicon-version = <0x3>;
-                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
-                        bus-handle = <0x1>;
-                        xlnx,psu-device = "PS8a";
-                        stamp-frequency = <0x5f5dd19>;
                         xlnx,timestamp-clk-freq = <0x5f5dd19>;
+                        xlnx,psu-ep = <0x1>;
+                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
+                        stamp-frequency = <0x5f5dd19>;
+                        xlnx,cpu-1x-clk-freq-hz = <0x0>;
+                        xlnx,ip-name = "psu_cortexa53";
+                        xlnx,psu-silicon-version = <0x3>;
+                        xlnx,psu-device = "PS8a";
+                        xlnx,cpu-clk-freq-hz = <0x4f790c10>;
+                        bus-handle = <0x1>;
+                        cpu-frequency = <0x4f790c10>;
                         phandle = <0x85>;
                 };
 
@@ -82,17 +82,17 @@
                         operating-points-v2 = <&cpu_opp_table>;
                         cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <&L2>;
-                        xlnx,psu-ep = <0x1>;
-                        xlnx,ip-name = "psu_cortexa53";
-                        xlnx,cpu-1x-clk-freq-hz = <0x0>;
-                        cpu-frequency = <0x4f790c10>;
-                        xlnx,cpu-clk-freq-hz = <0x4f790c10>;
-                        xlnx,psu-silicon-version = <0x3>;
-                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
-                        bus-handle = <0x1>;
-                        xlnx,psu-device = "PS8a";
-                        stamp-frequency = <0x5f5dd19>;
                         xlnx,timestamp-clk-freq = <0x5f5dd19>;
+                        xlnx,psu-ep = <0x1>;
+                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
+                        stamp-frequency = <0x5f5dd19>;
+                        xlnx,cpu-1x-clk-freq-hz = <0x0>;
+                        xlnx,ip-name = "psu_cortexa53";
+                        xlnx,psu-silicon-version = <0x3>;
+                        xlnx,psu-device = "PS8a";
+                        xlnx,cpu-clk-freq-hz = <0x4f790c10>;
+                        bus-handle = <0x1>;
+                        cpu-frequency = <0x4f790c10>;
                         phandle = <0x86>;
                 };
 
@@ -104,17 +104,17 @@
                         operating-points-v2 = <&cpu_opp_table>;
                         cpu-idle-states = <&CPU_SLEEP_0>;
                         next-level-cache = <&L2>;
-                        xlnx,psu-ep = <0x1>;
-                        xlnx,ip-name = "psu_cortexa53";
-                        xlnx,cpu-1x-clk-freq-hz = <0x0>;
-                        cpu-frequency = <0x4f790c10>;
-                        xlnx,cpu-clk-freq-hz = <0x4f790c10>;
-                        xlnx,psu-silicon-version = <0x3>;
-                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
-                        bus-handle = <0x1>;
-                        xlnx,psu-device = "PS8a";
-                        stamp-frequency = <0x5f5dd19>;
                         xlnx,timestamp-clk-freq = <0x5f5dd19>;
+                        xlnx,psu-ep = <0x1>;
+                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
+                        stamp-frequency = <0x5f5dd19>;
+                        xlnx,cpu-1x-clk-freq-hz = <0x0>;
+                        xlnx,ip-name = "psu_cortexa53";
+                        xlnx,psu-silicon-version = <0x3>;
+                        xlnx,psu-device = "PS8a";
+                        xlnx,cpu-clk-freq-hz = <0x4f790c10>;
+                        bus-handle = <0x1>;
+                        cpu-frequency = <0x4f790c10>;
                         phandle = <0x87>;
                 };
 
@@ -1226,8 +1226,8 @@
                         xlnx,clock-freq = <0x773545d>;
                         xlnx,fb-clk = <0x1>;
                         xlnx,qspi-mode = <0x0>;
-                        is-dual = <0x0>;
                         xlnx,qspi-bus-width = <0x2>;
+                        is-dual = <0x0>;
                         phandle = <0x53>;
 
                         spi_flash: flash@0 {
@@ -1604,15 +1604,15 @@
                         clocks = <&zynqmp_clk 0x39>,
                          <&zynqmp_clk 0x1f>;
                         assigned-clocks = <&zynqmp_clk 0x39>;
-                        xlnx,has-modem = <0x0>;
-                        xlnx,uart-clk-freq-hz = <0x5f5dd19>;
-                        port-number = <0x0>;
-                        xlnx,ip-name = "psu_uart";
+                        xlnx,clock-freq = <0x5f5dd19>;
+                        u-boot,dm-pre-reloc;
                         xlnx,uart-board-interface = "custom";
+                        xlnx,has-modem = <0x0>;
+                        xlnx,ip-name = "psu_uart";
                         xlnx,baudrate = <0x1c200>;
                         cts-override;
-                        u-boot,dm-pre-reloc;
-                        xlnx,clock-freq = <0x5f5dd19>;
+                        port-number = <0x0>;
+                        xlnx,uart-clk-freq-hz = <0x5f5dd19>;
                         phandle = <0x67>;
                 };
 
@@ -1801,28 +1801,34 @@
                                 #address-cells = <0x1>;
                                 #size-cells = <0x0>;
 
-                                port@0 {
+                                live_video: port@0 {
                                         reg = <0x0>;
+                                        phandle = <0xc8>;
                                 };
 
-                                port@1 {
+                                live_gfx: port@1 {
                                         reg = <0x1>;
+                                        phandle = <0xc9>;
                                 };
 
-                                port@2 {
+                                live_audio: port@2 {
                                         reg = <0x2>;
+                                        phandle = <0xca>;
                                 };
 
-                                port@3 {
+                                out_video: port@3 {
                                         reg = <0x3>;
+                                        phandle = <0xcb>;
                                 };
 
-                                port@4 {
+                                out_audio: port@4 {
                                         reg = <0x4>;
+                                        phandle = <0xcc>;
                                 };
 
-                                port@5 {
+                                out_dp: port@5 {
                                         reg = <0x5>;
+                                        phandle = <0xcd>;
                                 };
                         };
                 };
@@ -1859,7 +1865,7 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        phandle = <0xf9>;
+                        phandle = <0xff>;
                 };
 
                 ipi8: ipi@ff350000 {
@@ -1875,7 +1881,7 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        phandle = <0xfa>;
+                        phandle = <0x100>;
                 };
 
                 ipi9: ipi@ff360000 {
@@ -1891,7 +1897,7 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        phandle = <0xfb>;
+                        phandle = <0x101>;
                 };
 
                 ipi10: ipi@ff370000 {
@@ -1907,7 +1913,7 @@
                         #size-cells = <0x2>;
                         bootph-all;
                         ranges;
-                        phandle = <0xfc>;
+                        phandle = <0x102>;
                 };
 
                 psu_csu_0: psu_csu@ffca0000 {
@@ -2014,7 +2020,7 @@
 
                 psu_qspi_linear_0: psu_qspi_linear@c0000000 {
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
-                        phandle = <0x103>;
+                        phandle = <0x109>;
                 };
 
                 gic: interrupt-controller@f9010000 {
@@ -2034,7 +2040,7 @@
                 compatible = "indirect-bus";
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
-                phandle = <0x104>;
+                phandle = <0x10a>;
 
                 lpd_xppu: xppu@ff980000 {
                         compatible = "xlnx,xppu";
@@ -2047,7 +2053,7 @@
         };
 
         binman: binman {
-                phandle = <0x105>;
+                phandle = <0x10b>;
         };
 
         pss_ref_clk: pss_ref_clk {
@@ -2140,7 +2146,7 @@
                 pmu_region: pmu@7ff00000 {
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
-                        phandle = <0x10a>;
+                        phandle = <0x110>;
                 };
         };
 
@@ -2178,9 +2184,10 @@
                 io-channels = <0x1b 0x0 0x1b 0x1 0x1b 0x2 0x1b 0x3 0x1b 0x4 0x1b 0x5 0x1b 0x6 0x1b 0x7 0x1b 0x8 0x1b 0x9 0x1b 0xa 0x1b 0xb 0x1b 0xc 0x1b 0xd 0x1b 0xe 0x1b 0xf 0x1b 0x10 0x1b 0x11 0x1b 0x12 0x1b 0x13 0x1b 0x14 0x1b 0x15 0x1b 0x16 0x1b 0x17 0x1b 0x18 0x1b 0x19 0x1b 0x1a 0x1b 0x1b 0x1b 0x1c 0x1b 0x1d>;
         };
 
-        pwm-fan {
+        pwm_fan: pwm-fan {
                 compatible = "pwm-fan";
                 pwms = <0x63 0x2 0x9c40 0x1>;
+                phandle = <0x111>;
         };
 
         __symbols__ {
@@ -2297,6 +2304,12 @@
                 ams_pl = "/axi/ams@ffa50000/ams-pl@400";
                 zynqmp_dpdma = "/axi/dma-controller@fd4c0000";
                 zynqmp_dpsub = "/axi/display@fd4a0000";
+                live_video = "/axi/display@fd4a0000/ports/port@0";
+                live_gfx = "/axi/display@fd4a0000/ports/port@1";
+                live_audio = "/axi/display@fd4a0000/ports/port@2";
+                out_video = "/axi/display@fd4a0000/ports/port@3";
+                out_audio = "/axi/display@fd4a0000/ports/port@4";
+                out_dp = "/axi/display@fd4a0000/ports/port@5";
                 coresight_0 = "/axi/coresight@fe800000";
                 csudma_0 = "/axi/dma@ffc80000";
                 ipi7 = "/axi/ipi@ff340000";
@@ -2328,6 +2341,7 @@
                 psu_ddr_0_memory = "/memory@0";
                 psu_ddr_1_memory = "/memory@800000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
+                pwm_fan = "/pwm-fan";
                 gic = "/axi/interrupt-controller@f9010000";
         };
 };
