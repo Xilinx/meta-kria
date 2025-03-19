@@ -1862,70 +1862,6 @@
                         phandle = <0x27>;
                 };
 
-                ipi7: ipi@ff340000 {
-                        status = "disabled";
-                        compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x1d 0x4>;
-                        reg = <0x0 0xff340000 0x0 0x20>;
-                        xlnx,ipi-bitmask = <0x1000000>;
-                        xlnx,ipi-id = <0x7>;
-                        xlnx,ipi-buf-index = <0x3>;
-                        #address-cells = <0x2>;
-                        #size-cells = <0x2>;
-                        bootph-all;
-                        ranges;
-                        phandle = <0xff>;
-                };
-
-                ipi8: ipi@ff350000 {
-                        status = "disabled";
-                        compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x1e 0x4>;
-                        reg = <0x0 0xff350000 0x0 0x20>;
-                        xlnx,ipi-bitmask = <0x2000000>;
-                        xlnx,ipi-id = <0x8>;
-                        xlnx,ipi-buf-index = <0x4>;
-                        #address-cells = <0x2>;
-                        #size-cells = <0x2>;
-                        bootph-all;
-                        ranges;
-                        phandle = <0x100>;
-                };
-
-                ipi9: ipi@ff360000 {
-                        status = "disabled";
-                        compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x1f 0x4>;
-                        reg = <0x0 0xff360000 0x0 0x20>;
-                        xlnx,ipi-bitmask = <0x4000000>;
-                        xlnx,ipi-id = <0x9>;
-                        xlnx,ipi-buf-index = <0x5>;
-                        #address-cells = <0x2>;
-                        #size-cells = <0x2>;
-                        bootph-all;
-                        ranges;
-                        phandle = <0x101>;
-                };
-
-                ipi10: ipi@ff370000 {
-                        status = "disabled";
-                        compatible = "xlnx,zynqmp-ipi-mailbox";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x20 0x4>;
-                        reg = <0x0 0xff370000 0x0 0x20>;
-                        xlnx,ipi-bitmask = <0x8000000>;
-                        xlnx,ipi-id = <0xa>;
-                        xlnx,ipi-buf-index = <0x5>;
-                        #address-cells = <0x2>;
-                        #size-cells = <0x2>;
-                        bootph-all;
-                        ranges;
-                        phandle = <0x102>;
-                };
-
                 psu_csu_0: psu_csu@ffca0000 {
                         xlnx,csu-board-interface = "custom";
                         compatible = "xlnx,psu-csu-1.0";
@@ -2030,7 +1966,7 @@
 
                 psu_qspi_linear_0: psu_qspi_linear@c0000000 {
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
-                        phandle = <0x109>;
+                        phandle = <0x151>;
                 };
 
                 gic: interrupt-controller@f9010000 {
@@ -2050,7 +1986,7 @@
                 compatible = "indirect-bus";
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
-                phandle = <0x10a>;
+                phandle = <0x152>;
 
                 lpd_xppu: xppu@ff980000 {
                         compatible = "xlnx,xppu";
@@ -2063,7 +1999,7 @@
         };
 
         binman: binman {
-                phandle = <0x10b>;
+                phandle = <0x153>;
         };
 
         pss_ref_clk: pss_ref_clk {
@@ -2157,7 +2093,7 @@
                 pmu_region: pmu@7ff00000 {
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
-                        phandle = <0x110>;
+                        phandle = <0x158>;
                 };
         };
 
@@ -2198,7 +2134,7 @@
         pwm_fan: pwm-fan {
                 compatible = "pwm-fan";
                 pwms = <0x63 0x2 0x9c40 0x1>;
-                phandle = <0x111>;
+                phandle = <0x159>;
         };
 
         __symbols__ {
@@ -2323,10 +2259,6 @@
                 out_dp = "/axi/display@fd4a0000/ports/port@5";
                 coresight_0 = "/axi/coresight@fe800000";
                 csudma_0 = "/axi/dma@ffc80000";
-                ipi7 = "/axi/ipi@ff340000";
-                ipi8 = "/axi/ipi@ff350000";
-                ipi9 = "/axi/ipi@ff360000";
-                ipi10 = "/axi/ipi@ff370000";
                 psu_csu_0 = "/axi/psu_csu@ffca0000";
                 psu_smmu_reg = "/axi/psu_smmu_reg@fd5f0000";
                 psu_cci_reg = "/axi/psu_cci_reg@fd5e0000";
