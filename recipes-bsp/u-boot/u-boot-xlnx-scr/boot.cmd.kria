@@ -21,48 +21,14 @@ else test "${board_name}" = "${k26_starter}";
 fi
 
 #Set boot parameters based on CC type
-if test "${card1_name}" = "SCK-KV-G"; then
-        setenv card_name sck-kv-g;
-elif test "${card1_name}" = "SCK-KR-G"; then
-	setenv card_name sck-kr-g && setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
-elif test "${card1_name}" = "SCK-KD-G"; then
-        setenv card_name sck-kd-g && setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
-else #Assume Kria USB secondary boot device
-        setenv card_name unknown;
+if test "${card1_name}" = "SCK-KR-G"; then
+	setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
+else test "${card1_name}" = "SCK-KD-G";
+        setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
 fi
 
-#Set DT selection
-if test "${card1_name}" = "SCK-KV-G"; then
-        if test "${card1_rev}" = "Z" || test "${card1_rev}" = "A"; then
-                #revA dtb also supports revZ boards
-                dtb_name=SMK-zynqmp-${card_name}-revA
-        elif test "${card1_rev}" = "B" || test "${card1_rev}" = "1" || test "${card1_rev}" = "2"; then
-                #revB dtb also supports rev1 and rev2 boards
-                dtb_name=SMK-zynqmp-${card_name}-revB
-        else #default dtb if card revision is not found
-                dtb_name=SMK-zynqmp-${card_name}-revB
-                echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
-        fi
-elif test "${card1_name}" = "SCK-KR-G"; then
-	if test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
-		#revB dtb also supports rev1 dtb
-		dtb_name=SMK-zynqmp-${card_name}-revB
-	elif test "${card1_rev}" = "A"; then
-		dtb_name=SMK-zynqmp-${card_name}-revA
-	else #default dtb if card revision is not found
-		dtb_name=SMK-zynqmp-${card_name}-revB
-		echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
-	fi
-elif test "${card1_name}" = "SCK-KD-G"; then
-        if test "${card1_rev}" = "A" || test "${card1_rev}" = "B" || test "${card1_rev}" = "1"; then
-                dtb_name=SMK-zynqmp-${card_name}-revA
-	else #default dtb if card revision not found
-		dtb_name=SMK-zynqmp-${card_name}-revA
-		echo "Card revision not found, using default dtb: ${dtb_name}.dtb"
-	fi
-else
-        dtb_name=system
-fi
+fdt move $fdtcontroladdr @@DEVICETREE_ADDRESS@@
+fdt resize @@DEVICETREE_ADDRESS@@ 1000
 
 for boot_target in ${boot_targets};
 do
@@ -75,15 +41,10 @@ if test "${boot_target}" = "mmc0" || test "${boot_target}" = "mmc1" || test "${b
         if test -e ${devtype} ${devnum}:${distro_bootpart} /${kernel_name}; then
                 fatload ${devtype} ${devnum}:${distro_bootpart} @@KERNEL_LOAD_ADDRESS@@ ${kernel_name};
         fi
-        if test -e ${devtype} ${devnum}:${distro_bootpart} /devicetree/${dtb_name}.dtb; then
-                fatload ${devtype} ${devnum}:${distro_bootpart} @@DEVICETREE_ADDRESS@@ devicetree/${dtb_name}.dtb;
-        else
-		echo "Expected ${dtb_name} Not Found in FAT Partition, Booting with SOM only DTB"
-	fi
 	if test -e ${devtype} ${devnum}:${distro_bootpart} /devicetree/openamp.dtbo; then
 		echo "Loading and merging openamp.dtbo into device tree";
 		fatload ${devtype} ${devnum}:${distro_bootpart} @@DEVICETREE_OVERLAY_ADDRESS@@ devicetree/openamp.dtbo;
-		fdt addr @@DEVICETREE_ADDRESS@@
+		fdt addr $fdtcontroladdr
 		fdt resize 8192
 		fdt apply @@DEVICETREE_OVERLAY_ADDRESS@@
 	fi
