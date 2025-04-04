@@ -126,9 +126,10 @@
                  <0x0 0xfd4d0000 &watchdog0 0x0 0xfd4d0000 0x0 0x10000>;
                 #ranges-address-cells = <0x2>;
                 #ranges-size-cells = <0x2>;
-                phandle = <0x8f>;
+                phandle = <0x93>;
 
                 psu_cortexa53_0: cpu@0 {
+                        #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
                         enable-method = "psci";
@@ -156,6 +157,7 @@
                 };
 
                 psu_cortexa53_1: cpu@1 {
+                        #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
                         enable-method = "psci";
@@ -178,6 +180,7 @@
                 };
 
                 psu_cortexa53_2: cpu@2 {
+                        #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
                         enable-method = "psci";
@@ -200,6 +203,7 @@
                 };
 
                 psu_cortexa53_3: cpu@3 {
+                        #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
                         enable-method = "psci";
@@ -348,7 +352,7 @@
                  <0xf9000000 &gic_r5 0xf9000000 0x10000>;
                 #ranges-address-cells = <0x1>;
                 #ranges-size-cells = <0x1>;
-                phandle = <0x90>;
+                phandle = <0x94>;
 
                 psu_cortexr5_0: cpu@0 {
                         compatible = "arm,cortex-r5", "arm,armv8";
@@ -368,7 +372,7 @@
                         xlnx,psu-device = "PS8a";
                         bus-handle = <0x1>;
                         xlnx,timestamp-clk-freq = <0x5f5dd19>;
-                        phandle = <0x91>;
+                        phandle = <0x95>;
                 };
         };
 
@@ -476,7 +480,7 @@
                  <0x20000 &psu_r5_1_btcm 0x20000 0x10000>;
                 #ranges-address-cells = <0x1>;
                 #ranges-size-cells = <0x1>;
-                phandle = <0x92>;
+                phandle = <0x96>;
 
                 psu_cortexr5_1: cpu@1 {
                         compatible = "arm,cortex-r5", "arm,armv8";
@@ -496,7 +500,7 @@
                         xlnx,psu-device = "PS8a";
                         bus-handle = <0x1>;
                         xlnx,timestamp-clk-freq = <0x5f5dd19>;
-                        phandle = <0x93>;
+                        phandle = <0x97>;
                 };
         };
 
@@ -611,7 +615,7 @@
                  <0xffdc0000 &psu_pmu_ram 0xffdc0000 0x20000>;
                 #ranges-address-cells = <0x1>;
                 #ranges-size-cells = <0x1>;
-                phandle = <0x94>;
+                phandle = <0x98>;
 
                 psu_pmu_0: cpu@0 {
                         compatible = "pmu-microblaze";
@@ -710,7 +714,7 @@
                         xlnx,mmu-itlb-size = <0x2>;
                         xlnx,use-msr-instr = <0x1>;
                         xlnx,icache-data-width = <0x0>;
-                        phandle = <0x95>;
+                        phandle = <0x99>;
                 };
         };
 
@@ -753,7 +757,7 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 ranges;
-                phandle = <0x96>;
+                phandle = <0x9a>;
 
                 ipi_mailbox_pmu1: mailbox@ff9905c0 {
                         bootph-all;
@@ -770,11 +774,11 @@
                 compatible = "arm,dcc";
                 status = "disabled";
                 bootph-all;
-                phandle = <0x97>;
+                phandle = <0x9b>;
         };
 
         pmu {
-                compatible = "arm,armv8-pmuv3";
+                compatible = "arm,cortex-a53-pmu";
                 interrupt-parent = <&imux>;
                 interrupts = <0x0 0x8f 0x4 0x0 0x90 0x4 0x0 0x91 0x4 0x0 0x92 0x4>;
                 interrupt-affinity = <&psu_cortexa53_0>,
@@ -790,12 +794,6 @@
 
         firmware {
 
-                optee: optee {
-                        compatible = "linaro,optee-tz";
-                        method = "smc";
-                        phandle = <0x98>;
-                };
-
                 zynqmp_firmware: zynqmp-firmware {
                         compatible = "xlnx,zynqmp-firmware";
                         #power-domain-cells = <0x1>;
@@ -810,7 +808,7 @@
                                 interrupts = <0x0 0x23 0x4>;
                                 mboxes = <0x84 0x0 0x84 0x1>;
                                 mbox-names = "tx", "rx";
-                                phandle = <0x99>;
+                                phandle = <0x9c>;
                         };
 
                         soc-nvmem {
@@ -823,97 +821,97 @@
 
                                         soc_revision: soc-revision@0 {
                                                 reg = <0x0 0x4>;
-                                                phandle = <0x9a>;
+                                                phandle = <0x9d>;
                                         };
 
                                         efuse_dna: efuse-dna@c {
                                                 reg = <0xc 0xc>;
-                                                phandle = <0x9b>;
+                                                phandle = <0x9e>;
                                         };
 
                                         efuse_usr0: efuse-usr0@20 {
                                                 reg = <0x20 0x4>;
-                                                phandle = <0x9c>;
+                                                phandle = <0x9f>;
                                         };
 
                                         efuse_usr1: efuse-usr1@24 {
                                                 reg = <0x24 0x4>;
-                                                phandle = <0x9d>;
+                                                phandle = <0xa0>;
                                         };
 
                                         efuse_usr2: efuse-usr2@28 {
                                                 reg = <0x28 0x4>;
-                                                phandle = <0x9e>;
+                                                phandle = <0xa1>;
                                         };
 
                                         efuse_usr3: efuse-usr3@2c {
                                                 reg = <0x2c 0x4>;
-                                                phandle = <0x9f>;
+                                                phandle = <0xa2>;
                                         };
 
                                         efuse_usr4: efuse-usr4@30 {
                                                 reg = <0x30 0x4>;
-                                                phandle = <0xa0>;
+                                                phandle = <0xa3>;
                                         };
 
                                         efuse_usr5: efuse-usr5@34 {
                                                 reg = <0x34 0x4>;
-                                                phandle = <0xa1>;
+                                                phandle = <0xa4>;
                                         };
 
                                         efuse_usr6: efuse-usr6@38 {
                                                 reg = <0x38 0x4>;
-                                                phandle = <0xa2>;
+                                                phandle = <0xa5>;
                                         };
 
                                         efuse_usr7: efuse-usr7@3c {
                                                 reg = <0x3c 0x4>;
-                                                phandle = <0xa3>;
+                                                phandle = <0xa6>;
                                         };
 
                                         efuse_miscusr: efuse-miscusr@40 {
                                                 reg = <0x40 0x4>;
-                                                phandle = <0xa4>;
+                                                phandle = <0xa7>;
                                         };
 
                                         efuse_chash: efuse-chash@50 {
                                                 reg = <0x50 0x4>;
-                                                phandle = <0xa5>;
+                                                phandle = <0xa8>;
                                         };
 
                                         efuse_pufmisc: efuse-pufmisc@54 {
                                                 reg = <0x54 0x4>;
-                                                phandle = <0xa6>;
+                                                phandle = <0xa9>;
                                         };
 
                                         efuse_sec: efuse-sec@58 {
                                                 reg = <0x58 0x4>;
-                                                phandle = <0xa7>;
+                                                phandle = <0xaa>;
                                         };
 
                                         efuse_spkid: efuse-spkid@5c {
                                                 reg = <0x5c 0x4>;
-                                                phandle = <0xa8>;
+                                                phandle = <0xab>;
                                         };
 
                                         efuse_aeskey: efuse-aeskey@60 {
                                                 reg = <0x60 0x20>;
-                                                phandle = <0xa9>;
+                                                phandle = <0xac>;
                                         };
 
                                         efuse_ppk0hash: efuse-ppk0hash@a0 {
                                                 reg = <0xa0 0x30>;
-                                                phandle = <0xaa>;
+                                                phandle = <0xad>;
                                         };
 
                                         efuse_ppk1hash: efuse-ppk1hash@d0 {
                                                 reg = <0xd0 0x30>;
-                                                phandle = <0xab>;
+                                                phandle = <0xae>;
                                         };
 
                                         efuse_pufuser: efuse-pufuser@100 {
                                                 reg = <0x100 0x7f>;
-                                                phandle = <0xac>;
+                                                phandle = <0xaf>;
                                         };
                                 };
                         };
@@ -936,7 +934,7 @@
                                 phandle = <0x4>;
 
                                 pinctrl_sdhci0_default: sdhci0-default {
-                                        phandle = <0x8d>;
+                                        phandle = <0x91>;
 
                                         conf {
                                                 groups = "sdio0_0_grp";
@@ -957,7 +955,7 @@
                                 gpio-controller;
                                 #gpio-cells = <0x2>;
                                 label = "modepin";
-                                phandle = <0x8e>;
+                                phandle = <0x92>;
                         };
 
                         zynqmp_clk: clock-controller {
@@ -987,7 +985,98 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 ranges;
-                phandle = <0xad>;
+                phandle = <0xb0>;
+        };
+
+        ams {
+                compatible = "iio-hwmon";
+                io-channels = <0x1a 0x0 0x1a 0x1 0x1a 0x2 0x1a 0x3 0x1a 0x4 0x1a 0x5 0x1a 0x6 0x1a 0x7 0x1a 0x8 0x1a 0x9 0x1a 0xa 0x1a 0xb 0x1a 0xc 0x1a 0xd 0x1a 0xe 0x1a 0xf 0x1a 0x10 0x1a 0x11 0x1a 0x12 0x1a 0x13 0x1a 0x14 0x1a 0x15 0x1a 0x16 0x1a 0x17 0x1a 0x18 0x1a 0x19 0x1a 0x1a 0x1a 0x1b 0x1a 0x1c 0x1a 0x1d>;
+        };
+
+        tsens_apu: thermal-sensor-apu {
+                compatible = "generic-adc-thermal";
+                #thermal-sensor-cells = <0x0>;
+                io-channels = <0x1a 0x7>;
+                io-channel-names = "sensor-channel";
+                phandle = <0x8b>;
+        };
+
+        tsens_rpu: thermal-sensor-rpu {
+                compatible = "generic-adc-thermal";
+                #thermal-sensor-cells = <0x0>;
+                io-channels = <0x1a 0x8>;
+                io-channel-names = "sensor-channel";
+                phandle = <0x8d>;
+        };
+
+        tsens_pl: thermal-sensor-pl {
+                compatible = "generic-adc-thermal";
+                #thermal-sensor-cells = <0x0>;
+                io-channels = <0x1a 0x14>;
+                io-channel-names = "sensor-channel";
+                phandle = <0x8e>;
+        };
+
+        thermal-zones {
+
+                apu-thermal {
+                        polling-delay-passive = <0x3e8>;
+                        polling-delay = <0x1388>;
+                        thermal-sensors = <0x8b>;
+
+                        trips {
+
+                                apu_passive: passive {
+                                        temperature = <0x16b48>;
+                                        hysteresis = <0xdac>;
+                                        type = "passive";
+                                        phandle = <0x8c>;
+                                };
+
+                                apu_critical: critical {
+                                        temperature = <0x178f4>;
+                                        hysteresis = <0xdac>;
+                                        type = "critical";
+                                        phandle = <0xb1>;
+                                };
+                        };
+
+                        cooling-maps {
+
+                                map {
+                                        trip = <0x8c>;
+                                        cooling-device = <0x80 0xffffffff 0xffffffff 0x81 0xffffffff 0xffffffff 0x82 0xffffffff 0xffffffff 0x83 0xffffffff 0xffffffff>;
+                                };
+                        };
+                };
+
+                rpu-thermal {
+                        polling-delay = <0x2710>;
+                        thermal-sensors = <0x8d>;
+
+                        trips {
+
+                                critical {
+                                        temperature = <0x178f4>;
+                                        hysteresis = <0xdac>;
+                                        type = "critical";
+                                };
+                        };
+                };
+
+                pl-thermal {
+                        polling-delay = <0x2710>;
+                        thermal-sensors = <0x8e>;
+
+                        trips {
+
+                                critical {
+                                        temperature = <0x178f4>;
+                                        hysteresis = <0xdac>;
+                                        type = "critical";
+                                };
+                        };
+                };
         };
 
         amba_apu: apu-bus {
@@ -1214,7 +1303,7 @@
                         power-domains = <&zynqmp_firmware 0x2f>;
                         clocks = <&zynqmp_clk 0x3f>,
                          <&zynqmp_clk 0x1f>;
-                        phandle = <0xae>;
+                        phandle = <0xb2>;
                 };
 
                 can1: can@ff070000 {
@@ -1230,7 +1319,7 @@
                         power-domains = <&zynqmp_firmware 0x30>;
                         clocks = <&zynqmp_clk 0x40>,
                          <&zynqmp_clk 0x1f>;
-                        phandle = <0xaf>;
+                        phandle = <0xb3>;
                 };
 
                 cci: cci@fd6e0000 {
@@ -1240,7 +1329,7 @@
                         ranges = <0x0 0x0 0xfd6e0000 0x10000>;
                         #address-cells = <0x1>;
                         #size-cells = <0x1>;
-                        phandle = <0xb0>;
+                        phandle = <0xb4>;
 
                         pmu@9000 {
                                 compatible = "arm,cci-400-pmu,r1";
@@ -1248,6 +1337,42 @@
                                 interrupt-parent = <&imux>;
                                 interrupts = <0x0 0x7b 0x4 0x0 0x7b 0x4 0x0 0x7b 0x4 0x0 0x7b 0x4 0x0 0x7b 0x4>;
                         };
+                };
+
+                psu_cortexa53_0_debug: debug@fec10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfec10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x80>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xb5>;
+                };
+
+                psu_cortexa53_1_debug: debug@fed10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfed10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x81>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xb6>;
+                };
+
+                psu_cortexa53_2_debug: debug@fee10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfee10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x82>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xb7>;
+                };
+
+                psu_cortexa53_3_debug: debug@fef10000 {
+                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
+                        reg = <0x0 0xfef10000 0x0 0x1000>;
+                        clock-names = "apb_pclk";
+                        cpu = <0x83>;
+                        clocks = <&zynqmp_clk 0xc>;
+                        phandle = <0xb8>;
                 };
 
                 fpd_dma_chan1: dma-controller@fd500000 {
@@ -1623,7 +1748,7 @@
                         power-domains = <&zynqmp_firmware 0x2c>;
                         clocks = <&zynqmp_clk 0x3c>,
                          <&zynqmp_clk 0x1f>;
-                        phandle = <0xb1>;
+                        phandle = <0xb9>;
                 };
 
                 gem0: ethernet@ff0b0000 {
@@ -1642,7 +1767,7 @@
                          <&zynqmp_clk 0x31>,
                          <&zynqmp_clk 0x2c>;
                         assigned-clocks = <&zynqmp_clk 0x2c>;
-                        phandle = <0xb2>;
+                        phandle = <0xba>;
                 };
 
                 gem1: ethernet@ff0c0000 {
@@ -1661,7 +1786,7 @@
                          <&zynqmp_clk 0x32>,
                          <&zynqmp_clk 0x2c>;
                         assigned-clocks = <&zynqmp_clk 0x2c>;
-                        phandle = <0xb3>;
+                        phandle = <0xbb>;
                 };
 
                 gem2: ethernet@ff0d0000 {
@@ -1680,7 +1805,7 @@
                          <&zynqmp_clk 0x33>,
                          <&zynqmp_clk 0x2c>;
                         assigned-clocks = <&zynqmp_clk 0x2c>;
-                        phandle = <0xb4>;
+                        phandle = <0xbc>;
                 };
 
                 gem3: ethernet@ff0e0000 {
@@ -1699,7 +1824,7 @@
                          <&zynqmp_clk 0x34>,
                          <&zynqmp_clk 0x2c>;
                         assigned-clocks = <&zynqmp_clk 0x2c>;
-                        phandle = <0xb5>;
+                        phandle = <0xbd>;
                 };
 
                 gpio: gpio@ff0a0000 {
@@ -1737,7 +1862,7 @@
                         #size-cells = <0x0>;
                         power-domains = <&zynqmp_firmware 0x25>;
                         clocks = <&zynqmp_clk 0x3d>;
-                        phandle = <0xb6>;
+                        phandle = <0xbe>;
                 };
 
                 i2c1: i2c@ff030000 {
@@ -1767,20 +1892,20 @@
                                 bootph-all;
                                 compatible = "st,24c64", "atmel,24c64";
                                 reg = <0x50>;
-                                phandle = <0xb7>;
+                                phandle = <0xbf>;
                         };
 
                         eeprom_cc: eeprom@51 {
                                 bootph-all;
                                 compatible = "st,24c64", "atmel,24c64";
                                 reg = <0x51>;
-                                phandle = <0xb8>;
+                                phandle = <0xc0>;
                         };
 
                         da9131: pmic@33 {
                                 compatible = "dlg,da9131";
                                 reg = <0x33>;
-                                phandle = <0xb9>;
+                                phandle = <0xc1>;
 
                                 regulators {
 
@@ -1788,14 +1913,14 @@
                                                 regulator-name = "da9131_buck1";
                                                 regulator-boot-on;
                                                 regulator-always-on;
-                                                phandle = <0xba>;
+                                                phandle = <0xc2>;
                                         };
 
                                         da9131_buck2: buck2 {
                                                 regulator-name = "da9131_buck2";
                                                 regulator-boot-on;
                                                 regulator-always-on;
-                                                phandle = <0xbb>;
+                                                phandle = <0xc3>;
                                         };
                                 };
                         };
@@ -1803,7 +1928,7 @@
                         da9130: pmic@32 {
                                 compatible = "dlg,da9130";
                                 reg = <0x32>;
-                                phandle = <0xbc>;
+                                phandle = <0xc4>;
 
                                 regulators {
 
@@ -1811,7 +1936,7 @@
                                                 regulator-name = "da9130_buck1";
                                                 regulator-boot-on;
                                                 regulator-always-on;
-                                                phandle = <0xbd>;
+                                                phandle = <0xc5>;
                                         };
                                 };
                         };
@@ -1955,7 +2080,7 @@
                         interrupt-parent = <&imux>;
                         interrupts = <0x0 0x76 0x4 0x0 0x75 0x4 0x0 0x74 0x4 0x0 0x73 0x4 0x0 0x72 0x4>;
                         interrupt-names = "misc", "dummy", "intx", "msi1", "msi0";
-                        msi-parent = <0x8b>;
+                        msi-parent = <0x8f>;
                         reg = <0x0 0xfd0e0000 0x0 0x1000 0x0 0xfd480000 0x0 0x1000 0x80 0x0 0x0 0x10000000>;
                         reg-names = "breg", "pcireg", "cfg";
                         ranges = <0x2000000 0x0 0xe0000000 0x0 0xe0000000 0x0 0x10000000 0x43000000 0x6 0x0 0x6 0x0 0x2 0x0>;
@@ -1967,13 +2092,13 @@
                          <0x0 0x0 0x0 0x4 &pcie_intc 0x4>;
                         power-domains = <&zynqmp_firmware 0x3b>;
                         clocks = <&zynqmp_clk 0x17>;
-                        phandle = <0x8b>;
+                        phandle = <0x8f>;
 
                         pcie_intc: legacy-interrupt-controller {
                                 interrupt-controller;
                                 #address-cells = <0x0>;
                                 #interrupt-cells = <0x1>;
-                                phandle = <0x8c>;
+                                phandle = <0x90>;
                         };
                 };
 
@@ -2015,7 +2140,7 @@
                                 spi-tx-bus-width = <0x4>;
                                 spi-rx-bus-width = <0x4>;
                                 spi-max-frequency = <0x2625a00>;
-                                phandle = <0xbe>;
+                                phandle = <0xc6>;
 
                                 partitions {
                                         compatible = "fixed-partitions";
@@ -2157,7 +2282,7 @@
                         power-domains = <&zynqmp_firmware 0x1c>;
                         resets = <&zynqmp_reset 0x10>;
                         clocks = <&zynqmp_clk 0x16>;
-                        phandle = <0xbf>;
+                        phandle = <0xc7>;
                 };
 
                 sdhci0: mmc@ff160000 {
@@ -2198,7 +2323,7 @@
                         xlnx,write-protect = <0x0>;
                         xlnx,name = "psu_sd_0";
                         pinctrl-names = "default";
-                        pinctrl-0 = <0x8d>;
+                        pinctrl-0 = <0x91>;
                         non-removable;
                         disable-wp;
                         no-sd;
@@ -2224,7 +2349,7 @@
                         clocks = <&zynqmp_clk 0x37>,
                          <&zynqmp_clk 0x1f>;
                         assigned-clocks = <&zynqmp_clk 0x37>;
-                        phandle = <0xc0>;
+                        phandle = <0xc8>;
                 };
 
                 smmu: iommu@fd800000 {
@@ -2252,7 +2377,7 @@
                         power-domains = <&zynqmp_firmware 0x23>;
                         clocks = <&zynqmp_clk 0x3a>,
                          <&zynqmp_clk 0x1f>;
-                        phandle = <0xc1>;
+                        phandle = <0xc9>;
                 };
 
                 spi1: spi@ff050000 {
@@ -2375,7 +2500,7 @@
                         clocks = <&zynqmp_clk 0x38>,
                          <&zynqmp_clk 0x1f>;
                         assigned-clocks = <&zynqmp_clk 0x38>;
-                        phandle = <0xc2>;
+                        phandle = <0xca>;
                 };
 
                 uart1: serial@ff010000 {
@@ -2422,7 +2547,7 @@
                          <&zynqmp_clk 0x22>;
                         assigned-clocks = <&zynqmp_clk 0x20>,
                          <&zynqmp_clk 0x22>;
-                        phandle = <0xc3>;
+                        phandle = <0xcb>;
 
                         dwc3_0: usb@fe200000 {
                                 compatible = "snps,dwc3";
@@ -2431,11 +2556,11 @@
                                 interrupt-parent = <&imux>;
                                 interrupt-names = "host", "peripheral", "otg", "wakeup";
                                 interrupts = <0x0 0x41 0x4 0x0 0x41 0x4 0x0 0x45 0x4 0x0 0x4b 0x4>;
-                                snps,quirk-frame-length-adjustment = <0x20>;
                                 clock-names = "ref";
+                                snps,quirk-frame-length-adjustment = <0x20>;
                                 snps,resume-hs-terminations;
                                 clocks = <&zynqmp_clk 0x22>;
-                                phandle = <0xc4>;
+                                phandle = <0xcc>;
                         };
                 };
 
@@ -2456,7 +2581,7 @@
                          <&zynqmp_clk 0x22>;
                         assigned-clocks = <&zynqmp_clk 0x21>,
                          <&zynqmp_clk 0x22>;
-                        phandle = <0xc5>;
+                        phandle = <0xcd>;
 
                         dwc3_1: usb@fe300000 {
                                 compatible = "snps,dwc3";
@@ -2465,11 +2590,11 @@
                                 interrupt-parent = <&imux>;
                                 interrupt-names = "host", "peripheral", "otg", "wakeup";
                                 interrupts = <0x0 0x46 0x4 0x0 0x46 0x4 0x0 0x4a 0x4 0x0 0x4c 0x4>;
-                                snps,quirk-frame-length-adjustment = <0x20>;
                                 clock-names = "ref";
+                                snps,quirk-frame-length-adjustment = <0x20>;
                                 snps,resume-hs-terminations;
                                 clocks = <&zynqmp_clk 0x22>;
-                                phandle = <0xc6>;
+                                phandle = <0xce>;
                         };
                 };
 
@@ -2506,7 +2631,6 @@
 
                 xilinx_ams: ams@ffa50000 {
                         compatible = "xlnx,zynqmp-ams";
-                        status = "okay";
                         interrupt-parent = <&imux>;
                         interrupts = <0x0 0x38 0x4>;
                         reg = <0x0 0xffa50000 0x0 0x800>;
@@ -2515,6 +2639,7 @@
                         #io-channel-cells = <0x1>;
                         ranges = <0x0 0x0 0xffa50800 0x800>;
                         clocks = <&zynqmp_clk 0x46>;
+                        status = "okay";
                         xlnx,clock-freq = <0x31>;
                         xlnx,ip-name = "psu_ams";
                         xlnx,name = "psu_ams";
@@ -2583,32 +2708,32 @@
 
                                 live_video: port@0 {
                                         reg = <0x0>;
-                                        phandle = <0xc7>;
+                                        phandle = <0xcf>;
                                 };
 
                                 live_gfx: port@1 {
                                         reg = <0x1>;
-                                        phandle = <0xc8>;
+                                        phandle = <0xd0>;
                                 };
 
                                 live_audio: port@2 {
                                         reg = <0x2>;
-                                        phandle = <0xc9>;
+                                        phandle = <0xd1>;
                                 };
 
                                 out_video: port@3 {
                                         reg = <0x3>;
-                                        phandle = <0xca>;
+                                        phandle = <0xd2>;
                                 };
 
                                 out_audio: port@4 {
                                         reg = <0x4>;
-                                        phandle = <0xcb>;
+                                        phandle = <0xd3>;
                                 };
 
                                 out_dp: port@5 {
                                         reg = <0x5>;
-                                        phandle = <0xcc>;
+                                        phandle = <0xd4>;
                                 };
                         };
                 };
@@ -2679,7 +2804,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990480>;
-                                phandle = <0xcd>;
+                                phandle = <0xd5>;
                         };
 
                         psu_ipi_0_1: child@1 {
@@ -2688,7 +2813,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990400>;
-                                phandle = <0xce>;
+                                phandle = <0xd6>;
                         };
 
                         psu_ipi_0_2: child@2 {
@@ -2697,7 +2822,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990440>;
-                                phandle = <0xcf>;
+                                phandle = <0xd7>;
                         };
 
                         psu_ipi_0_3: child@3 {
@@ -2706,7 +2831,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd0>;
+                                phandle = <0xd8>;
                         };
 
                         psu_ipi_0_4: child@4 {
@@ -2715,7 +2840,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd1>;
+                                phandle = <0xd9>;
                         };
 
                         psu_ipi_0_5: child@5 {
@@ -2724,7 +2849,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd2>;
+                                phandle = <0xda>;
                         };
 
                         psu_ipi_0_6: child@6 {
@@ -2733,7 +2858,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9905c0>;
-                                phandle = <0xd3>;
+                                phandle = <0xdb>;
                         };
 
                         psu_ipi_0_7: child@7 {
@@ -2742,7 +2867,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff9904c0>;
-                                phandle = <0xd4>;
+                                phandle = <0xdc>;
                         };
 
                         psu_ipi_0_8: child@8 {
@@ -2751,7 +2876,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990500>;
-                                phandle = <0xd5>;
+                                phandle = <0xdd>;
                         };
 
                         psu_ipi_0_9: child@9 {
@@ -2760,7 +2885,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990540>;
-                                phandle = <0xd6>;
+                                phandle = <0xde>;
                         };
 
                         psu_ipi_0_10: child@10 {
@@ -2769,7 +2894,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990580>;
-                                phandle = <0xd7>;
+                                phandle = <0xdf>;
                         };
                 };
 
@@ -2803,7 +2928,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990080>;
-                                phandle = <0xd8>;
+                                phandle = <0xe0>;
                         };
 
                         psu_ipi_1_1: child@1 {
@@ -2812,7 +2937,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990000>;
-                                phandle = <0xd9>;
+                                phandle = <0xe1>;
                         };
 
                         psu_ipi_1_2: child@2 {
@@ -2821,7 +2946,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990040>;
-                                phandle = <0xda>;
+                                phandle = <0xe2>;
                         };
 
                         psu_ipi_1_3: child@3 {
@@ -2830,7 +2955,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9901c0>;
-                                phandle = <0xdb>;
+                                phandle = <0xe3>;
                         };
 
                         psu_ipi_1_4: child@4 {
@@ -2839,7 +2964,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9901c0>;
-                                phandle = <0xdc>;
+                                phandle = <0xe4>;
                         };
 
                         psu_ipi_1_5: child@5 {
@@ -2848,7 +2973,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9901c0>;
-                                phandle = <0xdd>;
+                                phandle = <0xe5>;
                         };
 
                         psu_ipi_1_6: child@6 {
@@ -2857,7 +2982,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9901c0>;
-                                phandle = <0xde>;
+                                phandle = <0xe6>;
                         };
 
                         psu_ipi_1_7: child@7 {
@@ -2866,7 +2991,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff9900c0>;
-                                phandle = <0xdf>;
+                                phandle = <0xe7>;
                         };
 
                         psu_ipi_1_8: child@8 {
@@ -2875,7 +3000,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990100>;
-                                phandle = <0xe0>;
+                                phandle = <0xe8>;
                         };
 
                         psu_ipi_1_9: child@9 {
@@ -2884,7 +3009,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990140>;
-                                phandle = <0xe1>;
+                                phandle = <0xe9>;
                         };
 
                         psu_ipi_1_10: child@10 {
@@ -2893,7 +3018,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990180>;
-                                phandle = <0xe2>;
+                                phandle = <0xea>;
                         };
                 };
 
@@ -2927,7 +3052,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990280>;
-                                phandle = <0xe3>;
+                                phandle = <0xeb>;
                         };
 
                         psu_ipi_2_1: child@1 {
@@ -2936,7 +3061,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990200>;
-                                phandle = <0xe4>;
+                                phandle = <0xec>;
                         };
 
                         psu_ipi_2_2: child@2 {
@@ -2945,7 +3070,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990240>;
-                                phandle = <0xe5>;
+                                phandle = <0xed>;
                         };
 
                         psu_ipi_2_3: child@3 {
@@ -2954,7 +3079,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9903c0>;
-                                phandle = <0xe6>;
+                                phandle = <0xee>;
                         };
 
                         psu_ipi_2_4: child@4 {
@@ -2963,7 +3088,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9903c0>;
-                                phandle = <0xe7>;
+                                phandle = <0xef>;
                         };
 
                         psu_ipi_2_5: child@5 {
@@ -2972,7 +3097,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9903c0>;
-                                phandle = <0xe8>;
+                                phandle = <0xf0>;
                         };
 
                         psu_ipi_2_6: child@6 {
@@ -2981,7 +3106,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9903c0>;
-                                phandle = <0xe9>;
+                                phandle = <0xf1>;
                         };
 
                         psu_ipi_2_7: child@7 {
@@ -2990,7 +3115,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff9902c0>;
-                                phandle = <0xea>;
+                                phandle = <0xf2>;
                         };
 
                         psu_ipi_2_8: child@8 {
@@ -2999,7 +3124,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990300>;
-                                phandle = <0xeb>;
+                                phandle = <0xf3>;
                         };
 
                         psu_ipi_2_9: child@9 {
@@ -3008,7 +3133,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990340>;
-                                phandle = <0xec>;
+                                phandle = <0xf4>;
                         };
 
                         psu_ipi_2_10: child@10 {
@@ -3017,7 +3142,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990380>;
-                                phandle = <0xed>;
+                                phandle = <0xf5>;
                         };
                 };
 
@@ -3049,7 +3174,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990e80>;
-                                phandle = <0xee>;
+                                phandle = <0xf6>;
                         };
 
                         psu_ipi_3_1: child@1 {
@@ -3058,7 +3183,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990e00>;
-                                phandle = <0xef>;
+                                phandle = <0xf7>;
                         };
 
                         psu_ipi_3_2: child@2 {
@@ -3067,7 +3192,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990e40>;
-                                phandle = <0xf0>;
+                                phandle = <0xf8>;
                         };
 
                         psu_ipi_3_3: child@3 {
@@ -3076,7 +3201,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xf1>;
+                                phandle = <0xf9>;
                         };
 
                         psu_ipi_3_4: child@4 {
@@ -3085,7 +3210,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xf2>;
+                                phandle = <0xfa>;
                         };
 
                         psu_ipi_3_5: child@5 {
@@ -3094,7 +3219,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xf3>;
+                                phandle = <0xfb>;
                         };
 
                         psu_ipi_3_6: child@6 {
@@ -3103,7 +3228,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xf4>;
+                                phandle = <0xfc>;
                         };
 
                         psu_ipi_3_7: child@7 {
@@ -3112,7 +3237,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff990ec0>;
-                                phandle = <0xf5>;
+                                phandle = <0xfd>;
                         };
 
                         psu_ipi_3_8: child@8 {
@@ -3121,7 +3246,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990f00>;
-                                phandle = <0xf6>;
+                                phandle = <0xfe>;
                         };
 
                         psu_ipi_3_9: child@9 {
@@ -3130,7 +3255,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990f40>;
-                                phandle = <0xf7>;
+                                phandle = <0xff>;
                         };
 
                         psu_ipi_3_10: child@10 {
@@ -3139,7 +3264,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990f80>;
-                                phandle = <0xf8>;
+                                phandle = <0x100>;
                         };
                 };
 
@@ -3171,7 +3296,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990e80>;
-                                phandle = <0xf9>;
+                                phandle = <0x101>;
                         };
 
                         psu_ipi_4_1: child@1 {
@@ -3180,7 +3305,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990e00>;
-                                phandle = <0xfa>;
+                                phandle = <0x102>;
                         };
 
                         psu_ipi_4_2: child@2 {
@@ -3189,7 +3314,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990e40>;
-                                phandle = <0xfb>;
+                                phandle = <0x103>;
                         };
 
                         psu_ipi_4_3: child@3 {
@@ -3198,7 +3323,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xfc>;
+                                phandle = <0x104>;
                         };
 
                         psu_ipi_4_4: child@4 {
@@ -3207,7 +3332,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xfd>;
+                                phandle = <0x105>;
                         };
 
                         psu_ipi_4_5: child@5 {
@@ -3216,7 +3341,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xfe>;
+                                phandle = <0x106>;
                         };
 
                         psu_ipi_4_6: child@6 {
@@ -3225,7 +3350,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0xff>;
+                                phandle = <0x107>;
                         };
 
                         psu_ipi_4_7: child@7 {
@@ -3234,7 +3359,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff990ec0>;
-                                phandle = <0x100>;
+                                phandle = <0x108>;
                         };
 
                         psu_ipi_4_8: child@8 {
@@ -3243,7 +3368,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990f00>;
-                                phandle = <0x101>;
+                                phandle = <0x109>;
                         };
 
                         psu_ipi_4_9: child@9 {
@@ -3252,7 +3377,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990f40>;
-                                phandle = <0x102>;
+                                phandle = <0x10a>;
                         };
 
                         psu_ipi_4_10: child@10 {
@@ -3261,7 +3386,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990f80>;
-                                phandle = <0x103>;
+                                phandle = <0x10b>;
                         };
                 };
 
@@ -3293,7 +3418,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990e80>;
-                                phandle = <0x104>;
+                                phandle = <0x10c>;
                         };
 
                         psu_ipi_5_1: child@1 {
@@ -3302,7 +3427,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990e00>;
-                                phandle = <0x105>;
+                                phandle = <0x10d>;
                         };
 
                         psu_ipi_5_2: child@2 {
@@ -3311,7 +3436,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990e40>;
-                                phandle = <0x106>;
+                                phandle = <0x10e>;
                         };
 
                         psu_ipi_5_3: child@3 {
@@ -3320,7 +3445,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x107>;
+                                phandle = <0x10f>;
                         };
 
                         psu_ipi_5_4: child@4 {
@@ -3329,7 +3454,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x108>;
+                                phandle = <0x110>;
                         };
 
                         psu_ipi_5_5: child@5 {
@@ -3338,7 +3463,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x109>;
+                                phandle = <0x111>;
                         };
 
                         psu_ipi_5_6: child@6 {
@@ -3347,7 +3472,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x10a>;
+                                phandle = <0x112>;
                         };
 
                         psu_ipi_5_7: child@7 {
@@ -3356,7 +3481,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff990ec0>;
-                                phandle = <0x10b>;
+                                phandle = <0x113>;
                         };
 
                         psu_ipi_5_8: child@8 {
@@ -3365,7 +3490,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990f00>;
-                                phandle = <0x10c>;
+                                phandle = <0x114>;
                         };
 
                         psu_ipi_5_9: child@9 {
@@ -3374,7 +3499,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990f40>;
-                                phandle = <0x10d>;
+                                phandle = <0x115>;
                         };
 
                         psu_ipi_5_10: child@10 {
@@ -3383,7 +3508,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990f80>;
-                                phandle = <0x10e>;
+                                phandle = <0x116>;
                         };
                 };
 
@@ -3415,7 +3540,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990e80>;
-                                phandle = <0x10f>;
+                                phandle = <0x117>;
                         };
 
                         psu_ipi_6_1: child@1 {
@@ -3424,7 +3549,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990e00>;
-                                phandle = <0x110>;
+                                phandle = <0x118>;
                         };
 
                         psu_ipi_6_2: child@2 {
@@ -3433,7 +3558,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990e40>;
-                                phandle = <0x111>;
+                                phandle = <0x119>;
                         };
 
                         psu_ipi_6_3: child@3 {
@@ -3442,7 +3567,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x112>;
+                                phandle = <0x11a>;
                         };
 
                         psu_ipi_6_4: child@4 {
@@ -3451,7 +3576,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x113>;
+                                phandle = <0x11b>;
                         };
 
                         psu_ipi_6_5: child@5 {
@@ -3460,7 +3585,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x114>;
+                                phandle = <0x11c>;
                         };
 
                         psu_ipi_6_6: child@6 {
@@ -3469,7 +3594,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990fc0>;
-                                phandle = <0x115>;
+                                phandle = <0x11d>;
                         };
 
                         psu_ipi_6_7: child@7 {
@@ -3478,7 +3603,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff990ec0>;
-                                phandle = <0x116>;
+                                phandle = <0x11e>;
                         };
 
                         psu_ipi_6_8: child@8 {
@@ -3487,7 +3612,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990f00>;
-                                phandle = <0x117>;
+                                phandle = <0x11f>;
                         };
 
                         psu_ipi_6_9: child@9 {
@@ -3496,7 +3621,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990f40>;
-                                phandle = <0x118>;
+                                phandle = <0x120>;
                         };
 
                         psu_ipi_6_10: child@10 {
@@ -3505,7 +3630,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990f80>;
-                                phandle = <0x119>;
+                                phandle = <0x121>;
                         };
                 };
 
@@ -3531,7 +3656,7 @@
                         xlnx,int-id = <0x3d>;
                         xlnx,bit-position = <0x18>;
                         xlnx,name = "psu_ipi_7";
-                        phandle = <0x11a>;
+                        phandle = <0x122>;
 
                         psu_ipi_7_0: child@0 {
                                 xlnx,ipi-bitmask = <0x1>;
@@ -3539,7 +3664,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990680>;
-                                phandle = <0x11b>;
+                                phandle = <0x123>;
                         };
 
                         psu_ipi_7_1: child@1 {
@@ -3548,7 +3673,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990600>;
-                                phandle = <0x11c>;
+                                phandle = <0x124>;
                         };
 
                         psu_ipi_7_2: child@2 {
@@ -3557,7 +3682,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990640>;
-                                phandle = <0x11d>;
+                                phandle = <0x125>;
                         };
 
                         psu_ipi_7_3: child@3 {
@@ -3566,7 +3691,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9907c0>;
-                                phandle = <0x11e>;
+                                phandle = <0x126>;
                         };
 
                         psu_ipi_7_4: child@4 {
@@ -3575,7 +3700,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9907c0>;
-                                phandle = <0x11f>;
+                                phandle = <0x127>;
                         };
 
                         psu_ipi_7_5: child@5 {
@@ -3584,7 +3709,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9907c0>;
-                                phandle = <0x120>;
+                                phandle = <0x128>;
                         };
 
                         psu_ipi_7_6: child@6 {
@@ -3593,7 +3718,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9907c0>;
-                                phandle = <0x121>;
+                                phandle = <0x129>;
                         };
 
                         psu_ipi_7_7: child@7 {
@@ -3602,7 +3727,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff9906c0>;
-                                phandle = <0x122>;
+                                phandle = <0x12a>;
                         };
 
                         psu_ipi_7_8: child@8 {
@@ -3611,7 +3736,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990700>;
-                                phandle = <0x123>;
+                                phandle = <0x12b>;
                         };
 
                         psu_ipi_7_9: child@9 {
@@ -3620,7 +3745,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990740>;
-                                phandle = <0x124>;
+                                phandle = <0x12c>;
                         };
 
                         psu_ipi_7_10: child@10 {
@@ -3629,7 +3754,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990780>;
-                                phandle = <0x125>;
+                                phandle = <0x12d>;
                         };
                 };
 
@@ -3655,7 +3780,7 @@
                         xlnx,int-id = <0x3e>;
                         xlnx,bit-position = <0x19>;
                         xlnx,name = "psu_ipi_8";
-                        phandle = <0x126>;
+                        phandle = <0x12e>;
 
                         psu_ipi_8_0: child@0 {
                                 xlnx,ipi-bitmask = <0x1>;
@@ -3663,7 +3788,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990880>;
-                                phandle = <0x127>;
+                                phandle = <0x12f>;
                         };
 
                         psu_ipi_8_1: child@1 {
@@ -3672,7 +3797,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990800>;
-                                phandle = <0x128>;
+                                phandle = <0x130>;
                         };
 
                         psu_ipi_8_2: child@2 {
@@ -3681,7 +3806,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990840>;
-                                phandle = <0x129>;
+                                phandle = <0x131>;
                         };
 
                         psu_ipi_8_3: child@3 {
@@ -3690,7 +3815,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9909c0>;
-                                phandle = <0x12a>;
+                                phandle = <0x132>;
                         };
 
                         psu_ipi_8_4: child@4 {
@@ -3699,7 +3824,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9909c0>;
-                                phandle = <0x12b>;
+                                phandle = <0x133>;
                         };
 
                         psu_ipi_8_5: child@5 {
@@ -3708,7 +3833,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9909c0>;
-                                phandle = <0x12c>;
+                                phandle = <0x134>;
                         };
 
                         psu_ipi_8_6: child@6 {
@@ -3717,7 +3842,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff9909c0>;
-                                phandle = <0x12d>;
+                                phandle = <0x135>;
                         };
 
                         psu_ipi_8_7: child@7 {
@@ -3726,7 +3851,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff9908c0>;
-                                phandle = <0x12e>;
+                                phandle = <0x136>;
                         };
 
                         psu_ipi_8_8: child@8 {
@@ -3735,7 +3860,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990900>;
-                                phandle = <0x12f>;
+                                phandle = <0x137>;
                         };
 
                         psu_ipi_8_9: child@9 {
@@ -3744,7 +3869,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990940>;
-                                phandle = <0x130>;
+                                phandle = <0x138>;
                         };
 
                         psu_ipi_8_10: child@10 {
@@ -3753,7 +3878,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990980>;
-                                phandle = <0x131>;
+                                phandle = <0x139>;
                         };
                 };
 
@@ -3779,7 +3904,7 @@
                         xlnx,int-id = <0x3f>;
                         xlnx,bit-position = <0x1a>;
                         xlnx,name = "psu_ipi_9";
-                        phandle = <0x132>;
+                        phandle = <0x13a>;
 
                         psu_ipi_9_0: child@0 {
                                 xlnx,ipi-bitmask = <0x1>;
@@ -3787,7 +3912,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990a80>;
-                                phandle = <0x133>;
+                                phandle = <0x13b>;
                         };
 
                         psu_ipi_9_1: child@1 {
@@ -3796,7 +3921,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990a00>;
-                                phandle = <0x134>;
+                                phandle = <0x13c>;
                         };
 
                         psu_ipi_9_2: child@2 {
@@ -3805,7 +3930,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990a40>;
-                                phandle = <0x135>;
+                                phandle = <0x13d>;
                         };
 
                         psu_ipi_9_3: child@3 {
@@ -3814,7 +3939,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990bc0>;
-                                phandle = <0x136>;
+                                phandle = <0x13e>;
                         };
 
                         psu_ipi_9_4: child@4 {
@@ -3823,7 +3948,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990bc0>;
-                                phandle = <0x137>;
+                                phandle = <0x13f>;
                         };
 
                         psu_ipi_9_5: child@5 {
@@ -3832,7 +3957,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990bc0>;
-                                phandle = <0x138>;
+                                phandle = <0x140>;
                         };
 
                         psu_ipi_9_6: child@6 {
@@ -3841,7 +3966,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990bc0>;
-                                phandle = <0x139>;
+                                phandle = <0x141>;
                         };
 
                         psu_ipi_9_7: child@7 {
@@ -3850,7 +3975,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff990ac0>;
-                                phandle = <0x13a>;
+                                phandle = <0x142>;
                         };
 
                         psu_ipi_9_8: child@8 {
@@ -3859,7 +3984,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990b00>;
-                                phandle = <0x13b>;
+                                phandle = <0x143>;
                         };
 
                         psu_ipi_9_9: child@9 {
@@ -3868,7 +3993,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990b40>;
-                                phandle = <0x13c>;
+                                phandle = <0x144>;
                         };
 
                         psu_ipi_9_10: child@10 {
@@ -3877,7 +4002,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990b80>;
-                                phandle = <0x13d>;
+                                phandle = <0x145>;
                         };
                 };
 
@@ -3903,7 +4028,7 @@
                         xlnx,int-id = <0x40>;
                         xlnx,bit-position = <0x1b>;
                         xlnx,name = "psu_ipi_10";
-                        phandle = <0x13e>;
+                        phandle = <0x146>;
 
                         psu_ipi_10_0: child@0 {
                                 xlnx,ipi-bitmask = <0x1>;
@@ -3911,7 +4036,7 @@
                                 xlnx,ipi-id = <0x0>;
                                 xlnx,ipi-buf-index = <0x2>;
                                 xlnx,ipi-req-msg-buf = <0xff990c80>;
-                                phandle = <0x13f>;
+                                phandle = <0x147>;
                         };
 
                         psu_ipi_10_1: child@1 {
@@ -3920,7 +4045,7 @@
                                 xlnx,ipi-id = <0x1>;
                                 xlnx,ipi-buf-index = <0x0>;
                                 xlnx,ipi-req-msg-buf = <0xff990c00>;
-                                phandle = <0x140>;
+                                phandle = <0x148>;
                         };
 
                         psu_ipi_10_2: child@2 {
@@ -3929,7 +4054,7 @@
                                 xlnx,ipi-id = <0x2>;
                                 xlnx,ipi-buf-index = <0x1>;
                                 xlnx,ipi-req-msg-buf = <0xff990c40>;
-                                phandle = <0x141>;
+                                phandle = <0x149>;
                         };
 
                         psu_ipi_10_3: child@3 {
@@ -3938,7 +4063,7 @@
                                 xlnx,ipi-id = <0x3>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990dc0>;
-                                phandle = <0x142>;
+                                phandle = <0x14a>;
                         };
 
                         psu_ipi_10_4: child@4 {
@@ -3947,7 +4072,7 @@
                                 xlnx,ipi-id = <0x4>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990dc0>;
-                                phandle = <0x143>;
+                                phandle = <0x14b>;
                         };
 
                         psu_ipi_10_5: child@5 {
@@ -3956,7 +4081,7 @@
                                 xlnx,ipi-id = <0x5>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990dc0>;
-                                phandle = <0x144>;
+                                phandle = <0x14c>;
                         };
 
                         psu_ipi_10_6: child@6 {
@@ -3965,7 +4090,7 @@
                                 xlnx,ipi-id = <0x6>;
                                 xlnx,ipi-buf-index = <0x7>;
                                 xlnx,ipi-req-msg-buf = <0xff990dc0>;
-                                phandle = <0x145>;
+                                phandle = <0x14d>;
                         };
 
                         psu_ipi_10_7: child@7 {
@@ -3974,7 +4099,7 @@
                                 xlnx,ipi-id = <0x7>;
                                 xlnx,ipi-buf-index = <0x3>;
                                 xlnx,ipi-req-msg-buf = <0xff990cc0>;
-                                phandle = <0x146>;
+                                phandle = <0x14e>;
                         };
 
                         psu_ipi_10_8: child@8 {
@@ -3983,7 +4108,7 @@
                                 xlnx,ipi-id = <0x8>;
                                 xlnx,ipi-buf-index = <0x4>;
                                 xlnx,ipi-req-msg-buf = <0xff990d00>;
-                                phandle = <0x147>;
+                                phandle = <0x14f>;
                         };
 
                         psu_ipi_10_9: child@9 {
@@ -3992,7 +4117,7 @@
                                 xlnx,ipi-id = <0x9>;
                                 xlnx,ipi-buf-index = <0x5>;
                                 xlnx,ipi-req-msg-buf = <0xff990d40>;
-                                phandle = <0x148>;
+                                phandle = <0x150>;
                         };
 
                         psu_ipi_10_10: child@10 {
@@ -4001,7 +4126,7 @@
                                 xlnx,ipi-id = <0xa>;
                                 xlnx,ipi-buf-index = <0x6>;
                                 xlnx,ipi-req-msg-buf = <0xff990d80>;
-                                phandle = <0x149>;
+                                phandle = <0x151>;
                         };
                 };
 
@@ -4032,7 +4157,7 @@
                         xlnx,ip-name = "psu_ocm_ram_0";
                         reg = <0x0 0xfffc0000 0x0 0x40000>;
                         xlnx,name = "psu_ocm_ram_0";
-                        phandle = <0x14a>;
+                        phandle = <0x152>;
                 };
 
                 psu_r5_1_btcm: psu_r5_1_btcm@20000 {
@@ -4087,7 +4212,7 @@
                         xlnx,is-hierarchy;
                         reg = <0x0 0xffe30000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm_lockstep";
-                        phandle = <0x14b>;
+                        phandle = <0x153>;
                 };
 
                 psu_r5_0_btcm: psu_r5_0_btcm@20000 {
@@ -4120,7 +4245,7 @@
                         xlnx,is-hierarchy;
                         reg = <0x0 0xffe10000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_atcm_lockstep";
-                        phandle = <0x14c>;
+                        phandle = <0x154>;
                 };
 
                 psu_r5_0_atcm: psu_r5_0_atcm@0 {
@@ -4566,7 +4691,7 @@
                         xlnx,ip-name = "psu_ddr";
                         reg = <0x0 0x100000 0x0 0x7fe00000>;
                         xlnx,name = "psu_r5_ddr_0";
-                        phandle = <0x14d>;
+                        phandle = <0x155>;
                 };
 
                 psu_ddr_0: psu_ddr@0 {
@@ -4579,12 +4704,12 @@
                         reg = <0x0 0x0 0x0 0x7ff00000 0x0 0x7ff00000 0x0 0x100000>;
                         xlnx,ddrc-ddr4-addr-mapping = <0x1>;
                         xlnx,name = "psu_ddr_0";
-                        phandle = <0x14e>;
+                        phandle = <0x156>;
                 };
 
                 psu_qspi_linear_0: psu_qspi_linear@c0000000 {
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
-                        phandle = <0x14f>;
+                        phandle = <0x157>;
                 };
         };
 
@@ -4592,7 +4717,7 @@
                 compatible = "indirect-bus";
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
-                phandle = <0x150>;
+                phandle = <0x158>;
 
                 lpd_xppu: xppu@ff980000 {
                         compatible = "xlnx,xppu";
@@ -4606,46 +4731,51 @@
         };
 
         binman: binman {
-                phandle = <0x151>;
+                phandle = <0x159>;
         };
 
-        pss_ref_clk: pss_ref_clk {
+        pss_ref_clk: pss-ref-clk {
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
                 clock-frequency = <0x1fca055>;
+                clock-output-names = "pss_ref_clk";
                 phandle = <0x85>;
         };
 
-        video_clk: video_clk {
+        video_clk: video-clk {
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
                 clock-frequency = <0x19bfcc0>;
+                clock-output-names = "video_clk";
                 phandle = <0x86>;
         };
 
-        pss_alt_ref_clk: pss_alt_ref_clk {
+        pss_alt_ref_clk: pss-alt-ref-clk {
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
                 clock-frequency = <0x0>;
+                clock-output-names = "pss_alt_ref_clk";
                 phandle = <0x87>;
         };
 
-        gt_crx_ref_clk: gt_crx_ref_clk {
+        gt_crx_ref_clk: gt-crx-ref-clk {
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
                 clock-frequency = <0x66ff300>;
+                clock-output-names = "gt_crx_ref_clk";
                 phandle = <0x89>;
         };
 
-        aux_ref_clk: aux_ref_clk {
+        aux_ref_clk: aux-ref-clk {
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
                 clock-frequency = <0x19bfcc0>;
+                clock-output-names = "aux_ref_clk";
                 phandle = <0x88>;
         };
 
@@ -4716,7 +4846,7 @@
                 pmu_region: pmu@7ff00000 {
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
-                        phandle = <0x152>;
+                        phandle = <0x15a>;
                 };
         };
 
@@ -4749,15 +4879,10 @@
                 };
         };
 
-        ams {
-                compatible = "iio-hwmon";
-                io-channels = <0x1a 0x0 0x1a 0x1 0x1a 0x2 0x1a 0x3 0x1a 0x4 0x1a 0x5 0x1a 0x6 0x1a 0x7 0x1a 0x8 0x1a 0x9 0x1a 0xa 0x1a 0xb 0x1a 0xc 0x1a 0xd 0x1a 0xe 0x1a 0xf 0x1a 0x10 0x1a 0x11 0x1a 0x12 0x1a 0x13 0x1a 0x14 0x1a 0x15 0x1a 0x16 0x1a 0x17 0x1a 0x18 0x1a 0x19 0x1a 0x1a 0x1a 0x1b 0x1a 0x1c 0x1a 0x1d>;
-        };
-
         pwm_fan: pwm-fan {
                 compatible = "pwm-fan";
                 pwms = <0x61 0x2 0x9c40 0x1>;
-                phandle = <0x153>;
+                phandle = <0x15b>;
         };
 
         __symbols__ {
@@ -4778,7 +4903,6 @@
                 zynqmp_ipi = "/zynqmp-ipi";
                 ipi_mailbox_pmu1 = "/zynqmp-ipi/mailbox@ff9905c0";
                 dcc = "/dcc";
-                optee = "/firmware/optee";
                 zynqmp_firmware = "/firmware/zynqmp-firmware";
                 zynqmp_power = "/firmware/zynqmp-firmware/power-management";
                 soc_revision = "/firmware/zynqmp-firmware/soc-nvmem/nvmem-layout/soc-revision@0";
@@ -4807,6 +4931,11 @@
                 modepin_gpio = "/firmware/zynqmp-firmware/gpio";
                 zynqmp_clk = "/firmware/zynqmp-firmware/clock-controller";
                 fpga_full = "/fpga-region";
+                tsens_apu = "/thermal-sensor-apu";
+                tsens_rpu = "/thermal-sensor-rpu";
+                tsens_pl = "/thermal-sensor-pl";
+                apu_passive = "/thermal-zones/apu-thermal/trips/passive";
+                apu_critical = "/thermal-zones/apu-thermal/trips/critical";
                 amba_apu = "/apu-bus";
                 gic_a53 = "/apu-bus/interrupt-controller@f9010000";
                 amba_rpu = "/rpu-bus";
@@ -4816,6 +4945,10 @@
                 can0 = "/axi/can@ff060000";
                 can1 = "/axi/can@ff070000";
                 cci = "/axi/cci@fd6e0000";
+                psu_cortexa53_0_debug = "/axi/debug@fec10000";
+                psu_cortexa53_1_debug = "/axi/debug@fed10000";
+                psu_cortexa53_2_debug = "/axi/debug@fee10000";
+                psu_cortexa53_3_debug = "/axi/debug@fef10000";
                 fpd_dma_chan1 = "/axi/dma-controller@fd500000";
                 fpd_dma_chan2 = "/axi/dma-controller@fd510000";
                 fpd_dma_chan3 = "/axi/dma-controller@fd520000";
@@ -5089,11 +5222,11 @@
                 amba_xppu = "/indirect-bus@1";
                 lpd_xppu = "/indirect-bus@1/xppu@ff980000";
                 binman = "/binman";
-                pss_ref_clk = "/pss_ref_clk";
-                video_clk = "/video_clk";
-                pss_alt_ref_clk = "/pss_alt_ref_clk";
-                gt_crx_ref_clk = "/gt_crx_ref_clk";
-                aux_ref_clk = "/aux_ref_clk";
+                pss_ref_clk = "/pss-ref-clk";
+                video_clk = "/video-clk";
+                pss_alt_ref_clk = "/pss-alt-ref-clk";
+                gt_crx_ref_clk = "/gt-crx-ref-clk";
+                aux_ref_clk = "/aux-ref-clk";
                 psu_ocm_ram_0_memory = "/memory@FFFC0000";
                 psu_r5_ddr_0_memory = "/memory@100000";
                 psu_ddr_0_memory = "/memory@0";
