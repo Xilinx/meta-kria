@@ -11,6 +11,8 @@ YAML_SERIAL_CONSOLE_BAUDRATE = "115200"
 
 SERIAL_CONSOLES = "115200;ttyPS1"
 
+IMGRCRY_DEPENDS = "${@'image-recovery-make:do_deploy' if d.getVar('XILINX_WITH_ESW') == 'xsct' else ''}"
+
 EXTRA_IMAGEDEPENDS += "board-id-data"
 EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
 
