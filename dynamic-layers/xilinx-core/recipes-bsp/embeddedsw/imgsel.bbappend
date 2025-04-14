@@ -4,5 +4,5 @@ do_compile:append() {
 
 do_deploy:append() {
     install -Dm 0644 ${S}/${PN}.manifest ${DEPLOYDIR}/${XSCTH_BASE_NAME}.manifest
-    ln -sf ${XSCTH_BASE_NAME}.manifest ${DEPLOYDIR}/imgsel-${MACHINE}.manifest
+    ln -sf ${XSCTH_BASE_NAME}.manifest ${DEPLOYDIR}/${PN}-${MACHINE}.manifest
 }
