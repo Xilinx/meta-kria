@@ -8,6 +8,7 @@
         device_id = "xck26";
         slrcount = <0x1>;
         family = "ZynqMP";
+        speed_grade = "2LV";
 
         options {
 
