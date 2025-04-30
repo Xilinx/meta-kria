@@ -709,7 +709,7 @@
                         xlnx,g-use-exceptions = <0x1>;
                         xlnx,dcache-line-len = <0x4>;
                         xlnx,icache-streams = <0x0>;
-                        xlnx,pss-ref-clk-freq = "33.333";
+                        xlnx,pss-ref-clk-freq = <0x1fc9f08>;
                         i-cache-size = <0x2000>;
                         xlnx,use-stack-protection = <0x1>;
                         xlnx,use-hw-mul = <0x0>;
