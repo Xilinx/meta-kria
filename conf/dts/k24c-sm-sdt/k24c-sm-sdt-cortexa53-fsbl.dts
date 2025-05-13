@@ -4,11 +4,11 @@
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SM-K24 RevA/B/1";
-        board = "k24i";
+        board = "k24c";
         device_id = "xck24";
         slrcount = <0x1>;
         family = "ZynqMP";
-        speed_grade = "2LVI";
+        speed_grade = "2LV";
 
         options {
 
@@ -1532,7 +1532,7 @@
                         interrupt-parent = <&gic>;
                         interrupts = <0x0 0x70 0x4>;
                         xlnx,bank-addr-bits = <0x3>;
-                        xlnx,has-ecc = <0x1>;
+                        xlnx,has-ecc = <0x0>;
                         xlnx,ddr-freq = <0x1f4ac8be>;
                         xlnx,row-addr-bits = <0x10>;
                         xlnx,ip-name = "psu_ddrc";
@@ -1552,7 +1552,7 @@
                         xlnx,video-buf-size = <0x0>;
                         xlnx,ddrc-memory-address-map = <0x0>;
                         xlnx,name = "psu_ddrc_0";
-                        xlnx,dddrc-ecc = <0x1>;
+                        xlnx,dddrc-ecc = <0x0>;
                         xlnx,ddrc-clock-stop = <0x0>;
                         xlnx,ddrc-dynamic-ddr-config-enabled = <0x0>;
                         phandle = <0x34>;
