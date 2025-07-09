@@ -1,15 +1,15 @@
 #! /bin/bash -e
 
 ### The following table controls the automatic generated of the machine .conf files (lines start with #M#)
-### Machine          BOARD                     OVERLAY    PRE     POST
-#M# k24c-sm-sdt      include/k24-sm.inc        full       none    
-#M# k24i-sm-sdt      include/k24-sm.inc        full       none    
-#M# k24-smk-kd-sdt   include/k24-smk.inc       full       none    INITRAMFS_IMAGE ?= \"petalinux-initramfs-image\"\\nUBOOT_DT_FILES = \"zynqmp-sck-kd-g-revA.dtso\"\\nDTB_FILE_NAME:task-install:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kd-g-revA.dtb\"\\nDTB_FILE_NAME:task-deploy:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kd-g-revA.dtb\"\\nPR:append:pn-device-tree = \".1\"\\n
-#M# k24-smk-sdt      include/k24-smk.inc       full       none    
-#M# k26-smk-kr-sdt   include/k26-smk.inc       full       none    require conf/machine/include/kria-qemu-kr.inc\\n\\nINITRAMFS_IMAGE ?= \"petalinux-initramfs-image\"\\nUBOOT_DT_FILES = \"\\\\\\n    zynqmp-sck-kr-g-revA.dtso \\\\\\n    zynqmp-sck-kr-g-revB.dtso \\\\\\n    \"\\nDTB_FILE_NAME:task-install:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kr-g-revB.dtb\"\\nDTB_FILE_NAME:task-deploy:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kr-g-revB.dtb\"\\nPR:append:pn-device-tree = \".1\"\\n
-#M# k26-smk-kv-sdt   include/k26-smk.inc       full       none    require conf/machine/include/kria-qemu-kv.inc\\n\\nINITRAMFS_IMAGE ?= \"petalinux-initramfs-image\"\\nUBOOT_DT_FILES = \"\\\\\\n    zynqmp-sck-kv-g-revA.dtso \\\\\\n    zynqmp-sck-kv-g-revB.dtso \\\\\\n    \"\\nDTB_FILE_NAME:task-install:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kv-g-revB.dtb\"\\nDTB_FILE_NAME:task-deploy:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kv-g-revB.dtb\"\\nPR:append:pn-device-tree = \".1\"\\n
-#M# k26-smk-sdt      include/k26-smk.inc       full       none    
-#M# k26-sm-sdt       include/k26-sm.inc        full       none    
+### Machine          BOARD                     OVERLAY    DOMAIN                         MULTICONFIGS                                            PRE     POST
+#M# k24c-sm-sdt      include/k24-sm.inc        full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none
+#M# k24i-sm-sdt      include/k24-sm.inc        full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none
+#M# k24-smk-kd-sdt   include/k24-smk.inc       full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none    INITRAMFS_IMAGE ?= \"petalinux-initramfs-image\"\\nUBOOT_DT_FILES = \"zynqmp-sck-kd-g-revA.dtso\"\\nDTB_FILE_NAME:task-install:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kd-g-revA.dtb\"\\nDTB_FILE_NAME:task-deploy:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kd-g-revA.dtb\"\\nPR:append:pn-device-tree = \".1\"\\n
+#M# k24-smk-sdt      include/k24-smk.inc       full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none
+#M# k26-smk-kr-sdt   include/k26-smk.inc       full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none    require conf/machine/include/kria-qemu-kr.inc\\n\\nINITRAMFS_IMAGE ?= \"petalinux-initramfs-image\"\\nUBOOT_DT_FILES = \"\\\\\\n    zynqmp-sck-kr-g-revA.dtso \\\\\\n    zynqmp-sck-kr-g-revB.dtso \\\\\\n    \"\\nDTB_FILE_NAME:task-install:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kr-g-revB.dtb\"\\nDTB_FILE_NAME:task-deploy:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kr-g-revB.dtb\"\\nPR:append:pn-device-tree = \".1\"\\n
+#M# k26-smk-kv-sdt   include/k26-smk.inc       full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none    require conf/machine/include/kria-qemu-kv.inc\\n\\nINITRAMFS_IMAGE ?= \"petalinux-initramfs-image\"\\nUBOOT_DT_FILES = \"\\\\\\n    zynqmp-sck-kv-g-revA.dtso \\\\\\n    zynqmp-sck-kv-g-revB.dtso \\\\\\n    \"\\nDTB_FILE_NAME:task-install:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kv-g-revB.dtb\"\\nDTB_FILE_NAME:task-deploy:pn-device-tree = \"\${UBOOT_DTFILE_PREFIX}-zynqmp-sck-kv-g-revB.dtb\"\\nPR:append:pn-device-tree = \".1\"\\n
+#M# k26-smk-sdt      include/k26-smk.inc       full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none
+#M# k26-sm-sdt       include/k26-sm.inc        full       openamp-overlay-zynqmp.yaml    --add-config\ CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS=y    none
 
 this=$(realpath $0)
 
@@ -46,7 +46,7 @@ done < ${mach_index}
 
 # Load in the arrays from this script
 count=0
-while read marker machine include overlay pre post ; do
+while read marker machine include overlay domain multiconfigs pre post ; do
   if [ "${marker}" != "#M#" ]; then
       continue
   fi
@@ -54,6 +54,20 @@ while read marker machine include overlay pre post ; do
   MACHINES[$count]=${machine}
   INCLUDES[$count]=${include}
   OVERLAYS[$count]=${overlay}
+  # domains
+  if [ "$domain" = "default" ]; then
+    domain=""
+  else
+    domain=" --domain-file ${domain} "
+  fi
+  DOMAINS[$count]=${domain}
+
+  # multiconfigs
+  if [ "$multiconfigs" = "default" ]; then
+    multiconfigs=""
+  fi
+  MULTICONFIGS[$count]=${multiconfigs}
+
   for mach in ${!MACHINE_ID[@]}; do
     if [ ${MACHINE_ID[${mach}]} = ${machine} ]; then
       URLS[$count]=${MACHINE_URL[${mach}]}
@@ -64,10 +78,14 @@ while read marker machine include overlay pre post ; do
     echo "ERROR: Unable to find ${machine} in ${mach_index}" >&2
     exit 1
   fi
+
+  # pre
   if [ "$pre" = "none" ]; then
     pre=
   fi
   PRE[$count]=${pre}
+
+  # post
   POST[$count]=${post}
 
   count=$(expr $count + 1)
@@ -80,19 +98,21 @@ for mach in ${!MACHINES[@]}; do
   fi
 
   echo "Machine: ${MACHINES[${mach}]}"
+  echo "Multiconfigs: ${MULTICONFIGS[${mach}]}"
   echo "Include: ${INCLUDES[${mach}]}"
   echo "Overlay: ${OVERLAYS[${mach}]}"
+  echo "Domain:       ${DOMAINS[${mach}]}"
   echo "URL:     ${URLS[${mach}]}"
   echo
   if [ ${OVERLAYS[${mach}]} = 'none' ]; then
       set -x
       rm -rf output
-      gen-machineconf parse-sdt --hw-description ${URLS[${mach}]} -c ${conf_path} --machine-name ${MACHINES[${mach}]}
+      gen-machineconf parse-sdt --hw-description ${URLS[${mach}]} -c ${conf_path} --machine-name ${MACHINES[${mach}]} ${MULTICONFIGS[${mach}]} ${DOMAINS[${mach}]}
       set +x
   else
       set -x
       rm -rf output
-      gen-machineconf parse-sdt --hw-description ${URLS[${mach}]} -g ${OVERLAYS[${mach}]} -c ${conf_path} --machine-name ${MACHINES[${mach}]}
+      gen-machineconf parse-sdt --hw-description ${URLS[${mach}]} -g ${OVERLAYS[${mach}]} -c ${conf_path} --machine-name ${MACHINES[${mach}]} ${MULTICONFIGS[${mach}]} ${DOMAINS[${mach}]}
       set +x
   fi
 
