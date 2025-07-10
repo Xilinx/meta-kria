@@ -14,10 +14,10 @@ DT_UBOOT_SRCREV ?= "9c3f954a10216a5be151dfffa197dae86ed07d2b"
 SRC_URI:append:kria = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=${DT_UBOOT_BRANCH};destsuffix=u-boot-xlnx;name=uboot"
 SRCREV_uboot = "${DT_UBOOT_SRCREV}"
 
-UBOOT_DTFILES_BUNDLE:kria ?= "1"
+UBOOT_DTFILES_BUNDLE:kria:linux ?= "1"
 UBOOT_DTFILE_PREFIX:kria ?= "SMK"
 
-do_configure:append:kria() {
+do_configure:append:kria:linux() {
     for dts in ${UBOOT_DT_FILES}; do
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
@@ -39,6 +39,6 @@ do_install:append:kria() {
     rm -f ${D}/boot/devicetree/zynqmp-sck*.dtbo
 }
 
-do_deploy:append:kria() {
+do_deploy:append:kria:linux() {
     install -m 0644 ${S}/device-tree-${MACHINE}.manifest ${DEPLOYDIR}/
 }
