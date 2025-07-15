@@ -58,7 +58,8 @@ while read marker machine include overlay domain multiconfigs pre post ; do
   if [ "$domain" = "default" ]; then
     domain=""
   else
-    domain=" --domain-file ${domain} "
+    dir=$(dirname $this)
+    domain=" --domain-file ${dir}/${domain} "
   fi
   DOMAINS[$count]=${domain}
 
