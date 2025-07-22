@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-        compatible = "xlnx,zynqmp-smk-k26-rev2", "xlnx,zynqmp-smk-k26-rev1", "xlnx,zynqmp-smk-k26-revB", "xlnx,zynqmp-smk-k26-revA", "xlnx,zynqmp-smk-k26", "xlnx,zynqmp";
+        compatible = "xlnx,zynqmp-smk-k26-rev2", "xlnx,zynqmp-smk-k26-rev1", "xlnx,zynqmp-smk-k26-revB", "xlnx,zynqmp-smk-k26-revA", "xlnx,zynqmp-smk-k26", "xlnx,zynqmp", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A";
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K26 Rev2/1/B/A";
@@ -123,9 +123,6 @@
                  <0xff150000 &lpd_watchdog 0xff150000 0x10000>,
                  <0xfd4d0000 &watchdog0 0xfd4d0000 0x10000>,
                  <0xffcb0000 &csuwdt_0 0xffcb0000 0x10000>,
-                 <0x0 &psu_r5_0_atcm 0x0 0x10000>,
-                 <0x20000 &psu_r5_0_btcm 0x20000 0x10000>,
-                 <0x0 &psu_r5_tcm_ram_0 0x0 0x40000>,
                  <0xf9000000 &gic_r5 0xf9000000 0x10000>;
                 #ranges-address-cells = <0x1>;
                 #ranges-size-cells = <0x1>;
@@ -1956,136 +1953,6 @@
                         };
                 };
 
-                psu_r5_tcm_ram_global: psu_r5_tcm_ram@ffe00000 {
-                        compatible = "xlnx,psu-r5-tcm-ram-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_tcm_ram";
-                        reg = <0x0 0xffe00000 0x0 0x40000>;
-                        xlnx,name = "psu_r5_tcm_ram_global";
-                        phandle = <0x5e>;
-                };
-
-                psu_r5_tcm_ram_0: psu_r5_tcm_ram@0 {
-                        compatible = "xlnx,psu-r5-tcm-ram-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_tcm_ram";
-                        reg = <0x0 0x0 0x0 0x40000>;
-                        xlnx,name = "psu_r5_tcm_ram_0";
-                        phandle = <0x7c>;
-                };
-
-                psu_r5_1_btcm: psu_r5_1_btcm@20000 {
-                        xlnx,power-domain = <0x10>;
-                        compatible = "xlnx,psu-r5-1-btcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x12>;
-                        xlnx,ip-name = "psu_r5_1_btcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x20000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_1_btcm";
-                        phandle = <0x81>;
-                };
-
-                psu_r5_1_btcm_global: psu_r5_1_btcm_global@ffeb0000 {
-                        compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x12>;
-                        xlnx,ip-name = "psu_r5_1_btcm_global";
-                        reg = <0x0 0xffeb0000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_1_btcm_global";
-                        phandle = <0x5d>;
-                };
-
-                psu_r5_1_atcm: psu_r5_1_atcm@0 {
-                        xlnx,power-domain = <0xf>;
-                        compatible = "xlnx,psu-r5-1-atcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x11>;
-                        xlnx,ip-name = "psu_r5_1_atcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x0 0x0 0x10000>;
-                        xlnx,name = "psu_r5_1_atcm";
-                        phandle = <0x80>;
-                };
-
-                psu_r5_1_atcm_global: psu_r5_1_atcm_global@ffe90000 {
-                        compatible = "xlnx,psu-r5-1-atcm-global-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x11>;
-                        xlnx,ip-name = "psu_r5_1_atcm_global";
-                        reg = <0x0 0xffe90000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_1_atcm_global";
-                        phandle = <0x5c>;
-                };
-
-                psu_r5_0_btcm_lockstep: psu_r5_0_btcm_lockstep@ffe30000 {
-                        compatible = "xlnx,psu-r5-0-btcm-lockstep-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,ip-name = "psu_r5_0_btcm_lockstep";
-                        xlnx,is-hierarchy;
-                        reg = <0x0 0xffe30000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_btcm_lockstep";
-                        phandle = <0x154>;
-                };
-
-                psu_r5_0_btcm: psu_r5_0_btcm@20000 {
-                        xlnx,power-domain = <0x12>;
-                        compatible = "xlnx,psu-r5-0-btcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,ip-name = "psu_r5_0_btcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x20000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_btcm";
-                        phandle = <0x7b>;
-                };
-
-                psu_r5_0_btcm_global: psu_r5_0_btcm_global@ffe20000 {
-                        compatible = "xlnx,psu-r5-0-btcm-global-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,ip-name = "psu_r5_0_btcm_global";
-                        reg = <0x0 0xffe20000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_btcm_global";
-                        phandle = <0x5b>;
-                };
-
-                psu_r5_0_atcm_lockstep: psu_r5_0_atcm_lockstep@ffe10000 {
-                        compatible = "xlnx,psu-r5-0-atcm-lockstep-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_0_atcm_lockstep";
-                        xlnx,is-hierarchy;
-                        reg = <0x0 0xffe10000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_atcm_lockstep";
-                        phandle = <0x155>;
-                };
-
-                psu_r5_0_atcm: psu_r5_0_atcm@0 {
-                        xlnx,power-domain = <0x11>;
-                        compatible = "xlnx,psu-r5-0-atcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_0_atcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x0 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_atcm";
-                        phandle = <0x7a>;
-                };
-
-                psu_r5_0_atcm_global: psu_r5_0_atcm_global@ffe00000 {
-                        compatible = "xlnx,psu-r5-0-atcm-global-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_0_atcm_global";
-                        reg = <0x0 0xffe00000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_atcm_global";
-                        phandle = <0x5a>;
-                };
-
                 psu_pmu_global_0: psu_pmu_global_0@ffd80000 {
                         compatible = "xlnx,psu-pmu-global-0-1.0";
                         status = "okay";
@@ -2613,6 +2480,31 @@
                         no-map;
                         phandle = <0x160>;
                 };
+
+                rproc0 {
+                        no-map;
+                        reg = <0x0 0x9800000 0x0 0x60000>;
+                        phandle = <0x16b>;
+                };
+
+                vdev0vring0@9860000 {
+                        no-map;
+                        reg = <0x0 0x9860000 0x0 0x4000>;
+                        phandle = <0x16c>;
+                };
+
+                vdev0vring1@9864000 {
+                        no-map;
+                        reg = <0x0 0x9864000 0x0 0x4000>;
+                        phandle = <0x16d>;
+                };
+
+                vdev0buffer@9868000 {
+                        no-map;
+                        reg = <0x0 0x9868000 0x0 0x40000>;
+                        compatible = "shared-dma-pool";
+                        phandle = <0x16e>;
+                };
         };
 
         gpio-keys {
@@ -2771,18 +2663,6 @@
                 psu_ipi_1_8 = "/axi/ipi@ff310000/child@8";
                 psu_ipi_1_9 = "/axi/ipi@ff310000/child@9";
                 psu_ipi_1_10 = "/axi/ipi@ff310000/child@10";
-                psu_r5_tcm_ram_global = "/axi/psu_r5_tcm_ram@ffe00000";
-                psu_r5_tcm_ram_0 = "/axi/psu_r5_tcm_ram@0";
-                psu_r5_1_btcm = "/axi/psu_r5_1_btcm@20000";
-                psu_r5_1_btcm_global = "/axi/psu_r5_1_btcm_global@ffeb0000";
-                psu_r5_1_atcm = "/axi/psu_r5_1_atcm@0";
-                psu_r5_1_atcm_global = "/axi/psu_r5_1_atcm_global@ffe90000";
-                psu_r5_0_btcm_lockstep = "/axi/psu_r5_0_btcm_lockstep@ffe30000";
-                psu_r5_0_btcm = "/axi/psu_r5_0_btcm@20000";
-                psu_r5_0_btcm_global = "/axi/psu_r5_0_btcm_global@ffe20000";
-                psu_r5_0_atcm_lockstep = "/axi/psu_r5_0_atcm_lockstep@ffe10000";
-                psu_r5_0_atcm = "/axi/psu_r5_0_atcm@0";
-                psu_r5_0_atcm_global = "/axi/psu_r5_0_atcm_global@ffe00000";
                 psu_pmu_global_0 = "/axi/psu_pmu_global_0@ffd80000";
                 psu_mbistjtag = "/axi/psu_mbistjtag@ffcf0000";
                 psu_rsa = "/axi/psu_rsa@ffce0000";
@@ -2841,5 +2721,163 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+        };
+
+        domains {
+
+                openamp_a53_0_cluster {
+                        compatible = "openamp,domain-v1";
+                        phandle = <0x167>;
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x165>;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x164>;
+                                };
+
+                                rpu0vdev0buffer {
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x166>;
+                                };
+
+                                rproc0 {
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x163>;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                remoteproc-relation {
+                                        compatible = "openamp,remoteproc-v2";
+                                        remote = <0x162>;
+                                        elfload;
+                                        elfload0 = <0x5a 0x5b 0x163>;
+                                };
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        openamp-xlnx-native = <0x0>;
+                                        remote = <0x162>;
+                                        carveouts = <0x164 0x165 0x166>;
+                                        mbox = <0x9>;
+                                };
+                        };
+
+                        access {
+                                dev = "psu_r5_0_btcm_global";
+                                flags = <0x0>;
+                        };
+                };
+
+                openamp_r5_0_cluster {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_0 0x1 0x0>;
+                        phandle = <0x162>;
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x169>;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x168>;
+                                };
+
+                                rpu0vdev0buffer {
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x16a>;
+                                };
+
+                                rproc0 {
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map = <0x1>;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        host = <0x167>;
+                                        mbox = <0x77>;
+                                        carveouts = <0x168 0x169 0x16a>;
+                                };
+                        };
+
+                        access {
+                                dev = "psu_r5_0_btcm_global";
+                                flags = <0x0>;
+                        };
+                };
+        };
+
+        remoteproc@ffe00000 {
+                compatible = "xlnx,zynqmp-r5fss";
+                xlnx,cluster-mode = <0x0>;
+                xlnx,tcm-mode = <0x0>;
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                ranges = <0x0 0x0 0x0 0xffe00000 0x0 0x10000 0x0 0x20000 0x0 0xffe20000 0x0 0x10000 0x1 0x0 0x0 0xffe90000 0x0 0x10000 0x1 0x20000 0x0 0xffeb0000 0x0 0x10000>;
+
+                r5f@0 {
+                        compatible = "xlnx,zynqmp-r5f";
+                        reg-names = "atcm0", "btcm0";
+                        reg = <0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
+                        memory-region = <0x16b 0x16e 0x16c 0x16d>;
+                        power-domains = <&zynqmp_firmware 0x7>,
+                         <&zynqmp_firmware 0xf>,
+                         <&zynqmp_firmware 0x10>;
+                        mboxes = <&ipi_mailbox_rpu0 0x0>,
+                         <&ipi_mailbox_rpu0 0x1>;
+                        mbox-names = "tx", "rx";
+                };
+        };
+
+        zynqmp_ipi1 {
+                compatible = "xlnx,zynqmp-ipi-mailbox";
+                #address-cells = <0x1>;
+                #size-cells = <0x1>;
+                ranges;
+                interrupts = <0x0 0x1d 0x4>;
+                xlnx,ipi-id = <0x7>;
+                phandle = <0x16f>;
+
+                ipi_mailbox_rpu0: ipi_mailbox_rpu0 {
+                        phandle = <0x170>;
+                        #mbox-cells = <0x1>;
+                        compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                        xlnx,ipi-id = <0x1>;
+                        reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        reg = <0xff990600 0x20 0xff990620 0x20 0xff9900c0 0x20 0xff9900e0 0x20>;
+                };
         };
 };

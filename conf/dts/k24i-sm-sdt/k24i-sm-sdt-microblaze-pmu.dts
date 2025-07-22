@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-        compatible = "xlnx,zynqmp-sm-k24-rev1", "xlnx,zynqmp-sm-k24-revB", "xlnx,zynqmp-sm-k24-revA", "xlnx,zynqmp-sm-k24", "xlnx,zynqmp";
+        compatible = "xlnx,zynqmp-sm-k24-rev1", "xlnx,zynqmp-sm-k24-revB", "xlnx,zynqmp-sm-k24-revA", "xlnx,zynqmp-sm-k24", "xlnx,zynqmp", "ZynqMP SM-K24 RevA/B/1", "ZynqMP SM-K24 RevA/B/1";
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SM-K24 RevA/B/1";
@@ -5276,5 +5276,134 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+        };
+
+        definitions {
+
+                OpenAMP {
+                        openamp_channel0_access_srams = "[{\"dev\": \"psu_r5_0_atcm_global\", \"flags\": 0}, {\"dev\": \"psu_r5_0_btcm_global\", \"flags\": 0}]";
+                        rproc0 = "[{\"start\": 159383552, \"size\": 393216, \"no-map\": 1}]";
+                        rpu0vdev0vring0 = "[{\"start\": 159776768, \"size\": 16384, \"no-map\": 1}]";
+                        rpu0vdev0vring1 = "[{\"start\": 159793152, \"size\": 16384, \"no-map\": 1}]";
+                        rpu0vdev0buffer = "[{\"start\": 159809536, \"size\": 262144, \"no-map\": 1}]";
+                };
+        };
+
+        domains {
+
+                openamp_a53_0_cluster {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_a53 0x1 0x80000003>;
+                        phandle = <0x161>;
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x15f>;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x15e>;
+                                };
+
+                                rpu0vdev0buffer {
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x160>;
+                                };
+
+                                rproc0 {
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x15d>;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                remoteproc-relation {
+                                        compatible = "openamp,remoteproc-v2";
+                                        remote = <0x15c>;
+                                        elfload;
+                                        elfload0 = <0x57 0x58 0x15d>;
+                                };
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        openamp-xlnx-native = <0x0>;
+                                        remote = <0x15c>;
+                                        carveouts = <0x15e 0x15f 0x160>;
+                                        mbox = <0x9>;
+                                };
+                        };
+
+                        access {
+                                dev = "psu_r5_0_btcm_global";
+                                flags = <0x0>;
+                        };
+                };
+
+                openamp_r5_0_cluster {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_0 0x1 0x0>;
+                        phandle = <0x15c>;
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x163>;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x162>;
+                                };
+
+                                rpu0vdev0buffer {
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map = <0x1>;
+                                        phandle = <0x164>;
+                                };
+
+                                rproc0 {
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map = <0x1>;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        host = <0x161>;
+                                        mbox = <0x71>;
+                                        carveouts = <0x162 0x163 0x164>;
+                                };
+                        };
+
+                        access {
+                                dev = "psu_r5_0_btcm_global";
+                                flags = <0x0>;
+                        };
+                };
         };
 };
