@@ -1,0 +1,11 @@
+args:
+    - --hw-description https://petalinux.xilinx.com/sswreleases/rel-v2025.2/sdt/2025.2/2025.2_0730_1_07310318/external/k24c-sm-sdt/k24c-sm-sdt_2025.2_0730_1_07310318.tar.gz
+    - --machine-name k24c-sm-sdt
+    - -g full
+    - --require-machine include/k24-sm.inc
+    - --domain-file ${LAYER_PATH_kria-layer}/scripts/openamp-overlay-zynqmp.yaml
+kconfig:
+    CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
+machine:
+    pre:
+    post:
