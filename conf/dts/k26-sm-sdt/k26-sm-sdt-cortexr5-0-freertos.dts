@@ -539,38 +539,6 @@
                 interrupt-parent = <&gic_r5>;
                 phandle = <0x1>;
 
-                psu_cortexa53_0_debug: debug@fec10000 {
-                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
-                        reg = <0x0 0xfec10000 0x0 0x1000>;
-                        clock-names = "apb_pclk";
-                        clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xba>;
-                };
-
-                psu_cortexa53_1_debug: debug@fed10000 {
-                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
-                        reg = <0x0 0xfed10000 0x0 0x1000>;
-                        clock-names = "apb_pclk";
-                        clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xbb>;
-                };
-
-                psu_cortexa53_2_debug: debug@fee10000 {
-                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
-                        reg = <0x0 0xfee10000 0x0 0x1000>;
-                        clock-names = "apb_pclk";
-                        clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xbc>;
-                };
-
-                psu_cortexa53_3_debug: debug@fef10000 {
-                        compatible = "arm,coresight-cpu-debug", "arm,primecell";
-                        reg = <0x0 0xfef10000 0x0 0x1000>;
-                        clock-names = "apb_pclk";
-                        clocks = <&zynqmp_clk 0xc>;
-                        phandle = <0xbd>;
-                };
-
                 fpd_dma_chan1: dma-controller@fd500000 {
                         status = "okay";
                         compatible = "xlnx,zynqmp-dma-1.0";
@@ -2498,10 +2466,6 @@
                 gic_r5 = "/rpu-bus/interrupt-controller@f9000000";
                 amba = "/axi";
                 imux = "/axi/interrupt-multiplex";
-                psu_cortexa53_0_debug = "/axi/debug@fec10000";
-                psu_cortexa53_1_debug = "/axi/debug@fed10000";
-                psu_cortexa53_2_debug = "/axi/debug@fee10000";
-                psu_cortexa53_3_debug = "/axi/debug@fef10000";
                 fpd_dma_chan1 = "/axi/dma-controller@fd500000";
                 fpd_dma_chan2 = "/axi/dma-controller@fd510000";
                 fpd_dma_chan3 = "/axi/dma-controller@fd520000";
