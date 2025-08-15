@@ -3,7 +3,7 @@ args:
     - --require-machine include/k24-smk.inc
     - --machine-name k24-smk-kd-sdt
     - -g full
-    - --domain-file ${LAYER_PATH_kria-layer}/scripts/openamp-overlay-zynqmp.yaml
+    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/recipes-libraries/open-amp/overlays/openamp-overlay-zynqmp.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
 machine:
