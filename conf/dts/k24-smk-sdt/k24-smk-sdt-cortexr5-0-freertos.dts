@@ -1638,7 +1638,7 @@
                         xlnx,name = "psu_ipi_1";
                         phandle = <0x71>;
 
-                        ipi_1_to_ipi_0: child@0 {
+                        ipi_1_to_ipi_0: child@ff300000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x1>;
                                 xlnx,cpu-name = "APU";
@@ -1652,7 +1652,7 @@
                                 phandle = <0xe4>;
                         };
 
-                        ipi_1_to_ipi_1: child@1 {
+                        ipi_1_to_ipi_1: child@ff310000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x100>;
                                 xlnx,cpu-name = "RPU0";
@@ -1666,7 +1666,7 @@
                                 phandle = <0xe5>;
                         };
 
-                        ipi_1_to_ipi_2: child@2 {
+                        ipi_1_to_ipi_2: child@ff320000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x200>;
                                 xlnx,cpu-name = "RPU1";
@@ -1680,7 +1680,7 @@
                                 phandle = <0xe6>;
                         };
 
-                        ipi_1_to_ipi_3: child@3 {
+                        ipi_1_to_ipi_3: child@ff330000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x10000>;
                                 xlnx,cpu-name = "PMU";
@@ -1694,7 +1694,7 @@
                                 phandle = <0xe7>;
                         };
 
-                        ipi_1_to_ipi_4: child@4 {
+                        ipi_1_to_ipi_4: child@ff331000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x20000>;
                                 xlnx,cpu-name = "PMU";
@@ -1708,7 +1708,7 @@
                                 phandle = <0xe8>;
                         };
 
-                        ipi_1_to_ipi_5: child@5 {
+                        ipi_1_to_ipi_5: child@ff332000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x40000>;
                                 xlnx,cpu-name = "PMU";
@@ -1722,7 +1722,7 @@
                                 phandle = <0xe9>;
                         };
 
-                        ipi_1_to_ipi_6: child@6 {
+                        ipi_1_to_ipi_6: child@ff333000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x80000>;
                                 xlnx,cpu-name = "PMU";
@@ -1736,7 +1736,7 @@
                                 phandle = <0xea>;
                         };
 
-                        ipi_1_to_ipi_7: child@7 {
+                        ipi_1_to_ipi_7: child@ff340000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x1000000>;
                                 xlnx,cpu-name = "APU";
@@ -1750,7 +1750,7 @@
                                 phandle = <0xeb>;
                         };
 
-                        ipi_1_to_ipi_8: child@8 {
+                        ipi_1_to_ipi_8: child@ff350000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x2000000>;
                                 xlnx,cpu-name = "APU";
@@ -1764,7 +1764,7 @@
                                 phandle = <0xec>;
                         };
 
-                        ipi_1_to_ipi_9: child@9 {
+                        ipi_1_to_ipi_9: child@ff360000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x4000000>;
                                 xlnx,cpu-name = "APU";
@@ -1778,7 +1778,7 @@
                                 phandle = <0xed>;
                         };
 
-                        ipi_1_to_ipi_10: child@10 {
+                        ipi_1_to_ipi_10: child@ff370000 {
                                 compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                                 xlnx,ipi-bitmask = <0x8000000>;
                                 xlnx,cpu-name = "APU";
@@ -2576,17 +2576,17 @@
                 coresight_0 = "/axi/coresight@fe800000";
                 csudma_0 = "/axi/dma@ffc80000";
                 ipi1 = "/axi/ipi@ff310000";
-                ipi_1_to_ipi_0 = "/axi/ipi@ff310000/child@0";
-                ipi_1_to_ipi_1 = "/axi/ipi@ff310000/child@1";
-                ipi_1_to_ipi_2 = "/axi/ipi@ff310000/child@2";
-                ipi_1_to_ipi_3 = "/axi/ipi@ff310000/child@3";
-                ipi_1_to_ipi_4 = "/axi/ipi@ff310000/child@4";
-                ipi_1_to_ipi_5 = "/axi/ipi@ff310000/child@5";
-                ipi_1_to_ipi_6 = "/axi/ipi@ff310000/child@6";
-                ipi_1_to_ipi_7 = "/axi/ipi@ff310000/child@7";
-                ipi_1_to_ipi_8 = "/axi/ipi@ff310000/child@8";
-                ipi_1_to_ipi_9 = "/axi/ipi@ff310000/child@9";
-                ipi_1_to_ipi_10 = "/axi/ipi@ff310000/child@10";
+                ipi_1_to_ipi_0 = "/axi/ipi@ff310000/child@ff300000";
+                ipi_1_to_ipi_1 = "/axi/ipi@ff310000/child@ff310000";
+                ipi_1_to_ipi_2 = "/axi/ipi@ff310000/child@ff320000";
+                ipi_1_to_ipi_3 = "/axi/ipi@ff310000/child@ff330000";
+                ipi_1_to_ipi_4 = "/axi/ipi@ff310000/child@ff331000";
+                ipi_1_to_ipi_5 = "/axi/ipi@ff310000/child@ff332000";
+                ipi_1_to_ipi_6 = "/axi/ipi@ff310000/child@ff333000";
+                ipi_1_to_ipi_7 = "/axi/ipi@ff310000/child@ff340000";
+                ipi_1_to_ipi_8 = "/axi/ipi@ff310000/child@ff350000";
+                ipi_1_to_ipi_9 = "/axi/ipi@ff310000/child@ff360000";
+                ipi_1_to_ipi_10 = "/axi/ipi@ff310000/child@ff370000";
                 psu_r5_tcm_ram_global = "/axi/psu_r5_tcm_ram@ffe00000";
                 psu_r5_tcm_ram_0 = "/axi/psu_r5_tcm_ram@0";
                 psu_r5_1_btcm = "/axi/psu_r5_1_btcm@20000";
