@@ -20,13 +20,6 @@ else test "${board_name}" = "${k26_starter}";
 	setenv bootargs 'earlycon console=ttyPS1,115200 init_fatal_sh=1 cma=800M @@KERNEL_COMMAND_APPEND@@';
 fi
 
-#Set boot parameters based on CC type
-if test "${card1_name}" = "SCK-KR-G"; then
-	setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
-else test "${card1_name}" = "SCK-KD-G";
-        setenv bootargs xilinx_tsn_ep.st_pcp=4 $bootargs;
-fi
-
 for boot_target in ${boot_targets};
 do
 echo "Trying to load boot images from ${boot_target}"
