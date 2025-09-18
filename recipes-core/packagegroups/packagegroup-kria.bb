@@ -37,7 +37,6 @@ KRIA_PACKAGES = " \
         python3-threading \
         python3-pyserial \
         python3-h5py \
-        resize-part \
         tree \
         tzdata \
         xmutil \
