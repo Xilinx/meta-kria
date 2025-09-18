@@ -3,6 +3,7 @@ args:
     - --machine-name k26-smk-sdt
     - -g full
     - --require-machine include/k26-smk.inc
+    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/recipes-libraries/open-amp/overlays/openamp-overlay-zynqmp.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
 machine:
