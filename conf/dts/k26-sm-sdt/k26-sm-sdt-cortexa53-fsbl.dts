@@ -1822,6 +1822,7 @@
                 perf_monitor_ocm: perf-monitor@ffa00000 {
                         phandle = <0x21>;
                         compatible = "xlnx,axi-perf-monitor";
+                        status = "okay";
                         reg = <0x0 0xffa00000 0x0 0x10000>;
                         interrupts = <0x0 0x19 0x4>;
                         interrupt-parent = <&gic>;
@@ -1842,7 +1843,6 @@
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
                         xlnx,can-clk-freq-hz = <0x2faf080>;
-                        status = "okay";
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_1";
@@ -1851,6 +1851,7 @@
                 perf_monitor_ddr: perf-monitor@fd0b0000 {
                         phandle = <0x20>;
                         compatible = "xlnx,axi-perf-monitor";
+                        status = "okay";
                         reg = <0x0 0xfd0b0000 0x0 0x10000>;
                         interrupts = <0x0 0x7b 0x4>;
                         interrupt-parent = <&gic>;
@@ -1871,7 +1872,6 @@
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
                         xlnx,can-clk-freq-hz = <0x2faf080>;
-                        status = "okay";
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_0";
@@ -1880,6 +1880,7 @@
                 perf_monitor_cci: perf-monitor@fd490000 {
                         phandle = <0x23>;
                         compatible = "xlnx,axi-perf-monitor";
+                        status = "okay";
                         reg = <0x0 0xfd490000 0x0 0x10000>;
                         interrupts = <0x0 0x7b 0x4>;
                         interrupt-parent = <&gic>;
@@ -1900,7 +1901,6 @@
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
                         xlnx,can-clk-freq-hz = <0x2faf080>;
-                        status = "okay";
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_5";
@@ -1909,6 +1909,7 @@
                 perf_monitor_lpd: perf-monitor@ffa10000 {
                         phandle = <0x22>;
                         compatible = "xlnx,axi-perf-monitor";
+                        status = "okay";
                         reg = <0x0 0xffa10000 0x0 0x10000>;
                         interrupts = <0x0 0x19 0x4>;
                         interrupt-parent = <&gic>;
@@ -1929,7 +1930,6 @@
                         xlnx,fifo-axis-tid-width = <0x1>;
                         xlnx,enable-advanced = <0x1>;
                         xlnx,can-clk-freq-hz = <0x2faf080>;
-                        status = "okay";
                         xlnx,fifo-axis-tdata-width = <0x38>;
                         xlnx,fifo-axis-depth = <0x20>;
                         xlnx,name = "psu_apm_2";
