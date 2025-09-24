@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-        compatible = "xlnx,zynqmp-smk-k26-rev2", "xlnx,zynqmp-smk-k26-rev1", "xlnx,zynqmp-smk-k26-revB", "xlnx,zynqmp-smk-k26-revA", "xlnx,zynqmp-smk-k26", "xlnx,zynqmp";
+        compatible = "xlnx,zynqmp-smk-k26-rev2", "xlnx,zynqmp-smk-k26-rev1", "xlnx,zynqmp-smk-k26-revB", "xlnx,zynqmp-smk-k26-revA", "xlnx,zynqmp-smk-k26", "xlnx,zynqmp", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A";
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K26 Rev2/1/B/A";
@@ -1330,10 +1330,8 @@
                         ranges = <0x2000000 0x0 0xe0000000 0x0 0xe0000000 0x0 0x10000000 0x43000000 0x6 0x0 0x6 0x0 0x2 0x0>;
                         bus-range = <0x0 0xff>;
                         interrupt-map-mask = <0x0 0x0 0x0 0x7>;
-                        interrupt-map = <0x0 0x0 0x0 0x1 &pcie_intc 0x1>,
-                         <0x0 0x0 0x0 0x2 &pcie_intc 0x2>,
-                         <0x0 0x0 0x0 0x3 &pcie_intc 0x3>,
-                         <0x0 0x0 0x0 0x4 &pcie_intc 0x4>;
+                        interrupt-map = <0x1 0x95 0x1 0x2 &pcie_intc 0x2>,
+                         <0x3 0x95 0x3 0x4 &pcie_intc 0x4>;
                         power-domains = <&zynqmp_firmware 0x3b>;
                         clocks = <&zynqmp_clk 0x17>;
 
@@ -1647,79 +1645,6 @@
                         };
                 };
 
-                ttc0: timer@ff110000 {
-                        phandle = <0x66>;
-                        compatible = "cdns,ttc";
-                        status = "okay";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x24 0x4 0x0 0x25 0x4 0x0 0x26 0x4>;
-                        reg = <0x0 0xff110000 0x0 0x1000>;
-                        timer-width = <0x20>;
-                        power-domains = <&zynqmp_firmware 0x18>;
-                        clocks = <&zynqmp_clk 0x1f>;
-                        xlnx,ttc-board-interface = "custom";
-                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
-                        xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,ip-name = "psu_ttc";
-                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
-                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
-                        #pwm-cells = <0x3>;
-                };
-
-                ttc1: timer@ff120000 {
-                        phandle = <0x67>;
-                        compatible = "cdns,ttc";
-                        status = "okay";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x27 0x4 0x0 0x28 0x4 0x0 0x29 0x4>;
-                        reg = <0x0 0xff120000 0x0 0x1000>;
-                        timer-width = <0x20>;
-                        power-domains = <&zynqmp_firmware 0x19>;
-                        clocks = <&zynqmp_clk 0x1f>;
-                        xlnx,ttc-board-interface = "custom";
-                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
-                        xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,ip-name = "psu_ttc";
-                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
-                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
-                };
-
-                ttc2: timer@ff130000 {
-                        phandle = <0x68>;
-                        compatible = "cdns,ttc";
-                        status = "okay";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
-                        reg = <0x0 0xff130000 0x0 0x1000>;
-                        timer-width = <0x20>;
-                        power-domains = <&zynqmp_firmware 0x1a>;
-                        clocks = <&zynqmp_clk 0x1f>;
-                        xlnx,ttc-board-interface = "custom";
-                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
-                        xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,ip-name = "psu_ttc";
-                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
-                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
-                };
-
-                ttc3: timer@ff140000 {
-                        phandle = <0x69>;
-                        compatible = "cdns,ttc";
-                        status = "okay";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x2d 0x4 0x0 0x2e 0x4 0x0 0x2f 0x4>;
-                        reg = <0x0 0xff140000 0x0 0x1000>;
-                        timer-width = <0x20>;
-                        power-domains = <&zynqmp_firmware 0x1b>;
-                        clocks = <&zynqmp_clk 0x1f>;
-                        xlnx,ttc-board-interface = "custom";
-                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
-                        xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,ip-name = "psu_ttc";
-                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
-                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
-                };
-
                 uart0: serial@ff000000 {
                         phandle = <0xcf>;
                         bootph-all;
@@ -1934,7 +1859,8 @@
                         xlnx,ip-name = "psu_dp";
                         xlnx,tz-nonsecure = <0x0>;
 
-                        ports {
+                        ports: ports {
+                                phandle = <0x15e>;
                                 #address-cells = <0x1>;
                                 #size-cells = <0x0>;
 
@@ -2544,6 +2470,56 @@
                         };
                 };
 
+                psu_r5_1_btcm: psu_r5_1_btcm@20000 {
+                        phandle = <0x7c>;
+                        xlnx,power-domain = <0x10>;
+                        compatible = "xlnx,psu-r5-1-btcm-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x12>;
+                        xlnx,ip-name = "psu_r5_1_btcm";
+                        xlnx,bank-size = <0x10000>;
+                        reg = <0x0 0x20000 0x0 0x10000>;
+                };
+
+                psu_r5_1_btcm_global: psu_r5_1_btcm_global@ffeb0000 {
+                        phandle = <0x5b>;
+                        compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x12>;
+                        xlnx,ip-name = "psu_r5_1_btcm_global";
+                        reg = <0x0 0xffeb0000 0x0 0x10000>;
+                };
+
+                psu_r5_1_atcm: psu_r5_1_atcm@0 {
+                        phandle = <0x7b>;
+                        xlnx,power-domain = <0xf>;
+                        compatible = "xlnx,psu-r5-1-atcm-1.0";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x11>;
+                        xlnx,ip-name = "psu_r5_1_atcm";
+                        xlnx,bank-size = <0x10000>;
+                        reg = <0x0 0x0 0x0 0x10000>;
+                };
+
+                psu_r5_1_atcm_global: psu_r5_1_atcm_global@ffe90000 {
+                        phandle = <0x5a>;
+                        compatible = "xlnx,psu-r5-1-atcm-global-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x11>;
+                        xlnx,ip-name = "psu_r5_1_atcm_global";
+                        reg = <0x0 0xffe90000 0x0 0x10000>;
+                };
+
+                psu_r5_0_btcm_lockstep: psu_r5_0_btcm_lockstep@ffe30000 {
+                        phandle = <0x154>;
+                        compatible = "xlnx,psu-r5-0-btcm-lockstep-1.0", "mmio-sram";
+                        status = "okay";
+                        power-domains = <&zynqmp_firmware 0x10>;
+                        xlnx,ip-name = "psu_r5_0_btcm_lockstep";
+                        xlnx,is-hierarchy;
+                        reg = <0x0 0xffe30000 0x0 0x10000>;
+                };
+
                 psu_csu_0: psu_csu@ffca0000 {
                         phandle = <0x2a>;
                         xlnx,csu-board-interface = "custom";
@@ -2780,6 +2756,31 @@
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
                 };
+
+                rproc0@9800000 {
+                        no-map;
+                        reg = <0x0 0x9800000 0x0 0x60000>;
+                        phandle = <0x168>;
+                };
+
+                vdev0vring0@9860000 {
+                        phandle = <0x169>;
+                        no-map;
+                        reg = <0x0 0x9860000 0x0 0x4000>;
+                };
+
+                vdev0vring1@9864000 {
+                        phandle = <0x16a>;
+                        no-map;
+                        reg = <0x0 0x9864000 0x0 0x4000>;
+                };
+
+                vdev0buffer@9868000 {
+                        phandle = <0x16b>;
+                        no-map;
+                        reg = <0x0 0x9868000 0x0 0x40000>;
+                        compatible = "shared-dma-pool";
+                };
         };
 
         gpio-keys {
@@ -2814,7 +2815,6 @@
         pwm_fan: pwm-fan {
                 phandle = <0x15d>;
                 compatible = "pwm-fan";
-                pwms = <&ttc0 0x2 0x9c40 0x1>;
         };
 
         __symbols__ {
@@ -2922,10 +2922,6 @@
                 smmu = "/axi/iommu@fd800000";
                 spi0 = "/axi/spi@ff040000";
                 spi1 = "/axi/spi@ff050000";
-                ttc0 = "/axi/timer@ff110000";
-                ttc1 = "/axi/timer@ff120000";
-                ttc2 = "/axi/timer@ff130000";
-                ttc3 = "/axi/timer@ff140000";
                 uart0 = "/axi/serial@ff000000";
                 uart1 = "/axi/serial@ff010000";
                 usb0 = "/axi/usb@ff9d0000";
@@ -3007,6 +3003,11 @@
                 ipi_10_to_ipi_8 = "/axi/ipi@ff370000/child@ff350000";
                 ipi_10_to_ipi_9 = "/axi/ipi@ff370000/child@ff360000";
                 ipi_10_to_ipi_10 = "/axi/ipi@ff370000/child@ff370000";
+                psu_r5_1_btcm = "/axi/psu_r5_1_btcm@20000";
+                psu_r5_1_btcm_global = "/axi/psu_r5_1_btcm_global@ffeb0000";
+                psu_r5_1_atcm = "/axi/psu_r5_1_atcm@0";
+                psu_r5_1_atcm_global = "/axi/psu_r5_1_atcm_global@ffe90000";
+                psu_r5_0_btcm_lockstep = "/axi/psu_r5_0_btcm_lockstep@ffe30000";
                 psu_csu_0 = "/axi/psu_csu@ffca0000";
                 psu_smmu_reg = "/axi/psu_smmu_reg@fd5f0000";
                 psu_cci_reg = "/axi/psu_cci_reg@fd5e0000";
@@ -3033,6 +3034,157 @@
                 psu_ddr_1_memory = "/memory@800000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                ports = "/axi/display@fd4a0000/ports";
                 gic = "/axi/interrupt-controller@f9010000";
+        };
+
+        domains {
+
+                openamp_a53_0_cluster {
+                        phandle = <0x164>;
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        os,type = "linux";
+                        access = <&ipi7 0x0>,
+                         <&psu_cortexa53_0 0x0>,
+                         <&psu_cortexa53_1 0x0>,
+                         <&psu_cortexa53_2 0x0>,
+                         <&psu_cortexa53_3 0x0>,
+                         <&gem0 0x0>,
+                         <&gem1 0x0>,
+                         <&gem2 0x0>,
+                         <&dwc3_1 0x0>,
+                         <&sata 0x0>,
+                         <&pcie 0x0>,
+                         <&nand0 0x0>,
+                         <&sdhci0 0x0>,
+                         <&ports 0x0>;
+                        access-json = "[{\"dev\": \"cpus_r5_0\", \"flags\": {}}, {\"dev\": \"ipi7\", \"flags\": {}}, {\"dev\": \"ipi1\", \"flags\": {}}, {\"dev\": \"/cpus-a53@0/cpu@0\", \"label\": \"psu_cortexa53_0\", \"flags\": {}}, {\"dev\": \"psu_cortexa53_1\", \"flags\": {}}, {\"dev\": \"psu_cortexa53_2\", \"flags\": {}}, {\"dev\": \"psu_cortexa53_3\", \"flags\": {}}, {\"dev\": \"psu_r5_0_atcm_global@ffe00000\", \"flags\": {}}, {\"dev\": \"psu_r5_0_btcm_global@ffe20000\", \"flags\": {}}, {\"dev\": \"amba_pl\"}, {\"dev\": \"gem0\"}, {\"dev\": \"gem1\"}, {\"dev\": \"gem2\"}, {\"dev\": \"dwc3_1\"}, {\"dev\": \"sata\"}, {\"dev\": \"pcie\"}, {\"dev\": \"nand0\"}, {\"dev\": \"mmc@ff160000\"}, {\"dev\": \"display@fd4a0000/ports\", \"label\": \"zynqmp_dpsub\"}]";
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        phandle = <0x162>;
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        phandle = <0x161>;
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0buffer {
+                                        phandle = <0x163>;
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map;
+                                };
+
+                                rproc0 {
+                                        phandle = <0x160>;
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                remoteproc-relation {
+                                        compatible = "openamp,remoteproc-v2";
+                                        remote = <0x15f>;
+                                        elfload;
+                                        elfload0 = <0x58 0x59 0x160>;
+                                };
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        remote = <0x15f>;
+                                        carveouts = <0x161 0x162 0x163>;
+                                        mbox = <0x9>;
+                                };
+                        };
+                };
+
+                openamp_r5_0_cluster {
+                        phandle = <0x15f>;
+                        compatible = "openamp,domain-v1";
+                        os,type = "freertos";
+                        access = <&ipi7 0x0>;
+                        cpu_config_str = "split";
+                        core_num = "0";
+                        access-json = "[{\"dev\": \"psu_r5_0_atcm_global@ffe00000\", \"label\": \"psu_r5_0_atcm_global\", \"flags\": {}}, {\"dev\": \"psu_r5_0_btcm_global@ffe20000\", \"flags\": {}, \"label\": \"psu_r5_0_btcm_global\"}, {\"dev\": \"ipi7\", \"flags\": {}}, {\"dev\": \"ipi1\", \"flags\": {}}, {\"dev\": \"memory@100000\", \"flags\": {}}, {\"dev\": \"psu_rpu\", \"flags\": {}}, {\"dev\": \"ttc3\", \"flags\": {}}]";
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        phandle = <0x166>;
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        phandle = <0x165>;
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0buffer {
+                                        phandle = <0x167>;
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map;
+                                };
+
+                                rproc0 {
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+                                cluster_cpu = "psu_cortexr5_0";
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        host = <0x164>;
+                                        mbox = <0x72>;
+                                        carveouts = <0x165 0x166 0x167>;
+                                };
+                        };
+                };
+        };
+
+        remoteproc@ffe00000 {
+                compatible = "xlnx,zynqmp-r5fss";
+                xlnx,cluster-mode = <0x0>;
+                xlnx,tcm-mode = <0x0>;
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                ranges = <0x0 0x0 0x0 0xffe00000 0x0 0x10000 0x0 0x20000 0x0 0xffe20000 0x0 0x10000 0x1 0x0 0x0 0xffe90000 0x0 0x10000 0x1 0x20000 0x0 0xffeb0000 0x0 0x10000>;
+
+                r5f@0 {
+                        compatible = "xlnx,zynqmp-r5f";
+                        reg-names = "atcm0", "btcm0";
+                        reg = <0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
+                        memory-region = <0x168 0x16b 0x169 0x16a>;
+                        power-domains = <&zynqmp_firmware 0x7>,
+                         <&zynqmp_firmware 0xf>,
+                         <&zynqmp_firmware 0x10>;
+                        mboxes = <&ipi_7_to_ipi_1 0x0>,
+                         <&ipi_7_to_ipi_1 0x1>;
+                        mbox-names = "tx", "rx";
+                };
         };
 };

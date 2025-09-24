@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-        compatible = "xlnx,zynqmp-smk-k24-revA", "xlnx,zynqmp-smk-k24", "xlnx,zynqmp";
+        compatible = "xlnx,zynqmp-smk-k24-revA", "xlnx,zynqmp-smk-k24", "xlnx,zynqmp", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA";
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K24 RevA";
@@ -2129,10 +2129,8 @@
                         ranges = <0x2000000 0x0 0xe0000000 0x0 0xe0000000 0x0 0x10000000 0x43000000 0x6 0x0 0x6 0x0 0x2 0x0>;
                         bus-range = <0x0 0xff>;
                         interrupt-map-mask = <0x0 0x0 0x0 0x7>;
-                        interrupt-map = <0x0 0x0 0x0 0x1 &pcie_intc 0x1>,
-                         <0x0 0x0 0x0 0x2 &pcie_intc 0x2>,
-                         <0x0 0x0 0x0 0x3 &pcie_intc 0x3>,
-                         <0x0 0x0 0x0 0x4 &pcie_intc 0x4>;
+                        interrupt-map = <0x1 0x94 0x1 0x2 &pcie_intc 0x2>,
+                         <0x3 0x94 0x3 0x4 &pcie_intc 0x4>;
                         power-domains = <&zynqmp_firmware 0x3b>;
                         clocks = <&zynqmp_clk 0x17>;
 
@@ -2749,7 +2747,8 @@
                         xlnx,tz-nonsecure = <0x0>;
                         xlnx,name = "psu_dp";
 
-                        ports {
+                        ports: ports {
+                                phandle = <0x15c>;
                                 #address-cells = <0x1>;
                                 #size-cells = <0x0>;
 
@@ -5885,5 +5884,145 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                ports = "/axi/display@fd4a0000/ports";
+        };
+
+        domains {
+
+                openamp_a53_0_cluster {
+                        phandle = <0x162>;
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        os,type = "linux";
+                        access = <&cpus_r5_0 0x0>,
+                         <&ipi7 0x0>,
+                         <&ipi1 0x0>,
+                         <&psu_cortexa53_0 0x0>,
+                         <&psu_cortexa53_1 0x0>,
+                         <&psu_cortexa53_2 0x0>,
+                         <&psu_cortexa53_3 0x0>,
+                         <&psu_r5_0_atcm_global 0x0>,
+                         <&psu_r5_0_btcm_global 0x0>,
+                         <&gem0 0x0>,
+                         <&gem1 0x0>,
+                         <&gem2 0x0>,
+                         <&dwc3_1 0x0>,
+                         <&sata 0x0>,
+                         <&pcie 0x0>,
+                         <&nand0 0x0>,
+                         <&sdhci0 0x0>,
+                         <&ports 0x0>;
+                        access-json = "[{\"dev\": \"cpus_r5_0\", \"flags\": {}}, {\"dev\": \"ipi7\", \"flags\": {}}, {\"dev\": \"ipi1\", \"flags\": {}}, {\"dev\": \"/cpus-a53@0/cpu@0\", \"label\": \"psu_cortexa53_0\", \"flags\": {}}, {\"dev\": \"psu_cortexa53_1\", \"flags\": {}}, {\"dev\": \"psu_cortexa53_2\", \"flags\": {}}, {\"dev\": \"psu_cortexa53_3\", \"flags\": {}}, {\"dev\": \"psu_r5_0_atcm_global@ffe00000\", \"flags\": {}}, {\"dev\": \"psu_r5_0_btcm_global@ffe20000\", \"flags\": {}}, {\"dev\": \"amba_pl\"}, {\"dev\": \"gem0\"}, {\"dev\": \"gem1\"}, {\"dev\": \"gem2\"}, {\"dev\": \"dwc3_1\"}, {\"dev\": \"sata\"}, {\"dev\": \"pcie\"}, {\"dev\": \"nand0\"}, {\"dev\": \"mmc@ff160000\"}, {\"dev\": \"display@fd4a0000/ports\", \"label\": \"zynqmp_dpsub\"}]";
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        phandle = <0x160>;
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        phandle = <0x15f>;
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0buffer {
+                                        phandle = <0x161>;
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map;
+                                };
+
+                                rproc0 {
+                                        phandle = <0x15e>;
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                remoteproc-relation {
+                                        compatible = "openamp,remoteproc-v2";
+                                        remote = <0x15d>;
+                                        elfload;
+                                        elfload0 = <0x57 0x58 0x15e>;
+                                };
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        remote = <0x15d>;
+                                        carveouts = <0x15f 0x160 0x161>;
+                                        mbox = <0x9>;
+                                };
+                        };
+                };
+
+                openamp_r5_0_cluster {
+                        phandle = <0x15d>;
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_0 0x1 0x0>;
+                        os,type = "freertos";
+                        access = <&psu_r5_0_atcm_global 0x0>,
+                         <&psu_r5_0_btcm_global 0x0>,
+                         <&ipi7 0x0>,
+                         <&ipi1 0x0>,
+                         <&psu_r5_ddr_0_memory 0x0>,
+                         <&psu_rpu 0x0>,
+                         <&ttc3 0x0>;
+                        cpu_config_str = "split";
+                        core_num = "0";
+                        access-json = "[{\"dev\": \"psu_r5_0_atcm_global@ffe00000\", \"label\": \"psu_r5_0_atcm_global\", \"flags\": {}}, {\"dev\": \"psu_r5_0_btcm_global@ffe20000\", \"flags\": {}, \"label\": \"psu_r5_0_btcm_global\"}, {\"dev\": \"ipi7\", \"flags\": {}}, {\"dev\": \"ipi1\", \"flags\": {}}, {\"dev\": \"memory@100000\", \"flags\": {}}, {\"dev\": \"psu_rpu\", \"flags\": {}}, {\"dev\": \"ttc3\", \"flags\": {}}]";
+
+                        reserved-memory {
+                                ranges = <0x1>;
+
+                                rpu0vdev0vring1 {
+                                        phandle = <0x164>;
+                                        start = <0x9864000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0vring0 {
+                                        phandle = <0x163>;
+                                        start = <0x9860000>;
+                                        size = <0x4000>;
+                                        no-map;
+                                };
+
+                                rpu0vdev0buffer {
+                                        phandle = <0x165>;
+                                        start = <0x9868000>;
+                                        size = <0x40000>;
+                                        no-map;
+                                };
+
+                                rproc0 {
+                                        start = <0x9800000>;
+                                        size = <0x60000>;
+                                        no-map;
+                                };
+                        };
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+                                cluster_cpu = "psu_cortexr5_0";
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+                                        host = <0x162>;
+                                        mbox = <0x71>;
+                                        carveouts = <0x163 0x164 0x165>;
+                                };
+                        };
+                };
         };
 };
