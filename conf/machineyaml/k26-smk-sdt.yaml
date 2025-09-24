@@ -9,3 +9,16 @@ kconfig:
 machine:
     pre:
     post:
+        IMGRCRY_DEPENDS:
+            comment: "Default imgrcry configuration, using fsbl multiconfig"
+            op: '='
+            val: "image-recovery:do_deploy"
+        IMGRCRY_MCDEPENDS:
+            op: '='
+            val: ""
+        IMGRCRY_DEPLOY_DIR:
+            op: '='
+            val: "${TOPDIR}/tmp/deploy/images/${MACHINE}/"
+        IMGRCRY_IMAGE_NAME:
+            op: '='
+            val: "image-recovery-${MACHINE}"
