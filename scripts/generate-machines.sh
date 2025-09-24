@@ -48,7 +48,7 @@ cd $layer/conf/machineyaml
 if [ -n "$2" ] ; then
     gen_machine $2
 else
-    for machineyaml in * ; do
+    for machineyaml in *.yaml ; do
         gen_machine ${machineyaml/.yaml/}
     done
 fi
