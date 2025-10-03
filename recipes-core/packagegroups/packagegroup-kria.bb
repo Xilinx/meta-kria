@@ -21,7 +21,7 @@ KRIA_PACKAGES = " \
         image-update \
         kria-dashboard \
         ldd \
-        lmsensors-fancontrol \
+        lmsensors-config-kria-fancontrol \
         ntp \
         packagegroup-core-full-cmdline \
         packagegroup-core-ssh-openssh \
