@@ -7,7 +7,7 @@
 #        default: "0"
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:kria-zynqmp-generic = "${MACHINE}"
+COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 do_compile[noexec] = "1"
 
