@@ -41,7 +41,7 @@ update_yaml() {
     hwurl=$(grep '^'$machine' ' $index | cut -d ' ' -f 2)
     if [ -z "$hwurl" ]; then
         echo "WARNING: Unable to find $machine in the index, skipping..." >&2
-        continue
+        return
     fi
 
     echo "url: $hwurl"
