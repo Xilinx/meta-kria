@@ -9,6 +9,10 @@ kconfig:
 machine:
     pre:
     post:
+        SYSTEM_DTB_BLOB:
+            comment: "Create fit dtb blob using the Base dtb instead of uboot dtb"
+            op: '='
+            val: "1"
         IMGRCRY_DEPENDS:
             comment: "Default imgrcry configuration, using fsbl multiconfig"
             op: '='
