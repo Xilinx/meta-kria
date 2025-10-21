@@ -4,15 +4,17 @@
 
 this=$(realpath $0)
 
-if [ $# -lt 2 ]; then
+if [ $# -lt 1 ]; then
   echo "$0: <conf_path> <machine_url_index> [machine]" >&2
   exit 1
 fi
 
-echo
-echo INFO: Updating machineyaml URLs...
-echo
-$(dirname $this)/update-machineyaml.sh $2 $(realpath $1/..) $3
+if [ -n "$2" ]; then
+  echo
+  echo INFO: Updating machineyaml URLs...
+  echo
+  $(dirname $this)/update-machineyaml.sh $2 $(realpath $1/..) $3
+fi
 
 echo
 echo INFO: Generating new machines...
