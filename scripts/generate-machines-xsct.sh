@@ -72,6 +72,7 @@ for mach in ${!MACHINES[@]}; do
   fi
 
   url=${URLS[${mach}]}
+  url=$(echo $url | sed 's,https://petalinux.xilinx.com/sswreleases/.*/hdf-examples,https://artifactory.xilinx.com/artifactory/petalinux-hwproj-dev/hdf-examples,')
   url=$(echo $url | sed 's,https://edf.amd.com/sswreleases/.*/hdf-examples,https://artifactory.xilinx.com/artifactory/petalinux-hwproj-dev/hdf-examples,')
 
   wget $url -O ${conf_path}/machine/output.xsa
