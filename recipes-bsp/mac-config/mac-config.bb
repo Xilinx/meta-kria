@@ -41,4 +41,4 @@ do_install () {
     install -m 0755 ${WORKDIR}/update-mac-config.sh ${D}/exec.d/
 }
 
-FILES:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','sysvinit','${sysconfdir}/init.d/update-mac-config.sh', '', d)} /exec.d/update-mac-config.sh"
+FILES:${PN} += "${@bb.utils.contains('DISTRO_FEATURES','sysvinit',' ${sysconfdir}/init.d/update-mac-config.sh', '', d)} /exec.d/update-mac-config.sh"
