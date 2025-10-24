@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-        compatible = "xlnx,zynqmp-smk-k26-rev2", "xlnx,zynqmp-smk-k26-rev1", "xlnx,zynqmp-smk-k26-revB", "xlnx,zynqmp-smk-k26-revA", "xlnx,zynqmp-smk-k26", "xlnx,zynqmp", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A", "ZynqMP SMK-K26 Rev2/1/B/A";
+        compatible = "xlnx,zynqmp-smk-k26-rev2", "xlnx,zynqmp-smk-k26-rev1", "xlnx,zynqmp-smk-k26-revB", "xlnx,zynqmp-smk-k26-revA", "xlnx,zynqmp-smk-k26", "xlnx,zynqmp";
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K26 Rev2/1/B/A";
