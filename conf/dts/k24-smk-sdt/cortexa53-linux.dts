@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-        compatible = "xlnx,zynqmp-smk-k24-revA", "xlnx,zynqmp-smk-k24", "xlnx,zynqmp", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA", "ZynqMP SMK-K24 RevA";
+        compatible = "xlnx,zynqmp-smk-k24-revA", "xlnx,zynqmp-smk-k24", "xlnx,zynqmp";
         #address-cells = <0x2>;
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K24 RevA";
