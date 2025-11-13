@@ -34,7 +34,6 @@ KRIA_PACKAGES = " \
         python3-numpy \
         python3-shell \
         python3-threading \
-        python3-threading \
         python3-pyserial \
         python3-h5py \
         tree \
