@@ -1,5 +1,5 @@
 args:
-    - --hw-description https://petalinux.xilinx.com/sswreleases/rel-v2026.1/sdt/2026.1/2026.1_1113_1_11140145/external/k24-smk-kd-sdt/k24-smk-kd-sdt_2026.1_1113_1_11140145.tar.gz
+    - --hw-description https://petalinux.xilinx.com/sswreleases/rel-v2026.1/sdt/2026.1/2026.1_1116_1_11170541/external/k24-smk-kd-sdt/k24-smk-kd-sdt_2026.1_1116_1_11170541.tar.gz
     - --require-machine include/k24-smk.inc
     - --machine-name k24-smk-kd-sdt
     - -g full
