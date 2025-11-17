@@ -1,7 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI:append:k24i-sm = " file://kria-prod-bootmenu.cfg"
-SRC_URI:append:k24c-sm = " file://kria-prod-bootmenu.cfg"
+SRC_URI:append:k24-sm = " file://kria-prod-bootmenu.cfg"
 SRC_URI:append:k26-sm = " file://kria-prod-bootmenu.cfg"
 
 # For common u-boot configuration for kria devices.
@@ -110,4 +109,3 @@ CC_DTBS_DUP:k24-kria = " \
 		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-rev1-sck-kd-g-rev1 \
 		zynqmp-smk-k24-xcl2g-revA-sck-kd-g-revA:zynqmp-smk-k24-xcl2g-rev1-sck-kd-g-revB \
 "
-

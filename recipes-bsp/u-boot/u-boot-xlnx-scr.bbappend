@@ -1,19 +1,21 @@
-KRIA_ADDITIONAL_INCLUDE = ""
+FILESEXTRAPATHS:append := ":${THISDIR}/u-boot-xlnx-scr"
 
-# The settings in this include change the boot script used by u-boot but this should only be done
-# when building for k26-smk and not other machine configs which may inherit this MACHINEOVERRIDE
-KRIA_ADDITIONAL_INCLUDE:k26-smk = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') in ('k26-smk', 'k26-smk-sdt') else ''}"
-KRIA_ADDITIONAL_INCLUDE:k24-smk = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') in ('k24-smk', 'k24-smk-sdt') else ''}"
-KRIA_ADDITIONAL_INCLUDE:k26-sm = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') in ('k26-sm', 'k26-sm-sdt') else ''}"
-KRIA_ADDITIONAL_INCLUDE:k24i-sm = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') in ('k24i-sm', 'k24i-sm-sdt') else ''}"
-KRIA_ADDITIONAL_INCLUDE:k24c-sm = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') in ('k24c-sm', 'k24c-sm-sdt') else ''}"
-KRIA_ADDITIONAL_INCLUDE:kria-zynqmp-generic = "${@'kria-boot-cmd.inc' if d.getVar('MACHINE') == 'kria-zynqmp-generic' else ''}"
+BOOTMODE:k26-smk = ""
+BOOTMODE:k24-smk = ""
+BOOTMODE:kria-zynqmp-generic = ""
 
-include ${KRIA_ADDITIONAL_INCLUDE}
+BOOTFILE_EXT:k26-smk = "kria"
+BOOTFILE_EXT:k24-smk = "kria"
+BOOTFILE_EXT:k26-sm = "kria.prod"
+BOOTFILE_EXT:k24-sm = "kria.prod"
+BOOTFILE_EXT:kria-zynqmp-generic = "kria"
 
-KERNEL_ROOT_RAMDISK:k26-smk-kv = ""
-KERNEL_ROOT_RAMDISK:k26-smk-kr = ""
-KERNEL_ROOT_RAMDISK:k24-smk-kd = ""
+SRC_URI:append:k26-smk = " file://boot.cmd.kria"
+SRC_URI:append:k24-smk = " file://boot.cmd.kria"
+SRC_URI:append:k26-sm = " file://boot.cmd.kria.prod"
+SRC_URI:append:k24-sm = " file://boot.cmd.kria.prod"
+SRC_URI:append:kria-zynqmp-generic = " file://boot.cmd.kria"
+
 KERNEL_ROOT_RAMDISK:k26-smk-kv-sdt = ""
 KERNEL_ROOT_RAMDISK:k26-smk-kr-sdt = ""
 KERNEL_ROOT_RAMDISK:k24-smk-kd-sdt = ""
