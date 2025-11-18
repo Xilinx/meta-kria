@@ -12,3 +12,4 @@ inherit dfx_user_dts
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:kria = "${MACHINE}"
+COMPATIBLE_MACHINE:amd-cortexa53-mali-common = "${MACHINE}"
