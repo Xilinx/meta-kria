@@ -27,7 +27,7 @@ The following boards are supported by the meta-kria layer:
 For both K26 and K24 there are C (commercial) and I (industrial) grades of the
 production (-sm) SOM. The K26 SOM has no practical software difference between
 the two grades so a single machine is supported. However, for K24 the Industrial
-grade supports ECC memory but the Commercial grade do not so two machine
+grade supports ECC memory but the Commercial grade does not so two machine
 configurations are provided.
 
 > **Note:** Additional information on AMD Adaptive SoC's and FPGA's can be found at:
