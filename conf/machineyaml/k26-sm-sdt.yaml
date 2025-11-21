@@ -1,5 +1,5 @@
 args:
-    - --hw-description https://petalinux.xilinx.com/sswreleases/rel-v2026.1/sdt/2026.1/2026.1_1116_1_11170541/external/k26-sm-sdt/k26-sm-sdt_2026.1_1116_1_11170541.tar.gz
+    - --hw-description https://petalinux.xilinx.com/sswreleases/rel-v2026.1/sdt/2026.1/2026.1_1120_1_11210151/external/k26-sm-sdt/k26-sm-sdt_2026.1_1120_1_11210151.tar.gz
     - --machine-name k26-sm-sdt
     - -g full
     - --require-machine include/k26-sm.inc
