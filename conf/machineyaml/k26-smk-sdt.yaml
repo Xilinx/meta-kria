@@ -26,3 +26,12 @@ machine:
         IMGRCRY_IMAGE_NAME:
             op: '='
             val: "image-recovery-${MACHINE}"
+        QEMU_HW_DTB_PS:
+            op: '='
+            val: "${QEMU_HW_DTB_PATH}/board-zynqmp-k26-som.dtb"
+        QEMU_HW_BOOT_MODE:
+            op: '='
+            val: "2"
+        QEMU_HW_SERIAL:
+            op: '='
+            val: "-serial null -serial mon:stdio"
