@@ -6,6 +6,7 @@ args:
     - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/openamp-overlay-zynqmp.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
+    CONFIG_YOCTO_BBMC_LINUX_DTSI: ${LAYER_PATH_kria-layer}/recipes-bsp/device-tree/files/k24-system-conf.dtsi
 machine:
     pre:
     post:
