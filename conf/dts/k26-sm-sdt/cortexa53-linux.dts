@@ -2781,6 +2781,14 @@
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
                 };
+
+                cma_reserved: cma_reserved@40000000 {
+                        phandle = <0x2>;
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        reg = <0x0 0x40000000 0x0 0x32000000>;
+                        linux,cma-default;
+                };
         };
 
         gpio-keys {
@@ -3035,5 +3043,6 @@
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
                 gic = "/axi/interrupt-controller@f9010000";
+                cma_reserved = "/reserved-memory/cma_reserved@40000000";
         };
 };

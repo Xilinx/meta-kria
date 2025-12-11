@@ -2798,9 +2798,9 @@
                 };
 
                 rproc0@9800000 {
+                        phandle = <0x168>;
                         no-map;
                         reg = <0x0 0x9800000 0x0 0x60000>;
-                        phandle = <0x168>;
                 };
 
                 vdev0vring0@9860000 {
@@ -2820,6 +2820,14 @@
                         no-map;
                         reg = <0x0 0x9868000 0x0 0x40000>;
                         compatible = "shared-dma-pool";
+                };
+
+                cma_reserved: cma_reserved@40000000 {
+                        phandle = <0x2>;
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        reg = <0x0 0x40000000 0x0 0x32000000>;
+                        linux,cma-default;
                 };
         };
 
@@ -3079,6 +3087,7 @@
                 pwm_fan = "/pwm-fan";
                 ports = "/axi/display@fd4a0000/ports";
                 gic = "/axi/interrupt-controller@f9010000";
+                cma_reserved = "/reserved-memory/cma_reserved@40000000";
         };
 
         domains {
