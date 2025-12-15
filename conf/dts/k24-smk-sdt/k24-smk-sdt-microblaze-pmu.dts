@@ -15,7 +15,7 @@
 
                 u-boot {
                         compatible = "u-boot,config";
-                        bootscr-address = <0x0 0x20000000>;
+                        bootscr-address = /bits/ 64 <0x0 0x20000000>;
                 };
         };
 
@@ -238,25 +238,25 @@
                 opp-shared;
 
                 opp-1333000000 {
-                        opp-hz = <0x0 0x4f73f740>;
+                        opp-hz = /bits/ 64 <0x0 0x4f73f740>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-666500000 {
-                        opp-hz = <0x0 0x27b9fba0>;
+                        opp-hz = /bits/ 64 <0x0 0x27b9fba0>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-444333333 {
-                        opp-hz = <0x0 0x1a7bfd15>;
+                        opp-hz = /bits/ 64 <0x0 0x1a7bfd15>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-333250000 {
-                        opp-hz = <0x0 0x13dcfdd0>;
+                        opp-hz = /bits/ 64 <0x0 0x13dcfdd0>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
@@ -632,7 +632,6 @@
                          <0x0 0xe 0x0 &fpd_dma_chan1 0x4>,
                          <0x3f 0x4 0x0 &lpd_dma_chan2 0x0>,
                          <0x72 0x4 0x0 &csuwdt_0 0x0>,
-                         <0x0 0xe 0x0 &psu_r5_tcm_ram_0 0x4>,
                          <0xf 0x4 0x0 &psu_afi_3 0x0>,
                          <0x0 0xe 0x0 &psu_ddr_xmpu2_cfg 0x4>,
                          <0x31 0x4 0x0 &lpd_dma_chan5 0x0>,
@@ -648,7 +647,6 @@
                          <0x0 0xe 0x0 &perf_monitor_ocm 0x4>,
                          <0x21 0x4 0x0 &perf_monitor_cci 0x0>,
                          <0x0 0x77 0x0 &psu_afi_0 0x1>,
-                         <0x18 0x1 0x0 &psu_r5_1_btcm 0x0>,
                          <0x0 0x77 0x0 &ipi4 0x4>,
                          <0x8e 0x4 0x0 &ipi6 0x0>,
                          <0x0 0x77 0x0 &psu_pmu_ram 0x4>,
@@ -658,7 +656,6 @@
                          <0x0 0x77 0x0 &fpd_dma_chan1 0x4>,
                          <0x3f 0x4 0x0 &lpd_dma_chan2 0x0>,
                          <0x72 0x4 0x0 &csuwdt_0 0x0>,
-                         <0x0 0x77 0x0 &psu_r5_tcm_ram_0 0x4>,
                          <0xf 0x4 0x0 &psu_afi_3 0x0>,
                          <0x0 0x77 0x0 &psu_ddr_xmpu2_cfg 0x4>,
                          <0x31 0x4 0x0 &lpd_dma_chan5 0x0>,
@@ -2459,28 +2456,6 @@
                         xlnx,name = "psu_r5_tcm_ram_global";
                 };
 
-                psu_r5_tcm_ram_0: psu_r5_tcm_ram@0 {
-                        phandle = <0x76>;
-                        compatible = "xlnx,psu-r5-tcm-ram-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_tcm_ram";
-                        reg = <0x0 0x0 0x0 0x40000>;
-                        xlnx,name = "psu_r5_tcm_ram_0";
-                };
-
-                psu_r5_1_btcm: psu_r5_1_btcm@20000 {
-                        phandle = <0x7b>;
-                        xlnx,power-domain = <0x10>;
-                        compatible = "xlnx,psu-r5-1-btcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x12>;
-                        xlnx,ip-name = "psu_r5_1_btcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x20000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_1_btcm";
-                };
-
                 psu_r5_1_btcm_global: psu_r5_1_btcm_global@ffeb0000 {
                         phandle = <0x5a>;
                         compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
@@ -2489,18 +2464,6 @@
                         xlnx,ip-name = "psu_r5_1_btcm_global";
                         reg = <0x0 0xffeb0000 0x0 0x10000>;
                         xlnx,name = "psu_r5_1_btcm_global";
-                };
-
-                psu_r5_1_atcm: psu_r5_1_atcm@0 {
-                        phandle = <0x7a>;
-                        xlnx,power-domain = <0xf>;
-                        compatible = "xlnx,psu-r5-1-atcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x11>;
-                        xlnx,ip-name = "psu_r5_1_atcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x0 0x0 0x10000>;
-                        xlnx,name = "psu_r5_1_atcm";
                 };
 
                 psu_r5_1_atcm_global: psu_r5_1_atcm_global@ffe90000 {
@@ -2513,29 +2476,6 @@
                         xlnx,name = "psu_r5_1_atcm_global";
                 };
 
-                psu_r5_0_btcm_lockstep: psu_r5_0_btcm_lockstep@ffe30000 {
-                        phandle = <0x153>;
-                        compatible = "xlnx,psu-r5-0-btcm-lockstep-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,ip-name = "psu_r5_0_btcm_lockstep";
-                        xlnx,is-hierarchy;
-                        reg = <0x0 0xffe30000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_btcm_lockstep";
-                };
-
-                psu_r5_0_btcm: psu_r5_0_btcm@20000 {
-                        phandle = <0x75>;
-                        xlnx,power-domain = <0x12>;
-                        compatible = "xlnx,psu-r5-0-btcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0x10>;
-                        xlnx,ip-name = "psu_r5_0_btcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x20000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_btcm";
-                };
-
                 psu_r5_0_btcm_global: psu_r5_0_btcm_global@ffe20000 {
                         phandle = <0x58>;
                         compatible = "xlnx,psu-r5-0-btcm-global-1.0", "mmio-sram";
@@ -2544,29 +2484,6 @@
                         xlnx,ip-name = "psu_r5_0_btcm_global";
                         reg = <0x0 0xffe20000 0x0 0x10000>;
                         xlnx,name = "psu_r5_0_btcm_global";
-                };
-
-                psu_r5_0_atcm_lockstep: psu_r5_0_atcm_lockstep@ffe10000 {
-                        phandle = <0x154>;
-                        compatible = "xlnx,psu-r5-0-atcm-lockstep-1.0", "mmio-sram";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_0_atcm_lockstep";
-                        xlnx,is-hierarchy;
-                        reg = <0x0 0xffe10000 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_atcm_lockstep";
-                };
-
-                psu_r5_0_atcm: psu_r5_0_atcm@0 {
-                        phandle = <0x74>;
-                        xlnx,power-domain = <0x11>;
-                        compatible = "xlnx,psu-r5-0-atcm-1.0";
-                        status = "okay";
-                        power-domains = <&zynqmp_firmware 0xf>;
-                        xlnx,ip-name = "psu_r5_0_atcm";
-                        xlnx,bank-size = <0x10000>;
-                        reg = <0x0 0x0 0x0 0x10000>;
-                        xlnx,name = "psu_r5_0_atcm";
                 };
 
                 psu_r5_0_atcm_global: psu_r5_0_atcm_global@ffe00000 {
@@ -3309,16 +3226,9 @@
                 ipi_6_to_ipi_9 = "/axi/ipi@ff333000/child@ff360000";
                 ipi_6_to_ipi_10 = "/axi/ipi@ff333000/child@ff370000";
                 psu_r5_tcm_ram_global = "/axi/psu_r5_tcm_ram@ffe00000";
-                psu_r5_tcm_ram_0 = "/axi/psu_r5_tcm_ram@0";
-                psu_r5_1_btcm = "/axi/psu_r5_1_btcm@20000";
                 psu_r5_1_btcm_global = "/axi/psu_r5_1_btcm_global@ffeb0000";
-                psu_r5_1_atcm = "/axi/psu_r5_1_atcm@0";
                 psu_r5_1_atcm_global = "/axi/psu_r5_1_atcm_global@ffe90000";
-                psu_r5_0_btcm_lockstep = "/axi/psu_r5_0_btcm_lockstep@ffe30000";
-                psu_r5_0_btcm = "/axi/psu_r5_0_btcm@20000";
                 psu_r5_0_btcm_global = "/axi/psu_r5_0_btcm_global@ffe20000";
-                psu_r5_0_atcm_lockstep = "/axi/psu_r5_0_atcm_lockstep@ffe10000";
-                psu_r5_0_atcm = "/axi/psu_r5_0_atcm@0";
                 psu_r5_0_atcm_global = "/axi/psu_r5_0_atcm_global@ffe00000";
                 psu_bbram_0 = "/axi/psu_bbram_0@ffcd0000";
                 psu_pmu_ram = "/axi/psu_pmu_ram@ffdc0000";
