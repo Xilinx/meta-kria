@@ -11,6 +11,9 @@ YAML_SERIAL_CONSOLE_BAUDRATE = "115200"
 
 SERIAL_CONSOLES = "115200;ttyPS1"
 
+# Force the board-id-data to be built even when just xilinx-boot is built
+DEPENDS:append:pn-xilinx-bootbin = " board-id-data-k24 board-id-data-k26"
+
 EXTRA_IMAGEDEPENDS += "board-id-data-k24  board-id-data-k26"
 EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
 
