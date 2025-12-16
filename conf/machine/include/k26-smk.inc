@@ -2,8 +2,6 @@
 MACHINEOVERRIDES =. "${@['', 'k26-smk:']['k26-smk' != '${MACHINE}']}"
 #### Regular settings follow
 
-YAML_DT_BOARD_FLAGS ?= "{BOARD zynqmp-smk-k26-reva}"
-
 UBOOT_DT_FILES ?= "\
     zynqmp-sck-kr-g-revA.dtso \
     zynqmp-sck-kr-g-revB.dtso \
