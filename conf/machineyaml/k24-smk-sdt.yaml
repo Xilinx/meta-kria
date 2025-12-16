@@ -10,6 +10,9 @@ kconfig:
 machine:
     pre:
     post:
+        require:
+            comment: "K24 + KD240"
+            op: 'conf/machine/include/kria-qemu-kd.inc'
         SYSTEM_DTB_BLOB:
             comment: "Create fit dtb blob using the Base dtb instead of uboot dtb"
             op: '='

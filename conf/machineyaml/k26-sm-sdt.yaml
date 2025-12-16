@@ -9,3 +9,6 @@ kconfig:
 machine:
     pre:
     post:
+        require:
+            comment: "Default to K26 + KV260"
+            op: 'conf/machine/include/kria-qemu-kv.inc'

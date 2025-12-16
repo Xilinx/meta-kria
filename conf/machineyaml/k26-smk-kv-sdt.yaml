@@ -10,6 +10,7 @@ machine:
     pre:
     post:
         require:
+            comment: "K26 + KV260"
             op: 'conf/machine/include/kria-qemu-kv.inc'
         UBOOT_DT_FILES:
             op: '='
