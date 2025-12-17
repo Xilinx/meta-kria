@@ -43,3 +43,4 @@ FILES:${PN} += "\
 		${PYTHON_SITEPACKAGES_DIR}\
 		"
 RREPLACES:${PN} = "som-dashboard"
+RPROVIDES:${PN} = "som-dashboard"
