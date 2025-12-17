@@ -22,6 +22,4 @@ do_install:append() {
     chmod u+rxs ${D}${bindir}/ddr-qos
 }
 
-FILES:${PN} += " \
-	/usr/bin \
-	"
+FILES:${PN} += "${bindir}"
