@@ -7,7 +7,7 @@ SRCREV = "5dea5aa3ddfc66c555bf638ed27abd7abe236b7f"
 PV .= "+git"
 
 BRANCH = "xlnx_rel_v2024.1"
-BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH', True) != '']}"
+BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH') != '']}"
 SRC_URI="${REPO};${BRANCHARG}"
 
 S = "${WORKDIR}/git"

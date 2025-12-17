@@ -7,7 +7,7 @@ SRCREV = "51510bb0fd7d586841709a49c493fe3398bd2d2c"
 PV .= "+git"
 
 BRANCH = "master"
-BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH', True) != '']}"
+BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH') != '']}"
 SRC_URI="${REPO};${BRANCHARG}"
 
 S = "${WORKDIR}/git"
