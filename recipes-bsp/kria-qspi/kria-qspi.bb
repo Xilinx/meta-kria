@@ -28,11 +28,11 @@ do_manifest () {
 
 do_deploy () {
     install -Dm 644 ${B}/${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_NAME}.bin
-    ln -s ${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_LINK_NAME}.bin
-    ln -s ${IMAGE_NAME}.bin ${DEPLOYDIR}/${QSPI_IMAGE_VERSION}.bin
+    ln -sf ${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_LINK_NAME}.bin
+    ln -sf ${IMAGE_NAME}.bin ${DEPLOYDIR}/${QSPI_IMAGE_VERSION}.bin
 
     install -Dm 644 ${B}/${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_NAME}.manifest
-    ln -s ${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_LINK_NAME}.manifest
+    ln -sf ${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_LINK_NAME}.manifest
 }
 
 addtask manifest after do_compile
