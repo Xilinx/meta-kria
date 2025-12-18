@@ -14,7 +14,7 @@
 
                 u-boot {
                         compatible = "u-boot,config";
-                        bootscr-address = /bits/ 64 <0x0 0x20000000>;
+                        bootscr-address = /bits/ 64 <0x0 0x0 0x0 0x20000000>;
                 };
         };
 
@@ -750,25 +750,25 @@
                 opp-shared;
 
                 opp-1334000000 {
-                        opp-hz = /bits/ 64 <0x0 0x4f833980>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x4f833980>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-667000000 {
-                        opp-hz = /bits/ 64 <0x0 0x27c19cc0>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x27c19cc0>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-444666667 {
-                        opp-hz = /bits/ 64 <0x0 0x1a81132b>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x1a81132b>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-333500000 {
-                        opp-hz = /bits/ 64 <0x0 0x13e0ce60>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x13e0ce60>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
@@ -5586,14 +5586,20 @@
         };
 
         reserved-memory {
-                #address-cells = <0x2>;
+                ranges = <0x1>;
                 #size-cells = <0x2>;
-                ranges;
+                #address-cells = <0x2>;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x160>;
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
+                };
+
+                cma_reserved40000000: cma_reserved@40000000 {
+                        phandle = <0x162>;
+                        no-map;
+                        reg = <0x0 0x40000000 0x0 0x32000000>;
                 };
         };
 
@@ -5982,5 +5988,18 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                cma_reserved40000000 = "/reserved-memory/cma_reserved@40000000";
+        };
+
+        domains {
+
+                openamp_a53_1_cluster {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_a53 0x1 0x80000003>;
+                        os,type = "linux";
+                        access = <&cma_reserved40000000 0x0>;
+                        reserved-memory = <0x162>;
+                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
+                };
         };
 };

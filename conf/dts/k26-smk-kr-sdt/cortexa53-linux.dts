@@ -2833,9 +2833,9 @@
         };
 
         reserved-memory {
-                #address-cells = <0x2>;
+                ranges = <0x1>;
                 #size-cells = <0x2>;
-                ranges;
+                #address-cells = <0x2>;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x160>;
@@ -2843,12 +2843,10 @@
                         no-map;
                 };
 
-                cma_reserved: cma_reserved@40000000 {
-                        phandle = <0x2>;
-                        compatible = "shared-dma-pool";
-                        reusable;
+                cma_reserved40000000: cma_reserved@40000000 {
+                        phandle = <0x162>;
+                        no-map;
                         reg = <0x0 0x40000000 0x0 0x32000000>;
-                        linux,cma-default;
                 };
         };
 
@@ -3105,7 +3103,19 @@
                 psu_ddr_1_memory = "/memory@800000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                cma_reserved40000000 = "/reserved-memory/cma_reserved@40000000";
                 gic = "/axi/interrupt-controller@f9010000";
-                cma_reserved = "/reserved-memory/cma_reserved@40000000";
+        };
+
+        domains {
+
+                openamp_a53_1_cluster {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_a53 0x1 0x80000003>;
+                        os,type = "linux";
+                        access = <&cma_reserved40000000 0x0>;
+                        reserved-memory = <0x162>;
+                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
+                };
         };
 };

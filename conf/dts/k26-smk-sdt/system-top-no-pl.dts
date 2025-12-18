@@ -5551,6 +5551,12 @@
                         no-map;
                         reg = <0x0 0x9868000 0x0 0x100000>;
                 };
+
+                cma_reserved40000000: cma_reserved@40000000 {
+                        phandle = <0x162>;
+                        no-map;
+                        reg = <0x0 0x40000000 0x0 0x32000000>;
+                };
         };
 
         gpio-keys {
@@ -5938,12 +5944,13 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                cma_reserved40000000 = "/reserved-memory/cma_reserved@40000000";
         };
 
         domains {
 
                 openamp_a53_0_cluster {
-                        phandle = <0x163>;
+                        phandle = <0x164>;
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
@@ -5956,7 +5963,7 @@
                                         compatible = "openamp,remoteproc-v2";
 
                                         relation0 {
-                                                remote = <0x162>;
+                                                remote = <0x163>;
                                                 elfload = <0x58 0x59 0x161>;
                                         };
                                 };
@@ -5965,7 +5972,7 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                remote = <0x162>;
+                                                remote = <0x163>;
                                                 carveouts = <0x160 0x15f 0x15e>;
                                                 mbox = <0x128>;
                                         };
@@ -5974,7 +5981,7 @@
                 };
 
                 openamp_r5_0_cluster {
-                        phandle = <0x162>;
+                        phandle = <0x163>;
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_r5_0 0x1 0x0>;
                         os,type = "freertos";
@@ -5992,12 +5999,21 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                host = <0x163>;
+                                                host = <0x164>;
                                                 mbox = <0xec>;
                                                 carveouts = <0x160 0x15f 0x15e>;
                                         };
                                 };
                         };
+                };
+
+                openamp_a53_1_cluster {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_a53 0x1 0x80000003>;
+                        os,type = "linux";
+                        access = <&cma_reserved40000000 0x0>;
+                        reserved-memory = <0x162>;
+                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
                 };
         };
 };

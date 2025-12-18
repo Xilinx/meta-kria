@@ -14,7 +14,7 @@
 
                 u-boot {
                         compatible = "u-boot,config";
-                        bootscr-address = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x20000000>;
+                        bootscr-address = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x20000000>;
                 };
         };
 
@@ -151,25 +151,25 @@
                 opp-shared;
 
                 opp-1333000000 {
-                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x4f73f740>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x4f73f740>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-666500000 {
-                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x27b9fba0>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x27b9fba0>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-444333333 {
-                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x1a7bfd15>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x1a7bfd15>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
 
                 opp-333250000 {
-                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x13dcfdd0>;
+                        opp-hz = /bits/ 64 <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x13dcfdd0>;
                         clock-latency-ns = <0x7a120>;
                         opp-microvolt = <0xf4240>;
                 };
@@ -2775,7 +2775,7 @@
         };
 
         reserved-memory {
-                ranges;
+                ranges = <0x1>;
                 #size-cells = <0x2>;
                 #address-cells = <0x2>;
 
@@ -2786,35 +2786,33 @@
                 };
 
                 rproc0@9800000 {
-                        phandle = <0x15f>;
+                        phandle = <0x160>;
                         no-map;
                         reg = <0x0 0x9800000 0x0 0x60000>;
                 };
 
                 vdev0vring0@9860000 {
-                        phandle = <0x15e>;
+                        phandle = <0x15f>;
                         no-map;
                         reg = <0x0 0x9860000 0x0 0x4000>;
                 };
 
                 vdev0vring1@9864000 {
-                        phandle = <0x15d>;
+                        phandle = <0x15e>;
                         no-map;
                         reg = <0x0 0x9864000 0x0 0x4000>;
                 };
 
                 vdev0buffer@9868000 {
-                        phandle = <0x15c>;
+                        phandle = <0x15d>;
                         no-map;
                         reg = <0x0 0x9868000 0x0 0x100000>;
                 };
 
-                cma_reserved: cma_reserved@40000000 {
-                        phandle = <0x2>;
-                        compatible = "shared-dma-pool";
-                        reusable;
+                cma_reserved40000000: cma_reserved@40000000 {
+                        phandle = <0x15c>;
+                        no-map;
                         reg = <0x0 0x40000000 0x0 0x20000000>;
-                        linux,cma-default;
                 };
         };
 
@@ -3070,18 +3068,20 @@
                 psu_ddr_0_memory = "/memory@0";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                cma_reserved40000000 = "/reserved-memory/cma_reserved@40000000";
                 gic = "/axi/interrupt-controller@f9010000";
-                cma_reserved = "/reserved-memory/cma_reserved@40000000";
         };
 
         domains {
 
                 openamp_a53_0_cluster {
-                        phandle = <0x161>;
+                        phandle = <0x162>;
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        cpus = <&cpus_a53 0x1 0x80000003>;
                         os,type = "linux";
-                        reserved-memory = <0x15c 0x15d 0x15e 0x15f>;
+                        access = <&cma_reserved40000000 0x0>;
+                        reserved-memory = <0x15d 0x15e 0x15f 0x160 0x15c>;
+                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
@@ -3090,8 +3090,8 @@
                                         compatible = "openamp,remoteproc-v2";
 
                                         relation0 {
-                                                remote = <0x160>;
-                                                elfload = <0x57 0x58 0x15f>;
+                                                remote = <0x161>;
+                                                elfload = <0x57 0x58 0x160>;
                                         };
                                 };
 
@@ -3099,8 +3099,8 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                remote = <0x160>;
-                                                carveouts = <0x15e 0x15d 0x15c>;
+                                                remote = <0x161>;
+                                                carveouts = <0x15f 0x15e 0x15d>;
                                                 mbox = <0x127>;
                                         };
                                 };
@@ -3108,11 +3108,11 @@
                 };
 
                 openamp_r5_0_cluster {
-                        phandle = <0x160>;
+                        phandle = <0x161>;
                         compatible = "openamp,domain-v1";
                         os,type = "freertos";
                         sram = <0x9800000 0x6000 0xbeef 0x10000>;
-                        reserved-memory = <0x15c 0x15d 0x15e 0x15f>;
+                        reserved-memory = <0x15d 0x15e 0x15f 0x160>;
                         rpu_pd_val = <0x78 0x7>;
                         cpu_config_str = "split";
                         core_num = "0";
@@ -3125,9 +3125,9 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                host = <0x161>;
+                                                host = <0x162>;
                                                 mbox = <0xeb>;
-                                                carveouts = <0x15e 0x15d 0x15c>;
+                                                carveouts = <0x15f 0x15e 0x15d>;
                                         };
                                 };
                         };
