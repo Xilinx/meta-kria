@@ -3,9 +3,9 @@ args:
     - --machine-name k26-sm-sdt
     - -g full
     - --require-machine include/k26-sm.inc
+    - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k26-cortexa53-linux-conf.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
-    CONFIG_YOCTO_BBMC_LINUX_DTSI: ${LAYER_PATH_kria-layer}/recipes-bsp/device-tree/files/k26-system-conf.dtsi
 machine:
     pre:
     post:

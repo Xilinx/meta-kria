@@ -3,10 +3,9 @@ args:
     - --require-machine include/k24-smk.inc
     - --machine-name k24-smk-sdt
     - -g full
-    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/openamp-overlay-zynqmp.yaml
+    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/openamp-overlay-zynqmp.yaml ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-cortexa53-linux-conf.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
-    CONFIG_YOCTO_BBMC_LINUX_DTSI: ${LAYER_PATH_kria-layer}/recipes-bsp/device-tree/files/k24-system-conf.dtsi
 machine:
     pre:
     post:
