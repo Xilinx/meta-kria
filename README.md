@@ -53,7 +53,7 @@ This layer depends on:
 	URI:
         https://git.yoctoproject.org/meta-xilinx (official version)
         https://github.com/Xilinx/meta-xilinx (development and AMD release)
-	layers: meta-xilinx-microblaze, meta-xilinx-core
+	layers: meta-xilinx-microblaze, meta-xilinx-core, meta-xilinx-standalone
 	branch: scarthgap or AMD release version (e.g. rel-v2026.1)
 
 	URI:
@@ -64,8 +64,6 @@ This layer depends on:
 	URI: https://github.com/Xilinx/meta-petalinux
 	branch: AMD release version (e.g. rel-v2026.1)
 
-	URI: https://github.com/Xilinx/meta-jupyter
-	branch: scarthgap or AMD release version (e.g. rel-v2026.1)
 
 	URI: https://git.yoctoproject.org/meta-security
 	layers: meta-tpm
