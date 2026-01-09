@@ -2739,9 +2739,9 @@
         };
 
         reserved-memory {
-                ranges = <0x1>;
                 #size-cells = <0x2>;
                 #address-cells = <0x2>;
+                ranges;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x15a>;
