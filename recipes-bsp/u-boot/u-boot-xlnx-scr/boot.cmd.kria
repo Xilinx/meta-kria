@@ -12,13 +12,8 @@ rootfs_name=@@RAMDISK_IMAGE@@
 # Close pmufw node so that linux can't send small fragments to pmufw
 zynqmp pmufw node close
 
-# k24 Starter Kit default boot args
-if test "${board_name}" = "${k24_starter}"; then
-	setenv bootargs 'earlycon console=ttyPS1,115200 init_fatal_sh=1 cma=512M @@KERNEL_COMMAND_APPEND@@';
-# k26 Starter Kit default boot args
-else test "${board_name}" = "${k26_starter}";
-	setenv bootargs 'earlycon console=ttyPS1,115200 init_fatal_sh=1 cma=800M @@KERNEL_COMMAND_APPEND@@';
-fi
+# Starter Kit default boot args
+setenv bootargs 'earlycon console=ttyPS1,115200 init_fatal_sh=1 @@KERNEL_COMMAND_APPEND@@';
 
 for boot_target in ${boot_targets};
 do
