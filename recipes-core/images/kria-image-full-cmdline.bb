@@ -6,8 +6,6 @@ IMAGE_CLASSES += "kria-image"
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
-DEPENDS:remove:kria-zynqmp-generic = "virtual/bootloader virtual/fsbl"
-
 IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs package-management"
 
 IMAGE_INSTALL = " \
