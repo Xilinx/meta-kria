@@ -2787,7 +2787,9 @@
 
                 cma_reserved40000000: cma_reserved@40000000 {
                         phandle = <0x15c>;
-                        no-map;
+                        compatible = "shared-dma-pool";
+                        reusable = <0x1>;
+                        linux,cma-default = <0x1>;
                         reg = <0x0 0x40000000 0x0 0x20000000>;
                 };
         };
