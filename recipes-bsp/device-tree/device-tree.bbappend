@@ -18,9 +18,6 @@ do_configure:append:kria:linux() {
     for dts in ${UBOOT_DT_FILES}; do
         cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
-
-    printf "* ${PN}\nSRCREV: ${SRCREV}\nBRANCH: ${BRANCH}\n" > ${S}/device-tree-${MACHINE}.manifest
-    printf "** ${PN} - u-boot-xlnx\nDT_UBOOT_SRCREV: ${DT_UBOOT_SRCREV}\nDT_UBOOT_BRANCH: ${DT_UBOOT_BRANCH}\n\n" >> ${S}/device-tree-${MACHINE}.manifest
 }
 
 YAML_CONSOLE_DEVICE_CONFIG:kria = "psu_uart_1"
@@ -34,8 +31,4 @@ do_install:append:kria() {
     # Remove dtbo files, these are no usable
     # keep pl.dtbo
     rm -f ${D}/boot/devicetree/zynqmp-sck*.dtbo
-}
-
-do_deploy:append:kria:linux() {
-    install -m 0644 ${S}/device-tree-${MACHINE}.manifest ${DEPLOYDIR}/
 }

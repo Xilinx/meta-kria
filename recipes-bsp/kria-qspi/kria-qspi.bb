@@ -19,22 +19,10 @@ QSPI_VERSION:k26-kria = "2.1"
 QSPI_VERSION:k24-kria = "1.1"
 QSPI_IMAGE_VERSION:kria = "${PN}-${MACHINE}-v${QSPI_VERSION}${IMAGE_VERSION_SUFFIX}"
 
-do_manifest () {
-    printf "=== QSPI\nVERSION: ${QSPI_IMAGE_VERSION}\n\n" > ${B}/${IMAGE_NAME}.manifest
-    cat ${DEPLOY_DIR_IMAGE}/image-recovery-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
-    cat ${DEPLOY_DIR_IMAGE}/image-selector-${MACHINE}.manifest >> ${B}/${IMAGE_NAME}.manifest
-    printf "=== BOOT.BIN\n" >> ${B}/${IMAGE_NAME}.manifest
-    cat ${DEPLOY_DIR_IMAGE}/boot.bin.manifest >> ${B}/${IMAGE_NAME}.manifest
-}
-
 do_deploy () {
     install -Dm 644 ${B}/${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_NAME}.bin
     ln -sf ${IMAGE_NAME}.bin ${DEPLOYDIR}/${IMAGE_LINK_NAME}.bin
     ln -sf ${IMAGE_NAME}.bin ${DEPLOYDIR}/${QSPI_IMAGE_VERSION}.bin
-
-    install -Dm 644 ${B}/${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_NAME}.manifest
-    ln -sf ${IMAGE_NAME}.manifest ${DEPLOYDIR}/${IMAGE_LINK_NAME}.manifest
 }
 
-addtask manifest after do_compile
-addtask deploy after do_manifest
+addtask deploy after do_compile
