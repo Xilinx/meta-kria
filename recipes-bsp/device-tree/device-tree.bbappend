@@ -11,6 +11,12 @@ DT_UBOOT_SRCREV ?= "9c3f954a10216a5be151dfffa197dae86ed07d2b"
 SRC_URI:append:kria = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=${DT_UBOOT_BRANCH};destsuffix=u-boot-xlnx;name=uboot"
 SRCREV_uboot = "${DT_UBOOT_SRCREV}"
 
+# Track SDT artifacts for base DTS provenance (filename + sha256, not full URI)
+# (DT_UBOOT_* already tracked via base recipe's MANIFEST_BRANCH_VARS/MANIFEST_SRCREV_VARS)
+MANIFEST_COMPONENT_FIELDS:append:kria = " sdt_file sdt_sha256"
+MANIFEST_COMPONENT_FIELD_sdt_file:kria = "${@os.path.basename(d.getVar('SDT_URI') or '')}"
+MANIFEST_COMPONENT_FIELD_sdt_sha256:kria = "${@d.getVarFlag('SDT_URI', 'sha256sum') or ''}"
+
 UBOOT_DTFILES_BUNDLE:kria:linux ?= "1"
 UBOOT_DTFILE_PREFIX:kria ?= "SMK"
 
