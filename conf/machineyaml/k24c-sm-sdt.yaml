@@ -6,6 +6,7 @@ args:
     - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-cortexa53-linux-conf.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
+    CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
 machine:
     pre:
     post:
