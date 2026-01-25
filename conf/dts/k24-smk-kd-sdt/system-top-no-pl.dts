@@ -5545,6 +5545,30 @@
                         no-map;
                 };
 
+                rproc0@9800000 {
+                        phandle = <0x164>;
+                        no-map;
+                        reg = <0x0 0x9800000 0x0 0x60000>;
+                };
+
+                vdev0vring0@9860000 {
+                        phandle = <0x163>;
+                        no-map;
+                        reg = <0x0 0x9860000 0x0 0x4000>;
+                };
+
+                vdev0vring1@9864000 {
+                        phandle = <0x162>;
+                        no-map;
+                        reg = <0x0 0x9864000 0x0 0x4000>;
+                };
+
+                vdev0buffer@9868000 {
+                        phandle = <0x161>;
+                        no-map;
+                        reg = <0x0 0x9868000 0x0 0x100000>;
+                };
+
                 cma_reserved40000000: cma_reserved@40000000 {
                         phandle = <0x160>;
                         compatible = "shared-dma-pool";
@@ -5943,12 +5967,63 @@
         domains {
 
                 openamp_a53_0_cluster {
+                        phandle = <0x166>;
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_a53 0x1 0x80000003>;
                         os,type = "linux";
                         access = <&cma_reserved40000000 0x0>;
-                        reserved-memory = <0x160>;
+                        reserved-memory = <0x161 0x162 0x163 0x164 0x160>;
                         access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                remoteproc-relation {
+                                        compatible = "openamp,remoteproc-v2";
+
+                                        relation0 {
+                                                remote = <0x165>;
+                                                elfload = <0x59 0x5a 0x164>;
+                                        };
+                                };
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+
+                                        relation0 {
+                                                remote = <0x165>;
+                                                carveouts = <0x163 0x162 0x161>;
+                                                mbox = <0x127>;
+                                        };
+                                };
+                        };
+                };
+
+                openamp_r5_0_cluster {
+                        phandle = <0x165>;
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_0 0x1 0x0>;
+                        os,type = "freertos";
+                        sram = <0x9800000 0x6000 0xbeef 0x10000>;
+                        reserved-memory = <0x161 0x162 0x163 0x164>;
+                        rpu_pd_val = <0x7c 0x7>;
+                        cpu_config_str = "split";
+                        core_num = "0";
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+                                cluster_cpu = "psu_cortexr5_0";
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+
+                                        relation0 {
+                                                host = <0x166>;
+                                                mbox = <0xeb>;
+                                                carveouts = <0x163 0x162 0x161>;
+                                        };
+                                };
+                        };
                 };
         };
 };
