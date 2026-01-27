@@ -7,7 +7,6 @@ reserved-memory:
     size: 0x32000000
     compatible: "shared-dma-pool"
     reusable: true
-    linux,cma-default: true
 
 domains:
   openamp_a53_1_cluster:
