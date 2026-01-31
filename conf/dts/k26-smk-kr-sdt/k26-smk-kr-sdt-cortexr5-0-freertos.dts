@@ -2430,7 +2430,7 @@
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
-                clock-frequency = <0x1fca055>;
+                clock-frequency = <0x1fc9f08>;
                 clock-output-names = "pss_ref_clk";
         };
 
