@@ -5600,7 +5600,6 @@
                         phandle = <0x162>;
                         compatible = "shared-dma-pool";
                         reusable = <0x1>;
-                        linux,cma-default = <0x1>;
                         reg = <0x0 0x40000000 0x0 0x32000000>;
                 };
         };
