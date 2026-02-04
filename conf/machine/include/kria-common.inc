@@ -3,8 +3,6 @@ MACHINEOVERRIDES =. "kria:"
 
 SPL_BINARY = ""
 
-IMAGE_CLASSES += "kria-image"
-
 ATF_CONSOLE ?= "cadence1"
 
 YAML_SERIAL_CONSOLE_BAUDRATE = "115200"

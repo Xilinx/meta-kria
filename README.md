@@ -61,10 +61,6 @@ This layer depends on:
         https://github.com/Xilinx/meta-xilinx-tools (development and AMD release)
 	branch: scarthgap or AMD release version (e.g. rel-v2026.1)
 
-	URI: https://github.com/Xilinx/meta-petalinux
-	branch: AMD release version (e.g. rel-v2026.1)
-
-
 	URI: https://git.yoctoproject.org/meta-security
 	layers: meta-tpm
 	branch: scarthgap
