@@ -3,7 +3,7 @@ args:
     - --machine-name k24i-sm-sdt
     - -g full
     - --require-machine include/k24-sm.inc
-    - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-cortexa53-linux-conf.yaml
+    - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-cortexa53-linux-conf.yaml ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/openamp-overlay-zynqmp.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
     CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
