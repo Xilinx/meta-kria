@@ -2779,6 +2779,7 @@
                                                 remote = <0x166>;
                                                 carveouts = <0x163 0x162 0x161>;
                                                 mbox = <0x128>;
+                                                timer = "ttc0", "ttc1";
                                         };
                                 };
                         };
@@ -2806,6 +2807,7 @@
                                                 host = <0x167>;
                                                 mbox = <0xec>;
                                                 carveouts = <0x163 0x162 0x161>;
+                                                timer = "ttc3";
                                         };
                                 };
                         };

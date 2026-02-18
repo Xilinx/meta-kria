@@ -6043,6 +6043,7 @@
                                                 remote = <0x168>;
                                                 carveouts = <0x166 0x165 0x164>;
                                                 mbox = <0x129>;
+                                                timer = "ttc0", "ttc1";
                                         };
                                 };
                         };
@@ -6070,6 +6071,7 @@
                                                 host = <0x169>;
                                                 mbox = <0xed>;
                                                 carveouts = <0x166 0x165 0x164>;
+                                                timer = "ttc3";
                                         };
                                 };
                         };
