@@ -5505,6 +5505,48 @@
                 clock-output-names = "rtc_clk";
         };
 
+        amba_pl: amba_pl {
+                phandle = <0x15d>;
+                ranges;
+                compatible = "simple-bus";
+                #address-cells = <0x2>;
+                #size-cells = <0x2>;
+                firmware-name = "kv260_base.bit.bin";
+
+                clocking1: clocking1 {
+                        phandle = <0x15e>;
+                        compatible = "xlnx,fclk";
+                        status = "okay";
+                        assigned-clocks = <&zynqmp_clk 0x48>;
+                        assigned-clock-rates = <0x5f5dd19>;
+                        #clock-cells = <0x0>;
+                        clock-output-names = "fabric_clk";
+                        clocks = <&zynqmp_clk 0x48>;
+                };
+
+                clocking0: clocking0 {
+                        phandle = <0x15f>;
+                        compatible = "xlnx,fclk";
+                        status = "okay";
+                        assigned-clocks = <&zynqmp_clk 0x47>;
+                        assigned-clock-rates = <0x5f5dd19>;
+                        #clock-cells = <0x0>;
+                        clock-output-names = "fabric_clk";
+                        clocks = <&zynqmp_clk 0x47>;
+                };
+
+                afi0: afi0 {
+                        phandle = <0x160>;
+                        status = "okay";
+                        compatible = "xlnx,afi-fpga";
+                        resets = <&zynqmp_reset 0x74>,
+                         <&zynqmp_reset 0x75>,
+                         <&zynqmp_reset 0x76>,
+                         <&zynqmp_reset 0x77>;
+                        config-afi = <0x0 0x0 0x1 0x0 0x2 0x0 0x3 0x0 0x4 0x0 0x5 0x0 0x6 0x0 0x7 0x0 0x8 0x0 0x9 0x0 0xa 0x0 0xb 0x0 0xc 0x0 0xd 0x0 0xe 0xa00 0xf 0x0>;
+                };
+        };
+
         psu_ocm_ram_0_memory: memory@FFFC0000 {
                 phandle = <0x7>;
                 compatible = "xlnx,psu-ocm-ram-0-1.0", "mmio-sram";
@@ -5996,6 +6038,10 @@
                 gt_crx_ref_clk = "/gt-crx-ref-clk";
                 aux_ref_clk = "/aux-ref-clk";
                 rtc_clk = "/rtc-clk";
+                amba_pl = "/amba_pl";
+                clocking1 = "/amba_pl/clocking1";
+                clocking0 = "/amba_pl/clocking0";
+                afi0 = "/amba_pl/afi0";
                 psu_ocm_ram_0_memory = "/memory@FFFC0000";
                 psu_r5_ddr_0_memory = "/memory@100000";
                 psu_ddr_0_memory = "/memory@0";
@@ -6043,7 +6089,7 @@
                                                 remote = <0x168>;
                                                 carveouts = <0x166 0x165 0x164>;
                                                 mbox = <0x129>;
-                                                timer = "ttc0", "ttc1";
+                                                timer = <0x67 0x68>;
                                         };
                                 };
                         };
@@ -6071,7 +6117,7 @@
                                                 host = <0x169>;
                                                 mbox = <0xed>;
                                                 carveouts = <0x166 0x165 0x164>;
-                                                timer = "ttc3";
+                                                timer = <0x6a>;
                                         };
                                 };
                         };

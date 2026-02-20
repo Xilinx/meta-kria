@@ -5969,6 +5969,7 @@
                                                 remote = <0x162>;
                                                 carveouts = <0x160 0x15f 0x15e>;
                                                 mbox = <0x128>;
+                                                timer = <0x65 0x66>;
                                         };
                                 };
                         };
@@ -5996,6 +5997,7 @@
                                                 host = <0x163>;
                                                 mbox = <0xec>;
                                                 carveouts = <0x160 0x15f 0x15e>;
+                                                timer = <0x68>;
                                         };
                                 };
                         };
