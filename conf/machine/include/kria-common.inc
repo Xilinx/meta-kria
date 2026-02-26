@@ -13,7 +13,6 @@ SERIAL_CONSOLES = "115200;ttyPS1"
 DEPENDS:append:pn-xilinx-bootbin = " board-id-data-k24 board-id-data-k26"
 
 EXTRA_IMAGEDEPENDS += "board-id-data-k24  board-id-data-k26"
-EXTRA_IMAGEDEPENDS:remove = "virtual/boot-bin u-boot-xlnx-uenv"
 
 IMAGE_FSTYPES += " ext4 wic wic.xz wic.qemu-sd"
 
