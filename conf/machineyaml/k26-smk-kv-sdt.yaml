@@ -7,6 +7,8 @@ args:
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
     CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
+    CONFIG_SUBSYSTEM_BOOTMODE_2: y
+
 machine:
     pre:
     post:
