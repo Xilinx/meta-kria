@@ -2,6 +2,8 @@ FILESEXTRAPATHS:append := ":${THISDIR}/u-boot-xlnx-scr"
 
 BOOTMODE:k26-smk = ""
 BOOTMODE:k24-smk = ""
+BOOTMODE:k26-sm = ""
+BOOTMODE:k24-sm = ""
 
 BOOTFILE_EXT:k26-smk = "kria"
 BOOTFILE_EXT:k24-smk = "kria"
