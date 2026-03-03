@@ -27,3 +27,7 @@ machine:
         PR:append:pn-device-tree:
             op: '='
             val: ".2"
+        SPI_IMAGE_SIZE:
+            comment: 'QSPI flash size (64MB)'
+            op: '='
+            val: '0x400_0000'

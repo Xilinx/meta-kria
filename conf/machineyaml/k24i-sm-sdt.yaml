@@ -12,3 +12,7 @@ kconfig:
 machine:
     pre:
     post:
+        SPI_IMAGE_SIZE:
+            comment: 'QSPI flash size (64MB)'
+            op: '='
+            val: '0x400_0000'
