@@ -2817,10 +2817,10 @@
                 };
 
                 cma_reserved40000000: cma_reserved@40000000 {
-                        phandle = <0x165>;
+                        phandle = <0x167>;
                         compatible = "shared-dma-pool";
-                        reusable = <0x1>;
-                        linux,cma-default = <0x1>;
+                        reusable;
+                        linux,cma-default;
                         reg = <0x0 0x40000000 0x0 0x20000000>;
                 };
         };
@@ -3088,7 +3088,7 @@
         domains {
 
                 APU_Linux {
-                        phandle = <0x167>;
+                        phandle = <0x166>;
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
@@ -3101,7 +3101,7 @@
                                         compatible = "openamp,remoteproc-v2";
 
                                         relation0 {
-                                                remote = <0x166>;
+                                                remote = <0x165>;
                                                 elfload = <0x59 0x5a 0x164>;
                                         };
                                 };
@@ -3110,7 +3110,7 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                remote = <0x166>;
+                                                remote = <0x165>;
                                                 carveouts = <0x163 0x162 0x161>;
                                                 mbox = <0x128>;
                                                 timer = <0x66 0x67>;
@@ -3120,10 +3120,10 @@
                 };
 
                 R5_0_FREERTOS {
-                        phandle = <0x166>;
+                        phandle = <0x165>;
                         compatible = "openamp,domain-v1";
                         os,type = "freertos";
-                        sram = <0x9800000 0x6000 0xbeef 0x10000>;
+                        sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
                         reserved-memory = <0x161 0x162 0x163 0x164>;
                         rpu_pd_val = <0x7c 0x7 0x7c 0xf 0x7c 0x10>;
                         cpu_config_str = "split";
@@ -3137,7 +3137,7 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                host = <0x167>;
+                                                host = <0x166>;
                                                 mbox = <0xec>;
                                                 carveouts = <0x163 0x162 0x161>;
                                                 timer = <0x69>;
@@ -3151,7 +3151,7 @@
                         cpus = <&cpus_a53 0x1 0x80000003>;
                         os,type = "linux";
                         access = <&cma_reserved40000000 0x0>;
-                        reserved-memory = <0x165>;
+                        reserved-memory = <0x167>;
                         access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
                 };
         };

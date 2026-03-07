@@ -2494,7 +2494,7 @@
                 cma_reserved40000000: cma_reserved@40000000 {
                         phandle = <0x163>;
                         compatible = "shared-dma-pool";
-                        reusable = <0x1>;
+                        reusable;
                         reg = <0x0 0x40000000 0x0 0x32000000>;
                 };
 
@@ -2782,7 +2782,7 @@
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_r5_0 0x1 0x0>;
                         os,type = "freertos";
-                        sram = <0x9800000 0x6000 0xbeef 0x10000>;
+                        sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
                         reserved-memory = <0x164 0x165 0x166 0x167>;
                         rpu_pd_val = <0x7e 0x7>;
                         cpu_config_str = "split";
