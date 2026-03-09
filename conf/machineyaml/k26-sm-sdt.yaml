@@ -15,7 +15,17 @@ machine:
         require:
             comment: "Default to K26 + KV260"
             op: 'conf/machine/include/kria-qemu-kv.inc'
+        QEMU_FLASH_TYPE:
+            op: '='
+            val: 'qspi'
+        QEMU_FLASH_FILE:
+            op: '='
+            val: 'kria-qspi-${MACHINE}'
         SPI_IMAGE_SIZE:
             comment: 'QSPI flash size (64MB)'
             op: '='
             val: '0x400_0000'
+        QEMU_HW_FLASH:append:
+            comment: 'QSPI Boots from offset (0x20_0000)'
+            op: '='
+            val: " -boot multiboot=${@int(int('0x20_0000', 0) / ( 32 * 1024))}"
