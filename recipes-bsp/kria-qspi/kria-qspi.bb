@@ -42,7 +42,7 @@ COMPATIBLE_MACHINE:k24-smk-kd-sdt = "${MACHINE}"
 SPI_IMAGE_SIZE ??= "0x400_0000"
 
 # Output size smaller than flash (SPI_IMAGE_SIZE) for faster programming
-SPI_OUTPUT_SIZE ??= "0x228_0000"
+#SPI_OUTPUT_SIZE ??= "0x228_0000"
 
 SPI_COMPONENTS = "image_selector persistent_regs bootbin recovery version checksum"
 
