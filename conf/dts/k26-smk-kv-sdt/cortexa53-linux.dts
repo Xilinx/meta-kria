@@ -2031,6 +2031,7 @@
                         xlnx,ipi-id = <0x0>;
                         #address-cells = <0x2>;
                         #size-cells = <0x2>;
+                        bootph-all;
                         ranges;
 
                         ipi_0_to_ipi_0: child@ff300000 {
@@ -2142,6 +2143,7 @@
                         xlnx,ipi-id = <0x7>;
                         #address-cells = <0x2>;
                         #size-cells = <0x2>;
+                        bootph-all;
                         ranges;
 
                         ipi_7_to_ipi_0: child@ff300000 {
@@ -2253,6 +2255,7 @@
                         xlnx,ipi-id = <0x8>;
                         #address-cells = <0x2>;
                         #size-cells = <0x2>;
+                        bootph-all;
                         ranges;
 
                         ipi_8_to_ipi_0: child@ff300000 {
@@ -2364,6 +2367,7 @@
                         xlnx,ipi-id = <0x9>;
                         #address-cells = <0x2>;
                         #size-cells = <0x2>;
+                        bootph-all;
                         ranges;
 
                         ipi_9_to_ipi_0: child@ff300000 {
@@ -2475,6 +2479,7 @@
                         xlnx,ipi-id = <0xa>;
                         #address-cells = <0x2>;
                         #size-cells = <0x2>;
+                        bootph-all;
                         ranges;
 
                         ipi_10_to_ipi_0: child@ff300000 {
