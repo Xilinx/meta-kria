@@ -153,7 +153,7 @@
                         xlnx,pss-video-ref-clk-freq = <0x1fc9f08>;
                         xlnx,ip-name = "psu_cortexa53";
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         cpu-frequency = <0x4f790c10>;
                         xlnx,cpu-clk-freq-hz = <0x4f790c10>;
                         xlnx,pss-gt-ref-clk-freq = <0x1fc9f08>;
@@ -182,7 +182,7 @@
                         stamp-frequency = <0x5f5dd19>;
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
                         xlnx,ip-name = "psu_cortexa53";
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         xlnx,psu-device = "PS8a";
                         xlnx,cpu-clk-freq-hz = <0x4f790c10>;
                         bus-handle = <0x1>;
@@ -205,7 +205,7 @@
                         stamp-frequency = <0x5f5dd19>;
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
                         xlnx,ip-name = "psu_cortexa53";
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         xlnx,psu-device = "PS8a";
                         xlnx,cpu-clk-freq-hz = <0x4f790c10>;
                         bus-handle = <0x1>;
@@ -228,7 +228,7 @@
                         stamp-frequency = <0x5f5dd19>;
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
                         xlnx,ip-name = "psu_cortexa53";
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         xlnx,psu-device = "PS8a";
                         xlnx,cpu-clk-freq-hz = <0x4f790c10>;
                         bus-handle = <0x1>;
@@ -382,7 +382,7 @@
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
                         cpu-frequency = <0x1fc9f082>;
                         xlnx,cpu-clk-freq-hz = <0x1fc9f082>;
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         xlnx,pss-ref-clk-freq = <0x1fc9f08>;
                         access-val = <0xff>;
                         xlnx,psu-device = "PS8a";
@@ -515,7 +515,7 @@
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
                         cpu-frequency = <0x1fc9f082>;
                         xlnx,cpu-clk-freq-hz = <0x1fc9f082>;
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         xlnx,pss-ref-clk-freq = <0x1fc9f08>;
                         access-val = <0xff>;
                         xlnx,psu-device = "PS8a";
