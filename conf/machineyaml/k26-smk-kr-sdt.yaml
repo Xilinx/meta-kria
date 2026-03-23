@@ -5,6 +5,7 @@ args:
     - --require-machine include/k26-smk.inc
     - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k26-cortexa53-linux-conf.yaml ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/openamp-overlay-zynqmp.yaml
 kconfig:
+    CONFIG_YOCTO_BBMC_CORTEXA53_0_BAREMETAL: y
     CONFIG_YOCTO_BBMC_CORTEXR5_0_FREERTOS: y
     CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
@@ -27,6 +28,10 @@ machine:
         PR:append:pn-device-tree:
             op: '='
             val: ".2"
+        PACKAGECONFIG:append:pn-xilffs:
+            comment: 'Baremetal Image-recovery requires xilffs with ramfs support'
+            op: '='
+            val: ' ramfs'
         QEMU_FLASH_TYPE:
             op: '='
             val: 'qspi'
