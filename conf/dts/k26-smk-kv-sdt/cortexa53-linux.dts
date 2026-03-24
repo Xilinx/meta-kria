@@ -1961,7 +1961,8 @@
                          <&zynqmp_clk 0x11>,
                          <&zynqmp_clk 0x10>;
                         xlnx,max-lanes = <0x2>;
-                        phys = <0x62 0x1 0x6 0x0 0x0 0x62 0x0 0x6 0x1 0x0>;
+                        phys = <&psgtr 0x1 0x6 0x0 0x0>,
+                         <&psgtr 0x0 0x6 0x1 0x0>;
                         xlnx,dp-board-interface = "custom";
                         xlnx,ip-name = "psu_dp";
                         phy-names = "dp-phy0", "dp-phy1";
