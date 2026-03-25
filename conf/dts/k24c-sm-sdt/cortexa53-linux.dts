@@ -3180,7 +3180,7 @@
                          <&zynqmp_firmware 0xf>,
                          <&zynqmp_firmware 0x10>;
                         reg = <0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
-                        reg-names = "psu_r5_0_atcm_global@ffe00000", "psu_r5_0_btcm_global@ffe20000";
+                        reg-names = "atcm0", "btcm0";
                         memory-region = <&rproc09800000>,
                          <&vdev0buffer9868000>,
                          <&vdev0vring09860000>,
