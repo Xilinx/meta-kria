@@ -2,14 +2,15 @@ reserved-memory:
   ranges: true
   "#size-cells": 2
   "#address-cells": 2
-  cma_reserved@40000000:
-    start: 0x40000000
+  cma_reserved@4B000000:
+    start: 0x4B000000
     size: 0x32000000
     compatible: "shared-dma-pool"
     reusable: true
+    linux,cma-default: true
 
 domains:
-  openamp_a53_1_cluster:
+  APU_Linux:
     compatible:
       - "openamp,domain-v1"
     cpus:
@@ -24,4 +25,4 @@ domains:
         flags: 0
 
     reserved-memory:
-      - cma_reserved@40000000
+      - cma_reserved@4B000000
