@@ -5538,11 +5538,12 @@
                         no-map;
                 };
 
-                cma_reserved40000000: cma_reserved@40000000 {
+                cma_reserved4B000000: cma_reserved@4B000000 {
                         phandle = <0x15f>;
                         compatible = "shared-dma-pool";
                         reusable;
-                        reg = <0x0 0x40000000 0x0 0x32000000>;
+                        linux,cma-default;
+                        reg = <0x0 0x4b000000 0x0 0x32000000>;
                 };
         };
 
@@ -5932,16 +5933,16 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
-                cma_reserved40000000 = "/reserved-memory/cma_reserved@40000000";
+                cma_reserved4B000000 = "/reserved-memory/cma_reserved@4B000000";
         };
 
         domains {
 
-                openamp_a53_1_cluster {
+                APU_Linux {
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_a53 0x1 0x80000003>;
                         os,type = "linux";
-                        access = <&cma_reserved40000000 0x0>;
+                        access = <&cma_reserved4B000000 0x0>;
                         reserved-memory = <0x15f>;
                         access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
                 };

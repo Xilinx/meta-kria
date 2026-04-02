@@ -1699,42 +1699,6 @@
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                 };
 
-                ttc2: timer@ff130000 {
-                        phandle = <0x69>;
-                        compatible = "cdns,ttc";
-                        status = "okay";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
-                        reg = <0x0 0xff130000 0x0 0x1000>;
-                        timer-width = <0x20>;
-                        power-domains = <&zynqmp_firmware 0x1a>;
-                        clocks = <&zynqmp_clk 0x1f>;
-                        xlnx,ttc-board-interface = "custom";
-                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
-                        xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,ip-name = "psu_ttc";
-                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
-                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
-                };
-
-                ttc3: timer@ff140000 {
-                        phandle = <0x6a>;
-                        compatible = "cdns,ttc";
-                        status = "okay";
-                        interrupt-parent = <&gic>;
-                        interrupts = <0x0 0x2d 0x4 0x0 0x2e 0x4 0x0 0x2f 0x4>;
-                        reg = <0x0 0xff140000 0x0 0x1000>;
-                        timer-width = <0x20>;
-                        power-domains = <&zynqmp_firmware 0x1b>;
-                        clocks = <&zynqmp_clk 0x1f>;
-                        xlnx,ttc-board-interface = "custom";
-                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
-                        xlnx,clock-freq = <0x5f5e100>;
-                        xlnx,ip-name = "psu_ttc";
-                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
-                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
-                };
-
                 uart0: serial@ff000000 {
                         phandle = <0xd4>;
                         bootph-all;
@@ -2867,11 +2831,12 @@
                         no-map;
                 };
 
-                cma_reserved40000000: cma_reserved@40000000 {
+                cma_reserved4B000000: cma_reserved@4B000000 {
                         phandle = <0x163>;
                         compatible = "shared-dma-pool";
                         reusable;
-                        reg = <0x0 0x40000000 0x0 0x32000000>;
+                        linux,cma-default;
+                        reg = <0x0 0x4b000000 0x0 0x32000000>;
                 };
 
                 rproc09800000: rproc0@9800000 {
@@ -3042,8 +3007,6 @@
                 spi1 = "/axi/spi@ff050000";
                 ttc0 = "/axi/timer@ff110000";
                 ttc1 = "/axi/timer@ff120000";
-                ttc2 = "/axi/timer@ff130000";
-                ttc3 = "/axi/timer@ff140000";
                 uart0 = "/axi/serial@ff000000";
                 uart1 = "/axi/serial@ff010000";
                 usb0 = "/axi/usb@ff9d0000";
@@ -3155,7 +3118,7 @@
                 psu_ddr_1_memory = "/memory@800000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
-                cma_reserved40000000 = "/reserved-memory/cma_reserved@40000000";
+                cma_reserved4B000000 = "/reserved-memory/cma_reserved@4B000000";
                 rproc09800000 = "/reserved-memory/rproc0@9800000";
                 vdev0vring09860000 = "/reserved-memory/vdev0vring0@9860000";
                 vdev0vring19864000 = "/reserved-memory/vdev0vring1@9864000";
@@ -3165,21 +3128,14 @@
 
         domains {
 
-                openamp_a53_1_cluster {
-                        compatible = "openamp,domain-v1";
-                        cpus = <&cpus_a53 0x1 0x80000003>;
-                        os,type = "linux";
-                        access = <&cma_reserved40000000 0x0>;
-                        reserved-memory = <0x163>;
-                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
-                };
-
                 APU_Linux {
                         phandle = <0x169>;
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
-                        reserved-memory = <0x164 0x165 0x166 0x167>;
+                        reserved-memory = <0x163 0x164 0x165 0x166 0x167>;
+                        access = <&cma_reserved4B000000 0x0>;
+                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
