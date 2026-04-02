@@ -671,7 +671,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14e8>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -691,7 +690,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14e9>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -711,7 +709,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14ea>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -731,7 +728,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14eb>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -751,7 +747,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14ec>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -771,7 +766,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14ed>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -791,7 +785,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14ee>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -811,7 +804,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x80>;
-                        iommus = <&smmu 0x14ef>;
                         power-domains = <&zynqmp_firmware 0x2a>;
                         clocks = <&zynqmp_clk 0x13>,
                          <&zynqmp_clk 0x1f>;
@@ -848,7 +840,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x868>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -869,7 +860,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x869>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -890,7 +880,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x86a>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -911,7 +900,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x86b>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -932,7 +920,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x86c>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -953,7 +940,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x86d>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -974,7 +960,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x86e>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -995,7 +980,6 @@
                         clock-names = "clk_main", "clk_apb";
                         #dma-cells = <0x1>;
                         xlnx,bus-width = <0x40>;
-                        iommus = <&smmu 0x86f>;
                         power-domains = <&zynqmp_firmware 0x2b>;
                         clocks = <&zynqmp_clk 0x44>,
                          <&zynqmp_clk 0x1f>;
@@ -1052,7 +1036,6 @@
                         interrupts = <0x0 0x39 0x4 0x0 0x39 0x4>;
                         reg = <0x0 0xff0b0000 0x0 0x1000>;
                         clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
-                        iommus = <&smmu 0x874>;
                         power-domains = <&zynqmp_firmware 0x1d>;
                         resets = <&zynqmp_reset 0x1d>;
                         reset-names = "gem0_rst";
@@ -1090,7 +1073,6 @@
                         interrupts = <0x0 0x3b 0x4 0x0 0x3b 0x4>;
                         reg = <0x0 0xff0c0000 0x0 0x1000>;
                         clock-names = "pclk", "hclk", "tx_clk", "rx_clk", "tsu_clk";
-                        iommus = <&smmu 0x875>;
                         power-domains = <&zynqmp_firmware 0x1e>;
                         resets = <&zynqmp_reset 0x1e>;
                         reset-names = "gem1_rst";
@@ -1360,7 +1342,6 @@
                         reg = <0x0 0xff0f0000 0x0 0x1000 0x0 0xc0000000 0x0 0x8000000>;
                         #address-cells = <0x1>;
                         #size-cells = <0x0>;
-                        iommus = <&smmu 0x873>;
                         power-domains = <&zynqmp_firmware 0x2d>;
                         clocks = <&zynqmp_clk 0x35>,
                          <&zynqmp_clk 0x1f>;
@@ -1705,7 +1686,6 @@
                                 interrupt-names = "host", "peripheral", "otg", "wakeup";
                                 interrupts = <0x0 0x41 0x4 0x0 0x41 0x4 0x0 0x45 0x4 0x0 0x4b 0x4>;
                                 clock-names = "ref";
-                                iommus = <&smmu 0x860>;
                                 snps,quirk-frame-length-adjustment = <0x20>;
                                 snps,resume-hs-terminations;
                                 clocks = <&zynqmp_clk 0x22>;
@@ -1754,7 +1734,6 @@
                                 interrupt-names = "host", "peripheral", "otg", "wakeup";
                                 interrupts = <0x0 0x46 0x4 0x0 0x46 0x4 0x0 0x4a 0x4 0x0 0x4c 0x4>;
                                 clock-names = "ref";
-                                iommus = <&smmu 0x861>;
                                 snps,quirk-frame-length-adjustment = <0x20>;
                                 snps,resume-hs-terminations;
                                 clocks = <&zynqmp_clk 0x22>;
@@ -1839,7 +1818,6 @@
                         clock-names = "axi_clk";
                         power-domains = <&zynqmp_firmware 0x29>;
                         dma-channels = <0x6>;
-                        iommus = <&smmu 0xce4>;
                         #dma-cells = <0x1>;
                         clocks = <&zynqmp_clk 0x14>;
                         assigned-clocks = <&zynqmp_clk 0x14>;
@@ -1856,7 +1834,6 @@
                         reg-names = "dp", "blend", "av_buf", "aud";
                         interrupts = <0x0 0x77 0x4>;
                         interrupt-parent = <&gic>;
-                        iommus = <&smmu 0xce3>;
                         clock-names = "dp_apb_clk", "dp_aud_clk", "dp_vtc_pixel_clk_in";
                         power-domains = <&zynqmp_firmware 0x29>;
                         resets = <&zynqmp_reset 0x3>;
