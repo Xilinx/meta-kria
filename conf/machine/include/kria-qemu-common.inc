@@ -12,8 +12,7 @@ QB_DEFAULT_FSTYPE = "wic.qemu-sd"
 # qspi 32-bit
 QEMU_HW_BOOT_MODE = "2"
 
-# The fit will load, but we also need some additional components
-QEMU_DTB_LOAD = "-device loader,file=@DEPLOY_DIR_IMAGE@/fit-dtb.blob,addr=0x100000,force-raw=on"
+QEMU_DTB_LOAD = "-device loader,file=@DEPLOY_DIR_IMAGE@/system.dtb,addr=0x100000,force-raw=on"
 
 # Additional items required for booting
 QB_OPT_APPEND += " \
