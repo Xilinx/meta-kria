@@ -3,6 +3,7 @@ reserved-memory:
   "#size-cells": 2
   "#address-cells": 2
   cma_reserved@4B000000:
+    label: cma_reserved_4B000000
     start: 0x4B000000
     size: 0x32000000
     compatible: "shared-dma-pool"
@@ -20,9 +21,6 @@ domains:
           secure: true
           el: 0x3
     os,type: linux
-    access:
-      - dev: cma_reserved
-        flags: 0
 
     reserved-memory:
       - cma_reserved@4B000000
