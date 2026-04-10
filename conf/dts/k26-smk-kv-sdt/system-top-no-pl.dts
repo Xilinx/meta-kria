@@ -5626,34 +5626,39 @@
                         no-map;
                 };
 
-                cma_reserved4B000000: cma_reserved@4B000000 {
+                cma_reserved_4B000000: cma_reserved@4B000000 {
                         phandle = <0x163>;
+                        label = "cma_reserved_4B000000";
                         compatible = "shared-dma-pool";
                         reusable;
                         linux,cma-default;
                         reg = <0x0 0x4b000000 0x0 0x32000000>;
                 };
 
-                rproc0@9800000 {
+                rproc0: rproc0@9800000 {
                         phandle = <0x167>;
+                        label = "rproc0";
                         no-map;
                         reg = <0x0 0x9800000 0x0 0x60000>;
                 };
 
-                vdev0vring0@9860000 {
+                vdev0vring0: vdev0vring0@9860000 {
                         phandle = <0x166>;
+                        label = "vdev0vring0";
                         no-map;
                         reg = <0x0 0x9860000 0x0 0x4000>;
                 };
 
-                vdev0vring1@9864000 {
+                vdev0vring1: vdev0vring1@9864000 {
                         phandle = <0x165>;
+                        label = "vdev0vring1";
                         no-map;
                         reg = <0x0 0x9864000 0x0 0x4000>;
                 };
 
-                vdev0buffer@9868000 {
+                vdev0buffer: vdev0buffer@9868000 {
                         phandle = <0x164>;
+                        label = "vdev0buffer";
                         no-map;
                         reg = <0x0 0x9868000 0x0 0x100000>;
                 };
@@ -6049,7 +6054,11 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
-                cma_reserved4B000000 = "/reserved-memory/cma_reserved@4B000000";
+                cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
+                rproc0 = "/reserved-memory/rproc0@9800000";
+                vdev0vring0 = "/reserved-memory/vdev0vring0@9860000";
+                vdev0vring1 = "/reserved-memory/vdev0vring1@9864000";
+                vdev0buffer = "/reserved-memory/vdev0buffer@9868000";
         };
 
         domains {
@@ -6060,8 +6069,6 @@
                         cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
                         reserved-memory = <0x163 0x164 0x165 0x166 0x167>;
-                        access = <&cma_reserved4B000000 0x0>;
-                        access-json = "[{\"dev\": \"cma_reserved\", \"flags\": 0}]";
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
