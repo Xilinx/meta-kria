@@ -1,10 +1,12 @@
+inherit:
+    ${LAYER_PATH_kria-layer}/conf/machineyaml/k26-smk-kr-sdt.yaml
 args:
-    - --hw-description https://edf.amd.com/sswreleases/rel-v2026.1/sdt/2026.1/2026.1_0412_1_04121811/external/k26-smk-kr-sdt/k26-smk-kr-sdt_2026.1_0412_1_04121811.tar.gz
-    - --machine-name k26-smk-kr-sdt
-    - -g full
-    - --require-machine include/k26-smk.inc
-    - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k26-cortexa53-linux-conf.yaml
+    - --machine-name k26-smk-kr-sdt-multidomain
+args_append:
+    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/openamp-overlay-zynqmp.yaml
 kconfig:
+    CONFIG_YOCTO_BBMC_CORTEXA53_0_BAREMETAL: y
+    CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
@@ -25,6 +27,10 @@ machine:
         PR:append:pn-device-tree:
             op: '='
             val: ".2"
+        PACKAGECONFIG:append:pn-xilffs:
+            comment: 'Baremetal Image-recovery requires xilffs with ramfs support'
+            op: '='
+            val: ' ramfs'
         QEMU_FLASH_TYPE:
             op: '='
             val: 'qspi'
