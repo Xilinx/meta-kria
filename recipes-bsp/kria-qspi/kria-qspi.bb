@@ -32,11 +32,9 @@ def spi_inline_kria_regs(d, comp, buf):
 inherit amd-spi-image deploy image-artifact-names
 
 COMPATIBLE_MACHINE = "^$"
-COMPATIBLE_MACHINE:k26-sm = "${MACHINE}"
-COMPATIBLE_MACHINE:k24-sm = "${MACHINE}"
-COMPATIBLE_MACHINE:k26-smk-kr-sdt = "${MACHINE}"
-COMPATIBLE_MACHINE:k26-smk-kv-sdt = "${MACHINE}"
-COMPATIBLE_MACHINE:k24-smk-kd-sdt = "${MACHINE}"
+COMPATIBLE_MACHINE:k26-smk-kr-sdt-multidomain = "${MACHINE}"
+COMPATIBLE_MACHINE:k26-smk-kv-sdt-multidomain = "${MACHINE}"
+COMPATIBLE_MACHINE:k24-smk-kd-sdt-multidomain = "${MACHINE}"
 
 # 64MB QSPI
 SPI_IMAGE_SIZE ??= "0x400_0000"
