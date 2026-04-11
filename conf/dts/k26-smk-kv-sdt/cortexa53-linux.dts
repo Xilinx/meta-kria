@@ -1703,6 +1703,42 @@
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                 };
 
+                ttc2: timer@ff130000 {
+                        phandle = <0x69>;
+                        compatible = "cdns,ttc";
+                        status = "okay";
+                        interrupt-parent = <&gic>;
+                        interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
+                        reg = <0x0 0xff130000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x1a>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                };
+
+                ttc3: timer@ff140000 {
+                        phandle = <0x6a>;
+                        compatible = "cdns,ttc";
+                        status = "okay";
+                        interrupt-parent = <&gic>;
+                        interrupts = <0x0 0x2d 0x4 0x0 0x2e 0x4 0x0 0x2f 0x4>;
+                        reg = <0x0 0xff140000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x1b>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                };
+
                 uart0: serial@ff000000 {
                         phandle = <0xd2>;
                         bootph-all;
@@ -2811,9 +2847,9 @@
         };
 
         reserved-memory {
+                ranges = <0x1>;
                 #size-cells = <0x2>;
                 #address-cells = <0x2>;
-                ranges;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x161>;
@@ -2828,35 +2864,6 @@
                         reusable;
                         linux,cma-default;
                         reg = <0x0 0x4b000000 0x0 0x32000000>;
-                };
-
-                rproc0: rproc0@9800000 {
-                        phandle = <0x167>;
-                        label = "rproc0";
-                        no-map;
-                        reg = <0x0 0x9800000 0x0 0x60000>;
-                };
-
-                vdev0vring0: vdev0vring0@9860000 {
-                        phandle = <0x166>;
-                        label = "vdev0vring0";
-                        no-map;
-                        reg = <0x0 0x9860000 0x0 0x4000>;
-                };
-
-                vdev0vring1: vdev0vring1@9864000 {
-                        phandle = <0x165>;
-                        label = "vdev0vring1";
-                        no-map;
-                        reg = <0x0 0x9864000 0x0 0x4000>;
-                };
-
-                vdev0buffer: vdev0buffer@9868000 {
-                        phandle = <0x164>;
-                        label = "vdev0buffer";
-                        no-map;
-                        reg = <0x0 0x9868000 0x0 0x100000>;
-                        compatible = "shared-dma-pool";
                 };
         };
 
@@ -3002,6 +3009,8 @@
                 spi1 = "/axi/spi@ff050000";
                 ttc0 = "/axi/timer@ff110000";
                 ttc1 = "/axi/timer@ff120000";
+                ttc2 = "/axi/timer@ff130000";
+                ttc3 = "/axi/timer@ff140000";
                 uart0 = "/axi/serial@ff000000";
                 uart1 = "/axi/serial@ff010000";
                 usb0 = "/axi/usb@ff9d0000";
@@ -3114,97 +3123,16 @@
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
                 cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
-                rproc0 = "/reserved-memory/rproc0@9800000";
-                vdev0vring0 = "/reserved-memory/vdev0vring0@9860000";
-                vdev0vring1 = "/reserved-memory/vdev0vring1@9864000";
-                vdev0buffer = "/reserved-memory/vdev0buffer@9868000";
                 gic = "/axi/interrupt-controller@f9010000";
         };
 
         domains {
 
                 APU_Linux {
-                        phandle = <0x169>;
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        cpus = <&cpus_a53 0x1 0x80000003>;
                         os,type = "linux";
-                        reserved-memory = <0x163 0x164 0x165 0x166 0x167>;
-
-                        domain-to-domain {
-                                compatible = "openamp,domain-to-domain-v1";
-
-                                remoteproc-relation {
-                                        compatible = "openamp,remoteproc-v2";
-
-                                        relation0 {
-                                                remote = <0x168>;
-                                                elfload = <0x59 0x5a 0x167>;
-                                        };
-                                };
-
-                                rpmsg-relation {
-                                        compatible = "openamp,rpmsg-v1";
-
-                                        relation0 {
-                                                remote = <0x168>;
-                                                carveouts = <0x166 0x165 0x164>;
-                                                mbox = <0x129>;
-                                                timer = <0x67 0x68>;
-                                        };
-                                };
-                        };
-                };
-
-                R5_0_FREERTOS {
-                        phandle = <0x168>;
-                        compatible = "openamp,domain-v1";
-                        os,type = "freertos";
-                        sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
-                        reserved-memory = <0x164 0x165 0x166 0x167>;
-                        rpu_pd_val = <0x7c 0x7 0x7c 0xf 0x7c 0x10>;
-                        cpu_config_str = "split";
-                        core_num = "0";
-
-                        domain-to-domain {
-                                compatible = "openamp,domain-to-domain-v1";
-                                cluster_cpu = "psu_cortexr5_0";
-
-                                rpmsg-relation {
-                                        compatible = "openamp,rpmsg-v1";
-
-                                        relation0 {
-                                                host = <0x169>;
-                                                mbox = <0xed>;
-                                                carveouts = <0x166 0x165 0x164>;
-                                                timer = <0x6a>;
-                                        };
-                                };
-                        };
-                };
-        };
-
-        remoteproc@ffe00000 {
-                compatible = "xlnx,zynqmp-r5fss";
-                #address-cells = <0x2>;
-                #size-cells = <0x2>;
-                xlnx,cluster-mode = <0x0>;
-                ranges = <0x0 0x0 0x0 0xffe00000 0x0 0x10000 0x0 0x20000 0x0 0xffe20000 0x0 0x10000>;
-                xlnx,tcm-mode = <0x0>;
-
-                r5f@0 {
-                        compatible = "xlnx,zynqmp-r5f";
-                        power-domains = <&zynqmp_firmware 0x7>,
-                         <&zynqmp_firmware 0xf>,
-                         <&zynqmp_firmware 0x10>;
-                        reg = <0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
-                        reg-names = "atcm0", "btcm0";
-                        memory-region = <&rproc0>,
-                         <&vdev0buffer>,
-                         <&vdev0vring0>,
-                         <&vdev0vring1>;
-                        mboxes = <&ipi_7_to_ipi_1 0x0>,
-                         <&ipi_7_to_ipi_1 0x1>;
-                        mbox-names = "tx", "rx";
+                        reserved-memory = <0x163>;
                 };
         };
 };

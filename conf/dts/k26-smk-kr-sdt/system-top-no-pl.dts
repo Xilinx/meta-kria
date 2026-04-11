@@ -5654,34 +5654,6 @@
                         linux,cma-default;
                         reg = <0x0 0x4b000000 0x0 0x32000000>;
                 };
-
-                rproc0: rproc0@9800000 {
-                        phandle = <0x167>;
-                        label = "rproc0";
-                        no-map;
-                        reg = <0x0 0x9800000 0x0 0x60000>;
-                };
-
-                vdev0vring0: vdev0vring0@9860000 {
-                        phandle = <0x166>;
-                        label = "vdev0vring0";
-                        no-map;
-                        reg = <0x0 0x9860000 0x0 0x4000>;
-                };
-
-                vdev0vring1: vdev0vring1@9864000 {
-                        phandle = <0x165>;
-                        label = "vdev0vring1";
-                        no-map;
-                        reg = <0x0 0x9864000 0x0 0x4000>;
-                };
-
-                vdev0buffer: vdev0buffer@9868000 {
-                        phandle = <0x164>;
-                        label = "vdev0buffer";
-                        no-map;
-                        reg = <0x0 0x9868000 0x0 0x100000>;
-                };
         };
 
         gpio-keys {
@@ -6075,72 +6047,15 @@
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
                 cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
-                rproc0 = "/reserved-memory/rproc0@9800000";
-                vdev0vring0 = "/reserved-memory/vdev0vring0@9860000";
-                vdev0vring1 = "/reserved-memory/vdev0vring1@9864000";
-                vdev0buffer = "/reserved-memory/vdev0buffer@9868000";
         };
 
         domains {
 
                 APU_Linux {
-                        phandle = <0x169>;
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        cpus = <&cpus_a53 0x1 0x80000003>;
                         os,type = "linux";
-                        reserved-memory = <0x163 0x164 0x165 0x166 0x167>;
-
-                        domain-to-domain {
-                                compatible = "openamp,domain-to-domain-v1";
-
-                                remoteproc-relation {
-                                        compatible = "openamp,remoteproc-v2";
-
-                                        relation0 {
-                                                remote = <0x168>;
-                                                elfload = <0x5a 0x5b 0x167>;
-                                        };
-                                };
-
-                                rpmsg-relation {
-                                        compatible = "openamp,rpmsg-v1";
-
-                                        relation0 {
-                                                remote = <0x168>;
-                                                carveouts = <0x166 0x165 0x164>;
-                                                mbox = <0x129>;
-                                                timer = <0x67 0x68>;
-                                        };
-                                };
-                        };
-                };
-
-                R5_0_FREERTOS {
-                        phandle = <0x168>;
-                        compatible = "openamp,domain-v1";
-                        cpus = <&cpus_r5_0 0x1 0x0>;
-                        os,type = "freertos";
-                        sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
-                        reserved-memory = <0x164 0x165 0x166 0x167>;
-                        rpu_pd_val = <0x7e 0x7>;
-                        cpu_config_str = "split";
-                        core_num = "0";
-
-                        domain-to-domain {
-                                compatible = "openamp,domain-to-domain-v1";
-                                cluster_cpu = "psu_cortexr5_0";
-
-                                rpmsg-relation {
-                                        compatible = "openamp,rpmsg-v1";
-
-                                        relation0 {
-                                                host = <0x169>;
-                                                mbox = <0xed>;
-                                                carveouts = <0x166 0x165 0x164>;
-                                                timer = <0x6a>;
-                                        };
-                                };
-                        };
+                        reserved-memory = <0x163>;
                 };
         };
 };
