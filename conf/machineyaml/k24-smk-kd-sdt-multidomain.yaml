@@ -10,7 +10,6 @@ kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
-    pre:
     post:
         require:
             comment: "K24 + KD240"

@@ -9,6 +9,10 @@ kconfig:
 
 machine:
     pre:
+        DTB_FILE_PATH:
+            comment: 'Device tree binary for boot image'
+            op: '?='
+            val: '${RECIPE_SYSROOT}/boot/devicetree/SMK-zynqmp-sck-kd-g-revA.dtb'
     post:
         require:
             comment: "K24 + KD240"
