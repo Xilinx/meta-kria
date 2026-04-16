@@ -136,7 +136,7 @@
                         xlnx,cpu-1x-clk-freq-hz = <0x0>;
                         cpu-frequency = <0x1fc9f082>;
                         xlnx,cpu-clk-freq-hz = <0x1fc9f082>;
-                        xlnx,psu-silicon-version = "3.0";
+                        xlnx,psu-silicon-version = <0x3>;
                         xlnx,pss-ref-clk-freq = <0x1fc9f08>;
                         access-val = <0xff>;
                         xlnx,psu-device = "PS8a";
