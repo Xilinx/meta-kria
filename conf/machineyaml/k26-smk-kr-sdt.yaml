@@ -3,7 +3,8 @@ args:
     - --machine-name k26-smk-kr-sdt
     - -g full
     - --require-machine include/k26-smk.inc
-    - --domain-file ${LAYER_PATH_kria-layer}/conf/domainyaml/k26-cortexa53-linux-conf.yaml
+    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-linux-only-base.yaml \
+                    ${LAYER_PATH_kria-layer}/conf/domainyaml/k26-linux-overlay.yaml
 kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
