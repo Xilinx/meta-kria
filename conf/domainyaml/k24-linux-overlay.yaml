@@ -5,22 +5,13 @@ reserved-memory:
   cma_reserved@4B000000:
     label: cma_reserved_4B000000
     start: 0x4B000000
-    size: 0x32000000
+    size: 0x20000000
     compatible: "shared-dma-pool"
     reusable: true
     linux,cma-default: true
 
 domains:
   APU_Linux:
-    compatible:
-      - "openamp,domain-v1"
-    cpus:
-      - cluster: cpus_a53
-        cpumask: 0x1
-        mode:
-          secure: true
-          el: 0x3
-    os,type: linux
-
+    compatible: openamp,domain-v1
     reserved-memory:
       - cma_reserved@4B000000
