@@ -5939,9 +5939,18 @@
 
                 APU_Linux {
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_a53 0x1 0x80000003>;
-                        os,type = "linux";
                         reserved-memory = <0x15f>;
+                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        os,type = "linux";
+                };
+
+                R5_0_FREERTOS {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_0 0x1 0x80000000>;
+                        os,type = "freertos";
+                        rpu_pd_val = <0x79 0x7>;
+                        cpu_config_str = "split";
+                        core_num = "0";
                 };
         };
 };

@@ -2401,14 +2401,23 @@
         };
 
         reserved-memory {
-                #address-cells = <0x2>;
+                ranges = <0x1>;
                 #size-cells = <0x2>;
-                ranges;
+                #address-cells = <0x2>;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x15d>;
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
+                };
+
+                cma_reserved_4B000000: cma_reserved@4B000000 {
+                        phandle = <0x15f>;
+                        label = "cma_reserved_4B000000";
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        linux,cma-default;
+                        reg = <0x0 0x4b000000 0x0 0x32000000>;
                 };
         };
 
@@ -2620,5 +2629,24 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
+        };
+
+        domains {
+
+                APU_Linux {
+                        compatible = "openamp,domain-v1";
+                        reserved-memory = <0x15f>;
+                        os,type = "linux";
+                };
+
+                R5_0_FREERTOS {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_0 0x1 0x80000000>;
+                        os,type = "freertos";
+                        rpu_pd_val = <0x79 0x7>;
+                        cpu_config_str = "split";
+                        core_num = "0";
+                };
         };
 };

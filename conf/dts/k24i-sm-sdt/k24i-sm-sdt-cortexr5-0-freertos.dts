@@ -2598,8 +2598,8 @@
                 APU_Linux {
                         phandle = <0x163>;
                         compatible = "openamp,domain-v1";
-                        os,type = "linux";
                         reserved-memory = <0x15d 0x15e 0x15f 0x160 0x161>;
+                        os,type = "linux";
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
@@ -2629,10 +2629,10 @@
                 R5_0_FREERTOS {
                         phandle = <0x162>;
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_r5_0 0x1 0x0>;
-                        os,type = "freertos";
                         sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
                         reserved-memory = <0x15e 0x15f 0x160 0x161>;
+                        cpus = <&cpus_r5_0 0x1 0x80000000>;
+                        os,type = "freertos";
                         rpu_pd_val = <0x78 0x7>;
                         cpu_config_str = "split";
                         core_num = "0";
