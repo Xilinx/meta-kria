@@ -1,0 +1,8 @@
+# Warning: This file is auto-generated and may be overwritten if the Xen package is updated
+
+[global]
+default=xen
+
+[xen]
+options=console=dtuart dom0_mem=1024M dom0_max_vcpus=2 bootscrub=0 vwfi=native sched=null iommu=off
+kernel=Image console=hvc0 earlycon=xen earlyprintk=xen clk_ignore_unused root=PARTUUID=@@ROOTFS_UUID@@ ro rootwait

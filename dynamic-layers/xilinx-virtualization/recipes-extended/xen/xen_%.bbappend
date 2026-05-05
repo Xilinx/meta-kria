@@ -1,0 +1,5 @@
+XEN_ADDITIONAL_INCLUDE = ""
+
+XEN_ADDITIONAL_INCLUDE:k24-kria = "k24-kria-xen.inc"
+
+include ${XEN_ADDITIONAL_INCLUDE}
