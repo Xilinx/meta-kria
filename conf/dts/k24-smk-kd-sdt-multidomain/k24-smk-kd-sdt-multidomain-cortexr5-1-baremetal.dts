@@ -2482,14 +2482,51 @@
         };
 
         reserved-memory {
-                #address-cells = <0x2>;
+                ranges = <0x1>;
                 #size-cells = <0x2>;
-                ranges;
+                #address-cells = <0x2>;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x15f>;
                         reg = <0x0 0x7ff00000 0x0 0x100000>;
                         no-map;
+                };
+
+                cma_reserved_4B000000: cma_reserved@4B000000 {
+                        phandle = <0x161>;
+                        label = "cma_reserved_4B000000";
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        linux,cma-default;
+                        reg = <0x0 0x4b000000 0x0 0x20000000>;
+                };
+
+                rproc0: rproc0@9800000 {
+                        phandle = <0x165>;
+                        label = "rproc0";
+                        no-map;
+                        reg = <0x0 0x9800000 0x0 0x60000>;
+                };
+
+                vdev0vring0: vdev0vring0@9860000 {
+                        phandle = <0x164>;
+                        label = "vdev0vring0";
+                        no-map;
+                        reg = <0x0 0x9860000 0x0 0x4000>;
+                };
+
+                vdev0vring1: vdev0vring1@9864000 {
+                        phandle = <0x163>;
+                        label = "vdev0vring1";
+                        no-map;
+                        reg = <0x0 0x9864000 0x0 0x4000>;
+                };
+
+                vdev0buffer: vdev0buffer@9868000 {
+                        phandle = <0x162>;
+                        label = "vdev0buffer";
+                        no-map;
+                        reg = <0x0 0x9868000 0x0 0x100000>;
                 };
         };
 
@@ -2705,5 +2742,80 @@
                 psu_qspi_linear_0_memory = "/memory@c0000000";
                 pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
+                cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
+                rproc0 = "/reserved-memory/rproc0@9800000";
+                vdev0vring0 = "/reserved-memory/vdev0vring0@9860000";
+                vdev0vring1 = "/reserved-memory/vdev0vring1@9864000";
+                vdev0buffer = "/reserved-memory/vdev0buffer@9868000";
+        };
+
+        domains {
+
+                APU_Linux {
+                        phandle = <0x167>;
+                        compatible = "openamp,domain-v1";
+                        reserved-memory = <0x161 0x162 0x163 0x164 0x165>;
+                        os,type = "linux";
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+
+                                remoteproc-relation {
+                                        compatible = "openamp,remoteproc-v2";
+
+                                        relation0 {
+                                                remote = <0x166>;
+                                                elfload = <0x59 0x5a 0x165>;
+                                        };
+                                };
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+
+                                        relation0 {
+                                                remote = <0x166>;
+                                                carveouts = <0x164 0x163 0x162>;
+                                                mbox = <0x128>;
+                                                timer = <0x66 0x67>;
+                                        };
+                                };
+                        };
+                };
+
+                R5_0_FREERTOS {
+                        phandle = <0x166>;
+                        compatible = "openamp,domain-v1";
+                        sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
+                        reserved-memory = <0x162 0x163 0x164 0x165>;
+                        os,type = "freertos";
+                        rpu_pd_val = <0x7c 0x7>;
+                        cpu_config_str = "split";
+                        core_num = "0";
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+                                cluster_cpu = "psu_cortexr5_0";
+
+                                rpmsg-relation {
+                                        compatible = "openamp,rpmsg-v1";
+
+                                        relation0 {
+                                                host = <0x167>;
+                                                mbox = <0xec>;
+                                                carveouts = <0x164 0x163 0x162>;
+                                                timer = <0x69>;
+                                        };
+                                };
+                        };
+                };
+
+                R5_1_BAREMETAL {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_1 0x2 0x80000003>;
+                        os,type = "baremetal";
+                        rpu_pd_val = <0x7c 0x8>;
+                        cpu_config_str = "split";
+                        core_num = "1";
+                };
         };
 };

@@ -5952,5 +5952,14 @@
                         cpu_config_str = "split";
                         core_num = "0";
                 };
+
+                R5_1_BAREMETAL {
+                        compatible = "openamp,domain-v1";
+                        cpus = <&cpus_r5_1 0x2 0x80000003>;
+                        os,type = "baremetal";
+                        rpu_pd_val = <0x79 0x8>;
+                        cpu_config_str = "split";
+                        core_num = "1";
+                };
         };
 };

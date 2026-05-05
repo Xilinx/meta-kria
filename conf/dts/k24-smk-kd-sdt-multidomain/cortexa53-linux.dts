@@ -3155,6 +3155,14 @@
                                 };
                         };
                 };
+
+                R5_1_BAREMETAL {
+                        compatible = "openamp,domain-v1";
+                        os,type = "baremetal";
+                        rpu_pd_val = <0x7c 0x8>;
+                        cpu_config_str = "split";
+                        core_num = "1";
+                };
         };
 
         remoteproc@ffe00000 {
