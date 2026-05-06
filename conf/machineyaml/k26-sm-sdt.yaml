@@ -6,7 +6,6 @@ args:
     - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-multidomain-base.yaml \
                     ${LAYER_PATH_kria-layer}/conf/domainyaml/k26-linux-overlay.yaml
 kconfig:
-    CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:

@@ -7,7 +7,6 @@ args:
                     ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-linux-overlay.yaml \
                     ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-openamp-overlay.yaml
 kconfig:
-    CONFIG_YOCTO_BBMC_CORTEXR5_1_BAREMETAL: y
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
