@@ -10,6 +10,11 @@ kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
+    description: >-
+        Machine configuration for the AMD Kria K24 SOM (commercial
+        grade, Zynq UltraScale+ MPSoC): Cortex-A53 Linux plus Cortex-R5
+        FreeRTOS/baremetal and MicroBlaze PMU sub-machines, built from
+        system device tree.
     pre:
     post:
         QEMU_FLASH_TYPE:

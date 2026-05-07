@@ -9,6 +9,10 @@ kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
+    description: >-
+        Machine configuration for the AMD Kria KD240 Drives Starter Kit
+        (K24 SOM, Zynq UltraScale+ MPSoC): Cortex-A53 Linux plus FSBL
+        and MicroBlaze PMU sub-machines, built from system device tree.
     pre:
         DTB_FILE_PATH:
             comment: 'Device tree binary for boot image'

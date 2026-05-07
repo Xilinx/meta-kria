@@ -9,6 +9,11 @@ kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
+    description: >-
+        Machine configuration for the AMD Kria K26 SOM (Zynq UltraScale+
+        MPSoC with Mali-400 GPU and H.264/H.265 VCU): Cortex-A53 Linux
+        plus Cortex-R5 FreeRTOS/baremetal and MicroBlaze PMU
+        sub-machines, built from system device tree.
     pre:
     post:
         require:

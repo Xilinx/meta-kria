@@ -10,6 +10,11 @@ kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
 machine:
+    description: >-
+        AMP/multidomain machine for the AMD Kria KV260 Vision AI Starter
+        Kit (K26 SOM): Cortex-A53 Linux plus Cortex-A53 baremetal,
+        Cortex-R5 FreeRTOS/baremetal, and MicroBlaze PMU sub-machines,
+        built from system device tree.
     post:
         require:
             comment: "K26 + KV260"
