@@ -1,4 +1,8 @@
-DESCRIPTION = "xmutil"
+SUMMARY = "AMD Xilinx Kria management utility (xmutil) command-line \
+tool."
+DESCRIPTION = "Command-line tool that loads and unloads accelerated \
+applications, manages firmware slots, and queries SOM/board status on \
+AMD Kria SOM platforms."
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://MIT;md5=10e38f7eeaea9c7c18447b42d987003f"
 

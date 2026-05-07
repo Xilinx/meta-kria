@@ -1,4 +1,6 @@
 SUMMARY = "Xilinx EEPROM blobs"
+DESCRIPTION = "Common base recipe that supplies tooling and shared \
+payload data for the per-SOM Kria board-id-data EEPROM image recipes."
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=e02145ed27d5ba38507cf0f17e27adf0"
 

@@ -1,5 +1,8 @@
-SUMMARY = "OpenAMP firmware examples demo payload processing"
-DESCRIPTION = "OpenAMP firmware examples demo payload processing"
+SUMMARY = "OpenAMP RPU firmware demo payloads (echo, matrix multiply, \
+rpc_demo) for the AMD Kria K24 SOM."
+DESCRIPTION = "Pre-built Cortex-R5 OpenAMP firmware demo payloads \
+(echo, matrix-multiply, rpc_demo) that the APU-side OpenAMP example \
+applications load onto the RPU on Kria K24 SOM platforms."
 LICENSE = "CLOSED"
 
 SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.1/edf_files/2026.1/05080630/external/packagegroup-openamp-fw-examples/k24-smk-kd-sdt-multidomain_packagegroup-openamp-fw-examples_05080630.tar.gz"

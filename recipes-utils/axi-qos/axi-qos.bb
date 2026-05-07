@@ -3,6 +3,8 @@
 #
 
 SUMMARY = "Application for setting the qos values for DDR slots"
+DESCRIPTION = "Command-line utility for tuning the AXI QoS arbitration \
+values of the Zynq UltraScale+ DDR controller on Kria SOM platforms."
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a9c5ded2ac97b4ce01aa0ace8f3a1755"
 

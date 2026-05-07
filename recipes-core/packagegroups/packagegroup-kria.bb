@@ -1,3 +1,5 @@
+SUMMARY = "Packagegroup pulling in the Kria-SOM-specific runtime \
+(firmware, dashboard, xmutil, platformstats, board-id-data, etc.)."
 DESCRIPTION = "Kria SOM related packages"
 
 COMPATIBLE_MACHINE = "^$"

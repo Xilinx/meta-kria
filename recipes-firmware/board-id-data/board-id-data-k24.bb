@@ -1,4 +1,7 @@
 SUMMARY = "Xilinx EEPROM blobs"
+DESCRIPTION = "Pre-formatted I2C EEPROM image holding the AMD Kria K24 \
+SOM board-identification data (revision, MAC address block, etc.) that \
+the on-board EEPROM is programmed with at manufacturing."
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=e02145ed27d5ba38507cf0f17e27adf0"
 

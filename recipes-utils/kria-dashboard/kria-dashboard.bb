@@ -1,5 +1,8 @@
 SUMMARY = "kria-dashboard including dashboard and daemon"
 
+DESCRIPTION = "Web-based dashboard (UI plus collector daemon) that \
+displays live platform telemetry - power, temperature, voltage rails, \
+loaded accelerators - for the AMD Kria SOMs."
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=2fad2ef643ccf9eb1427b00a4eb5a445"
 BRANCH ?= "xlnx_rel_v2026.1"

@@ -1,4 +1,7 @@
 SUMMARY = "Xilinx xlnx_platformstats library"
+DESCRIPTION = "Library and command-line tool that report platform \
+telemetry (CPU/GPU load, memory bandwidth, power rails, thermals) for \
+Xilinx Zynq UltraScale+ MPSoC platforms including the Kria SOMs."
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=616cf8b6d1f4be98265ef661616934d0"
 
