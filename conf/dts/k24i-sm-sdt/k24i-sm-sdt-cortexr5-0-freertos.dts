@@ -2334,7 +2334,7 @@
         };
 
         reserved-memory {
-                ranges = <0x1>;
+                ranges;
                 #size-cells = <0x2>;
                 #address-cells = <0x2>;
 
@@ -2609,7 +2609,7 @@
 
                                         relation0 {
                                                 remote = <0x162>;
-                                                elfload = <0x57 0x58 0x161>;
+                                                elfload = <&rproc0>;
                                         };
                                 };
 

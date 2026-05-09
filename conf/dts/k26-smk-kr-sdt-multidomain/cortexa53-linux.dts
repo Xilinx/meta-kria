@@ -2821,9 +2821,9 @@
         };
 
         reserved-memory {
+                ranges;
                 #size-cells = <0x2>;
                 #address-cells = <0x2>;
-                ranges;
 
                 pmu_region: pmu@7ff00000 {
                         phandle = <0x161>;
@@ -3148,7 +3148,7 @@
 
                                         relation0 {
                                                 remote = <0x168>;
-                                                elfload = <0x5a 0x5b 0x167>;
+                                                elfload = <&rproc0>;
                                         };
                                 };
 
