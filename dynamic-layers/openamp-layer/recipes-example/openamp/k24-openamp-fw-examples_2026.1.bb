@@ -5,7 +5,7 @@ DESCRIPTION = "Pre-built Cortex-R5 OpenAMP firmware demo payloads \
 applications load onto the RPU on Kria K24 SOM platforms."
 LICENSE = "CLOSED"
 
-SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.1/edf_files/2026.1/05080630/external/packagegroup-openamp-fw-examples/k24-smk-kd-sdt-multidomain_packagegroup-openamp-fw-examples_05080630.tar.gz"
-SRC_URI[sha256sum] = "db3c607778d459802e91cb2188784a00eb806792b3eb48c94178005598a15d57"
+SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.1/edf_files/2026.1/05100702/external/packagegroup-openamp-fw-examples/k24-smk-kd-sdt-multidomain_packagegroup-openamp-fw-examples_05100702.tar.gz"
+SRC_URI[sha256sum] = "ae21502acfcae9d8c98eb25cf251607327a6d4e9474c3dc6c5e5a0c3ea1285f0"
 
 require conf/includes/openamp-fw-example.inc
