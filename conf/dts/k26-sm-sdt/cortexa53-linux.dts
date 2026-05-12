@@ -2804,27 +2804,6 @@
                 usb1 = "/axi/usb@ff9e0000";
         };
 
-        reserved-memory {
-                ranges;
-                #size-cells = <0x2>;
-                #address-cells = <0x2>;
-
-                pmu_region: pmu@7ff00000 {
-                        phandle = <0x15d>;
-                        reg = <0x0 0x7ff00000 0x0 0x100000>;
-                        no-map;
-                };
-
-                cma_reserved_4B000000: cma_reserved@4B000000 {
-                        phandle = <0x15f>;
-                        label = "cma_reserved_4B000000";
-                        compatible = "shared-dma-pool";
-                        reusable;
-                        linux,cma-default;
-                        reg = <0x0 0x4b000000 0x0 0x32000000>;
-                };
-        };
-
         gpio-keys {
                 compatible = "gpio-keys";
                 autorepeat;
@@ -2855,7 +2834,7 @@
         };
 
         pwm_fan: pwm-fan {
-                phandle = <0x15e>;
+                phandle = <0x15d>;
                 compatible = "pwm-fan";
                 pwms = <&ttc0 0x2 0x9c40 0x1>;
         };
@@ -3077,7 +3056,6 @@
                 rtc_clk = "/rtc-clk";
                 psu_ddr_0_memory = "/memory@0";
                 psu_ddr_1_memory = "/memory@800000000";
-                pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
                 cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
                 gic = "/axi/interrupt-controller@f9010000";
@@ -3087,7 +3065,7 @@
 
                 APU_Linux {
                         compatible = "openamp,domain-v1";
-                        reserved-memory = <0x15f>;
+                        reserved-memory = <0x15e>;
                         cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
                 };
@@ -3106,6 +3084,21 @@
                         rpu_pd_val = <0x79 0x8>;
                         cpu_config_str = "split";
                         core_num = "1";
+                };
+        };
+
+        reserved-memory {
+                ranges;
+                #size-cells = <0x2>;
+                #address-cells = <0x2>;
+
+                cma_reserved_4B000000: cma_reserved@4B000000 {
+                        phandle = <0x15e>;
+                        label = "cma_reserved_4B000000";
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        linux,cma-default;
+                        reg = <0x0 0x4b000000 0x0 0x32000000>;
                 };
         };
 };

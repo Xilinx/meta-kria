@@ -2383,55 +2383,6 @@
                 usb1 = "/axi/usb@ff9e0000";
         };
 
-        reserved-memory {
-                ranges;
-                #size-cells = <0x2>;
-                #address-cells = <0x2>;
-
-                pmu_region: pmu@7ff00000 {
-                        phandle = <0x15b>;
-                        reg = <0x0 0x7ff00000 0x0 0x100000>;
-                        no-map;
-                };
-
-                cma_reserved_4B000000: cma_reserved@4B000000 {
-                        phandle = <0x15d>;
-                        label = "cma_reserved_4B000000";
-                        compatible = "shared-dma-pool";
-                        reusable;
-                        linux,cma-default;
-                        reg = <0x0 0x4b000000 0x0 0x20000000>;
-                };
-
-                rproc0: rproc0@9800000 {
-                        phandle = <0x161>;
-                        label = "rproc0";
-                        no-map;
-                        reg = <0x0 0x9800000 0x0 0x60000>;
-                };
-
-                vdev0vring0: vdev0vring0@9860000 {
-                        phandle = <0x160>;
-                        label = "vdev0vring0";
-                        no-map;
-                        reg = <0x0 0x9860000 0x0 0x4000>;
-                };
-
-                vdev0vring1: vdev0vring1@9864000 {
-                        phandle = <0x15f>;
-                        label = "vdev0vring1";
-                        no-map;
-                        reg = <0x0 0x9864000 0x0 0x4000>;
-                };
-
-                vdev0buffer: vdev0buffer@9868000 {
-                        phandle = <0x15e>;
-                        label = "vdev0buffer";
-                        no-map;
-                        reg = <0x0 0x9868000 0x0 0x100000>;
-                };
-        };
-
         gpio-keys {
                 compatible = "gpio-keys";
                 autorepeat;
@@ -2462,7 +2413,7 @@
         };
 
         pwm_fan: pwm-fan {
-                phandle = <0x15c>;
+                phandle = <0x15b>;
                 compatible = "pwm-fan";
                 pwms = <&ttc0 0x2 0x9c40 0x1>;
         };
@@ -2637,7 +2588,6 @@
                 psu_ocm_ram_0_memory = "/memory@FFFC0000";
                 psu_r5_ddr_0_memory = "/memory@100000";
                 psu_qspi_linear_0_memory = "/memory@c0000000";
-                pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
                 cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
                 rproc0 = "/reserved-memory/rproc0@9800000";
@@ -2649,9 +2599,9 @@
         domains {
 
                 APU_Linux {
-                        phandle = <0x163>;
+                        phandle = <0x162>;
                         compatible = "openamp,domain-v1";
-                        reserved-memory = <0x15d 0x15e 0x15f 0x160 0x161>;
+                        reserved-memory = <0x15c 0x15d 0x15e 0x15f 0x160>;
                         os,type = "linux";
 
                         domain-to-domain {
@@ -2661,7 +2611,7 @@
                                         compatible = "openamp,remoteproc-v2";
 
                                         relation0 {
-                                                remote = <0x162>;
+                                                remote = <0x161>;
                                                 elfload = <&rproc0>;
                                         };
                                 };
@@ -2670,8 +2620,8 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                remote = <0x162>;
-                                                carveouts = <0x160 0x15f 0x15e>;
+                                                remote = <0x161>;
+                                                carveouts = <0x15f 0x15e 0x15d>;
                                                 mbox = <0x128>;
                                                 timer = <0x65 0x66>;
                                         };
@@ -2680,10 +2630,10 @@
                 };
 
                 R5_0_FREERTOS {
-                        phandle = <0x162>;
+                        phandle = <0x161>;
                         compatible = "openamp,domain-v1";
                         sram = <0x0 0x9800000 0x0 0x6000 0x0 0xbeef 0x0 0x10000>;
-                        reserved-memory = <0x15e 0x15f 0x160 0x161>;
+                        reserved-memory = <0x15d 0x15e 0x15f 0x160>;
                         os,type = "freertos";
                         rpu_pd_val = <0x78 0x7>;
                         cpu_config_str = "split";
@@ -2697,9 +2647,9 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                host = <0x163>;
+                                                host = <0x162>;
                                                 mbox = <0xec>;
-                                                carveouts = <0x160 0x15f 0x15e>;
+                                                carveouts = <0x15f 0x15e 0x15d>;
                                                 timer = <0x68>;
                                         };
                                 };
@@ -2713,6 +2663,49 @@
                         rpu_pd_val = <0x78 0x8>;
                         cpu_config_str = "split";
                         core_num = "1";
+                };
+        };
+
+        reserved-memory {
+                ranges;
+                #size-cells = <0x2>;
+                #address-cells = <0x2>;
+
+                cma_reserved_4B000000: cma_reserved@4B000000 {
+                        phandle = <0x15c>;
+                        label = "cma_reserved_4B000000";
+                        compatible = "shared-dma-pool";
+                        reusable;
+                        linux,cma-default;
+                        reg = <0x0 0x4b000000 0x0 0x20000000>;
+                };
+
+                rproc0: rproc0@9800000 {
+                        phandle = <0x160>;
+                        label = "rproc0";
+                        no-map;
+                        reg = <0x0 0x9800000 0x0 0x60000>;
+                };
+
+                vdev0vring0: vdev0vring0@9860000 {
+                        phandle = <0x15f>;
+                        label = "vdev0vring0";
+                        no-map;
+                        reg = <0x0 0x9860000 0x0 0x4000>;
+                };
+
+                vdev0vring1: vdev0vring1@9864000 {
+                        phandle = <0x15e>;
+                        label = "vdev0vring1";
+                        no-map;
+                        reg = <0x0 0x9864000 0x0 0x4000>;
+                };
+
+                vdev0buffer: vdev0buffer@9868000 {
+                        phandle = <0x15d>;
+                        label = "vdev0buffer";
+                        no-map;
+                        reg = <0x0 0x9868000 0x0 0x100000>;
                 };
         };
 };

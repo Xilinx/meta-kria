@@ -3093,18 +3093,6 @@
                 usb1 = "/axi/usb@ff9e0000";
         };
 
-        reserved-memory {
-                #address-cells = <0x2>;
-                #size-cells = <0x2>;
-                ranges;
-
-                pmu_region: pmu@7ff00000 {
-                        phandle = <0x15b>;
-                        reg = <0x0 0x7ff00000 0x0 0x100000>;
-                        no-map;
-                };
-        };
-
         gpio-keys {
                 compatible = "gpio-keys";
                 autorepeat;
@@ -3135,7 +3123,7 @@
         };
 
         pwm_fan: pwm-fan {
-                phandle = <0x15c>;
+                phandle = <0x15b>;
                 compatible = "pwm-fan";
                 pwms = <&ttc0 0x2 0x9c40 0x1>;
         };
@@ -3350,7 +3338,6 @@
                 psu_ocm_ram_0_memory = "/memory@FFFC0000";
                 psu_ddr_0_memory = "/memory@0";
                 psu_qspi_linear_0_memory = "/memory@c0000000";
-                pmu_region = "/reserved-memory/pmu@7ff00000";
                 pwm_fan = "/pwm-fan";
         };
 };
