@@ -35,6 +35,10 @@ machine:
             comment: 'Baremetal Image-recovery requires xilffs with ramfs support'
             op: '='
             val: ' ramfs'
+        EXTRA_IMAGEDEPENDS:
+            comment: 'Multidomain Kria starter-kit machines build full QSPI images'
+            op: '+='
+            val: 'kria-qspi'
         QEMU_FLASH_TYPE:
             op: '='
             val: 'qspi'

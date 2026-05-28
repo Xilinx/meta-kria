@@ -11,8 +11,6 @@ UBOOT_DT_FILES ?= "\
 
 require conf/machine/include/k26-kria-common.inc
 
-EXTRA_IMAGEDEPENDS += "kria-qspi"
-
 #### No additional settings should be after the Postamble
 #### Postamble
 PACKAGE_EXTRA_ARCHS:append = "${@['', ' k26_smk']['k26-smk' != "${MACHINE}"]}"

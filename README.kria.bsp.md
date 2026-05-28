@@ -15,10 +15,13 @@ The following boards are supported by the meta-kria layer:
 | Devices | Product | Machine configuration file | Reference XSA | Reference SDT | HW Board Device tree   | QEMU tested | HW tested |
 |---------|---------|----------------------------|---------------|---------------|------------------------|-------------|-----------|
 | Kria K26 SOM | [K26 Commercial SOM](https://www.amd.com/en/products/system-on-modules/kria/k26/k26c-commercial.html) | [k26-sm-sdt](conf/machine/k26-sm-sdt.conf) | NA | `k26-sm` | `zynqmp-sm-k26-reva` | Yes | Yes |
+| Kria KV260 Vision AI Starter Kit | [KV260 Vision AI Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html) | [k26-smk-kv-sdt-multidomain](conf/machine/k26-smk-kv-sdt-multidomain.conf) | NA | `k26-smk-kv` | `zynqmp-sck-kv-g-revB` | Yes | Yes |
 | Kria KV260 Vision AI Starter Kit | [KV260 Vision AI Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html) | [k26-smk-kv-sdt](conf/machine/k26-smk-kv-sdt.conf) | NA | `k26-smk-kv` | `zynqmp-sck-kv-g-revB` | Yes | Yes |
+| Kria KR260 Robotics Starter Kit | [KR260 Robotics Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html) | [k26-smk-kr-sdt-multidomain](conf/machine/k26-smk-kr-sdt-multidomain.conf) | NA | `k26-smk-kr` | `zynqmp-sck-kr-g-revB` | Yes | Yes |
 | Kria KR260 Robotics Starter Kit | [KR260 Robotics Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html) | [k26-smk-kr-sdt](conf/machine/k26-smk-kr-sdt.conf) | NA | `k26-smk-kr` | `zynqmp-sck-kr-g-revB` | Yes | Yes |
 | Kria K24c SOM | [K24 Commercial SOM](https://www.amd.com/en/products/system-on-modules/kria/k24/k24c-commercial.html) | [k24c-sm-sdt](conf/machine/k24c-sm-sdt.conf) | NA | `k24c-sm` | `zynqmp-sm-k24-reva` | Yes | Yes |
 | Kria K24i SOM | [K24 Industrial SOM](https://www.amd.com/en/products/system-on-modules/kria/k24/k24i-industrial.html) | [k24i-sm-sdt](conf/machine/k24i-sm-sdt.conf) | NA | `k24i-sm` | `zynqmp-sm-k24-reva` | Yes | Yes |
+| Kria KD240 Drives Starter Kit | [KD240 Drives Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k24/kd240-drives-starter-kit.html) | [k24-smk-kd-sdt-multidomain](conf/machine/k24-smk-kd-sdt-multidomain.conf) | NA | `k24-smk-kd` | `zynqmp-sck-kd-g-revA` | Yes | Yes |
 | Kria KD240 Drives Starter Kit | [KD240 Drives Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k24/kd240-drives-starter-kit.html) | [k24-smk-kd-sdt](conf/machine/k24-smk-kd-sdt.conf) | NA | `k24-smk-kd` | `zynqmp-sck-kd-g-revA` | Yes | Yes |
 
 **Commercial and Industrial grades**
@@ -27,6 +30,21 @@ production (-sm) SOM. The K26 SOM has no practical software difference between
 the two grades so a single machine is supported. However, for K24 the Industrial
 grade supports ECC memory but the Commercial grade does not so two machine
 configurations are provided.
+
+**Kria SDT boot artifacts**
+Single-domain Kria starter-kit SDT machines build Linux boot artifacts such as
+`boot.bin`. Full QSPI flash images are built with the multidomain starter-kit
+machines only.
+
+| Board                      | Linux boot machine | QSPI flash image machine     |
+|----------------------------|--------------------|------------------------------|
+| KV260 Vision AI Starter Kit| `k26-smk-kv-sdt`   | `k26-smk-kv-sdt-multidomain` |
+| KR260 Robotics Starter Kit | `k26-smk-kr-sdt`   | `k26-smk-kr-sdt-multidomain` |
+| KD240 Drives Starter Kit   | `k24-smk-kd-sdt`   | `k24-smk-kd-sdt-multidomain` |
+
+Production SOM machines are Linux-only machines and do not build Kria QSPI flash
+images.
+
 
 > **Note:** Additional information on AMD Adaptive SoC's and FPGA's can be found at:
 	https://www.amd.com/en/products/adaptive-socs-and-fpgas.html
