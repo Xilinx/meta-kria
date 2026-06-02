@@ -11,7 +11,7 @@ SRCREV ?= "6167bbbbaf145f4004f00be645e1016fbae3926f"
 
 PARALLEL_MAKE = "-j 1"
 
-S="${WORKDIR}/git"
+S = "${WORKDIR}/git"
 
 PROVIDES = "platformstats"
 

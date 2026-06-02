@@ -22,12 +22,12 @@ RDEPENDS:${PN} += " \
 	"
 inherit python3-dir systemd
 
-do_configure[noexec]="1"
-do_compile[noexec]="1"
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
-SYSTEMD_PACKAGES="${PN}"
-SYSTEMD_SERVICE:${PN}="kria-dashboard.service"
-SYSTEMD_AUTO_ENABLE:${PN}="enable"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE:${PN} = "kria-dashboard.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 do_install() {
 	install -d ${D}${PYTHON_SITEPACKAGES_DIR}

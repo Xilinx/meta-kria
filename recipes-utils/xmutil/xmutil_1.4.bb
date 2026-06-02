@@ -12,7 +12,7 @@ PV .= "+git"
 
 BRANCH = "master"
 BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH') != '']}"
-SRC_URI="${REPO};${BRANCHARG}"
+SRC_URI = "${REPO};${BRANCHARG}"
 
 S = "${WORKDIR}/git"
 
