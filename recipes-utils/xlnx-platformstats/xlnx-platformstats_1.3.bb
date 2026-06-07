@@ -11,13 +11,11 @@ SRCREV ?= "6167bbbbaf145f4004f00be645e1016fbae3926f"
 
 PARALLEL_MAKE = "-j 1"
 
-S = "${WORKDIR}/git"
-
 PROVIDES = "platformstats"
 
 DEPENDS += "swig-native freeipmi"
 
-inherit python3targetconfig autotools-brokensep
+inherit python3targetconfig
 
 export PYTHON_BASEVERSION
 export PYTHON_SITEPACKAGES_DIR
@@ -34,3 +32,7 @@ RREPLACES:${PN}-staticdev = "platformstats-staticdev"
 RREPLACES:${PN}-dev = "platformstats-dev"
 RREPLACES:${PN}-doc = "platformstats-doc"
 RREPLACES:${PN}-locale = "platformstats-locale"
+
+do_install() {
+	oe_runmake install DESTDIR=${D}
+}

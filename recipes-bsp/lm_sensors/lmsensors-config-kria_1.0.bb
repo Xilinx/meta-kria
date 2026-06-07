@@ -7,8 +7,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = "file://fancontrol"
 
+S = "${UNPACKDIR}"
+
 do_install() {
-    install -D -m 0644 ${WORKDIR}/fancontrol ${D}${sysconfdir}/fancontrol
+    install -D -m 0644 ${S}/fancontrol ${D}${sysconfdir}/fancontrol
 }
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"

@@ -14,8 +14,6 @@ BRANCH = "master"
 BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH') != '']}"
 SRC_URI = "${REPO};${BRANCHARG}"
 
-S = "${WORKDIR}/git"
-
 RDEPENDS:${PN} = " \
 	python3-core \
 	python3-distro \
@@ -28,7 +26,7 @@ RDEPENDS:${PN} = " \
 	image-update \
 	"
 
-inherit python3-dir autotools-brokensep
+inherit python3-dir
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:zynqmp = "zynqmp"
@@ -38,3 +36,7 @@ COMPATIBLE_MACHINE:versal-net = "versal-net"
 RREPLACES:${PN} = "kria-pwrctl"
 
 FILES:${PN} += "${bindir}/xmutil"
+
+do_install() {
+	oe_runmake install DESTDIR=${D}
+}

@@ -9,8 +9,6 @@ BRANCH ?= "xlnx_rel_v2026.1"
 SRC_URI = "git://github.com/Xilinx/kria-dashboard.git;protocol=https;branch=${BRANCH}"
 SRCREV ?= "e33bcc6b3dbb89a277a365fb3da4b4250e7186c7"
 
-S = "${WORKDIR}/git"
-
 PROVIDES += "som-dashboard"
 
 RDEPENDS:${PN} += " \
