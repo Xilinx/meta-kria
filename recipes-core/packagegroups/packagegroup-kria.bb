@@ -9,6 +9,12 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
 
+# TODO: python3-jupyter-notebook
+# packagegroup-xilinx-jupyter
+
+# TODO: python3-contourpy is broken
+# packagegroup-kria
+
 KRIA_PACKAGES = " \
         bridge-utils \
         can-utils \
@@ -22,14 +28,12 @@ KRIA_PACKAGES = " \
         util-linux \
         ${KRIA_ARCH_PACKAGES} \
         image-update \
-        kria-dashboard \
         ldd \
         lmsensors-config-kria-fancontrol \
         ntp \
         packagegroup-core-full-cmdline \
         packagegroup-core-ssh-openssh \
         packagegroup-core-tools-debug \
-        packagegroup-xilinx-jupyter \
         packagegroup-networking-stack \
         packagegroup-security-tpm2 \
         python3-pip \
