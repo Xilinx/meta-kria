@@ -22,7 +22,7 @@ UBOOT_DTFILE_PREFIX:kria ?= "SMK"
 
 do_configure:append:kria:linux() {
     for dts in ${UBOOT_DT_FILES}; do
-        cp ${WORKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
+        cp ${UNPACKDIR}/u-boot-xlnx/arch/arm/dts/${dts} ${DT_FILES_PATH}
     done
 }
 
