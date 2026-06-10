@@ -7,7 +7,7 @@ applications load onto the RPU on Kria K26 SOM platforms."
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/k26-smk-kv-sdt-multidomain_packagegroup-openamp-fw-examples/LICENSE.md;md5=0b96a4c07d631aa5141bd3f058ba43b0"
 
-SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.1/edf_files/2026.1/06052009/external/packagegroup-openamp-fw-examples/k26-smk-kv-sdt-multidomain_packagegroup-openamp-fw-examples_06052009.tar.gz"
-SRC_URI[sha256sum] = "bea9d86599e02d891fd9456f7c0b0c94b387e8a3c6d433b52250c4f84bc29351"
+SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.1/edf_files/2026.1/06092108/external/packagegroup-openamp-fw-examples/k26-smk-kv-sdt-multidomain_packagegroup-openamp-fw-examples_06092108.tar.gz"
+SRC_URI[sha256sum] = "ef4bb3444140817c9a59c6ca846e59804055b5b945421d2bdfb739b8ef60225d"
 
 require conf/includes/openamp-fw-example.inc
