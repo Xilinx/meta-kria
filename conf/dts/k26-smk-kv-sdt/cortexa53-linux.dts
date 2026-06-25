@@ -2795,15 +2795,6 @@
                 clock-output-names = "rtc_clk";
         };
 
-        amba_pl: amba_pl {
-                phandle = <0x15d>;
-                ranges;
-                compatible = "simple-bus";
-                #address-cells = <0x2>;
-                #size-cells = <0x2>;
-                firmware-name = "kv260_base.bit.bin";
-        };
-
         psu_ddr_0_memory: memory@0 {
                 phandle = <0xd>;
                 compatible = "xlnx,psu-ddr-1.0";
@@ -3096,7 +3087,6 @@
                 gt_crx_ref_clk = "/gt-crx-ref-clk";
                 aux_ref_clk = "/aux-ref-clk";
                 rtc_clk = "/rtc-clk";
-                amba_pl = "/amba_pl";
                 psu_ddr_0_memory = "/memory@0";
                 psu_ddr_1_memory = "/memory@800000000";
                 pwm_fan = "/pwm-fan";
