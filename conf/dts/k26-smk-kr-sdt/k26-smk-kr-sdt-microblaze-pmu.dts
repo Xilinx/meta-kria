@@ -3223,20 +3223,14 @@
         };
 
         aliases {
-                serial0 = "/axi/serial@ff000000";
                 ethernet1 = "/axi/ethernet@ff0b0000";
                 spi0 = "/axi/spi@ff0f0000";
                 serial1 = "/axi/serial@ff010000";
-                i2c0 = "/axi/i2c@ff020000";
                 ethernet0 = "/axi/ethernet@ff0c0000";
                 i2c1 = "/axi/i2c@ff030000";
-                mmc0 = "/axi/mmc@ff160000";
-                mmc1 = "/axi/mmc@ff170000";
                 nvmem0 = "/axi/i2c@ff030000/eeprom@50";
                 nvmem1 = "/axi/i2c@ff030000/eeprom@51";
                 rtc0 = "/axi/rtc@ffa60000";
-                serial2 = "/dcc";
-                spi1 = "/axi/spi@ff040000";
                 spi2 = "/axi/spi@ff050000";
                 usb0 = "/axi/usb@ff9d0000";
                 usb1 = "/axi/usb@ff9e0000";

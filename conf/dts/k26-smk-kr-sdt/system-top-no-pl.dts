@@ -5986,7 +5986,7 @@
                 APU_Linux {
                         compatible = "openamp,domain-v1";
                         reserved-memory = <0x162>;
-                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        cpus = <&cpus_a53 0x0 0x80000003>;
                         os,type = "linux";
                 };
         };

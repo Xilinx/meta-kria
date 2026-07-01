@@ -5415,11 +5415,9 @@
                 tsens_pl = "/thermal-sensor-pl";
                 apu_passive = "/thermal-zones/apu-thermal/trips/passive";
                 apu_critical = "/thermal-zones/apu-thermal/trips/critical";
-                amba_apu = "/apu-bus";
                 amba_rpu = "/rpu-bus";
                 gic_r5 = "/rpu-bus/interrupt-controller@f9000000";
                 amba = "/axi";
-                imux = "/axi/interrupt-multiplex";
                 can0 = "/axi/can@ff060000";
                 can1 = "/axi/can@ff070000";
                 cci = "/axi/cci@fd6e0000";
