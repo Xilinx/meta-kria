@@ -3341,22 +3341,16 @@
         };
 
         aliases {
-                serial0 = "/axi/serial@ff000000";
                 spi0 = "/axi/spi@ff0f0000";
                 serial1 = "/axi/serial@ff010000";
-                i2c0 = "/axi/i2c@ff020000";
                 ethernet0 = "/axi/ethernet@ff0e0000";
                 i2c1 = "/axi/i2c@ff030000";
-                mmc0 = "/axi/mmc@ff160000";
                 mmc1 = "/axi/mmc@ff170000";
                 nvmem0 = "/axi/i2c@ff030000/eeprom@50";
                 nvmem1 = "/axi/i2c@ff030000/eeprom@51";
                 rtc0 = "/axi/rtc@ffa60000";
-                serial2 = "/dcc";
-                spi1 = "/axi/spi@ff040000";
                 spi2 = "/axi/spi@ff050000";
                 usb0 = "/axi/usb@ff9d0000";
-                usb1 = "/axi/usb@ff9e0000";
         };
 
         gpio-keys {
@@ -3438,10 +3432,8 @@
                 tsens_pl = "/thermal-sensor-pl";
                 apu_passive = "/thermal-zones/apu-thermal/trips/passive";
                 apu_critical = "/thermal-zones/apu-thermal/trips/critical";
-                amba_apu = "/apu-bus";
                 amba_rpu = "/rpu-bus";
                 amba = "/axi";
-                imux = "/axi/interrupt-multiplex";
                 fpd_dma_chan1 = "/axi/dma-controller@fd500000";
                 fpd_dma_chan2 = "/axi/dma-controller@fd510000";
                 fpd_dma_chan3 = "/axi/dma-controller@fd520000";

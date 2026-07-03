@@ -2837,13 +2837,6 @@
         };
 
         __symbols__ {
-                cpus_a53 = "/cpus-a53@0";
-                psu_cortexa53_0 = "/cpus-a53@0/cpu@0";
-                psu_cortexa53_1 = "/cpus-a53@0/cpu@1";
-                psu_cortexa53_2 = "/cpus-a53@0/cpu@2";
-                psu_cortexa53_3 = "/cpus-a53@0/cpu@3";
-                L2 = "/cpus-a53@0/l2-cache";
-                CPU_SLEEP_0 = "/cpus-a53@0/idle-states/cpu-sleep-0";
                 cpu_opp_table = "/opp-table-cpu";
                 zynqmp_ipi = "/zynqmp-ipi";
                 ipi_mailbox_pmu1 = "/zynqmp-ipi/mailbox@ff9905c0";
@@ -2881,9 +2874,7 @@
                 tsens_pl = "/thermal-sensor-pl";
                 apu_passive = "/thermal-zones/apu-thermal/trips/passive";
                 apu_critical = "/thermal-zones/apu-thermal/trips/critical";
-                amba_apu = "/apu-bus";
                 amba = "/axi";
-                imux = "/axi/interrupt-multiplex";
                 can0 = "/axi/can@ff060000";
                 can1 = "/axi/can@ff070000";
                 cci = "/axi/cci@fd6e0000";
@@ -3066,7 +3057,7 @@
                         phandle = <0x168>;
                         compatible = "openamp,domain-v1";
                         reserved-memory = <0x162 0x163 0x164 0x165 0x166>;
-                        cpus = <&cpus_a53 0xf 0x80000003>;
+                        cpus = <&cpus_a53 0x0 0x80000003>;
                         os,type = "linux";
 
                         domain-to-domain {
