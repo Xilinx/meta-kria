@@ -5,7 +5,8 @@ args:
     - --require-machine include/k24-sm.inc
     - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-multidomain-base.yaml \
                     ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-linux-overlay.yaml \
-                    ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-openamp-overlay.yaml
+                    ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-openamp-overlay.yaml \
+                    ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-libmetal-overlay.yaml
 kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
