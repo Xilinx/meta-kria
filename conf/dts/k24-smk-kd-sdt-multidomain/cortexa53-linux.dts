@@ -1679,6 +1679,24 @@
                         xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
                 };
 
+                ttc2: timer@ff130000 {
+                        phandle = <0x68>;
+                        compatible = "uio";
+                        status = "okay";
+                        interrupt-parent = <&gic>;
+                        interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
+                        reg = <0x0 0xff130000 0x0 0x1000>;
+                        timer-width = <0x20>;
+                        power-domains = <&zynqmp_firmware 0x1a>;
+                        clocks = <&zynqmp_clk 0x1f>;
+                        xlnx,ttc-board-interface = "custom";
+                        xlnx,ttc-clk2-freq-hz = <0x5f5e100>;
+                        xlnx,clock-freq = <0x5f5e100>;
+                        xlnx,ip-name = "psu_ttc";
+                        xlnx,ttc-clk0-freq-hz = <0x5f5e100>;
+                        xlnx,ttc-clk1-freq-hz = <0x5f5e100>;
+                };
+
                 uart0: serial@ff000000 {
                         phandle = <0x6a>;
                         bootph-all;
@@ -2656,6 +2674,28 @@
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
                 };
 
+                libmetal_uio_desc099c8000: libmetal_uio_desc0@99c8000 {
+                        phandle = <0x167>;
+                        compatible = "uio";
+                        reg = <0x0 0x99c8000 0x0 0x4000>;
+                };
+
+                libmetal_uio_desc199cc000: libmetal_uio_desc1@99cc000 {
+                        phandle = <0x168>;
+                        compatible = "uio";
+                        reg = <0x0 0x99cc000 0x0 0x4000>;
+                };
+
+                libmetal_uio_data99d0000: libmetal_uio_data@99d0000 {
+                        phandle = <0x169>;
+                        compatible = "uio";
+                        reg = <0x0 0x99d0000 0x0 0x40000>;
+                };
+
+                mailbox@ff350000 {
+                        compatible = "uio";
+                };
+
                 gic: interrupt-controller@f9010000 {
                         phandle = <0xe>;
                         xlnx,ip-name = "psu_acpu_gic";
@@ -2741,15 +2781,6 @@
                 #clock-cells = <0x0>;
                 clock-frequency = <0x8000>;
                 clock-output-names = "rtc_clk";
-        };
-
-        amba_pl: amba_pl {
-                phandle = <0x15b>;
-                ranges;
-                compatible = "simple-bus";
-                #address-cells = <0x2>;
-                #size-cells = <0x2>;
-                firmware-name = "kd240_base.bit.bin";
         };
 
         psu_ddr_0_memory: memory@0 {
@@ -2927,6 +2958,7 @@
                 spi1 = "/axi/spi@ff050000";
                 ttc0 = "/axi/timer@ff110000";
                 ttc1 = "/axi/timer@ff120000";
+                ttc2 = "/axi/timer@ff130000";
                 uart0 = "/axi/serial@ff000000";
                 uart1 = "/axi/serial@ff010000";
                 usb0 = "/axi/usb@ff9d0000";
@@ -3033,21 +3065,27 @@
                 gt_crx_ref_clk = "/gt-crx-ref-clk";
                 aux_ref_clk = "/aux-ref-clk";
                 rtc_clk = "/rtc-clk";
-                amba_pl = "/amba_pl";
                 psu_ddr_0_memory = "/memory@0";
                 pwm_fan = "/pwm-fan";
+                libmetal_uio_desc099c8000 = "/axi/libmetal_uio_desc0@99c8000";
+                libmetal_uio_desc199cc000 = "/axi/libmetal_uio_desc1@99cc000";
+                libmetal_uio_data99d0000 = "/axi/libmetal_uio_data@99d0000";
                 cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
                 rproc0 = "/reserved-memory/rproc0@9800000";
                 vdev0vring0 = "/reserved-memory/vdev0vring0@9860000";
                 vdev0vring1 = "/reserved-memory/vdev0vring1@9864000";
                 vdev0buffer = "/reserved-memory/vdev0buffer@9868000";
+                libmetal_elf = "/reserved-memory/libmetal_elf@9968000";
+                libmetal_desc0 = "/reserved-memory/libmetal_desc0@99c8000";
+                libmetal_desc1 = "/reserved-memory/libmetal_desc1@99cc000";
+                libmetal_data = "/reserved-memory/libmetal_data@99d0000";
                 gic = "/axi/interrupt-controller@f9010000";
         };
 
         domains {
 
                 APU_Linux {
-                        phandle = <0x166>;
+                        phandle = <0x16a>;
                         compatible = "openamp,domain-v1";
                         reserved-memory = <0x160 0x161 0x162 0x163 0x164>;
                         cpus = <&cpus_a53 0xf 0x80000003>;
@@ -3075,6 +3113,17 @@
                                                 timer = <0x66 0x67>;
                                         };
                                 };
+
+                                libmetal-relation {
+                                        compatible = "libmetal,ipc-v1";
+
+                                        relation0 {
+                                                remote = <0x166>;
+                                                carveouts = <0x167 0x168 0x169>;
+                                                mbox = <0x134>;
+                                                timer = <0x68>;
+                                        };
+                                };
                         };
                 };
 
@@ -3096,7 +3145,7 @@
                                         compatible = "openamp,rpmsg-v1";
 
                                         relation0 {
-                                                host = <0x166>;
+                                                host = <0x16a>;
                                                 mbox = <0xec>;
                                                 carveouts = <0x163 0x162 0x161>;
                                                 timer = <0x69>;
@@ -3106,11 +3155,30 @@
                 };
 
                 R5_1_BAREMETAL {
+                        phandle = <0x166>;
                         compatible = "openamp,domain-v1";
+                        sram = <0x0 0x9968000 0x0 0x60000 0x0 0xffe90000 0x0 0x10000>;
                         os,type = "baremetal";
                         rpu_pd_val = <0x7c 0x8>;
                         cpu_config_str = "split";
                         core_num = "1";
+
+                        domain-to-domain {
+                                compatible = "openamp,domain-to-domain-v1";
+                                cluster_cpu = "psu_cortexr5_1";
+
+                                libmetal-relation {
+                                        compatible = "libmetal,ipc-v1";
+
+                                        relation0 {
+                                                host = <0x16a>;
+                                                carveouts = <0x167 0x168 0x169>;
+                                                mbox = <0xf8>;
+                                                timer = <0x68>;
+                                                elfload = <&libmetal_elf>;
+                                        };
+                                };
+                        };
                 };
         };
 
@@ -3155,6 +3223,34 @@
                         no-map;
                         reg = <0x0 0x9868000 0x0 0x100000>;
                         compatible = "shared-dma-pool";
+                };
+
+                libmetal_elf: libmetal_elf@9968000 {
+                        phandle = <0x16b>;
+                        label = "libmetal_elf";
+                        no-map;
+                        reg = <0x0 0x9968000 0x0 0x60000>;
+                };
+
+                libmetal_desc0: libmetal_desc0@99c8000 {
+                        phandle = <0x16c>;
+                        label = "libmetal_desc0";
+                        no-map;
+                        reg = <0x0 0x99c8000 0x0 0x4000>;
+                };
+
+                libmetal_desc1: libmetal_desc1@99cc000 {
+                        phandle = <0x16d>;
+                        label = "libmetal_desc1";
+                        no-map;
+                        reg = <0x0 0x99cc000 0x0 0x4000>;
+                };
+
+                libmetal_data: libmetal_data@99d0000 {
+                        phandle = <0x16e>;
+                        label = "libmetal_data";
+                        no-map;
+                        reg = <0x0 0x99d0000 0x0 0x40000>;
                 };
         };
 
