@@ -29,7 +29,7 @@ KRIA_PACKAGES = " \
         ${KRIA_ARCH_PACKAGES} \
         image-update \
         ldd \
-        lmsensors-config-kria-fancontrol \
+        ${@bb.utils.contains('BBFILE_COLLECTIONS', 'kria', 'lmsensors-config-kria-fancontrol', '', d)} \
         ntp \
         packagegroup-core-full-cmdline \
         packagegroup-core-ssh-openssh \
@@ -48,9 +48,13 @@ KRIA_PACKAGES = " \
         xmutil \
 "
 
+# Board firmware lives in the meta-kria-bsp sub-layer (collection "kria").
+# Guard on its presence so this core packagegroup degrades cleanly when only
+# meta-kria-core is in the layer set, rather than declaring a core->bsp
+# dependency.
 KRIA_ARCH_PACKAGES = ""
-KRIA_ARCH_PACKAGES:k26-smk = "k26-starter-kits"
-KRIA_ARCH_PACKAGES:k24-smk = "k24-starter-kits"
-KRIA_ARCH_PACKAGES:amd-cortexa53-mali-common = "k26-starter-kits k24-starter-kits"
+KRIA_ARCH_PACKAGES:k26-smk = "${@bb.utils.contains('BBFILE_COLLECTIONS', 'kria', 'k26-starter-kits', '', d)}"
+KRIA_ARCH_PACKAGES:k24-smk = "${@bb.utils.contains('BBFILE_COLLECTIONS', 'kria', 'k24-starter-kits', '', d)}"
+KRIA_ARCH_PACKAGES:amd-cortexa53-mali-common = "${@bb.utils.contains('BBFILE_COLLECTIONS', 'kria', 'k26-starter-kits k24-starter-kits', '', d)}"
 
 RDEPENDS:${PN} = "${KRIA_PACKAGES}"

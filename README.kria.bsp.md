@@ -2,7 +2,7 @@
 
 The following boards are supported by the meta-xilinx-tools layer. Eval board SDT
 machine configuration files are generated using the
-meta-kria/scripts/generate-machines-sdt.sh script.
+meta-kria/meta-kria-bsp/scripts/generate-machines-sdt.sh script.
 
 The following boards are supported by the meta-kria layer:
 
@@ -14,15 +14,15 @@ The following boards are supported by the meta-kria layer:
 
 | Devices | Product | Machine configuration file | Reference XSA | Reference SDT | HW Board Device tree   | QEMU tested | HW tested |
 |---------|---------|----------------------------|---------------|---------------|------------------------|-------------|-----------|
-| Kria K26 SOM | [K26 Commercial SOM](https://www.amd.com/en/products/system-on-modules/kria/k26/k26c-commercial.html) | [k26-sm-sdt](conf/machine/k26-sm-sdt.conf) | NA | `k26-sm` | `zynqmp-sm-k26-reva` | Yes | Yes |
-| Kria KV260 Vision AI Starter Kit | [KV260 Vision AI Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html) | [k26-smk-kv-sdt-multidomain](conf/machine/k26-smk-kv-sdt-multidomain.conf) | NA | `k26-smk-kv` | `zynqmp-sck-kv-g-revB` | Yes | Yes |
-| Kria KV260 Vision AI Starter Kit | [KV260 Vision AI Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html) | [k26-smk-kv-sdt](conf/machine/k26-smk-kv-sdt.conf) | NA | `k26-smk-kv` | `zynqmp-sck-kv-g-revB` | Yes | Yes |
-| Kria KR260 Robotics Starter Kit | [KR260 Robotics Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html) | [k26-smk-kr-sdt-multidomain](conf/machine/k26-smk-kr-sdt-multidomain.conf) | NA | `k26-smk-kr` | `zynqmp-sck-kr-g-revB` | Yes | Yes |
-| Kria KR260 Robotics Starter Kit | [KR260 Robotics Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html) | [k26-smk-kr-sdt](conf/machine/k26-smk-kr-sdt.conf) | NA | `k26-smk-kr` | `zynqmp-sck-kr-g-revB` | Yes | Yes |
-| Kria K24c SOM | [K24 Commercial SOM](https://www.amd.com/en/products/system-on-modules/kria/k24/k24c-commercial.html) | [k24c-sm-sdt](conf/machine/k24c-sm-sdt.conf) | NA | `k24c-sm` | `zynqmp-sm-k24-reva` | Yes | Yes |
-| Kria K24i SOM | [K24 Industrial SOM](https://www.amd.com/en/products/system-on-modules/kria/k24/k24i-industrial.html) | [k24i-sm-sdt](conf/machine/k24i-sm-sdt.conf) | NA | `k24i-sm` | `zynqmp-sm-k24-reva` | Yes | Yes |
-| Kria KD240 Drives Starter Kit | [KD240 Drives Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k24/kd240-drives-starter-kit.html) | [k24-smk-kd-sdt-multidomain](conf/machine/k24-smk-kd-sdt-multidomain.conf) | NA | `k24-smk-kd` | `zynqmp-sck-kd-g-revA` | Yes | Yes |
-| Kria KD240 Drives Starter Kit | [KD240 Drives Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k24/kd240-drives-starter-kit.html) | [k24-smk-kd-sdt](conf/machine/k24-smk-kd-sdt.conf) | NA | `k24-smk-kd` | `zynqmp-sck-kd-g-revA` | Yes | Yes |
+| Kria K26 SOM | [K26 Commercial SOM](https://www.amd.com/en/products/system-on-modules/kria/k26/k26c-commercial.html) | [k26-sm-sdt](meta-kria-bsp/conf/machine/k26-sm-sdt.conf) | NA | `k26-sm` | `zynqmp-sm-k26-reva` | Yes | Yes |
+| Kria KV260 Vision AI Starter Kit | [KV260 Vision AI Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html) | [k26-smk-kv-sdt-multidomain](meta-kria-bsp/conf/machine/k26-smk-kv-sdt-multidomain.conf) | NA | `k26-smk-kv` | `zynqmp-sck-kv-g-revB` | Yes | Yes |
+| Kria KV260 Vision AI Starter Kit | [KV260 Vision AI Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kv260-vision-starter-kit.html) | [k26-smk-kv-sdt](meta-kria-bsp/conf/machine/k26-smk-kv-sdt.conf) | NA | `k26-smk-kv` | `zynqmp-sck-kv-g-revB` | Yes | Yes |
+| Kria KR260 Robotics Starter Kit | [KR260 Robotics Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html) | [k26-smk-kr-sdt-multidomain](meta-kria-bsp/conf/machine/k26-smk-kr-sdt-multidomain.conf) | NA | `k26-smk-kr` | `zynqmp-sck-kr-g-revB` | Yes | Yes |
+| Kria KR260 Robotics Starter Kit | [KR260 Robotics Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k26/kr260-robotics-starter-kit.html) | [k26-smk-kr-sdt](meta-kria-bsp/conf/machine/k26-smk-kr-sdt.conf) | NA | `k26-smk-kr` | `zynqmp-sck-kr-g-revB` | Yes | Yes |
+| Kria K24c SOM | [K24 Commercial SOM](https://www.amd.com/en/products/system-on-modules/kria/k24/k24c-commercial.html) | [k24c-sm-sdt](meta-kria-bsp/conf/machine/k24c-sm-sdt.conf) | NA | `k24c-sm` | `zynqmp-sm-k24-reva` | Yes | Yes |
+| Kria K24i SOM | [K24 Industrial SOM](https://www.amd.com/en/products/system-on-modules/kria/k24/k24i-industrial.html) | [k24i-sm-sdt](meta-kria-bsp/conf/machine/k24i-sm-sdt.conf) | NA | `k24i-sm` | `zynqmp-sm-k24-reva` | Yes | Yes |
+| Kria KD240 Drives Starter Kit | [KD240 Drives Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k24/kd240-drives-starter-kit.html) | [k24-smk-kd-sdt-multidomain](meta-kria-bsp/conf/machine/k24-smk-kd-sdt-multidomain.conf) | NA | `k24-smk-kd` | `zynqmp-sck-kd-g-revA` | Yes | Yes |
+| Kria KD240 Drives Starter Kit | [KD240 Drives Starter Kit](https://www.amd.com/en/products/system-on-modules/kria/k24/kd240-drives-starter-kit.html) | [k24-smk-kd-sdt](meta-kria-bsp/conf/machine/k24-smk-kd-sdt.conf) | NA | `k24-smk-kd` | `zynqmp-sck-kd-g-revA` | Yes | Yes |
 
 **Commercial and Industrial grades**
 For both K26 and K24 there are C (commercial) and I (industrial) grades of the
