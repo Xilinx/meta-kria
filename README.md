@@ -7,7 +7,7 @@ provides related metadata.
 
 This repository is split into two sub-layers, following Yocto layer guidelines:
 
-- `meta-kria-bsp` (collection `kria`): board support - machine `.conf`, machine/domain YAML, device trees, multiconfigs, `recipes-bsp`, board firmware (`recipes-firmware`), `dynamic-layers` and the machine-generation scripts.
+- `meta-kria-bsp` (collection `kria-bsp`): board support - machine `.conf`, machine/domain YAML, device trees, multiconfigs, `recipes-bsp`, board firmware (`recipes-firmware`), `dynamic-layers` and the machine-generation scripts.
 - `meta-kria-core` (collection `kria-core`): machine-independent runtime utilities (`recipes-utils`) and the Kria packagegroup (`recipes-core`), which conditionally includes board firmware from `meta-kria-bsp` when that sub-layer is present.
 
 Add both to `bblayers.conf` (core before bsp):

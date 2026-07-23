@@ -1,5 +1,5 @@
 inherit:
-    ${LAYER_PATH_kria-layer}/conf/machineyaml/k24-smk-kd-sdt.yaml
+    ${LAYER_PATH_kria-bsp-layer}/conf/machineyaml/k24-smk-kd-sdt.yaml
 args:
     - --machine-name k24-smk-kd-sdt-multidomain
 args_append:

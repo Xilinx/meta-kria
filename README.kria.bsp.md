@@ -1,10 +1,10 @@
 # AMD Kria SOM and Evaluation Starter kits BSP Machines files
 
-The following boards are supported by the meta-xilinx-tools layer. Eval board SDT
+The following boards are supported by the meta-kria-bsp layer. Eval board SDT
 machine configuration files are generated using the
 meta-kria/meta-kria-bsp/scripts/generate-machines-sdt.sh script.
 
-The following boards are supported by the meta-kria layer:
+The following boards are supported by the meta-kria-bsp layer:
 
 > **Variable usage examples:**
 >

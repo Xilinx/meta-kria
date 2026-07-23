@@ -4,7 +4,7 @@ args:
     - --machine-name k24-smk-kd-sdt
     - -g full
     - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-linux-only-base.yaml \
-                    ${LAYER_PATH_kria-layer}/conf/domainyaml/k24-linux-overlay.yaml
+                    ${LAYER_PATH_kria-bsp-layer}/conf/domainyaml/k24-linux-overlay.yaml
 kconfig:
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
 
