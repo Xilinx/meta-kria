@@ -4303,8 +4303,8 @@
 
                 ipi8: ipi@ff350000 {
                         phandle = <0xa>;
+                        compatible = "uio";
                         status = "okay";
-                        compatible = "xlnx,zynqmp-ipi-mailbox";
                         interrupt-parent = <&imux>;
                         interrupts = <0x0 0x1e 0x4>;
                         reg = <0x0 0xff350000 0x0 0x20>;
@@ -5444,10 +5444,6 @@
                         phandle = <0x16b>;
                         compatible = "uio";
                         reg = <0x0 0x99d0000 0x0 0x40000>;
-                };
-
-                mailbox@ff350000 {
-                        compatible = "uio";
                 };
         };
 

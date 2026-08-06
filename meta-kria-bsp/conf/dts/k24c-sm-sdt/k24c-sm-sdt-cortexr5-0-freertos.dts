@@ -1804,6 +1804,185 @@
                         };
                 };
 
+                ipi8: ipi@ff350000 {
+                        phandle = <0xa>;
+                        compatible = "uio";
+                        status = "okay";
+                        interrupt-parent = <&gic_r5>;
+                        interrupts = <0x0 0x1e 0x4>;
+                        reg = <0x0 0xff350000 0x0 0x20>;
+                        xlnx,ipi-bitmask = <0x2000000>;
+                        xlnx,ipi-id = <0x8>;
+                        xlnx,ipi-buf-index = <0x4>;
+                        #address-cells = <0x2>;
+                        #size-cells = <0x2>;
+                        bootph-all;
+                        ranges;
+                        xlnx,cpu-name = "APU";
+                        xlnx,buffer-base = <0xff990800>;
+                        xlnx,base-address = <0xff350000>;
+                        xlnx,buffer-index = <0x4>;
+                        xlnx,ip-name = "psu_ipi";
+                        xlnx,ipi-target-count = <0xb>;
+                        xlnx,int-id = <0x3e>;
+                        xlnx,bit-position = <0x19>;
+                        xlnx,name = "psu_ipi_8";
+
+                        ipi_8_to_ipi_0: child@ff300000 {
+                                phandle = <0x132>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x1>;
+                                xlnx,cpu-name = "APU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9908a0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x0>;
+                                reg = <0x0 0xff990880 0x0 0x20 0x0 0xff9908a0 0x0 0x20 0x0 0xff990500 0x0 0x20 0x0 0xff990520 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x2>;
+                                xlnx,ipi-req-msg-buf = <0xff990880>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_1: child@ff310000 {
+                                phandle = <0x133>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x100>;
+                                xlnx,cpu-name = "RPU0";
+                                xlnx,ipi-rsp-msg-buf = <0xff990820>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x1>;
+                                reg = <0x0 0xff990800 0x0 0x20 0x0 0xff990820 0x0 0x20 0x0 0xff990100 0x0 0x20 0x0 0xff990120 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x0>;
+                                xlnx,ipi-req-msg-buf = <0xff990800>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_2: child@ff320000 {
+                                phandle = <0x134>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x200>;
+                                xlnx,cpu-name = "RPU1";
+                                xlnx,ipi-rsp-msg-buf = <0xff990860>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x2>;
+                                reg = <0x0 0xff990840 0x0 0x20 0x0 0xff990860 0x0 0x20 0x0 0xff990300 0x0 0x20 0x0 0xff990320 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x1>;
+                                xlnx,ipi-req-msg-buf = <0xff990840>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_3: child@ff330000 {
+                                phandle = <0x135>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x10000>;
+                                xlnx,cpu-name = "PMU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x3>;
+                                reg = <0x0 0xff9909c0 0x0 0x20 0x0 0xff9909e0 0x0 0x20 0x0 0xff990f00 0x0 0x20 0x0 0xff990f20 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff9909c0>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_4: child@ff331000 {
+                                phandle = <0x136>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x20000>;
+                                xlnx,cpu-name = "PMU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x4>;
+                                reg = <0x0 0xff9909c0 0x0 0x20 0x0 0xff9909e0 0x0 0x20 0x0 0xff990f00 0x0 0x20 0x0 0xff990f20 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff9909c0>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_5: child@ff332000 {
+                                phandle = <0x137>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x40000>;
+                                xlnx,cpu-name = "PMU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x5>;
+                                reg = <0x0 0xff9909c0 0x0 0x20 0x0 0xff9909e0 0x0 0x20 0x0 0xff990f00 0x0 0x20 0x0 0xff990f20 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff9909c0>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_6: child@ff333000 {
+                                phandle = <0x138>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x80000>;
+                                xlnx,cpu-name = "PMU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9909e0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x6>;
+                                reg = <0x0 0xff9909c0 0x0 0x20 0x0 0xff9909e0 0x0 0x20 0x0 0xff990f00 0x0 0x20 0x0 0xff990f20 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x7>;
+                                xlnx,ipi-req-msg-buf = <0xff9909c0>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_7: child@ff340000 {
+                                phandle = <0x139>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x1000000>;
+                                xlnx,cpu-name = "APU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9908e0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x7>;
+                                reg = <0x0 0xff9908c0 0x0 0x20 0x0 0xff9908e0 0x0 0x20 0x0 0xff990700 0x0 0x20 0x0 0xff990720 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x3>;
+                                xlnx,ipi-req-msg-buf = <0xff9908c0>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_8: child@ff350000 {
+                                phandle = <0x13a>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x2000000>;
+                                xlnx,cpu-name = "APU";
+                                xlnx,ipi-rsp-msg-buf = <0xff990920>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x8>;
+                                reg = <0x0 0xff990900 0x0 0x20 0x0 0xff990920 0x0 0x20 0x0 0xff990900 0x0 0x20 0x0 0xff990920 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x4>;
+                                xlnx,ipi-req-msg-buf = <0xff990900>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_9: child@ff360000 {
+                                phandle = <0x13b>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x4000000>;
+                                xlnx,cpu-name = "APU";
+                                xlnx,ipi-rsp-msg-buf = <0xff990960>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0x9>;
+                                reg = <0x0 0xff990940 0x0 0x20 0x0 0xff990960 0x0 0x20 0x0 0xff990b00 0x0 0x20 0x0 0xff990b20 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x5>;
+                                xlnx,ipi-req-msg-buf = <0xff990940>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+
+                        ipi_8_to_ipi_10: child@ff370000 {
+                                phandle = <0x13c>;
+                                compatible = "xlnx,zynqmp-ipi-dest-mailbox";
+                                xlnx,ipi-bitmask = <0x8000000>;
+                                xlnx,cpu-name = "APU";
+                                xlnx,ipi-rsp-msg-buf = <0xff9909a0>;
+                                #mbox-cells = <0x1>;
+                                xlnx,ipi-id = <0xa>;
+                                reg = <0x0 0xff990980 0x0 0x20 0x0 0xff9909a0 0x0 0x20 0x0 0xff990d00 0x0 0x20 0x0 0xff990d20 0x0 0x20>;
+                                xlnx,ipi-buf-index = <0x6>;
+                                xlnx,ipi-req-msg-buf = <0xff990980>;
+                                reg-names = "local_request_region", "local_response_region", "remote_request_region", "remote_response_region";
+                        };
+                };
+
                 psu_r5_tcm_ram_0: psu_r5_tcm_ram@0 {
                         phandle = <0x76>;
                         compatible = "xlnx,psu-r5-tcm-ram-1.0";
@@ -2244,10 +2423,6 @@
                         compatible = "uio";
                         reg = <0x0 0x99d0000 0x0 0x40000>;
                 };
-
-                mailbox@ff350000 {
-                        compatible = "uio";
-                };
         };
 
         amba_xppu: indirect-bus@1 {
@@ -2511,6 +2686,18 @@
                 ipi_1_to_ipi_8 = "/axi/ipi@ff310000/child@ff350000";
                 ipi_1_to_ipi_9 = "/axi/ipi@ff310000/child@ff360000";
                 ipi_1_to_ipi_10 = "/axi/ipi@ff310000/child@ff370000";
+                ipi8 = "/axi/ipi@ff350000";
+                ipi_8_to_ipi_0 = "/axi/ipi@ff350000/child@ff300000";
+                ipi_8_to_ipi_1 = "/axi/ipi@ff350000/child@ff310000";
+                ipi_8_to_ipi_2 = "/axi/ipi@ff350000/child@ff320000";
+                ipi_8_to_ipi_3 = "/axi/ipi@ff350000/child@ff330000";
+                ipi_8_to_ipi_4 = "/axi/ipi@ff350000/child@ff331000";
+                ipi_8_to_ipi_5 = "/axi/ipi@ff350000/child@ff332000";
+                ipi_8_to_ipi_6 = "/axi/ipi@ff350000/child@ff333000";
+                ipi_8_to_ipi_7 = "/axi/ipi@ff350000/child@ff340000";
+                ipi_8_to_ipi_8 = "/axi/ipi@ff350000/child@ff350000";
+                ipi_8_to_ipi_9 = "/axi/ipi@ff350000/child@ff360000";
+                ipi_8_to_ipi_10 = "/axi/ipi@ff350000/child@ff370000";
                 psu_r5_tcm_ram_0 = "/axi/psu_r5_tcm_ram@0";
                 psu_r5_0_btcm = "/axi/psu_r5_0_btcm@20000";
                 psu_r5_0_atcm = "/axi/psu_r5_0_atcm@0";
