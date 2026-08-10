@@ -2533,6 +2533,7 @@
                 ttc2: timer@ff130000 {
                         phandle = <0x69>;
                         compatible = "uio";
+                        linux,uio-name = "libmetal-timer";
                         status = "okay";
                         interrupt-parent = <&imux>;
                         interrupts = <0x0 0x2a 0x4 0x0 0x2b 0x4 0x0 0x2c 0x4>;
@@ -4304,6 +4305,7 @@
                 ipi8: ipi@ff350000 {
                         phandle = <0xa>;
                         compatible = "uio";
+                        linux,uio-name = "libmetal-ipi";
                         status = "okay";
                         interrupt-parent = <&imux>;
                         interrupts = <0x0 0x1e 0x4>;
@@ -5430,18 +5432,21 @@
 
                 libmetal_uio_desc099c8000: libmetal_uio_desc0@99c8000 {
                         phandle = <0x169>;
+                        linux,uio-name = "libmetal-desc0";
                         compatible = "uio";
                         reg = <0x0 0x99c8000 0x0 0x4000>;
                 };
 
                 libmetal_uio_desc199cc000: libmetal_uio_desc1@99cc000 {
                         phandle = <0x16a>;
+                        linux,uio-name = "libmetal-desc1";
                         compatible = "uio";
                         reg = <0x0 0x99cc000 0x0 0x4000>;
                 };
 
                 libmetal_uio_data99d0000: libmetal_uio_data@99d0000 {
                         phandle = <0x16b>;
+                        linux,uio-name = "libmetal-data";
                         compatible = "uio";
                         reg = <0x0 0x99d0000 0x0 0x40000>;
                 };
