@@ -2237,6 +2237,7 @@
                         xlnx,ipi-target-count = <0xb>;
                         xlnx,int-id = <0x3e>;
                         xlnx,bit-position = <0x19>;
+                        libmetal,uio-ipi-bitmask = <0x200>;
 
                         ipi_8_to_ipi_0: child@ff300000 {
                                 phandle = <0x132>;

@@ -1,5 +1,5 @@
 args:
-    - --hw-description https://edf.amd.com/sswreleases/rel-v2026.2/sdt/2026.2/2026.2_0812_1_08120803/external/k26-smk-kv-sdt/k26-smk-kv-sdt_2026.2_0812_1_08120803.tar.gz
+    - --hw-description https://edf.amd.com/sswreleases/rel-v2026.2/sdt/2026.2/2026.2_0813_1_08130450/external/k26-smk-kv-sdt/k26-smk-kv-sdt_2026.2_0813_1_08130450.tar.gz
     - --machine-name k26-smk-kv-sdt
     - -g full
     - --require-machine include/k26-smk.inc
