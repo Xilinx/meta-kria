@@ -17,7 +17,7 @@ QEMU_DTB_LOAD = "-device loader,file=@DEPLOY_DIR_IMAGE@/system.dtb,addr=0x100000
 # Additional items required for booting
 QB_OPT_APPEND += " \
     -blockdev node-name=pmu-cfg,filename=@DEPLOY_DIR_IMAGE@/pmu-conf.bin,driver=file \
-    -global xlnx,zynqmp-boot.drive=pmu-cfg \
+    -global xlnx-zynqmp-boot.drive=pmu-cfg \
     "
 
 # runqemu assumes the first serial device is used but Kria SOM uses the second, the following line is
