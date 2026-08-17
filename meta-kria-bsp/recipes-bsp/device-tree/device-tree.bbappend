@@ -7,7 +7,7 @@ DT_INCLUDE:append = " ${DT_INCLUDE_KRIA}"
 
 SRCREV_FORMAT:kria = "device-tree"
 DT_UBOOT_BRANCH ?= "xlnx_rebase_v2026.01"
-DT_UBOOT_SRCREV ?= "62ce8cda56cb5915cdf229518b4621e9439e26e8"
+DT_UBOOT_SRCREV ?= "f3744bea153810fee1f06ee4a416cdd369aa0f5c"
 SRC_URI:append:kria = " git://github.com/Xilinx/u-boot-xlnx.git;protocol=https;branch=${DT_UBOOT_BRANCH};destsuffix=u-boot-xlnx;name=uboot"
 SRCREV_uboot = "${DT_UBOOT_SRCREV}"
 
