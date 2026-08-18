@@ -1,7 +1,7 @@
 # QEMU specific dependencies
 
 EXTRA_IMAGEDEPENDS += " \
-    virtual/arm-trusted-firmware \
+    trusted-firmware-a \
     virtual/fsbl \
     virtual/pmu-firmware \
 "
