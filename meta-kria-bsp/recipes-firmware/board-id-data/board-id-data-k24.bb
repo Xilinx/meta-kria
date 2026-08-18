@@ -15,7 +15,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 require board-id-k24.inc
 
-inherit deploy
+inherit deploy nopackages
 
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
