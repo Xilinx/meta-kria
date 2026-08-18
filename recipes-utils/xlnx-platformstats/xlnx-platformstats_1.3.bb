@@ -11,13 +11,15 @@ SRCREV ?= "6167bbbbaf145f4004f00be645e1016fbae3926f"
 
 PARALLEL_MAKE = "-j 1"
 
-S="${WORKDIR}/git"
-
 PROVIDES = "platformstats"
 
 DEPENDS += "swig-native freeipmi"
 
-inherit python3targetconfig autotools-brokensep
+inherit python3targetconfig
+
+do_install() {
+	oe_runmake 'DESTDIR=${D}' install
+}
 
 export PYTHON_BASEVERSION
 export PYTHON_SITEPACKAGES_DIR

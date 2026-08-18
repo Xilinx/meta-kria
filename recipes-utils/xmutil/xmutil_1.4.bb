@@ -12,9 +12,7 @@ PV .= "+git"
 
 BRANCH = "master"
 BRANCHARG = "${@['nobranch=1', 'branch=${BRANCH}'][d.getVar('BRANCH') != '']}"
-SRC_URI="${REPO};${BRANCHARG}"
-
-S = "${WORKDIR}/git"
+SRC_URI = "${REPO};${BRANCHARG}"
 
 RDEPENDS:${PN} = " \
 	python3-core \
@@ -28,7 +26,11 @@ RDEPENDS:${PN} = " \
 	image-update \
 	"
 
-inherit python3-dir autotools-brokensep
+inherit python3-dir
+
+do_install() {
+	oe_runmake 'DESTDIR=${D}' 'bindir=${bindir}' install
+}
 
 COMPATIBLE_MACHINE = "^$"
 COMPATIBLE_MACHINE:zynqmp = "zynqmp"
