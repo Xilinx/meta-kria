@@ -5923,10 +5923,10 @@
                         os,type = "linux";
                 };
 
-                R5_0_FREERTOS {
+                R5_0_ZEPHYR {
                         compatible = "openamp,domain-v1";
                         cpus = <&cpus_r5_0 0x0 0x80000000>;
-                        os,type = "freertos";
+                        os,type = "zephyr";
                         rpu_pd_val = <0x79 0x7>;
                         cpu_config_str = "split";
                         core_num = "0";
