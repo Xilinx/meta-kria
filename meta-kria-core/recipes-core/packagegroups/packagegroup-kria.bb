@@ -9,9 +9,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
 
-# TODO: python3-contourpy is broken
-# packagegroup-kria
-
 KRIA_PACKAGES = " \
         bridge-utils \
         can-utils \
@@ -25,6 +22,7 @@ KRIA_PACKAGES = " \
         util-linux \
         ${KRIA_ARCH_PACKAGES} \
         image-update \
+        kria-dashboard \
         ldd \
         ${@bb.utils.contains('BBFILE_COLLECTIONS', 'kria-bsp', 'lmsensors-config-kria-fancontrol', '', d)} \
         ntp \
