@@ -9,9 +9,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
 
-# TODO: python3-jupyter-notebook
-# packagegroup-xilinx-jupyter
-
 # TODO: python3-contourpy is broken
 # packagegroup-kria
 
@@ -34,6 +31,7 @@ KRIA_PACKAGES = " \
         packagegroup-core-full-cmdline \
         packagegroup-core-ssh-openssh \
         packagegroup-core-tools-debug \
+        ${@bb.utils.contains('BBFILE_COLLECTIONS', 'jupyter-layer', 'packagegroup-xilinx-jupyter', '', d)} \
         packagegroup-networking-stack \
         packagegroup-security-tpm2 \
         python3-pip \
