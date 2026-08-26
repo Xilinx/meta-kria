@@ -206,62 +206,6 @@
                         #size-cells = <0x0>;
                         fifo-depth = <0x10>;
                         clocks = <&i2c1_ref_clock>;
-                        bootph-all;
-                        scl-gpios = <0xffffffff 0x18 0x6>;
-                        sda-gpios = <0xffffffff 0x19 0x6>;
-
-                        eeprom: eeprom@50 {
-                                phandle = <0x4>;
-                                bootph-all;
-                                compatible = "st,24c64", "atmel,24c64";
-                                reg = <0x50>;
-                        };
-
-                        eeprom_cc: eeprom@51 {
-                                phandle = <0x5>;
-                                bootph-all;
-                                compatible = "st,24c64", "atmel,24c64";
-                                reg = <0x51>;
-                        };
-
-                        da9131: pmic@33 {
-                                phandle = <0x6>;
-                                compatible = "dlg,da9131";
-                                reg = <0x33>;
-
-                                regulators {
-
-                                        da9131_buck1: buck1 {
-                                                phandle = <0x174>;
-                                                regulator-name = "da9131_buck1";
-                                                regulator-boot-on;
-                                                regulator-always-on;
-                                        };
-
-                                        da9131_buck2: buck2 {
-                                                phandle = <0x8>;
-                                                regulator-name = "da9131_buck2";
-                                                regulator-boot-on;
-                                                regulator-always-on;
-                                        };
-                                };
-                        };
-
-                        da9130: pmic@32 {
-                                phandle = <0x9>;
-                                compatible = "dlg,da9130";
-                                reg = <0x32>;
-
-                                regulators {
-
-                                        da9130_buck1: buck1 {
-                                                phandle = <0xa>;
-                                                regulator-name = "da9130_buck1";
-                                                regulator-boot-on;
-                                                regulator-always-on;
-                                        };
-                                };
-                        };
                 };
 
                 rtc: rtc@ffa60000 {
@@ -295,14 +239,6 @@
                         rx-fifo-depth = <0x80>;
                         fifo-width = <0x8>;
                         clocks = <&spi1_ref_clock>;
-                        label = "TPM";
-                        num-cs = <0x1>;
-
-                        tpm@0 {
-                                compatible = "infineon,slb9670", "tcg,tpm_tis-spi";
-                                reg = <0x0>;
-                                spi-max-frequency = <0x11a49a0>;
-                        };
                 };
 
                 ttc0: timer@ff110000 {
@@ -313,7 +249,6 @@
                         reg = <0x0 0xff110000 0x0 0x1000>;
                         interrupt-names = "irq_0", "irq_1", "irq_2";
                         clock-frequency = <0x5f5e100>;
-                        #pwm-cells = <0x3>;
                 };
 
                 ttc1: timer@ff120000 {
@@ -482,8 +417,6 @@
                 rtc0 = "/axi/rtc@ffa60000";
                 spi2 = "/axi/spi@ff050000";
                 rtc = "/axi/rtc@ffa60000/rtc-counter";
-                nvmem0 = "/axi/i2c@ff030000/eeprom@50";
-                nvmem1 = "/axi/i2c@ff030000/eeprom@51";
         };
 
         reserved-memory {
