@@ -70,11 +70,6 @@ This layer depends on:
 	layers: meta-xilinx-microblaze, meta-xilinx-core, meta-xilinx-standalone
 	branch: scarthgap or AMD release version (e.g. rel-v2026.1)
 
-	URI:
-        https://git.yoctoproject.org/meta-xilinx-tools (official version)
-        https://github.com/Xilinx/meta-xilinx-tools (development and AMD release)
-	branch: scarthgap or AMD release version (e.g. rel-v2026.1)
-
 	URI: https://git.yoctoproject.org/meta-security
 	layers: meta-tpm
 	branch: scarthgap
