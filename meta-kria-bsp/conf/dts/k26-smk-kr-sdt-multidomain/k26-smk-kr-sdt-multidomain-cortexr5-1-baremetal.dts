@@ -3057,7 +3057,7 @@
                         phandle = <0x16a>;
                         compatible = "openamp,domain-v1";
                         sram = <0x0 0x9968000 0x0 0x60000 0x0 0xffe90000 0x0 0x10000>;
-                        cpus = <&cpus_r5_1 0x0 0x80000003>;
+                        cpus = <&cpus_r5_1 0x2 0x80000003>;
                         os,type = "baremetal";
                         rpu_pd_val = <0x7e 0x8>;
                         cpu_config_str = "split";

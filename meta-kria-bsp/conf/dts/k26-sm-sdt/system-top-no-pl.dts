@@ -5919,13 +5919,13 @@
                 APU_Linux {
                         compatible = "openamp,domain-v1";
                         reserved-memory = <0x15e>;
-                        cpus = <&cpus_a53 0x0 0x80000003>;
+                        cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
                 };
 
                 R5_0_ZEPHYR {
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_r5_0 0x0 0x80000000>;
+                        cpus = <&cpus_r5_0 0x1 0x80000000>;
                         os,type = "zephyr";
                         rpu_pd_val = <0x79 0x7>;
                         cpu_config_str = "split";
@@ -5934,7 +5934,7 @@
 
                 R5_1_BAREMETAL {
                         compatible = "openamp,domain-v1";
-                        cpus = <&cpus_r5_1 0x0 0x80000003>;
+                        cpus = <&cpus_r5_1 0x2 0x80000003>;
                         os,type = "baremetal";
                         rpu_pd_val = <0x79 0x8>;
                         cpu_config_str = "split";

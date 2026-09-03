@@ -6011,7 +6011,7 @@
                         phandle = <0x16e>;
                         compatible = "openamp,domain-v1";
                         reserved-memory = <0x162 0x163 0x164 0x165 0x166 0x167 0x168>;
-                        cpus = <&cpus_a53 0x0 0x80000003>;
+                        cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
 
                         domain-to-domain {
@@ -6059,7 +6059,7 @@
                         zephyr-version = "4.3";
                         sram = <0x0 0x9800000 0x0 0x20000 0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
                         reserved-memory = <0x163 0x164 0x165 0x166 0x167 0x168>;
-                        cpus = <&cpus_r5_0 0x0 0x80000000>;
+                        cpus = <&cpus_r5_0 0x1 0x80000000>;
                         os,type = "zephyr";
                         rpu_pd_val = <0x7c 0x7>;
                         cpu_config_str = "split";
@@ -6099,7 +6099,7 @@
                         phandle = <0x16a>;
                         compatible = "openamp,domain-v1";
                         sram = <0x0 0x9968000 0x0 0x60000 0x0 0xffe90000 0x0 0x10000>;
-                        cpus = <&cpus_r5_1 0x0 0x80000003>;
+                        cpus = <&cpus_r5_1 0x2 0x80000003>;
                         os,type = "baremetal";
                         rpu_pd_val = <0x7c 0x8>;
                         cpu_config_str = "split";
