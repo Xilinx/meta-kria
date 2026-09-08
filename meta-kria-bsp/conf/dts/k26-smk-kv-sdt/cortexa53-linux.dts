@@ -3084,16 +3084,13 @@
                 pwm_fan = "/pwm-fan";
                 cma_reserved_4B000000 = "/reserved-memory/cma_reserved@4B000000";
                 gic = "/axi/interrupt-controller@f9010000";
-        };
-
-        domains {
-
-                APU_Linux {
-                        compatible = "openamp,domain-v1";
-                        reserved-memory = <0x162>;
-                        cpus = <&cpus_a53 0xf 0x80000003>;
-                        os,type = "linux";
-                };
+                cpus_a53 = "/cpus";
+                psu_cortexa53_0 = "/cpus/cpu@0";
+                psu_cortexa53_1 = "/cpus/cpu@1";
+                psu_cortexa53_2 = "/cpus/cpu@2";
+                psu_cortexa53_3 = "/cpus/cpu@3";
+                L2 = "/cpus/l2-cache";
+                CPU_SLEEP_0 = "/cpus/idle-states/cpu-sleep-0";
         };
 
         reserved-memory {
