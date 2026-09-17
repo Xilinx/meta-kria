@@ -3021,7 +3021,7 @@
                         os,type = "zephyr";
                         rpu_pd_val = <0x7e 0x7>;
                         cpu_config_str = "split";
-                        core_num = "0";
+                        core_num = <0x0>;
                         linker_file_output_name = "openamp-zephyr.ld";
                         linker-entry = "_vector_table";
                         linker_memories = <0x7a 0x7b 0x166 0x168>;
@@ -3061,7 +3061,7 @@
                         os,type = "baremetal";
                         rpu_pd_val = <0x7e 0x8>;
                         cpu_config_str = "split";
-                        core_num = "1";
+                        core_num = <0x1>;
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
