@@ -6081,7 +6081,6 @@
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
-                                cluster_cpu = "psu_cortexr5_0";
 
                                 rpmsg-relation {
                                         compatible = "openamp,rpmsg-v1";
@@ -6099,7 +6098,7 @@
                         phandle = <0x16a>;
                         compatible = "openamp,domain-v1";
                         sram = <0x0 0x9968000 0x0 0x60000 0x0 0xffe90000 0x0 0x10000>;
-                        cpus = <&cpus_r5_1 0x2 0x80000003>;
+                        cpus = <&cpus_r5_1 0x1 0x80000003>;
                         os,type = "baremetal";
                         rpu_pd_val = <0x7c 0x8>;
                         cpu_config_str = "split";
@@ -6107,7 +6106,6 @@
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
-                                cluster_cpu = "psu_cortexr5_1";
 
                                 libmetal-relation {
                                         compatible = "libmetal,ipc-v1";
