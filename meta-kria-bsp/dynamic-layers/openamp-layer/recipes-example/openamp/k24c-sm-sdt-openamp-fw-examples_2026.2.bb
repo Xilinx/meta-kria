@@ -4,8 +4,8 @@ DESCRIPTION = "Pre-built Cortex-R5 Zephyr OpenAMP firmware demo payload for the 
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${UNPACKDIR}/k24c-sm-sdt_openamp-zephyr-demo/LICENSE.md;md5=0b96a4c07d631aa5141bd3f058ba43b0"
 
-SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.2/edf_files/2026.2/09190402/external/openamp-zephyr-demo/k24c-sm-sdt_openamp-zephyr-demo_09190402.tar.gz"
-SRC_URI[sha256sum] = "b88164dba8a3e7ddafbad573220eaddd79d371951bbab80b6897a53f033314fb"
+SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.2/edf_files/2026.2/09200102/external/openamp-zephyr-demo/k24c-sm-sdt_openamp-zephyr-demo_09200102.tar.gz"
+SRC_URI[sha256sum] = "490912bdf2bf051fd430beadef9980f7dbf046248fdcb9c8ef38a6ce8feeed4a"
 
 OPENAMPFW_PKGDIR_SUFFIX = "openamp-zephyr-demo"
 require conf/includes/openamp-fw-example.inc
