@@ -2,7 +2,10 @@ inherit:
     ${LAYER_PATH_kria-bsp-layer}/conf/machineyaml/k24-smk-kd-sdt.yaml
 args:
     - --machine-name k24-smk-kd-sdt-multidomain
-
+args_append:
+    - --domain-file ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-multidomain-base.yaml \
+                    ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-openamp-overlay.yaml \
+                    ${LAYER_PATH_xilinx-standalone-sdt}/conf/domainyaml/zynqmp-libmetal-overlay.yaml
 kconfig:
     CONFIG_YOCTO_BBMC_CORTEXA53_0_BAREMETAL: y
     CONFIG_SUBSYSTEM_BOOTMODE_2: y
@@ -51,3 +54,7 @@ machine:
             comment: 'QSPI Boots from offset (0x20_0000)'
             op: '='
             val: " -boot multiboot=${@int(int('0x20_0000', 0) / ( 32 * 1024))}"
+        BOOTBIN_INC:
+            comment: 'Enable libmetal application'
+            op: '='
+            val: 'libmetal-demo-rpu1.inc'
