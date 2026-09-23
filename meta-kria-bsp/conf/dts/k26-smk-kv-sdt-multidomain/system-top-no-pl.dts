@@ -5,7 +5,7 @@
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K26 Rev2/1/B/A";
         board = "kv260_som_som240_1_connector_kv260_carrier_som240_1_connector";
-        vivado-version = "2026.2.0";
+        vivado-version = "2026.2";
         device_id = "xck26";
         slrcount = <0x1>;
         family = "ZynqMP";

@@ -5,7 +5,7 @@
         #size-cells = <0x2>;
         model = "ZynqMP SM-K24 RevA/B/1";
         board = "k24c";
-        vivado-version = "2026.2.0";
+        vivado-version = "2026.2";
         device_id = "xck24";
         slrcount = <0x1>;
         family = "ZynqMP";

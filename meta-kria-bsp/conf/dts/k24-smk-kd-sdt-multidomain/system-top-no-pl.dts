@@ -5,7 +5,7 @@
         #size-cells = <0x2>;
         model = "ZynqMP SMK-K24 RevA";
         board = "kd240_som_som240_1_connector_kd240_carrier_som240_1_connector_som40_2_connector_kd240_carrier_som40_2_connector";
-        vivado-version = "2026.2.0";
+        vivado-version = "2026.2";
         device_id = "xck24";
         slrcount = <0x1>;
         family = "ZynqMP";
