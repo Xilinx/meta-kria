@@ -13,12 +13,12 @@
         pruned-sdt = <0x1>;
 
         cpus_r5_0: cpus {
-                phandle = <0x9a>;
+                phandle = <0x9c>;
                 #address-cells = <0x1>;
                 #size-cells = <0x0>;
 
                 psu_cortexr5_0: cpu@0 {
-                        phandle = <0x9b>;
+                        phandle = <0x79>;
                         compatible = "arm,cortex-r5", "arm,armv8";
                         device_type = "cpu";
                         reg = <0x0>;
@@ -376,7 +376,7 @@
                         };
                 };
 
-                psu_qspi_linear_0: psu_qspi_linear@c0000000 {
+                psu_qspi_linear_0: psu-qspi-linear@c0000000 {
                         phandle = <0x15a>;
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
                 };
@@ -495,7 +495,7 @@
                 ipi_1_to_ipi_8 = "/axi/ipi@ff310000/ipi@ff990100";
                 ipi_1_to_ipi_9 = "/axi/ipi@ff310000/ipi@ff990140";
                 ipi_1_to_ipi_10 = "/axi/ipi@ff310000/ipi@ff990180";
-                psu_qspi_linear_0 = "/axi/psu_qspi_linear@c0000000";
+                psu_qspi_linear_0 = "/axi/psu-qspi-linear@c0000000";
                 gic_r5 = "/axi/interrupt-controller@f9000000";
                 psu_r5_ddr_0_memory = "/memory@100000";
                 psu_qspi_linear_0_memory = "/memory@c0000000";

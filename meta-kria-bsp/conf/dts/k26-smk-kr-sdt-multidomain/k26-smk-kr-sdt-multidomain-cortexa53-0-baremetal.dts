@@ -21,7 +21,7 @@
         };
 
         cpus_a53: cpus-a53@0 {
-                phandle = <0x9e>;
+                phandle = <0xa0>;
                 #address-cells = <0x1>;
                 #size-cells = <0x0>;
                 compatible = "cpus,cluster";
@@ -141,7 +141,7 @@
                 #ranges-size-cells = <0x2>;
 
                 psu_cortexa53_0: cpu@0 {
-                        phandle = <0x8a>;
+                        phandle = <0x8c>;
                         #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
@@ -169,7 +169,7 @@
                 };
 
                 psu_cortexa53_1: cpu@1 {
-                        phandle = <0x8b>;
+                        phandle = <0x8d>;
                         #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
@@ -192,7 +192,7 @@
                 };
 
                 psu_cortexa53_2: cpu@2 {
-                        phandle = <0x8c>;
+                        phandle = <0x8e>;
                         #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
@@ -215,7 +215,7 @@
                 };
 
                 psu_cortexa53_3: cpu@3 {
-                        phandle = <0x8d>;
+                        phandle = <0x8f>;
                         #cooling-cells = <0x2>;
                         compatible = "arm,cortex-a53";
                         device_type = "cpu";
@@ -301,7 +301,7 @@
                 ranges;
 
                 ipi_mailbox_pmu1: mailbox@ff9905c0 {
-                        phandle = <0x8e>;
+                        phandle = <0x90>;
                         bootph-all;
                         compatible = "xlnx,zynqmp-ipi-dest-mailbox";
                         reg = <0x0 0xff9905c0 0x0 0x20 0x0 0xff9905e0 0x0 0x20 0x0 0xff990e80 0x0 0x20 0x0 0xff990ea0 0x0 0x20>;
@@ -329,7 +329,7 @@
         firmware {
 
                 zynqmp_firmware: zynqmp-firmware {
-                        phandle = <0x7e>;
+                        phandle = <0x7f>;
                         compatible = "xlnx,zynqmp-firmware";
                         #power-domain-cells = <0x1>;
                         method = "smc";
@@ -452,7 +452,7 @@
                         };
 
                         zynqmp_pcap: pcap {
-                                phandle = <0x94>;
+                                phandle = <0x96>;
                                 compatible = "xlnx,zynqmp-pcap-fpga";
                         };
 
@@ -469,7 +469,7 @@
                                 status = "okay";
 
                                 pinctrl_sdhci0_default: sdhci0-default {
-                                        phandle = <0x9c>;
+                                        phandle = <0x9e>;
 
                                         conf {
                                                 groups = "sdio0_0_grp";
@@ -486,7 +486,7 @@
                         };
 
                         modepin_gpio: gpio {
-                                phandle = <0x9d>;
+                                phandle = <0x9f>;
                                 compatible = "xlnx,zynqmp-gpio-modepin";
                                 gpio-controller;
                                 #gpio-cells = <0x2>;
@@ -558,7 +558,7 @@
         };
 
         tsens_apu: thermal-sensor-apu {
-                phandle = <0x95>;
+                phandle = <0x97>;
                 compatible = "generic-adc-thermal";
                 #thermal-sensor-cells = <0x0>;
                 io-channels = <&xilinx_ams 0x7>;
@@ -566,7 +566,7 @@
         };
 
         tsens_rpu: thermal-sensor-rpu {
-                phandle = <0x97>;
+                phandle = <0x99>;
                 compatible = "generic-adc-thermal";
                 #thermal-sensor-cells = <0x0>;
                 io-channels = <&xilinx_ams 0x8>;
@@ -574,7 +574,7 @@
         };
 
         tsens_pl: thermal-sensor-pl {
-                phandle = <0x98>;
+                phandle = <0x9a>;
                 compatible = "generic-adc-thermal";
                 #thermal-sensor-cells = <0x0>;
                 io-channels = <&xilinx_ams 0x14>;
@@ -591,7 +591,7 @@
                         trips {
 
                                 apu_passive: passive {
-                                        phandle = <0x96>;
+                                        phandle = <0x98>;
                                         temperature = <0x16b48>;
                                         hysteresis = <0xdac>;
                                         type = "passive";
@@ -608,11 +608,8 @@
                         cooling-maps {
 
                                 map {
-                                        trip = <&apu_passive>;
-                                        cooling-device = <&psu_cortexa53_0 0xffffffff 0xffffffff>,
-                                         <&psu_cortexa53_1 0xffffffff 0xffffffff>,
-                                         <&psu_cortexa53_2 0xffffffff 0xffffffff>,
-                                         <&psu_cortexa53_3 0xffffffff 0xffffffff>;
+                                        trip = <0x98>;
+                                        cooling-device = <0x8c 0xffffffff 0xffffffff 0x8d 0xffffffff 0xffffffff 0x8e 0xffffffff 0xffffffff 0x8f 0xffffffff 0xffffffff>;
                                 };
                         };
                 };
@@ -2811,7 +2808,7 @@
                         };
                 };
 
-                psu_r5_tcm_ram_global: psu_r5_tcm_ram@ffe00000 {
+                psu_r5_tcm_ram_global: psu-r5-tcm-ram@ffe00000 {
                         phandle = <0x5e>;
                         compatible = "xlnx,psu-r5-tcm-ram-1.0", "mmio-sram";
                         status = "okay";
@@ -2821,7 +2818,7 @@
                         xlnx,name = "psu_r5_tcm_ram_global";
                 };
 
-                psu_r5_1_btcm_global: psu_r5_1_btcm_global@ffeb0000 {
+                psu_r5_1_btcm_global: psu-r5-1-btcm-global@ffeb0000 {
                         phandle = <0x5d>;
                         compatible = "xlnx,psu-r5-1-btcm-global-1.0", "mmio-sram";
                         status = "okay";
@@ -2831,7 +2828,7 @@
                         xlnx,name = "psu_r5_1_btcm_global";
                 };
 
-                psu_r5_1_atcm_global: psu_r5_1_atcm_global@ffe90000 {
+                psu_r5_1_atcm_global: psu-r5-1-atcm-global@ffe90000 {
                         phandle = <0x5c>;
                         compatible = "xlnx,psu-r5-1-atcm-global-1.0", "mmio-sram";
                         status = "okay";
@@ -2841,7 +2838,7 @@
                         xlnx,name = "psu_r5_1_atcm_global";
                 };
 
-                psu_r5_0_btcm_global: psu_r5_0_btcm_global@ffe20000 {
+                psu_r5_0_btcm_global: psu-r5-0-btcm-global@ffe20000 {
                         phandle = <0x5b>;
                         compatible = "xlnx,psu-r5-0-btcm-global-1.0", "mmio-sram";
                         status = "okay";
@@ -2851,7 +2848,7 @@
                         xlnx,name = "psu_r5_0_btcm_global";
                 };
 
-                psu_r5_0_atcm_global: psu_r5_0_atcm_global@ffe00000 {
+                psu_r5_0_atcm_global: psu-r5-0-atcm-global@ffe00000 {
                         phandle = <0x5a>;
                         compatible = "xlnx,psu-r5-0-atcm-global-1.0", "mmio-sram";
                         status = "okay";
@@ -2861,7 +2858,7 @@
                         xlnx,name = "psu_r5_0_atcm_global";
                 };
 
-                psu_pmu_global_0: psu_pmu_global_0@ffd80000 {
+                psu_pmu_global_0: psu-pmu-global-0@ffd80000 {
                         phandle = <0x57>;
                         compatible = "xlnx,psu-pmu-global-0-1.0";
                         status = "okay";
@@ -2870,7 +2867,7 @@
                         xlnx,name = "psu_pmu_global_0";
                 };
 
-                psu_mbistjtag: psu_mbistjtag@ffcf0000 {
+                psu_mbistjtag: psu-mbistjtag@ffcf0000 {
                         phandle = <0x53>;
                         compatible = "xlnx,psu-mbistjtag-1.0";
                         status = "okay";
@@ -2879,7 +2876,7 @@
                         xlnx,name = "psu_mbistjtag";
                 };
 
-                psu_rsa: psu_rsa@ffce0000 {
+                psu_rsa: psu-rsa@ffce0000 {
                         phandle = <0x60>;
                         compatible = "xlnx,psu-rsa-1.0";
                         status = "okay";
@@ -2888,7 +2885,7 @@
                         xlnx,name = "psu_rsa";
                 };
 
-                psu_efuse: psu_efuse@ffcc0000 {
+                psu_efuse: psu-efuse@ffcc0000 {
                         phandle = <0x38>;
                         compatible = "xlnx,psu-efuse-1.0";
                         status = "okay";
@@ -2897,7 +2894,7 @@
                         xlnx,name = "psu_efuse";
                 };
 
-                psu_csu_0: psu_csu@ffca0000 {
+                psu_csu_0: psu-csu@ffca0000 {
                         phandle = <0x2a>;
                         xlnx,csu-board-interface = "custom";
                         compatible = "xlnx,psu-csu-1.0";
@@ -2908,7 +2905,7 @@
                         xlnx,name = "psu_csu_0";
                 };
 
-                psu_fpd_gpv: psu_fpd_gpv@fd700000 {
+                psu_fpd_gpv: psu-fpd-gpv@fd700000 {
                         phandle = <0x3b>;
                         compatible = "xlnx,psu-fpd-gpv-1.0";
                         status = "okay";
@@ -2917,7 +2914,7 @@
                         xlnx,name = "psu_fpd_gpv";
                 };
 
-                psu_cci_gpv: psu_cci_gpv@fd6e0000 {
+                psu_cci_gpv: psu-cci-gpv@fd6e0000 {
                         phandle = <0x25>;
                         compatible = "xlnx,psu-cci-gpv-1.0";
                         status = "okay";
@@ -2926,7 +2923,7 @@
                         xlnx,name = "psu_cci_gpv";
                 };
 
-                psu_fpd_slcr_secure: psu_fpd_slcr_secure@fd690000 {
+                psu_fpd_slcr_secure: psu-fpd-slcr-secure@fd690000 {
                         phandle = <0x3d>;
                         compatible = "xlnx,psu-fpd-slcr-secure-1.0";
                         status = "okay";
@@ -2935,7 +2932,7 @@
                         xlnx,name = "psu_fpd_slcr_secure";
                 };
 
-                psu_fpd_slcr: psu_fpd_slcr@fd610000 {
+                psu_fpd_slcr: psu-fpd-slcr@fd610000 {
                         phandle = <0x3c>;
                         compatible = "xlnx,psu-fpd-slcr-1.0";
                         status = "okay";
@@ -2944,7 +2941,7 @@
                         xlnx,name = "psu_fpd_slcr";
                 };
 
-                psu_smmu_reg: psu_smmu_reg@fd5f0000 {
+                psu_smmu_reg: psu-smmu-reg@fd5f0000 {
                         phandle = <0x65>;
                         compatible = "xlnx,psu-smmu-reg-1.0";
                         status = "okay";
@@ -2953,7 +2950,7 @@
                         xlnx,name = "psu_smmu_reg";
                 };
 
-                psu_cci_reg: psu_cci_reg@fd5e0000 {
+                psu_cci_reg: psu-cci-reg@fd5e0000 {
                         phandle = <0x26>;
                         compatible = "xlnx,psu-cci-reg-1.0";
                         status = "okay";
@@ -2962,7 +2959,7 @@
                         xlnx,name = "psu_cci_reg";
                 };
 
-                psu_fpd_xmpu_cfg: psu_fpd_xmpu_cfg@fd5d0000 {
+                psu_fpd_xmpu_cfg: psu-fpd-xmpu-cfg@fd5d0000 {
                         phandle = <0x3e>;
                         compatible = "xlnx,psu-fpd-xmpu-cfg-1.0";
                         status = "okay";
@@ -2971,7 +2968,7 @@
                         xlnx,name = "psu_fpd_xmpu_cfg";
                 };
 
-                psu_apu: psu_apu@fd5c0000 {
+                psu_apu: psu-apu@fd5c0000 {
                         phandle = <0x24>;
                         compatible = "xlnx,psu-apu-1.0";
                         status = "okay";
@@ -2980,7 +2977,7 @@
                         xlnx,name = "psu_apu";
                 };
 
-                psu_fpd_xmpu_sink: psu_fpd_xmpu_sink@fd4f0000 {
+                psu_fpd_xmpu_sink: psu-fpd-xmpu-sink@fd4f0000 {
                         phandle = <0x3f>;
                         compatible = "xlnx,psu-fpd-xmpu-sink-1.0";
                         status = "okay";
@@ -2989,7 +2986,7 @@
                         xlnx,name = "psu_fpd_xmpu_sink";
                 };
 
-                psu_siou: psu_siou@fd3d0000 {
+                psu_siou: psu-siou@fd3d0000 {
                         phandle = <0x63>;
                         compatible = "xlnx,psu-siou-1.0";
                         status = "okay";
@@ -2998,7 +2995,7 @@
                         xlnx,name = "psu_siou";
                 };
 
-                psu_afi_5: psu_afi@fd3b0000 {
+                psu_afi_5: psu-afi@fd3b0000 {
                         phandle = <0x1d>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3007,7 +3004,7 @@
                         xlnx,name = "psu_afi_5";
                 };
 
-                psu_afi_4: psu_afi@fd3a0000 {
+                psu_afi_4: psu-afi@fd3a0000 {
                         phandle = <0x1c>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3016,7 +3013,7 @@
                         xlnx,name = "psu_afi_4";
                 };
 
-                psu_afi_3: psu_afi@fd390000 {
+                psu_afi_3: psu-afi@fd390000 {
                         phandle = <0x1b>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3025,7 +3022,7 @@
                         xlnx,name = "psu_afi_3";
                 };
 
-                psu_afi_2: psu_afi@fd380000 {
+                psu_afi_2: psu-afi@fd380000 {
                         phandle = <0x1a>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3034,7 +3031,7 @@
                         xlnx,name = "psu_afi_2";
                 };
 
-                psu_afi_1: psu_afi@fd370000 {
+                psu_afi_1: psu-afi@fd370000 {
                         phandle = <0x19>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3043,7 +3040,7 @@
                         xlnx,name = "psu_afi_1";
                 };
 
-                psu_afi_0: psu_afi@fd360000 {
+                psu_afi_0: psu-afi@fd360000 {
                         phandle = <0x18>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3052,7 +3049,7 @@
                         xlnx,name = "psu_afi_0";
                 };
 
-                psu_crf_apb: psu_crf_apb@fd1a0000 {
+                psu_crf_apb: psu-crf-apb@fd1a0000 {
                         phandle = <0x28>;
                         compatible = "xlnx,psu-crf-apb-1.0";
                         status = "okay";
@@ -3061,7 +3058,7 @@
                         xlnx,name = "psu_crf_apb";
                 };
 
-                psu_ddr_qos_ctrl: psu_ddr_qos_ctrl@fd090000 {
+                psu_ddr_qos_ctrl: psu-ddr-qos-ctrl@fd090000 {
                         phandle = <0x2e>;
                         compatible = "xlnx,psu-ddr-qos-ctrl-1.0";
                         status = "okay";
@@ -3070,7 +3067,7 @@
                         xlnx,name = "psu_ddr_qos_ctrl";
                 };
 
-                psu_ddr_phy: psu_ddr_phy@fd080000 {
+                psu_ddr_phy: psu-ddr-phy@fd080000 {
                         phandle = <0x2d>;
                         compatible = "xlnx,psu-ddr-phy-1.0";
                         status = "okay";
@@ -3079,7 +3076,7 @@
                         xlnx,name = "psu_ddr_phy";
                 };
 
-                psu_ddr_xmpu5_cfg: psu_ddr_xmpu5_cfg@fd050000 {
+                psu_ddr_xmpu5_cfg: psu-ddr-xmpu5-cfg@fd050000 {
                         phandle = <0x34>;
                         compatible = "xlnx,psu-ddr-xmpu5-cfg-1.0";
                         status = "okay";
@@ -3088,7 +3085,7 @@
                         xlnx,name = "psu_ddr_xmpu5_cfg";
                 };
 
-                psu_ddr_xmpu4_cfg: psu_ddr_xmpu4_cfg@fd040000 {
+                psu_ddr_xmpu4_cfg: psu-ddr-xmpu4-cfg@fd040000 {
                         phandle = <0x33>;
                         compatible = "xlnx,psu-ddr-xmpu4-cfg-1.0";
                         status = "okay";
@@ -3097,7 +3094,7 @@
                         xlnx,name = "psu_ddr_xmpu4_cfg";
                 };
 
-                psu_ddr_xmpu3_cfg: psu_ddr_xmpu3_cfg@fd030000 {
+                psu_ddr_xmpu3_cfg: psu-ddr-xmpu3-cfg@fd030000 {
                         phandle = <0x32>;
                         compatible = "xlnx,psu-ddr-xmpu3-cfg-1.0";
                         status = "okay";
@@ -3106,7 +3103,7 @@
                         xlnx,name = "psu_ddr_xmpu3_cfg";
                 };
 
-                psu_ddr_xmpu2_cfg: psu_ddr_xmpu2_cfg@fd020000 {
+                psu_ddr_xmpu2_cfg: psu-ddr-xmpu2-cfg@fd020000 {
                         phandle = <0x31>;
                         compatible = "xlnx,psu-ddr-xmpu2-cfg-1.0";
                         status = "okay";
@@ -3115,7 +3112,7 @@
                         xlnx,name = "psu_ddr_xmpu2_cfg";
                 };
 
-                psu_ddr_xmpu1_cfg: psu_ddr_xmpu1_cfg@fd010000 {
+                psu_ddr_xmpu1_cfg: psu-ddr-xmpu1-cfg@fd010000 {
                         phandle = <0x30>;
                         compatible = "xlnx,psu-ddr-xmpu1-cfg-1.0";
                         status = "okay";
@@ -3124,7 +3121,7 @@
                         xlnx,name = "psu_ddr_xmpu1_cfg";
                 };
 
-                psu_ddr_xmpu0_cfg: psu_ddr_xmpu0_cfg@fd000000 {
+                psu_ddr_xmpu0_cfg: psu-ddr-xmpu0-cfg@fd000000 {
                         phandle = <0x2f>;
                         compatible = "xlnx,psu-ddr-xmpu0-cfg-1.0";
                         status = "okay";
@@ -3133,7 +3130,7 @@
                         xlnx,name = "psu_ddr_xmpu0_cfg";
                 };
 
-                psu_ocm_xmpu_cfg: psu_ocm_xmpu_cfg@ffa70000 {
+                psu_ocm_xmpu_cfg: psu-ocm-xmpu-cfg@ffa70000 {
                         phandle = <0x56>;
                         compatible = "xlnx,psu-ocm-xmpu-cfg-1.0";
                         status = "okay";
@@ -3142,7 +3139,7 @@
                         xlnx,name = "psu_ocm_xmpu_cfg";
                 };
 
-                psu_lpd_xppu_sink: psu_lpd_xppu_sink@ff9c0000 {
+                psu_lpd_xppu_sink: psu-lpd-xppu-sink@ff9c0000 {
                         phandle = <0x52>;
                         compatible = "xlnx,psu-lpd-xppu-sink-1.0";
                         status = "okay";
@@ -3151,7 +3148,7 @@
                         xlnx,name = "psu_lpd_xppu_sink";
                 };
 
-                psu_afi_6: psu_afi@ff9b0000 {
+                psu_afi_6: psu-afi@ff9b0000 {
                         phandle = <0x1e>;
                         compatible = "xlnx,psu-afi-1.0";
                         status = "okay";
@@ -3160,7 +3157,7 @@
                         xlnx,name = "psu_afi_6";
                 };
 
-                psu_rpu: psu_rpu@ff9a0000 {
+                psu_rpu: psu-rpu@ff9a0000 {
                         phandle = <0x5f>;
                         xlnx,is-cache-coherent = <0x0>;
                         compatible = "xlnx,psu-rpu-1.0";
@@ -3170,7 +3167,7 @@
                         xlnx,name = "psu_rpu";
                 };
 
-                psu_crl_apb: psu_crl_apb@ff5e0000 {
+                psu_crl_apb: psu-crl-apb@ff5e0000 {
                         phandle = <0x29>;
                         compatible = "xlnx,psu-crl-apb-1.0";
                         status = "okay";
@@ -3179,7 +3176,7 @@
                         xlnx,name = "psu_crl_apb";
                 };
 
-                psu_lpd_slcr_secure: psu_lpd_slcr_secure@ff4b0000 {
+                psu_lpd_slcr_secure: psu-lpd-slcr-secure@ff4b0000 {
                         phandle = <0x50>;
                         compatible = "xlnx,psu-lpd-slcr-secure-1.0";
                         status = "okay";
@@ -3188,7 +3185,7 @@
                         xlnx,name = "psu_lpd_slcr_secure";
                 };
 
-                psu_lpd_slcr: psu_lpd_slcr@ff410000 {
+                psu_lpd_slcr: psu-lpd-slcr@ff410000 {
                         phandle = <0x4f>;
                         compatible = "xlnx,psu-lpd-slcr-1.0";
                         status = "okay";
@@ -3209,7 +3206,7 @@
                         reg = <0x0 0xff990000 0x0 0x10000>;
                 };
 
-                psu_iou_scntrs: psu_iou_scntrs@ff260000 {
+                psu_iou_scntrs: psu-iou-scntrs@ff260000 {
                         phandle = <0x4c>;
                         compatible = "xlnx,psu-iou-scntrs-1.0";
                         status = "okay";
@@ -3218,7 +3215,7 @@
                         xlnx,name = "psu_iou_scntrs";
                 };
 
-                psu_iou_scntr: psu_iou_scntr@ff250000 {
+                psu_iou_scntr: psu-iou-scntr@ff250000 {
                         phandle = <0x4b>;
                         compatible = "xlnx,psu-iou-scntr-1.0";
                         status = "okay";
@@ -3227,7 +3224,7 @@
                         xlnx,name = "psu_iou_scntr";
                 };
 
-                psu_iousecure_slcr: psu_iousecure_slcr@ff240000 {
+                psu_iousecure_slcr: psu-iousecure-slcr@ff240000 {
                         phandle = <0x4d>;
                         compatible = "xlnx,psu-iousecure-slcr-1.0";
                         status = "okay";
@@ -3236,7 +3233,7 @@
                         xlnx,name = "psu_iousecure_slcr";
                 };
 
-                psu_iouslcr_0: psu_iouslcr@ff180000 {
+                psu_iouslcr_0: psu-iouslcr@ff180000 {
                         phandle = <0x4e>;
                         compatible = "xlnx,psu-iouslcr-1.0";
                         status = "okay";
@@ -3245,7 +3242,7 @@
                         xlnx,name = "psu_iouslcr_0";
                 };
 
-                psu_qspi_linear_0: psu_qspi_linear@c0000000 {
+                psu_qspi_linear_0: psu-qspi-linear@c0000000 {
                         phandle = <0x15a>;
                         reg = <0x0 0xc0000000 0x0 0x20000000>;
                 };
@@ -3286,7 +3283,7 @@
         };
 
         pss_ref_clk: pss-ref-clk {
-                phandle = <0x8f>;
+                phandle = <0x91>;
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
@@ -3295,7 +3292,7 @@
         };
 
         video_clk: video-clk {
-                phandle = <0x90>;
+                phandle = <0x92>;
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
@@ -3304,7 +3301,7 @@
         };
 
         pss_alt_ref_clk: pss-alt-ref-clk {
-                phandle = <0x91>;
+                phandle = <0x93>;
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
@@ -3313,7 +3310,7 @@
         };
 
         gt_crx_ref_clk: gt-crx-ref-clk {
-                phandle = <0x93>;
+                phandle = <0x95>;
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
@@ -3322,7 +3319,7 @@
         };
 
         aux_ref_clk: aux-ref-clk {
-                phandle = <0x92>;
+                phandle = <0x94>;
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
@@ -3331,7 +3328,7 @@
         };
 
         rtc_clk: rtc-clk {
-                phandle = <0x9b>;
+                phandle = <0x9d>;
                 bootph-all;
                 compatible = "fixed-clock";
                 #clock-cells = <0x0>;
@@ -3608,55 +3605,55 @@
                 ipi_10_to_ipi_8 = "/axi/ipi@ff370000/child@ff350000";
                 ipi_10_to_ipi_9 = "/axi/ipi@ff370000/child@ff360000";
                 ipi_10_to_ipi_10 = "/axi/ipi@ff370000/child@ff370000";
-                psu_r5_tcm_ram_global = "/axi/psu_r5_tcm_ram@ffe00000";
-                psu_r5_1_btcm_global = "/axi/psu_r5_1_btcm_global@ffeb0000";
-                psu_r5_1_atcm_global = "/axi/psu_r5_1_atcm_global@ffe90000";
-                psu_r5_0_btcm_global = "/axi/psu_r5_0_btcm_global@ffe20000";
-                psu_r5_0_atcm_global = "/axi/psu_r5_0_atcm_global@ffe00000";
-                psu_pmu_global_0 = "/axi/psu_pmu_global_0@ffd80000";
-                psu_mbistjtag = "/axi/psu_mbistjtag@ffcf0000";
-                psu_rsa = "/axi/psu_rsa@ffce0000";
-                psu_efuse = "/axi/psu_efuse@ffcc0000";
-                psu_csu_0 = "/axi/psu_csu@ffca0000";
-                psu_fpd_gpv = "/axi/psu_fpd_gpv@fd700000";
-                psu_cci_gpv = "/axi/psu_cci_gpv@fd6e0000";
-                psu_fpd_slcr_secure = "/axi/psu_fpd_slcr_secure@fd690000";
-                psu_fpd_slcr = "/axi/psu_fpd_slcr@fd610000";
-                psu_smmu_reg = "/axi/psu_smmu_reg@fd5f0000";
-                psu_cci_reg = "/axi/psu_cci_reg@fd5e0000";
-                psu_fpd_xmpu_cfg = "/axi/psu_fpd_xmpu_cfg@fd5d0000";
-                psu_apu = "/axi/psu_apu@fd5c0000";
-                psu_fpd_xmpu_sink = "/axi/psu_fpd_xmpu_sink@fd4f0000";
-                psu_siou = "/axi/psu_siou@fd3d0000";
-                psu_afi_5 = "/axi/psu_afi@fd3b0000";
-                psu_afi_4 = "/axi/psu_afi@fd3a0000";
-                psu_afi_3 = "/axi/psu_afi@fd390000";
-                psu_afi_2 = "/axi/psu_afi@fd380000";
-                psu_afi_1 = "/axi/psu_afi@fd370000";
-                psu_afi_0 = "/axi/psu_afi@fd360000";
-                psu_crf_apb = "/axi/psu_crf_apb@fd1a0000";
-                psu_ddr_qos_ctrl = "/axi/psu_ddr_qos_ctrl@fd090000";
-                psu_ddr_phy = "/axi/psu_ddr_phy@fd080000";
-                psu_ddr_xmpu5_cfg = "/axi/psu_ddr_xmpu5_cfg@fd050000";
-                psu_ddr_xmpu4_cfg = "/axi/psu_ddr_xmpu4_cfg@fd040000";
-                psu_ddr_xmpu3_cfg = "/axi/psu_ddr_xmpu3_cfg@fd030000";
-                psu_ddr_xmpu2_cfg = "/axi/psu_ddr_xmpu2_cfg@fd020000";
-                psu_ddr_xmpu1_cfg = "/axi/psu_ddr_xmpu1_cfg@fd010000";
-                psu_ddr_xmpu0_cfg = "/axi/psu_ddr_xmpu0_cfg@fd000000";
-                psu_ocm_xmpu_cfg = "/axi/psu_ocm_xmpu_cfg@ffa70000";
-                psu_lpd_xppu_sink = "/axi/psu_lpd_xppu_sink@ff9c0000";
-                psu_afi_6 = "/axi/psu_afi@ff9b0000";
-                psu_rpu = "/axi/psu_rpu@ff9a0000";
-                psu_crl_apb = "/axi/psu_crl_apb@ff5e0000";
-                psu_lpd_slcr_secure = "/axi/psu_lpd_slcr_secure@ff4b0000";
-                psu_lpd_slcr = "/axi/psu_lpd_slcr@ff410000";
+                psu_r5_tcm_ram_global = "/axi/psu-r5-tcm-ram@ffe00000";
+                psu_r5_1_btcm_global = "/axi/psu-r5-1-btcm-global@ffeb0000";
+                psu_r5_1_atcm_global = "/axi/psu-r5-1-atcm-global@ffe90000";
+                psu_r5_0_btcm_global = "/axi/psu-r5-0-btcm-global@ffe20000";
+                psu_r5_0_atcm_global = "/axi/psu-r5-0-atcm-global@ffe00000";
+                psu_pmu_global_0 = "/axi/psu-pmu-global-0@ffd80000";
+                psu_mbistjtag = "/axi/psu-mbistjtag@ffcf0000";
+                psu_rsa = "/axi/psu-rsa@ffce0000";
+                psu_efuse = "/axi/psu-efuse@ffcc0000";
+                psu_csu_0 = "/axi/psu-csu@ffca0000";
+                psu_fpd_gpv = "/axi/psu-fpd-gpv@fd700000";
+                psu_cci_gpv = "/axi/psu-cci-gpv@fd6e0000";
+                psu_fpd_slcr_secure = "/axi/psu-fpd-slcr-secure@fd690000";
+                psu_fpd_slcr = "/axi/psu-fpd-slcr@fd610000";
+                psu_smmu_reg = "/axi/psu-smmu-reg@fd5f0000";
+                psu_cci_reg = "/axi/psu-cci-reg@fd5e0000";
+                psu_fpd_xmpu_cfg = "/axi/psu-fpd-xmpu-cfg@fd5d0000";
+                psu_apu = "/axi/psu-apu@fd5c0000";
+                psu_fpd_xmpu_sink = "/axi/psu-fpd-xmpu-sink@fd4f0000";
+                psu_siou = "/axi/psu-siou@fd3d0000";
+                psu_afi_5 = "/axi/psu-afi@fd3b0000";
+                psu_afi_4 = "/axi/psu-afi@fd3a0000";
+                psu_afi_3 = "/axi/psu-afi@fd390000";
+                psu_afi_2 = "/axi/psu-afi@fd380000";
+                psu_afi_1 = "/axi/psu-afi@fd370000";
+                psu_afi_0 = "/axi/psu-afi@fd360000";
+                psu_crf_apb = "/axi/psu-crf-apb@fd1a0000";
+                psu_ddr_qos_ctrl = "/axi/psu-ddr-qos-ctrl@fd090000";
+                psu_ddr_phy = "/axi/psu-ddr-phy@fd080000";
+                psu_ddr_xmpu5_cfg = "/axi/psu-ddr-xmpu5-cfg@fd050000";
+                psu_ddr_xmpu4_cfg = "/axi/psu-ddr-xmpu4-cfg@fd040000";
+                psu_ddr_xmpu3_cfg = "/axi/psu-ddr-xmpu3-cfg@fd030000";
+                psu_ddr_xmpu2_cfg = "/axi/psu-ddr-xmpu2-cfg@fd020000";
+                psu_ddr_xmpu1_cfg = "/axi/psu-ddr-xmpu1-cfg@fd010000";
+                psu_ddr_xmpu0_cfg = "/axi/psu-ddr-xmpu0-cfg@fd000000";
+                psu_ocm_xmpu_cfg = "/axi/psu-ocm-xmpu-cfg@ffa70000";
+                psu_lpd_xppu_sink = "/axi/psu-lpd-xppu-sink@ff9c0000";
+                psu_afi_6 = "/axi/psu-afi@ff9b0000";
+                psu_rpu = "/axi/psu-rpu@ff9a0000";
+                psu_crl_apb = "/axi/psu-crl-apb@ff5e0000";
+                psu_lpd_slcr_secure = "/axi/psu-lpd-slcr-secure@ff4b0000";
+                psu_lpd_slcr = "/axi/psu-lpd-slcr@ff410000";
                 psu_ctrl_ipi = "/axi/PERIPHERAL@ff380000";
                 psu_message_buffers = "/axi/PERIPHERAL@ff990000";
-                psu_iou_scntrs = "/axi/psu_iou_scntrs@ff260000";
-                psu_iou_scntr = "/axi/psu_iou_scntr@ff250000";
-                psu_iousecure_slcr = "/axi/psu_iousecure_slcr@ff240000";
-                psu_iouslcr_0 = "/axi/psu_iouslcr@ff180000";
-                psu_qspi_linear_0 = "/axi/psu_qspi_linear@c0000000";
+                psu_iou_scntrs = "/axi/psu-iou-scntrs@ff260000";
+                psu_iou_scntr = "/axi/psu-iou-scntr@ff250000";
+                psu_iousecure_slcr = "/axi/psu-iousecure-slcr@ff240000";
+                psu_iouslcr_0 = "/axi/psu-iouslcr@ff180000";
+                psu_qspi_linear_0 = "/axi/psu-qspi-linear@c0000000";
                 amba_xppu = "/indirect-bus@1";
                 lpd_xppu = "/indirect-bus@1/xppu@ff980000";
                 binman = "/binman";

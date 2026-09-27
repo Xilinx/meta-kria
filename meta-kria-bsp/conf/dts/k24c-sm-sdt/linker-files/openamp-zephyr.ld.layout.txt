@@ -3,8 +3,8 @@ profile: r5-tcm
 zephyr-version: 4.3
 entry: _vector_table
 memories:
-  PSU_R5_0_ATCM: 0x0-0x10000 (rwx) /axi/psu_r5_0_atcm@0
-  PSU_R5_0_BTCM: 0x20000-0x30000 (rw) /axi/psu_r5_0_btcm@20000
+  PSU_R5_0_ATCM: 0x0-0x10000 (rwx) /axi/psu-r5-0-atcm@0
+  PSU_R5_0_BTCM: 0x20000-0x30000 (rw) /axi/psu-r5-0-btcm@20000
   RPROC0: 0x9800000-0x9820000 (rwx) /reserved-memory/rproc0@9800000
   RSCTBL: 0x9820000-0x9820100 (rw) /reserved-memory/rsctbl@9820000
 sections:
