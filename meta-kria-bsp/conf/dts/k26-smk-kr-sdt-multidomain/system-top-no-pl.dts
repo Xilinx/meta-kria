@@ -6050,6 +6050,7 @@
                         reserved-memory = <0x162 0x163 0x164 0x165 0x166 0x167 0x168>;
                         cpus = <&cpus_a53 0xf 0x80000003>;
                         os,type = "linux";
+                        lopper,access-keep-all = <0x1>;
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
@@ -6059,7 +6060,9 @@
 
                                         relation0 {
                                                 remote = <0x169>;
-                                                elfload = <&rproc0>,
+                                                elfload = <&psu_r5_0_atcm_global>,
+                                                 <&psu_r5_0_btcm_global>,
+                                                 <&rproc0>,
                                                  <&trace_buffer>,
                                                  <&rsctbl>;
                                         };
@@ -6092,6 +6095,7 @@
                         phandle = <0x169>;
                         compatible = "openamp,domain-v1";
                         zephyr-version = "4.3";
+                        access = <&ipi1 0x0>;
                         sram = <0x0 0x9800000 0x0 0x20000 0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
                         reserved-memory = <0x163 0x164 0x165 0x166 0x167 0x168>;
                         cpus = <&cpus_r5_0 0x1 0x80000000>;
@@ -6113,6 +6117,7 @@
                         linker-section-stack = <0x7b>;
                         linker-section-resource-table = <0x168>;
                         linker-section-resource-table-offset = <0x0>;
+                        access-json = "[{\"dev\": \"ipi1\"}]";
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";

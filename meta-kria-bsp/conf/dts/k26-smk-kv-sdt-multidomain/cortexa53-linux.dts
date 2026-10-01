@@ -3288,14 +3288,16 @@
                 #address-cells = <0x2>;
                 #size-cells = <0x2>;
                 xlnx,cluster-mode = <0x0>;
-                ranges;
+                ranges = <0x0 0x0 0x0 0xffe00000 0x0 0x10000 0x0 0x20000 0x0 0xffe20000 0x0 0x10000>;
                 xlnx,tcm-mode = <0x0>;
 
                 r5f@0 {
                         compatible = "xlnx,zynqmp-r5f";
-                        power-domains = <&zynqmp_firmware 0x7>;
-                        reg;
-                        reg-names;
+                        power-domains = <&zynqmp_firmware 0x7>,
+                         <&zynqmp_firmware 0xf>,
+                         <&zynqmp_firmware 0x10>;
+                        reg = <0x0 0x0 0x0 0x10000 0x0 0x20000 0x0 0x10000>;
+                        reg-names = "atcm0", "btcm0";
                         memory-region = <&rproc0>,
                          <&trace_buffer>,
                          <&rsctbl>,

@@ -2934,6 +2934,7 @@
                         compatible = "openamp,domain-v1";
                         reserved-memory = <0x162 0x163 0x164 0x165 0x166 0x167 0x168>;
                         os,type = "linux";
+                        lopper,access-keep-all = <0x1>;
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
@@ -2996,6 +2997,7 @@
                         linker-section-stack = <0x79>;
                         linker-section-resource-table = <0x168>;
                         linker-section-resource-table-offset = <0x0>;
+                        access-json = "[{\"dev\": \"ipi1\"}]";
 
                         domain-to-domain {
                                 compatible = "openamp,domain-to-domain-v1";
