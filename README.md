@@ -7,8 +7,8 @@ provides related metadata.
 
 This repository is split into two sub-layers, following Yocto layer guidelines:
 
-- `meta-kria-bsp` (collection `kria-bsp`): board support - machine `.conf`, machine/domain YAML, device trees, multiconfigs, `recipes-bsp`, board firmware (`recipes-firmware`), `dynamic-layers` and the machine-generation scripts.
-- `meta-kria-core` (collection `kria-core`): machine-independent runtime utilities (`recipes-utils`) and the Kria packagegroup (`recipes-core`), which conditionally includes board firmware from `meta-kria-bsp` when that sub-layer is present.
+- `meta-kria-bsp` (collection `kria-bsp`): board support - machine `.conf`, machine/domain YAML, device trees, multiconfigs, `recipes-bsp`, board firmware (`recipes-firmware`), `dynamic-layers` and the machine-generation scripts. See [meta-kria-bsp/README.md](meta-kria-bsp/README.md).
+- `meta-kria-core` (collection `kria-core`): machine-independent runtime utilities (`recipes-utils`) and the Kria packagegroup (`recipes-core`), which conditionally includes board firmware from `meta-kria-bsp` when that sub-layer is present. See [meta-kria-core/README.md](meta-kria-core/README.md).
 
 Add both to `bblayers.conf` (core before bsp):
 
@@ -43,7 +43,7 @@ https://docs.yoctoproject.org/dev/contributor-guide/submit-changes.html#
 `git format-patch -s --subject-prefix="meta-kria][<BRANCH_NAME>][PATCH" -1`
 
 **Example:**
-`git format-patch -s --subject-prefix="meta-kria][rel-v2026.1][PATCH" -1`
+`git format-patch -s --subject-prefix="meta-kria][rel-v2026.2][PATCH" -1`
 
 **Maintainers:**
 
@@ -52,31 +52,6 @@ https://docs.yoctoproject.org/dev/contributor-guide/submit-changes.html#
 	John Toomey <john.toomey@amd.com>
 	Trevor Woerner <trevor.woerner@amd.com>
 ---
-## Dependencies
-
-This layer depends on:
-
-	URI: https://git.yoctoproject.org/poky
-	layers: meta, meta-poky
-	branch: scarthgap
-
-	URI: https://git.openembedded.org/meta-openembedded
-	layers: meta-oe
-	branch: scarthgap
-
-	URI:
-        https://git.yoctoproject.org/meta-xilinx (official version)
-        https://github.com/Xilinx/meta-xilinx (development and AMD release)
-	layers: meta-xilinx-microblaze, meta-xilinx-core, meta-xilinx-standalone
-	branch: scarthgap or AMD release version (e.g. rel-v2026.1)
-
-	URI: https://git.yoctoproject.org/meta-security
-	layers: meta-tpm
-	branch: scarthgap
-
-	URI: https://git.yoctoproject.org/meta-arm
-	layers: meta-arm, meta-arm-toolchain
-	branch: scarthgap
 
 ## Note: 
 
