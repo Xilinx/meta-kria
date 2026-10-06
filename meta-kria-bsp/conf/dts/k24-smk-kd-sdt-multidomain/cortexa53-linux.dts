@@ -402,7 +402,9 @@
                 };
         };
 
-        timer {
+        arm_generic_timer: timer {
+                phandle = <0x16e>;
+                label = "arm_generic_timer";
                 compatible = "arm,armv8-timer";
                 interrupt-parent = <&gic>;
                 interrupts = <0x1 0xd 0xf08 0x1 0xe 0xf08 0x1 0xb 0xf08 0x1 0xa 0xf08>;
@@ -2975,6 +2977,7 @@
                 modepin_gpio = "/firmware/zynqmp-firmware/gpio";
                 zynqmp_clk = "/firmware/zynqmp-firmware/clock-controller";
                 zynqmp_firmware = "/firmware/zynqmp-firmware";
+                arm_generic_timer = "/timer";
                 fpga_full = "/fpga-region";
                 tsens_apu = "/thermal-sensor-apu";
                 tsens_rpu = "/thermal-sensor-rpu";
@@ -3236,21 +3239,21 @@
                 };
 
                 libmetal_desc0: libmetal_desc0@99c8000 {
-                        phandle = <0x16e>;
+                        phandle = <0x16f>;
                         label = "libmetal_desc0";
                         no-map;
                         reg = <0x0 0x99c8000 0x0 0x4000>;
                 };
 
                 libmetal_desc1: libmetal_desc1@99cc000 {
-                        phandle = <0x16f>;
+                        phandle = <0x170>;
                         label = "libmetal_desc1";
                         no-map;
                         reg = <0x0 0x99cc000 0x0 0x4000>;
                 };
 
                 libmetal_data: libmetal_data@99d0000 {
-                        phandle = <0x170>;
+                        phandle = <0x171>;
                         label = "libmetal_data";
                         no-map;
                         reg = <0x0 0x99d0000 0x0 0x40000>;

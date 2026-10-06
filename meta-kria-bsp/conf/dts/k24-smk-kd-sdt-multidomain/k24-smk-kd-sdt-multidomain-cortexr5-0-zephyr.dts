@@ -482,28 +482,28 @@
                 };
 
                 libmetal_desc0: libmetal_desc0@99c8000 {
-                        phandle = <0x16e>;
+                        phandle = <0x16f>;
                         label = "libmetal_desc0";
                         no-map;
                         reg = <0x0 0x99c8000 0x0 0x4000>;
                 };
 
                 libmetal_desc1: libmetal_desc1@99cc000 {
-                        phandle = <0x16f>;
+                        phandle = <0x170>;
                         label = "libmetal_desc1";
                         no-map;
                         reg = <0x0 0x99cc000 0x0 0x4000>;
                 };
 
                 libmetal_data: libmetal_data@99d0000 {
-                        phandle = <0x170>;
+                        phandle = <0x171>;
                         label = "libmetal_data";
                         no-map;
                         reg = <0x0 0x99d0000 0x0 0x40000>;
                 };
 
                 ipc_shm: ipc@9880000 {
-                        phandle = <0x171>;
+                        phandle = <0x172>;
                         reg = <0x0 0x9880000 0x0 0x80000>;
                         compatible = "zephyr,memory-region", "mmio-sram";
                         status = "okay";
