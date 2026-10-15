@@ -7,7 +7,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://MIT;md5=10e38f7eeaea9c7c18447b42d987003f"
 
 REPO = "git://github.com/Xilinx/xmutil.git;protocol=https"
-SRCREV = "c9fe20b76bdfe8084935beaa376f832ffaede5b4"
+SRCREV = "da03e2ee299331af90025744363c3ce7780f920f"
 PV .= "+git"
 
 BRANCH = "master"
