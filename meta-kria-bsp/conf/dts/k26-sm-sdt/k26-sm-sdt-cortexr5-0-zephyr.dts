@@ -210,6 +210,70 @@
                          <&adma_ref_clk>;
                 };
 
+                gpio: gpio@ff0a0000 {
+                        phandle = <0x46>;
+                        compatible = "xlnx,ps-gpio";
+                        status = "okay";
+                        interrupts = <0x0 0x10 0x4 0xa0>;
+                        reg = <0x0 0xff0a0000 0x0 0x1000>;
+                        #address-cells = <0x1>;
+                        #size-cells = <0x0>;
+
+                        gpio_bank0: gpio_bank@0 {
+                                phandle = <0x5>;
+                                compatible = "xlnx,ps-gpio-bank";
+                                reg = <0x0>;
+                                #gpio-cells = <0x2>;
+                                gpio-controller;
+                                ngpios = <0x1a>;
+                        };
+
+                        gpio_bank1: gpio_bank@1 {
+                                phandle = <0x6>;
+                                compatible = "xlnx,ps-gpio-bank";
+                                reg = <0x1>;
+                                #gpio-cells = <0x2>;
+                                gpio-controller;
+                                ngpios = <0x1a>;
+                        };
+
+                        gpio_bank2: gpio_bank@2 {
+                                phandle = <0x8>;
+                                compatible = "xlnx,ps-gpio-bank";
+                                reg = <0x2>;
+                                #gpio-cells = <0x2>;
+                                gpio-controller;
+                                ngpios = <0x1a>;
+                        };
+
+                        gpio_bank3: gpio_bank@3 {
+                                phandle = <0x9>;
+                                compatible = "xlnx,ps-gpio-bank";
+                                reg = <0x3>;
+                                #gpio-cells = <0x2>;
+                                gpio-controller;
+                                ngpios = <0x20>;
+                        };
+
+                        gpio_bank4: gpio_bank@4 {
+                                phandle = <0xa>;
+                                compatible = "xlnx,ps-gpio-bank";
+                                reg = <0x4>;
+                                #gpio-cells = <0x2>;
+                                gpio-controller;
+                                ngpios = <0x20>;
+                        };
+
+                        gpio_bank5: gpio_bank@5 {
+                                phandle = <0xb>;
+                                compatible = "xlnx,ps-gpio-bank";
+                                reg = <0x5>;
+                                #gpio-cells = <0x2>;
+                                gpio-controller;
+                                ngpios = <0x20>;
+                        };
+                };
+
                 i2c1: i2c@ff030000 {
                         phandle = <0x48>;
                         compatible = "cdns,i2c";
@@ -527,6 +591,13 @@
                 lpd_dma_chan6 = "/axi/dma-controller@ffad0000";
                 lpd_dma_chan7 = "/axi/dma-controller@ffae0000";
                 lpd_dma_chan8 = "/axi/dma-controller@ffaf0000";
+                gpio = "/axi/gpio@ff0a0000";
+                gpio_bank0 = "/axi/gpio@ff0a0000/gpio_bank@0";
+                gpio_bank1 = "/axi/gpio@ff0a0000/gpio_bank@1";
+                gpio_bank2 = "/axi/gpio@ff0a0000/gpio_bank@2";
+                gpio_bank3 = "/axi/gpio@ff0a0000/gpio_bank@3";
+                gpio_bank4 = "/axi/gpio@ff0a0000/gpio_bank@4";
+                gpio_bank5 = "/axi/gpio@ff0a0000/gpio_bank@5";
                 i2c1 = "/axi/i2c@ff030000";
                 rtc = "/axi/rtc@ffa60000";
                 spi1 = "/axi/spi@ff050000";
