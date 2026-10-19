@@ -288,6 +288,17 @@
                         clocks = <&i2c1_ref_clock>;
                 };
 
+                qspi: spi@ff0f0000 {
+                        phandle = <0x56>;
+                        compatible = "xlnx,zynqmp-qspi-1.0";
+                        status = "okay";
+                        interrupts = <0x0 0xf 0x4 0xa0>;
+                        reg = <0x0 0xff0f0000 0x0 0x1000 0x0 0xc0000000 0x0 0x8000000>;
+                        #address-cells = <0x1>;
+                        #size-cells = <0x0>;
+                        clock-frequency = <0x773545d>;
+                };
+
                 rtc: rtc@ffa60000 {
                         phandle = <0x5f>;
                         compatible = "xlnx,zynqmp-rtc";
@@ -531,6 +542,7 @@
         };
 
         aliases {
+                spi0 = "/axi/spi@ff0f0000";
                 serial1 = "/axi/serial@ff010000";
                 i2c1 = "/axi/i2c@ff030000";
                 rtc0 = "/axi/rtc@ffa60000";
@@ -599,6 +611,7 @@
                 gpio_bank4 = "/axi/gpio@ff0a0000/gpio_bank@4";
                 gpio_bank5 = "/axi/gpio@ff0a0000/gpio_bank@5";
                 i2c1 = "/axi/i2c@ff030000";
+                qspi = "/axi/spi@ff0f0000";
                 rtc = "/axi/rtc@ffa60000";
                 spi1 = "/axi/spi@ff050000";
                 ttc0 = "/axi/timer@ff110000";
