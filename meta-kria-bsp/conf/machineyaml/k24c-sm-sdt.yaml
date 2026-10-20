@@ -1,5 +1,5 @@
 args:
-    - --hw-description https://edf.amd.com/sswreleases/rel-v2026.2/sdt/2026.2/2026.2_1019_1_10190543/external/k24c-sm-sdt/k24c-sm-sdt_2026.2_1019_1_10190543.tar.gz
+    - --hw-description https://edf.amd.com/sswreleases/rel-v2026.2/sdt/2026.2/2026.2_1020_1_10200613/external/k24c-sm-sdt/k24c-sm-sdt_2026.2_1020_1_10200613.tar.gz
     - --machine-name k24c-sm-sdt
     - -g full
     - --require-machine include/k24-sm.inc
