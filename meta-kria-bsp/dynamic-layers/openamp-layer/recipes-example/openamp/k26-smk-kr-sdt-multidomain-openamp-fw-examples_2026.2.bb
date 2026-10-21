@@ -4,8 +4,8 @@ DESCRIPTION = "Pre-built Cortex-R5 Zephyr OpenAMP firmware demo payload for the 
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://${UNPACKDIR}/k26-smk-kr-sdt-multidomain_openamp-zephyr-demo/LICENSE.md;md5=0b96a4c07d631aa5141bd3f058ba43b0"
 
-SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.2/edf_files/2026.2/10200613/external/openamp-zephyr-demo/k26-smk-kr-sdt-multidomain_openamp-zephyr-demo_10200613.tar.gz"
-SRC_URI[sha256sum] = "e571ef8a34b976b171cb7ea77d9fdee05a1e36d0c6f5019033d536d64ac6c075"
+SRC_URI = "https://edf.amd.com/sswreleases/rel-v2026.2/edf_files/2026.2/10210413/external/openamp-zephyr-demo/k26-smk-kr-sdt-multidomain_openamp-zephyr-demo_10210413.tar.gz"
+SRC_URI[sha256sum] = "2b2036c402775db0d028a1e87a57d81877741d31f7d3904725a21979d7af519f"
 
 OPENAMPFW_BOARD = "kr260"
 OPENAMPFW_PKGDIR_SUFFIX = "openamp-zephyr-demo"
