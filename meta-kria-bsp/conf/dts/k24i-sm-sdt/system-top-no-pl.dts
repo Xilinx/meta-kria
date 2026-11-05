@@ -1601,6 +1601,9 @@
                         power-domains = <&zynqmp_firmware 0x3a>;
                         clocks = <&zynqmp_clk 0x18>,
                          <&zynqmp_clk 0x19>;
+                        resets = <&zynqmp_reset 0xe>,
+                         <&zynqmp_reset 0xd>,
+                         <&zynqmp_reset 0xc>;
                         xlnx,ip-name = "psu_gpu";
                         xlnx,tz-nonsecure = <0x1>;
                         xlnx,name = "psu_gpu";
